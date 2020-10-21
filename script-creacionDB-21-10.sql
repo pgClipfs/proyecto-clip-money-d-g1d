@@ -19,6 +19,7 @@ CREATE PROCEDURE [dbo].[crear_cliente_cuenta]
 	@cvu bigint, @alias varchar(50),@observacion varchar(50), @idTipoCuenta tinyint, @idEstadoCuenta tinyint
 AS
 BEGIN
+ORDERBY
 	
 	SET NOCOUNT ON;
 	begin transaction crear_nuevo
