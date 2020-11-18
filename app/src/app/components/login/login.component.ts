@@ -11,5 +11,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  
+  loginCuenta(){
+  alert("accediendo - aqui va la funcionalidad de hacer login")
+  }
 }
