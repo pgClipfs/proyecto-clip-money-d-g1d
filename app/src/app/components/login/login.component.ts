@@ -15,4 +15,8 @@ export class LoginComponent implements OnInit {
   loginCuenta(){
   alert("accediendo - aqui va la funcionalidad de hacer login")
   }
+
+  forgotPassword(){
+    alert("redirigir a recuperar contraseña")
+  }
 }

@@ -1,15 +1,29 @@
-<header>
-    <img src="" alt="logo-billetera-virtual-moneyClip">
-</header>
-<body>
-    <form action="">
-        <label for="">inicia sesión con tu Cuenta</label>
-        <input type="text" id="usuario">        
-        <input type="text" id="pass">        
-        <button (click)="loginCuenta()">LOGIN</button>
-        <a href="">No recuerdo mi contraseña</a>
-        
-        <label for="">No tengo Cuenta</label>
-        <button>CREAR CUENTA</button>
-    </form>
-</body>
+<div class="container-fluid">
+
+    <header>
+        <div class="row">
+            <div class="col-sm-12">
+                <img src="assets/img/img-prueba-1.png" alt="logo-billetera-virtual-moneyClip">
+            </div>
+        </div>
+    </header>
+
+    <body>
+        <form action="">
+
+            <div class="row">
+                <h2>Inicia sesión con tu Cuenta</h2>
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="pass" placeholder="Contraseña" required>
+                <button (click)="loginCuenta()">LOGIN</button>
+                <a href="" (click)="forgotPassword()">No recuerdo mi contraseña</a>
+            </div>
+
+            <div class="row">
+                <h2>No tengo Cuenta</h2>
+                <button>CREAR CUENTA</button>
+            </div>
+        </form>
+    </body>
+
+</div>
