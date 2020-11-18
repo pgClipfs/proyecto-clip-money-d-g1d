@@ -150,6 +150,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Cuenta.cs" />
+    <Compile Include="Models\EstadoCuenta.cs" />
     <Compile Include="Models\GestorCuenta.cs" />
     <Compile Include="Models\GestorLogin.cs" />
     <Compile Include="Models\LoginRequest.cs" />

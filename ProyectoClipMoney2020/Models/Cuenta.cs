@@ -6,17 +6,21 @@ using System.Web;
 namespace ProyectoClipMoney2020.Models
 {
     public class Cuenta
-    {
+    {        
+        
         private long cvu;
         private string alias;
         private decimal saldo;
         private string observacion;
         private long idCliente;
+        private TipoCuenta tipoCuenta;
+        private EstadoCuenta estadoCuenta;
 
+      
         
         public Cuenta()
         {
-
+            
         }
 
         public Cuenta(long cvu, string alias, decimal saldo, string observacion, long idCliente)
@@ -49,6 +53,7 @@ namespace ProyectoClipMoney2020.Models
         public string TipoCuenta { get => tipoCuenta; set => tipoCuenta = value; }
         public string EstadoCuenta { get => estadoCuenta; set => estadoCuenta = value; }
 
-      
+
+       
     }
 }
