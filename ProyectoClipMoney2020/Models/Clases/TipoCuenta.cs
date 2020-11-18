@@ -7,7 +7,7 @@ namespace ProyectoClipMoney2020.Models
 {
     public class TipoCuenta
     {
-        public int idTipoCuenta { set; get; }
+        public long idTipoCuenta { set; get; }
         public string nombreTipoCuenta { set; get; }
 
     }

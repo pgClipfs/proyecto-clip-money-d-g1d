@@ -141,6 +141,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\CuentaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -149,23 +150,24 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Cliente.cs" />
-    <Compile Include="Models\Cuenta.cs" />
-    <Compile Include="Models\Domicilio.cs" />
-    <Compile Include="Models\EstadoCuenta.cs" />
-    <Compile Include="Models\EstadoOperacion.cs" />
-    <Compile Include="Models\GestorCuenta.cs" />
-    <Compile Include="Models\GestorLogin.cs" />
-    <Compile Include="Models\Localidad.cs" />
-    <Compile Include="Models\LoginRequest.cs" />
-    <Compile Include="Models\Nacionalidad.cs" />
-    <Compile Include="Models\Operacion.cs" />
-    <Compile Include="Models\Pais.cs" />
-    <Compile Include="Models\Provincia.cs" />
-    <Compile Include="Models\SituacionCrediticia.cs" />
-    <Compile Include="Models\TipoCuenta.cs" />
-    <Compile Include="Models\TipoDocumento.cs" />
-    <Compile Include="Models\TipoOperacion.cs" />
+    <Compile Include="Models\Clases\Cliente.cs" />
+    <Compile Include="Models\Clases\Cuenta.cs" />
+    <Compile Include="Models\Clases\Domicilio.cs" />
+    <Compile Include="Models\Clases\EstadoCuenta.cs" />
+    <Compile Include="Models\Clases\EstadoOperacion.cs" />
+    <Compile Include="Models\Gestores\GestorCliente.cs" />
+    <Compile Include="Models\Gestores\GestorCuenta.cs" />
+    <Compile Include="Models\Gestores\GestorLogin.cs" />
+    <Compile Include="Models\Clases\Localidad.cs" />
+    <Compile Include="Models\Clases\LoginRequest.cs" />
+    <Compile Include="Models\Clases\Nacionalidad.cs" />
+    <Compile Include="Models\Clases\Operacion.cs" />
+    <Compile Include="Models\Clases\Pais.cs" />
+    <Compile Include="Models\Clases\Provincia.cs" />
+    <Compile Include="Models\Clases\SituacionCrediticia.cs" />
+    <Compile Include="Models\Clases\TipoCuenta.cs" />
+    <Compile Include="Models\Clases\TipoDocumento.cs" />
+    <Compile Include="Models\Clases\TipoOperacion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
