@@ -149,11 +149,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Cuenta.cs" />
+    <Compile Include="Models\Domicilio.cs" />
     <Compile Include="Models\EstadoCuenta.cs" />
+    <Compile Include="Models\EstadoOperacion.cs" />
     <Compile Include="Models\GestorCuenta.cs" />
     <Compile Include="Models\GestorLogin.cs" />
+    <Compile Include="Models\Localidad.cs" />
     <Compile Include="Models\LoginRequest.cs" />
+    <Compile Include="Models\Nacionalidad.cs" />
+    <Compile Include="Models\Operacion.cs" />
+    <Compile Include="Models\Pais.cs" />
+    <Compile Include="Models\Provincia.cs" />
+    <Compile Include="Models\SituacionCrediticia.cs" />
+    <Compile Include="Models\TipoCuenta.cs" />
+    <Compile Include="Models\TipoDocumento.cs" />
+    <Compile Include="Models\TipoOperacion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
