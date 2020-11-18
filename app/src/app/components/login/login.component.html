@@ -2,8 +2,9 @@
 
     <header>
         <div class="row">
-            <div class="col-sm-12">
-                <img src="assets/img/img-prueba-1.png" alt="logo-billetera-virtual-moneyClip">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <img src="" alt="logo-billetera-virtual-moneyClip">
             </div>
         </div>
     </header>
@@ -12,16 +13,22 @@
         <form action="">
 
             <div class="row">
-                <h2>Inicia sesión con tu Cuenta</h2>
-                <input type="email" id="email" placeholder="Email" required>
-                <input type="password" id="pass" placeholder="Contraseña" required>
-                <button (click)="loginCuenta()">LOGIN</button>
-                <a href="" (click)="forgotPassword()">No recuerdo mi contraseña</a>
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4 mt-8">
+                    <h2>Inicia sesión con tu Cuenta</h2>
+                    <input type="email" id="email" placeholder="Email" required>
+                    <input type="password" id="pass" placeholder="Contraseña" required>
+                    <button (click)="loginCuenta()">LOGIN</button>
+                    <a href="" (click)="forgotPassword()">No recuerdo mi contraseña</a>
+                </div>
             </div>
 
             <div class="row">
-                <h2>No tengo Cuenta</h2>
-                <button>CREAR CUENTA</button>
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                    <h2>No tengo Cuenta</h2>
+                    <button>CREAR CUENTA</button>
+                </div>
             </div>
         </form>
     </body>
