@@ -19,11 +19,14 @@ namespace ProyectoClipMoney2020.Models
         public int telefono { get; set; }
         public Domicilio domicilio { get; set; }
         public Nacionalidad nacionalidad { get; set; }
-        public string contraseñaEncriptada { get; set; }
+        public string passEncriptada { get; set; }
         public string usuario { get; set; }
         public SituacionCrediticia situacionCrediticia { get; set; }
-        public Cuenta[] cuentas { get; set; }
+        public IList<Cuenta> cuentas { get; set; }
 
-        
+        public string ObtenerFecha()
+        {
+            return fechaNacimiento.ToString("yyyy-MM-ddTHH:mm:ss.fff");
+        }
     }
 }
