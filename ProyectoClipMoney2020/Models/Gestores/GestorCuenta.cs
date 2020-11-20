@@ -92,7 +92,7 @@ namespace ProyectoClipMoney2020.Models
 
         }
 
-        public List<Cuenta> ObtenerCuentas(int idCliente)
+        public List<Cuenta> ObtenerCuentas(long idCliente)
         {
             string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
             var cuentas = new List<Cuenta>();

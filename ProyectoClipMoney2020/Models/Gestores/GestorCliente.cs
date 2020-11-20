@@ -9,7 +9,7 @@ namespace ProyectoClipMoney2020.Models.Gestores
 {
     public class GestorCliente
     {
-        public Cliente ObtenerDatosCliente(LoginRequest ploginRequest)
+        public Cliente ObtenerDatosClientePorLogin(LoginRequest ploginRequest)
         {
             GestorCuenta gestorCuenta = new GestorCuenta();
             var cliente = new Cliente();
@@ -19,7 +19,7 @@ namespace ProyectoClipMoney2020.Models.Gestores
             {
                 conn.Open();
 
-                SqlCommand comm = new SqlCommand("obtenerCliente", conn);
+                SqlCommand comm = new SqlCommand("obtenerClienteConLogin", conn);
                 comm.CommandType = System.Data.CommandType.StoredProcedure;
                 comm.Parameters.Add(new SqlParameter("@username", ploginRequest.Username));
                 comm.Parameters.Add(new SqlParameter("@password", ploginRequest.Password));
@@ -58,7 +58,7 @@ namespace ProyectoClipMoney2020.Models.Gestores
                         idNivel = dr.GetInt32(21),
                         descripcionNivel = dr.GetString(22)
                     };
-                    cliente.idCliente = dr.GetInt32(0);
+                    cliente.idCliente = dr.GetInt64(0);
                     cliente.usuario = dr.GetString(1).Trim();
                     cliente.passEncriptada = dr.GetString(2).Trim();
                     cliente.nombre = dr.GetString(3);
@@ -85,9 +85,83 @@ namespace ProyectoClipMoney2020.Models.Gestores
 
         }
 
-        public int registrarCliente(Cliente cliente)
+        public Cliente ObtenerDatosClientePorid(long idCliente)
         {
-            int idCliente = 0;
+            GestorCuenta gestorCuenta = new GestorCuenta();
+            var cliente = new Cliente();
+            string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
+
+            using (SqlConnection conn = new SqlConnection(StrConn))
+            {
+                conn.Open();
+
+                SqlCommand comm = new SqlCommand("obtenerClienteConId", conn);
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+                comm.Parameters.Add(new SqlParameter("@idCliente", idCliente));                
+
+                SqlDataReader dr = comm.ExecuteReader();
+                if (dr.Read())
+                {
+                    Nacionalidad nacionalidad = new Nacionalidad()
+                    {
+                        idNacionalidad = dr.GetByte(10),
+                        descripcionNacionalidad = dr.GetString(11)
+                    };
+                    var tipoDocumento = new TipoDocumento()
+                    {
+                        idTipoDocumento = dr.GetByte(12),
+                        nombreTipoDocumento = dr.GetString(13)
+                    };
+                    var localidad = new Localidad()
+                    {
+                        idLocalidad = dr.GetInt64(15),
+                        nombreLocalidad = dr.GetString(16)
+                    };
+
+                    var domicilio = new Domicilio()
+                    {
+                        idDomicilio = dr.GetInt32(14),
+                        localidad = localidad,
+                        calle = dr.GetString(17),
+                        barrio = dr.GetString(18),
+                        codigoPostal = dr.GetString(19),
+                        numero = dr.GetString(20)
+                    };
+
+                    var situacionCrediticia = new SituacionCrediticia()
+                    {
+                        idNivel = dr.GetInt64(21),
+                        descripcionNivel = dr.GetString(22)
+                    };
+                    cliente.idCliente = dr.GetInt64(0);
+                    cliente.usuario = dr.GetString(1).Trim();
+                    cliente.passEncriptada = dr.GetString(2).Trim();
+                    cliente.nombre = dr.GetString(3);
+                    cliente.apellido = dr.GetString(4);
+                    cliente.nroDocumento = dr.GetInt32(5);
+                    cliente.email = dr.GetString(6);
+                    cliente.telefono = dr.GetInt64(7);
+                    cliente.fotoFrenteDocumento = null;//8;
+                    cliente.fotoDorsoDocumento = null;//9;                    
+                    cliente.nacionalidad = nacionalidad;
+                    cliente.tipoDocumento = tipoDocumento;
+                    cliente.situacionCrediticia = situacionCrediticia;
+                    cliente.fechaNacimiento = dr.GetDateTime(23);
+
+                    cliente.cuentas = gestorCuenta.ObtenerCuentas(cliente.idCliente);
+
+
+                }
+
+                dr.Close();
+            }
+
+            return cliente;
+        }
+
+        public long registrarCliente(Cliente cliente)
+        {
+            long idCliente = 0;
             string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
 
             using (SqlConnection conn = new SqlConnection(StrConn))
@@ -116,10 +190,11 @@ namespace ProyectoClipMoney2020.Models.Gestores
                 idCliente = cliente.idCliente;
                 if (cliente.idCliente == 0)
                     throw new ApplicationException();
-                
+
                 //idCliente = comm.ExecuteScalar();
 
                 return idCliente;
+            }
         }
 
     }

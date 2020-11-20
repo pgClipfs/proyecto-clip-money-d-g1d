@@ -7,7 +7,7 @@ namespace ProyectoClipMoney2020.Models
 {
     public class SituacionCrediticia
     {
-        public int idNivel { get; set; }
+        public long idNivel { get; set; }
         public string descripcionNivel { get; set; }
     }
 }

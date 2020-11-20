@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProyectoClipMoney2020.Models;
+using ProyectoClipMoney2020.Models.Gestores;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -7,24 +9,51 @@ using System.Web.Http;
 
 namespace ProyectoClipMoney2020.Controllers
 {
+    //[Authorize]
+    [RoutePrefix("api/Cliente")]
     public class ClienteController : ApiController
     {
+
         // GET: api/Cliente
-        public IEnumerable<string> Get()
+        public IHttpActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            
+                return Ok("get Falso");  // status 404
+            
         }
 
         // GET: api/Cliente/5
-        public string Get(int id)
+        [HttpGet]
+        public IHttpActionResult Get(long idCliente)
         {
-            return "value";
+            GestorCliente gestorCliente = new GestorCliente();
+            Cliente cliente = gestorCliente.ObtenerDatosClientePorid(idCliente);
+            
+            if (cliente == null)
+            {
+                return NotFound();  // status 404
+            }
+            return Ok(cliente);   // en cliente vemos response.data
+                    
+           
         }
 
         // POST: api/Cliente
-        public void Post([FromBody]string value)
+        public IHttpActionResult PostCliente(Cliente cliente)
         {
+            
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            GestorCliente gestorCliente = new GestorCliente();
+            gestorCliente.registrarCliente(cliente);                
+
+            return CreatedAtRoute("DefaultApi", new { id = cliente.idCliente }, cliente);
+
         }
+        
 
         // PUT: api/Cliente/5
         public void Put(int id, [FromBody]string value)

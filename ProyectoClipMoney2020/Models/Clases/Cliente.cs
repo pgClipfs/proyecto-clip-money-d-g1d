@@ -7,7 +7,7 @@ namespace ProyectoClipMoney2020.Models
 {
     public class Cliente
     {
-        public int idCliente { get; set; }
+        public long idCliente { get; set; }
         public string nombre { get; set; }
         public string apellido { get; set; }
         public DateTime fechaNacimiento { get; set; }
@@ -16,7 +16,7 @@ namespace ProyectoClipMoney2020.Models
         public byte[] fotoFrenteDocumento { get; set; }
         public byte[] fotoDorsoDocumento { get; set; }
         public string email { get; set; }
-        public int telefono { get; set; }
+        public long telefono { get; set; }
         public Domicilio domicilio { get; set; }
         public Nacionalidad nacionalidad { get; set; }
         public string passEncriptada { get; set; }

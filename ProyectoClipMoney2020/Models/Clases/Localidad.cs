@@ -7,7 +7,7 @@ namespace ProyectoClipMoney2020.Models
 {
     public class Localidad
     {
-        public int idLocalidad { get; set; }
+        public long idLocalidad { get; set; }
         public string nombreLocalidad { get; set; }
         public string codigoPostal { get; set; }
         public Provincia provincia { get; set; }
