@@ -1,39 +1,23 @@
-<div class="container-fluid">
+<div class="container">
+    <div class="abs-center">
 
-    <header>
-        <div class="row">
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4">
-                <img src="" alt="logo-billetera-virtual-moneyClip">
-            </div>
-        </div>
-    </header>
+        <body>
+            <img src="assets/img/fondo-money-clip-logo.png" alt="logo-billetera-virtual-moneyClip">
+            <form action="#">
 
-    <body>
-        <form action="">
+                <h2>Inicia sesión con tu Cuenta</h2>
+                <input type="email" id="email" placeholder="Email" autocomplete="off" required>
+                <br>
+                <input type="password" id="pass" placeholder="Contraseña" autocomplete="off" required>
+                <br>
+                <button (click)="loginCuenta()">LOGIN</button>
+                <br>
+                <a href="" (click)="forgotPassword()">No recuerdo mi contraseña</a>
 
-            <div class="row">
-                <div class="col-sm-4"></div>
-                <div class="col-sm-4">
-                    <h2 class="titulo-login">Inicia sesión con tu Cuenta</h2>
-                    <input type="email" id="email" placeholder="Email" autocomplete="off" required>
-                    <br>
-                    <input type="password" id="pass" placeholder="Contraseña" autocomplete="off" required>
-                    <br>
-                    <button (click)="loginCuenta()">LOGIN</button>
-                    <br>
-                    <a href="" (click)="forgotPassword()">No recuerdo mi contraseña</a>
-                </div>
-            </div>
+                <h2>No tengo Cuenta</h2>
+                <button>CREAR CUENTA</button>
 
-            <div class="row">
-                <div class="col-sm-4"></div>
-                <div class="col-sm-4">
-                    <h2>No tengo Cuenta</h2>
-                    <button>CREAR CUENTA</button>
-                </div>
-            </div>
-        </form>
-    </body>
-
+            </form>
+        </body>
+    </div>
 </div>
