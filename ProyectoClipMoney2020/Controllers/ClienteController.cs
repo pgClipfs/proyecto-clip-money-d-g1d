@@ -48,11 +48,17 @@ namespace ProyectoClipMoney2020.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            int id;
             GestorCliente gestorCliente = new GestorCliente();
-            gestorCliente.registrarCliente(cliente);                
+            id=gestorCliente.registrarCliente(cliente);
+            cliente.idCliente = id;
 
-            return CreatedAtRoute("DefaultApi", new { id = cliente.idCliente }, cliente);
+            if(id==0)
+            {
+                return NotFound();
+            }
+            else
+            return Ok(cliente);
 
         }
         

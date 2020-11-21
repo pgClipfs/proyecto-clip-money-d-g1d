@@ -113,26 +113,44 @@ namespace ProyectoClipMoney2020.Models.Gestores
                         idTipoDocumento = dr.GetByte(12),
                         nombreTipoDocumento = dr.GetString(13)
                     };
+                    
+                    var pais = new Pais()
+                    {
+                        idPais = dr.GetInt32(23),
+                        nombrePais=dr.GetString(24)
+                    };
+                    var provincia = new Provincia()
+                    {
+                        idProvincia = dr.GetInt32(21),
+                        nombreProvincia = dr.GetString(22),
+                        pais = pais
+
+                    };
                     var localidad = new Localidad()
                     {
-                        idLocalidad = dr.GetInt64(15),
-                        nombreLocalidad = dr.GetString(16)
+                        idLocalidad = dr.GetInt64(19),
+                        nombreLocalidad = dr.GetString(20),
+                        codigoPostal = dr.GetString(18),
+                        provincia = provincia
+
+
                     };
 
                     var domicilio = new Domicilio()
                     {
                         idDomicilio = dr.GetInt32(14),
-                        localidad = localidad,
-                        calle = dr.GetString(17),
-                        barrio = dr.GetString(18),
-                        codigoPostal = dr.GetString(19),
-                        numero = dr.GetString(20)
+                        calle = dr.GetString(15),
+                        numero = dr.GetString(16),
+                        barrio = dr.GetString(17),
+                        codigoPostal = dr.GetString(18),
+                        localidad = localidad                        
+                        
                     };
 
                     var situacionCrediticia = new SituacionCrediticia()
                     {
-                        idNivel = dr.GetInt64(21),
-                        descripcionNivel = dr.GetString(22)
+                        idNivel = dr.GetInt64(25),
+                        descripcionNivel = dr.GetString(26)
                     };
                     cliente.idCliente = dr.GetInt64(0);
                     cliente.usuario = dr.GetString(1).Trim();
@@ -146,8 +164,10 @@ namespace ProyectoClipMoney2020.Models.Gestores
                     cliente.fotoDorsoDocumento = null;//9;                    
                     cliente.nacionalidad = nacionalidad;
                     cliente.tipoDocumento = tipoDocumento;
+                    cliente.domicilio = domicilio;
                     cliente.situacionCrediticia = situacionCrediticia;
-                    cliente.fechaNacimiento = dr.GetDateTime(23);
+                   
+                    cliente.fechaNacimiento = dr.GetDateTime(27);
 
                     cliente.cuentas = gestorCuenta.ObtenerCuentas(cliente.idCliente);
 
@@ -160,16 +180,17 @@ namespace ProyectoClipMoney2020.Models.Gestores
             return cliente;
         }
 
-        public long registrarCliente(Cliente cliente)
+        public int registrarCliente(Cliente cliente)
         {
-            long idCliente = 0;
+            int id = 0;
             string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
 
             using (SqlConnection conn = new SqlConnection(StrConn))
             {
                 conn.Open();
 
-                SqlCommand comm = new SqlCommand("registrarCliente", conn);
+                SqlCommand comm = conn.CreateCommand();
+                comm.CommandText="registrarCliente";
                 comm.CommandType = System.Data.CommandType.StoredProcedure;
                 //comm.Parameters.Add(new SqlParameter("@idCliente", cliente.idCliente));
                 comm.Parameters.Add(new SqlParameter("@usuario", cliente.usuario));
@@ -178,24 +199,20 @@ namespace ProyectoClipMoney2020.Models.Gestores
                 comm.Parameters.Add(new SqlParameter("@apellido", cliente.apellido));
                 comm.Parameters.Add(new SqlParameter("@nroDocumento", cliente.nroDocumento));
                 comm.Parameters.Add(new SqlParameter("@email", cliente.email));
-                comm.Parameters.Add(new SqlParameter("@telefono", cliente.telefono));
-                comm.Parameters.Add(new SqlParameter("@fotoFrenteDocumento", cliente.fotoFrenteDocumento));
-                comm.Parameters.Add(new SqlParameter("@fotoDorsoDocumento", cliente.fotoDorsoDocumento));
+                comm.Parameters.Add(new SqlParameter("@telefono", cliente.telefono));               
                 comm.Parameters.Add(new SqlParameter("@idNacionalidad", cliente.nacionalidad.idNacionalidad));
                 comm.Parameters.Add(new SqlParameter("@idTipoDocumento", cliente.tipoDocumento.idTipoDocumento));
                 comm.Parameters.Add(new SqlParameter("@idDomicilio", cliente.domicilio.idDomicilio));
                 comm.Parameters.Add(new SqlParameter("@idNivel", cliente.situacionCrediticia.idNivel));
                 comm.Parameters.Add(new SqlParameter("@fechaNacimiento", cliente.ObtenerFecha()));
 
-                cliente.idCliente = int.Parse(comm.ExecuteScalar()?.ToString());
-                idCliente = cliente.idCliente;
-                if (cliente.idCliente == 0)
-                    throw new ApplicationException();
+                id = Convert.ToInt32(comm.ExecuteScalar());
+                
+              
 
-                //idCliente = comm.ExecuteScalar();
-
-                return idCliente;
+                
             }
+            return id;
         }
 
     }
