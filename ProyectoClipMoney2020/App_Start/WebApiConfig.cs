@@ -16,6 +16,8 @@ namespace ProyectoClipMoney2020
             // Rutas de API web
             config.MapHttpAttributeRoutes();
 
+            config.EnableCors();
+
             config.MessageHandlers.Add(new TokenValidationHandler());
 
             config.Routes.MapHttpRoute(

@@ -100,3 +100,6 @@ D:\descazrgas\CLIP\Proyecto Mes 4\ReposReal\ProyectoClipMoney2020\obj\Debug\Proy
 D:\descazrgas\CLIP\Proyecto Mes 4\ReposReal\ProyectoClipMoney2020\obj\Debug\ProyectoClipMoney2020.csproj.CopyComplete
 D:\descazrgas\CLIP\Proyecto Mes 4\ReposReal\ProyectoClipMoney2020\obj\Debug\ProyectoClipMoney2020.dll
 D:\descazrgas\CLIP\Proyecto Mes 4\ReposReal\ProyectoClipMoney2020\obj\Debug\ProyectoClipMoney2020.pdb
+D:\descazrgas\CLIP\Proyecto Mes 4\ReposReal\ProyectoClipMoney2020\bin\System.Web.Cors.dll
+D:\descazrgas\CLIP\Proyecto Mes 4\ReposReal\ProyectoClipMoney2020\bin\System.Web.Http.Cors.dll
+D:\descazrgas\CLIP\Proyecto Mes 4\ReposReal\ProyectoClipMoney2020\bin\System.Web.Http.Cors.xml

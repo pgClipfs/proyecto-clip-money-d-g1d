@@ -88,7 +88,7 @@ namespace ProyectoClipMoney2020.Models.Gestores
         public Cliente ObtenerDatosClientePorid(long idCliente)
         {
             GestorCuenta gestorCuenta = new GestorCuenta();
-            var cliente = new Cliente();
+            Cliente cliente = null;
             string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
 
             using (SqlConnection conn = new SqlConnection(StrConn))
@@ -102,6 +102,7 @@ namespace ProyectoClipMoney2020.Models.Gestores
                 SqlDataReader dr = comm.ExecuteReader();
                 if (dr.Read())
                 {
+                    cliente = new Cliente();
                     Nacionalidad nacionalidad = new Nacionalidad()
                     {
                         idNacionalidad = dr.GetByte(10),

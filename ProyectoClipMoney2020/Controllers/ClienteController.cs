@@ -6,28 +6,29 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace ProyectoClipMoney2020.Controllers
 {
-    //[Authorize]
-    [RoutePrefix("api/Cliente")]
+
+    [RoutePrefix("api/cliente")]
     public class ClienteController : ApiController
     {
-
+        //[Authorize]
         // GET: api/Cliente
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult Get()
         {
             
-                return Ok("get Falso");  // status 404
+                return NotFound();  // status 404
             
         }
-
-        // GET: api/Cliente/5
-        [HttpGet]
-        public IHttpActionResult Get(long idCliente)
+      
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        public IHttpActionResult Get(long id)
         {
             GestorCliente gestorCliente = new GestorCliente();
-            Cliente cliente = gestorCliente.ObtenerDatosClientePorid(idCliente);
+            Cliente cliente = gestorCliente.ObtenerDatosClientePorid(id);
             
             if (cliente == null)
             {
@@ -35,10 +36,11 @@ namespace ProyectoClipMoney2020.Controllers
             }
             return Ok(cliente);   // en cliente vemos response.data
                     
-           
+
         }
 
         // POST: api/Cliente
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult PostCliente(Cliente cliente)
         {
             
