@@ -6,19 +6,24 @@
             
             <form action="#">
 
-                <h2 class="texto">Inicia sesión con tu Cuenta</h2>
+                <h2 class="texto">Inicia sesión</h2>
                 <input type="email" id="email" class="input-campo" placeholder="Email" autocomplete="off" required>
                 <br>
                 <input type="password" id="pass" class="input-campo" placeholder="Contraseña" autocomplete="off" required>
                 <br>
-                <button (click)="loginCuenta()" id="boton-login">LOGIN</button>
+                <button (click)="loginCuenta()" id="boton-login" routerLink="/menu-principal">LOGIN</button>
                 
                 <a href="" (click)="forgotPassword()">No recuerdo mi contraseña</a>
 
-                <h2 class="texto">No tengo Cuenta</h2>
-                <button>CREAR CUENTA</button>
+                <h2 class="texto">No estoy registrado</h2>
+                <button (click)=crearCliente()>Registrarse como cliente</button>
+                
+
+            </form>
+            <form >
 
             </form>
         </body>
     </div>
 </div>
+

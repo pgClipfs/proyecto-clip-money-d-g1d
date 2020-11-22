@@ -12,6 +12,10 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  Cerrar()
+  {
+    
+  }
   openNav() {
     document.getElementById("mySidepanel").style.width = "250px";
   }
