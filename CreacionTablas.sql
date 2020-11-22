@@ -77,8 +77,8 @@ CREATE TABLE Operacion(
 	monto money NULL,
 	idTipoOperacion tinyint NOT NULL,
 	idEstadoOperacion tinyint NOT NULL,
-	cvuCuentaDesde bigint NOT NULL,
-	cvuCuentaHasta bigint NULL
+	cvuCuentaDesde char(22) NOT NULL,
+	cvuCuentaHasta char(22) NULL
 	)
 
 CREATE TABLE SituacionCrediticia(
