@@ -39,7 +39,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -121,8 +120,5 @@
       }
     }
   },
-  "defaultProject": "app",
-  "cli": {
-    "analytics": "ae3c27e8-f935-4361-90c7-d75e52520bd4"
-  }
+  "defaultProject": "app"
 }

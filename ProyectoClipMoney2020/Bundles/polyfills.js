@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Martin\source\repos\ProyectoClipMoney2020\app\src\polyfills.ts */"hN/g");
+module.exports = __webpack_require__(/*! D:\descazrgas\CLIP\Proyecto Mes 4\ReposReal\app\src\polyfills.ts */"hN/g");
 
 
 /***/ }),
@@ -41,7 +41,7 @@ __webpack_require__.r(__webpack_exports__);
 /***************************************************************************************************
  * BROWSER POLYFILLS
  */
-/** IE10 and IE11 requires the following for NgClass support on SVG elements */
+/** IE11 requires the following for NgClass support on SVG elements */
 // import 'classlist.js';  // Run `npm install --save classlist.js`.
 /**
  * Web Animations `@angular/platform-browser/animations`
