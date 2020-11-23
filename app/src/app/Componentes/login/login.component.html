@@ -1,29 +1,291 @@
-<div class="container">
-    <div class="abs-center">
+<div class="container-fluid bg-light">
 
-        <body>
-            <img src="assets/img/fondo-money-clip-logo.png" alt="logo-billetera-virtual-moneyClip">
+    <h3 class="text-center">Bienvenido</h3>
+    <img class="center"src="assets/img/fondo-money-clip-logo.png" alt="logo-billetera-virtual-moneyClip">
+    <h3 class="texto text-center">{{TituloAccionABMC[AccionABMC]}}</h3>
+
+    <form name="FormLogin" [formGroup]='FormLogin' class="bg-light" *ngIf="AccionABMC == 'C'">
+        <!--Campo usuario-->
+        <div class="form-group row">
+            <div class="w-100">
+                <input type="text" class="form-control w-100" placeholder="Usuario" 
+                formControlName="Usuario" [ngClass]="{'is-invalid': (FormLogin.controls.Usuario.touched || submitted)  
+                && FormLogin.controls.Usuario.errors}" />
+
+			    <span class="text-danger" *ngIf="(FormLogin.controls.Usuario.touched || submitted) 
+                && FormLogin.controls.Usuario.errors?.required">
+                Dato requerido.
+                </span>
+			    <span class="text-danger" *ngIf="(FormLogin.controls.Usuario.errors?.minlength || FormLogin.controls.Usuario.errors?.maxlength) ">
+                Dato texto.
+                </span>
+            </div>
+        </div>
+
+         <!--Campo password-->
+         <div class="form-group row">
+            <div class="w-100">
+                <input type="password" id="password" class="w-100 form-control input-campo" placeholder="Contraseña" 
+                formControlName="Password" [ngClass]="{'is-invalid': (FormLogin.controls.Password.touched || submitted)  
+                && FormLogin.controls.Password.errors}" />
+
+			    <span class="text-danger" *ngIf="(FormLogin.controls.Password.touched || submitted) 
+                && FormLogin.controls.Password.errors?.required">
+                Dato requerido.
+                </span>
+			    <span class="text-danger" *ngIf="(FormLogin.controls.Password.errors?.minlength || FormLogin.controls.Password.errors?.maxlength) ">
+                Dato texto, 8 caracteres minimo
+                </span>
+            </div>
+        </div>               
+        
+        <!-- Botones-->
+	    <div class="justify-content-center">
+            <button type="button" class="btn btn-primary w-100" (click)="loginCuenta()">LOGIN</button>
             
-            <form action="#">
+            <a href="" (click)="forgotPassword()">No recuerdo mi contraseña</a>
+            
+            <h2 class="texto text-center">No estoy registrado</h2>
+            
+            <button class="btn btn-primary w-100"(click)=crearCliente()>Registrarse como cliente</button>
+            
+            </div>
+       
+    </form>
 
-                <h2 class="texto">Inicia sesión</h2>
-                <input type="email" id="email" class="input-campo" placeholder="Email" autocomplete="off" required>
+    <form name="FormRegistro" [formGroup]='FormRegistro' *ngIf="AccionABMC == 'R'">
+        <fieldset [disabled]="AccionABMC==='C'">
+            <!--campo usuario-->
+            <div class="form-group row">
+                <label class="col-form-label col-12">Usuario: <span
+                        class="text-danger">*</span></label>
+                <div class="col-12">
+                    <input type="text" class="form-control" formControlName="Usuario"
+             [ngClass]="{'is-invalid': (FormRegistro.controls.Usuario.touched || submitted)  
+                && FormRegistro.controls.Usuario.errors}" />
+    
+                    <span class="text-danger" *ngIf="(FormRegistro.controls.Usuario.touched || submitted) 
+                            && FormRegistro.controls.Usuario.errors?.required">
+                        Dato requerido.
+                    </span>
+                    <span class="text-danger" *ngIf="(FormRegistro.controls.Usuario.errors?.minlength || FormRegistro.controls.Usuario.errors?.maxlength) ">
+                        Dato texto, 4 a 55 caracteres.
+                    </span>
+    
+                </div>
+            </div>
+
+            <!--campo contraseña-->
+            <div class="form-group row">
+                <label class="col-form-label col-12">Contraseña: <span
+                        class="text-danger">*</span></label>
+                <div class="col-12">
+                    <input type="password" class="form-control" formControlName="PassEncriptada"
+             [ngClass]="{'is-invalid': (FormRegistro.controls.PassEncriptada.touched || submitted)  
+                && FormRegistro.controls.PassEncriptada.errors}" />
+    
+                    <span class="text-danger" *ngIf="(FormRegistro.controls.PassEncriptada.touched || submitted) 
+                            && FormRegistro.controls.PassEncriptada.errors?.required">
+                        Dato requerido.
+                    </span>
+                    <span class="text-danger" *ngIf="(FormRegistro.controls.PassEncriptada.errors?.minlength || FormRegistro.controls.PassEncriptada.errors?.maxlength) ">
+                        Dato texto, 4 a 55 caracteres.
+                    </span>
+    
+                </div>
+            </div>
+    
+             <!--campo nombre-->
+             <div class="form-group row">
+                <label class="col-form-label col-12">Nombre: <span
+                        class="text-danger">*</span></label>
+                <div class="col-12">
+                    <input type="text" class="form-control" formControlName="Nombre"
+             [ngClass]="{'is-invalid': (FormRegistro.controls.Nombre.touched || submitted)  
+                && FormRegistro.controls.Nombre.errors}" />
+    
+                    <span class="text-danger" *ngIf="(FormRegistro.controls.Nombre.touched || submitted) 
+                            && FormRegistro.controls.Nombre.errors?.required">
+                        Dato requerido.
+                    </span>
+                    <span class="text-danger" *ngIf="(FormRegistro.controls.Nombre.errors?.minlength || FormRegistro.controls.Nombre.errors?.maxlength) ">
+                        Dato texto, 4 a 55 caracteres.
+                    </span>
+    
+                </div>
+            </div>
+
+            <!--campo apellido-->
+            <div class="form-group row">
+                <label class="col-form-label col-12">Apellido: <span
+                        class="text-danger">*</span></label>
+                <div class="col-12">
+                    <input type="text" class="form-control" formControlName="Apellido"
+                [ngClass]="{'is-invalid': (FormRegistro.controls.Apellido.touched || submitted)  
+                && FormRegistro.controls.Apellido.errors}" />
+    
+                    <span class="text-danger" *ngIf="(FormRegistro.controls.Apellido.touched || submitted) 
+                            && FormRegistro.controls.Apellido.errors?.required">
+                        Dato requerido.
+                    </span>
+                    <span class="text-danger" *ngIf="(FormRegistro.controls.Apellido.errors?.minlength || FormRegistro.controls.Apellido.errors?.maxlength) ">
+                        Dato texto, 4 a 55 caracteres.
+                    </span>
+    
+                </div>
+            </div>
+
+             <!--campo idTipoDocumento-->
+             <div class="form-group row">
+                <label class="col-form-label col-12" >
+                    Tipo de documento: <span class="text-danger">*</span>
+                </label>
+                <div class="col-12">
+                    <select  class="form-control" formControlName="TipoDocumento"
+            [ngClass]="{'is-invalid': (FormRegistro.controls.TipoDocumento.touched || submitted)  
+                && FormRegistro.controls.TipoDocumento.errors}" >
+                        <option *ngFor="let opt of Documentos" [ngValue]="opt.TipoDocumento">
+                            ‌{{ opt.NombreTipoDocumento }}
+                        <option>
+                    </select>
+                    <span class="text-danger" *ngIf="(FormRegistro.controls.TipoDocumento.touched || submitted) 
+                            && FormRegistro.controls.TipoDocumento.errors?.required">
+                        Dato requerido.
+                    </span>
+                </div>
+            </div>
+
+            <!--campo nroDocumento-->
+            <div class="form-group row">
+                <label class="col-form-label col-12" >
+                    Numero de documento: <span class="text-danger">*</span>
+                </label>
+                <div class="col-12">
+                    <input type="text" class="form-control" formControlName="NroDocumento"
+            [ngClass]="{'is-invalid': (FormRegistro.controls.NroDocumento.touched || submitted)  
+                && FormRegistro.controls.NroDocumento.errors}" />
+                    <span class="text-danger" *ngIf="(FormRegistro.controls.NroDocumento.touched || submitted) 
+                            && FormRegistro.controls.NroDocumento.errors?.required">
+                        Dato requerido.
+                    </span>
+                    <span class="text-danger" *ngIf="FormRegistro.controls.NroDocumento.errors?.pattern">
+                        Dato numérico, 1 a 7 dígitos.
+                    </span>
+                </div>
+            </div>
+
+            <!--campo email-->
+            <div class="form-group row">
+                <label class="col-form-label col-12">Email: <span
+                        class="text-danger">*</span></label>
+                <div class="col-12">
+                    <input type="text" class="form-control" formControlName="Email"
+                [ngClass]="{'is-invalid': (FormRegistro.controls.Email.touched || submitted)  
+                && FormRegistro.controls.Email.errors}" />
+    
+                    <span class="text-danger" *ngIf="(FormRegistro.controls.Email.touched || submitted) 
+                            && FormRegistro.controls.Email.errors?.required">
+                        Dato requerido.
+                    </span>
+                    <span class="text-danger" *ngIf="(FormRegistro.controls.Email.errors?.minlength || FormRegistro.controls.Email.errors?.maxlength) ">
+                        Dato texto, 4 a 55 caracteres.
+                    </span>
+    
+                </div>
+            </div>
+
+            <!--campo telefono-->
+            <div class="form-group row">
+                <label class="col-form-label col-12" >
+                    Teléfono <span class="text-danger">*</span>
+                </label>
+                <div class="col-12">
+                    <input type="text" class="form-control" formControlName="Telefono"
+            [ngClass]="{'is-invalid': (FormRegistro.controls.Telefono.touched || submitted)  
+                && FormRegistro.controls.Telefono.errors}" />
+                    <span class="text-danger" *ngIf="(FormRegistro.controls.Telefono.touched || submitted) 
+                            && FormRegistro.controls.Telefono.errors?.required">
+                        Dato requerido.
+                    </span>
+                    <span class="text-danger" *ngIf="FormRegistro.controls.Telefono.errors?.pattern">
+                        Dato numérico, 1 a 7 dígitos.
+                    </span>
+                </div>
+            </div>
+
+              <!--campo idNacionalidad-->
+              <div class="form-group row">
+                <label class="col-form-label col-12" >
+                    Nacionalidad: <span class="text-danger">*</span>
+                </label>
                 <br>
-                <input type="password" id="pass" class="input-campo" placeholder="Contraseña" autocomplete="off" required>
-                <br>
-                <button (click)="loginCuenta()" id="boton-login" routerLink="/menu-principal">LOGIN</button>
+                <div class="col-12">
+                    <select  class="form-control" formControlName="Nacionalidad"
+            [ngClass]="{'is-invalid': (FormRegistro.controls.Nacionalidad.touched || submitted)  
+                && FormRegistro.controls.Nacionalidad.errors}" >
+                        <option *ngFor="let opt of Documentos" [ngValue]="opt.Nacionalidad">
+                            ‌{{ opt.NombreTipoDocumento }}
+                        <option>
+                    </select>
+                    <span class="text-danger" *ngIf="(FormRegistro.controls.Nacionalidad.touched || submitted) 
+                            && FormRegistro.controls.Nacionalidad.errors?.required">
+                        Dato requerido.
+                    </span>
+                </div>
+            </div>
+
+            
+            <!--campo fechaNacimiento-->
+            <div class="form-group row">
+                <label class="col-form-label col-12">Fecha de nacimiento: <span
+                        class="text-danger">*</span></label>
+                <div class="col-12">
+                    <input class="form-control"
+                                formControlName="FechaNacimiento"
+                               [ngClass]="{'is-invalid': (FormRegistro.controls.FechaNacimiento.touched || submitted)  
+                && FormRegistro.controls.FechaNacimiento.errors}" />
+    
+                    <span class="text-danger" *ngIf="(FormRegistro.controls.FechaNacimiento.touched || submitted) 
+                           && FormRegistro.controls.FechaNacimiento.errors?.required">
+                        Dato requerido.
+                    </span>
+                    <span class="text-danger" *ngIf="FormRegistro.controls.FechaNacimiento.errors?.pattern">
+                        Dato fecha, formato dd/mm/aaaa.
+            </span>
+                </div>
+            </div>
+
+        </fieldset>
+    
+        <!-- Botones Grabar, Cancelar/Volver' -->
+        <div class="row justify-content-center">
+            <div class="container col-12">
+            <button type="button" class="btn btn-primary " (click)="Grabar()">
+                <span class="fas fa-check"></span> Completar registro
+            </button>
+            &nbsp;
+            <button type="button" class="btn btn-danger" (click)="cancelar()">
+                <span class="fas fa-undo"></span> Cancelar
+            </button>
+        </div>
+        </div>
+        
+       
+
+        <!--texto: Revisar los datos ingresados...-->
+        <div id="divMsjFormRegistro" *ngIf="submitted && FormRegistro.invalid" class="row alert alert-danger">
+            <span class="fas fa-exclamation-sign"></span>{{Mensajes['RD']}}
+        </div>
+    
+
+
+       
+    </form>
+</div>   
                 
-                <a href="" (click)="forgotPassword()">No recuerdo mi contraseña</a>
+               
 
-                <h2 class="texto">No estoy registrado</h2>
-                <button (click)=crearCliente()>Registrarse como cliente</button>
-                
+               
+  
 
-            </form>
-            <form >
-
-            </form>
-        </body>
-    </div>
-</div>
 

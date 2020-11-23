@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-login',
@@ -7,13 +8,44 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  TituloAccionABMC = {
+    R: 'Registrarse',
+    C: 'Iniciar sesión',
 
-  ngOnInit(): void {
+  };
+  AccionABMC = 'C';
+  FormLogin: FormGroup;
+  FormRegistro:FormGroup;
+  Mensajes = {   
+    RD: " Revisar los datos ingresados..."
+  };
+
+  constructor(public formBuilder: FormBuilder) { }
+
+  ngOnInit() {
+    this.FormLogin = this.formBuilder.group({
+      Usuario: ["",Validators.required],
+      Password: ["",Validators.required]
+    });
+    this.FormRegistro = this.formBuilder.group({
+      Usuario:["",Validators.required],
+      PassEncriptada:["",Validators.required],
+      Nombre:["",Validators.required],
+      Apellido:["",Validators.required],
+      TipoDocumento:["",Validators.required],
+      NroDocumento:["",Validators.required],
+      Email: ["",Validators.required],
+      Telefono: ["",Validators.required],
+      Nacionalidad: ["",Validators.required],
+      FechaNacimiento: ["",Validators.required]
+    });
+
+    //this.GetTokerLogin();
   }
   
+
   loginCuenta(){
-      
+    this.FormLogin.markAllAsTouched();
   }
 
   forgotPassword(){
@@ -23,6 +55,19 @@ export class LoginComponent implements OnInit {
   
   crearCliente()
   {
+    this.AccionABMC='R';
     
+
+  }
+  cancelar()
+  {
+    this.AccionABMC='C';
+    this.FormLogin.reset();
+    this.FormRegistro.reset();
+    
+  }
+  Grabar()
+  {
+    this.FormRegistro.markAllAsTouched();
   }
 }
