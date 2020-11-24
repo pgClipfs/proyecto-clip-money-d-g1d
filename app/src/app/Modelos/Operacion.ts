@@ -2,7 +2,7 @@ import { EstadoOperacion } from './EstadoOperacion';
 import {TipoOperacion} from './TipoOperacion';
 
 
-export class EstadoCuenta {
+export class Operacion {
     IdOperacion: number;
     FechaOperacion: string;
     Monto: number;
@@ -10,3 +10,4 @@ export class EstadoCuenta {
     EstadoOperacion: EstadoOperacion;
     CvuHasta: string;
   }
+

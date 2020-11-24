@@ -1,4 +1,4 @@
-export class EstadoCuenta {
+export class TipoCuenta {
     IdTipoCuenta: number;
     NombreTipoCuenta: string;
   }
