@@ -8,7 +8,7 @@ CREATE TABLE Cliente(
 	nombre varchar(50) NOT NULL,
 	apellido varchar(50) NOT NULL,
 	nroDocumento varchar(20) NOT NULL,
-	fNacimiento date NOT NULL,
+	fNacimiento datetime NOT NULL,
 	email varchar(50) NOT NULL,
 	telefono varchar(15) NULL,
 	fotoFrenteDocumento image NOT NULL,
