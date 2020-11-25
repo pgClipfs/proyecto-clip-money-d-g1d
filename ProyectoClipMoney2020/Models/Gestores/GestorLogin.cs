@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoClipMoney2020.Models.Soporte;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -21,7 +22,7 @@ namespace ProyectoClipMoney2020.Models
                 SqlCommand comm = new SqlCommand("obtener_login", conn);
                 comm.CommandType = System.Data.CommandType.StoredProcedure;
                 comm.Parameters.Add(new SqlParameter("@username", ploginRequest.Username));
-                comm.Parameters.Add(new SqlParameter("@password", ploginRequest.Password));
+                comm.Parameters.Add(new SqlParameter("@password", Encriptacion.GetSHA256(ploginRequest.Password)));
 
                 SqlDataReader reader = comm.ExecuteReader();
 

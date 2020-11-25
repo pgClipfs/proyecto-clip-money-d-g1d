@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoClipMoney2020.Models.Soporte;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -184,6 +185,8 @@ namespace ProyectoClipMoney2020.Models.Gestores
         {
             int id = 0;
             string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
+          
+                
 
             using (SqlConnection conn = new SqlConnection(StrConn))
             {
@@ -194,7 +197,7 @@ namespace ProyectoClipMoney2020.Models.Gestores
                 comm.CommandType = System.Data.CommandType.StoredProcedure;
                 //comm.Parameters.Add(new SqlParameter("@idCliente", cliente.idCliente));
                 comm.Parameters.Add(new SqlParameter("@usuario", cliente.usuario));
-                comm.Parameters.Add(new SqlParameter("@passEncriptada", cliente.passEncriptada));
+                comm.Parameters.Add(new SqlParameter("@passEncriptada", Encriptacion.GetSHA256(cliente.passEncriptada)));
                 comm.Parameters.Add(new SqlParameter("@nombre", cliente.nombre));
                 comm.Parameters.Add(new SqlParameter("@apellido", cliente.apellido));
                 comm.Parameters.Add(new SqlParameter("@nroDocumento", cliente.nroDocumento));
