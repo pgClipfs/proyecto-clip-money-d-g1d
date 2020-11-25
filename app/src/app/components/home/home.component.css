@@ -10,6 +10,7 @@
     overflow-x: hidden;
     /* padding-top: 0; */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidepanel */
+    padding: 10px;
   }
   
   /*sidepanel links */
@@ -25,6 +26,8 @@
   
   .sidepanel a:hover {
     color: #1E3888;
+    background-color: #E9EBF8;
+
   }
   
   
@@ -32,8 +35,9 @@
     position: absolute;
     top: 0;
     right: 25px;
-    font-size: medium;
+    font-size: xx-large;
     margin-left: 50px;
+    color:#1E3888;
   }
   
   
