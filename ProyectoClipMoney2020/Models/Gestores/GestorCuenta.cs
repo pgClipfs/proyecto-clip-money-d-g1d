@@ -36,7 +36,7 @@ namespace ProyectoClipMoney2020.Models
                         idEstadoCuenta = dr.GetInt32(6),
                         nombreEstadoCuenta = dr.GetString(7)
                     };
-                    cuenta.cvu = dr.GetInt64(0);
+                    cuenta.cvu = dr.GetString(0);
                     cuenta.alias = dr.GetString(1);
                     cuenta.saldo = dr.GetDecimal(2);
                     cuenta.observacion = dr.GetString(3);
@@ -66,7 +66,7 @@ namespace ProyectoClipMoney2020.Models
                 SqlDataReader dr = comm.ExecuteReader();
                 if (dr.Read())
                 {
-                    cuenta.cvu = dr.GetInt32(0);
+                    cuenta.cvu = dr.GetString(0);
                     cuenta.alias = dr.GetString(1).Trim();
                     cuenta.saldo = dr.GetDecimal(2);
                     cuenta.observacion = dr.GetString(3).Trim();
@@ -119,7 +119,7 @@ namespace ProyectoClipMoney2020.Models
                         idEstadoCuenta = dr.GetInt32(6),
                         nombreEstadoCuenta = dr.GetString(7)
                     };
-                    cuenta.cvu = dr.GetInt64(0);
+                    cuenta.cvu = dr.GetString(0);
                     cuenta.alias = dr.GetString(1);
                     cuenta.saldo = dr.GetDecimal(2);
                     cuenta.observacion = dr.GetString(3);

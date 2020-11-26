@@ -10,7 +10,7 @@ using System.Web.Http.Cors;
 
 namespace ProyectoClipMoney2020.Controllers
 {
-
+    [AllowAnonymous]
     [RoutePrefix("api/cliente")]
     public class ClienteController : ApiController
     {

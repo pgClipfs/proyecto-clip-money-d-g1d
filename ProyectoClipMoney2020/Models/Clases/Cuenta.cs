@@ -8,8 +8,8 @@ namespace ProyectoClipMoney2020.Models
     public class Cuenta
     {        
         
-        public long cvu { get; set; }
-        public  string alias { get; set; }
+        public string cvu { get; set; }
+        public string alias { get; set; }
         public decimal saldo { get; set; }
         public string observacion { get; set; }
         public TipoCuenta tipoCuenta { get; set; }
@@ -21,7 +21,7 @@ namespace ProyectoClipMoney2020.Models
             
         }
 
-        public Cuenta(long cvu, string alias, decimal saldo, string observacion)
+        public Cuenta(string cvu, string alias, decimal saldo, string observacion)
         {
             this.cvu = cvu;
             this.alias = alias;
@@ -31,7 +31,7 @@ namespace ProyectoClipMoney2020.Models
         }
 
       
-        public Cuenta(long cvu, string alias, decimal saldo, string observacion, long idCliente, TipoCuenta tipoCuenta, EstadoCuenta estadoCuenta)
+        public Cuenta(string cvu, string alias, decimal saldo, string observacion, long idCliente, TipoCuenta tipoCuenta, EstadoCuenta estadoCuenta)
         {
             this.cvu = cvu;
             this.alias = alias;
