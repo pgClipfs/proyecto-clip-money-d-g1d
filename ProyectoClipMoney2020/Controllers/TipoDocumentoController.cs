@@ -13,6 +13,7 @@ namespace ProyectoClipMoney2020.Controllers
     [AllowAnonymous]
     public class TipoDocumentoController : ApiController
     {
+        [AllowAnonymous]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IEnumerable<TipoDocumento> Get()
         {
