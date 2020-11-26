@@ -9,7 +9,7 @@ using ProyectoClipMoney2020.Models;
 
 namespace ProyectoClipMoney2020.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [RoutePrefix("api/cuenta")]
     public class CuentaController : ApiController
     {

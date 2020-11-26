@@ -144,8 +144,8 @@
                     <select  class="form-control" formControlName="TipoDocumento"
             [ngClass]="{'is-invalid': (FormRegistro.controls.TipoDocumento.touched || submitted)  
                 && FormRegistro.controls.TipoDocumento.errors}" >
-                        <option *ngFor="let opt of Documentos" [ngValue]="opt.TipoDocumento">
-                            ‌{{ opt.NombreTipoDocumento }}
+                        <option *ngFor="let opt of Documentos" [ngValue]="opt.idTipoDocumento">
+                            ‌{{ opt.nombreTipoDocumento }}
                         <option>
                     </select>
                     <span class="text-danger" *ngIf="(FormRegistro.controls.TipoDocumento.touched || submitted) 

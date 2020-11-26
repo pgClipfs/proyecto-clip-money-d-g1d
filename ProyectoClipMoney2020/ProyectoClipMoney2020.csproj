@@ -151,6 +151,7 @@
     <Compile Include="Controllers\CuentaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\TipoDocumentoController.cs" />
     <Compile Include="Controllers\TokenGenerator.cs" />
     <Compile Include="Controllers\TokenValidationHandler.cs" />
     <Compile Include="Global.asax.cs">
@@ -174,6 +175,7 @@
     <Compile Include="Models\Clases\TipoCuenta.cs" />
     <Compile Include="Models\Clases\TipoDocumento.cs" />
     <Compile Include="Models\Clases\TipoOperacion.cs" />
+    <Compile Include="Models\Gestores\GestorTipoDocumento.cs" />
     <Compile Include="Models\Soporte\Encriptacion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

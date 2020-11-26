@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { TipoDocumento } from 'src/app/Modelos/TipoDocumento';
+import {TipoDocumentoService} from '../../Servicios/tipo-documento.service'
 
 @Component({
   selector: 'app-login',
@@ -13,6 +15,7 @@ export class LoginComponent implements OnInit {
     C: 'Iniciar sesión',
 
   };
+  Documentos: TipoDocumento[]=[];
   AccionABMC = 'C';
   FormLogin: FormGroup;
   FormRegistro:FormGroup;
@@ -20,7 +23,7 @@ export class LoginComponent implements OnInit {
     RD: " Revisar los datos ingresados..."
   };
 
-  constructor(public formBuilder: FormBuilder) { }
+  constructor(public formBuilder: FormBuilder, private tipoDocumentoService: TipoDocumentoService){ }
 
   ngOnInit() {
     this.FormLogin = this.formBuilder.group({
@@ -40,9 +43,16 @@ export class LoginComponent implements OnInit {
       FechaNacimiento: ["",Validators.required]
     });
 
+   
+
     //this.GetTokerLogin();
   }
-  
+  GetTiposDocumentos() {
+    this.tipoDocumentoService.get().subscribe((res: TipoDocumento[])=>{this.Documentos=res;
+      console.log(this.Documentos)
+    });
+  }
+
 
   loginCuenta(){
     this.FormLogin.markAllAsTouched();
@@ -56,6 +66,7 @@ export class LoginComponent implements OnInit {
   crearCliente()
   {
     this.AccionABMC='R';
+    this.GetTiposDocumentos();
     
 
   }
