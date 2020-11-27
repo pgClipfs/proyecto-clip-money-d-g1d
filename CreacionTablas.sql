@@ -11,12 +11,12 @@ CREATE TABLE Cliente(
 	fNacimiento datetime NOT NULL,
 	email varchar(50) NOT NULL,
 	telefono varchar(15) NULL,
-	fotoFrenteDocumento image NOT NULL,
-	fotoDorsoDocumento image NOT NULL,
+	fotoFrenteDocumento image NULL,
+	fotoDorsoDocumento image NULL,
 	idNacionalidad tinyint NULL,
 	idTipoDocumento tinyint NULL,
 	idDomicilio bigint NULL,
-	idNivel tinyint NOT NULL,
+	idNivel tinyint NULL,
 )
 
 CREATE TABLE Cuenta(
