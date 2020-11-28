@@ -11,6 +11,9 @@ import { HomeComponent } from './Componentes/home/home.component';
 import { MenuPrincipalComponent} from './Componentes/menuPrincipal/menu-principal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InicioComponent } from './componentes/inicio/inicio.component';
+import { AuthGuard } from './helpers/auth.guard';
+
+
 
 import { APP_BASE_HREF } from '@angular/common';
 
@@ -31,7 +34,7 @@ import { APP_BASE_HREF } from '@angular/common';
       [
       { path: '', redirectTo: '/login', pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
-      { path: 'menu-principal', component: MenuPrincipalComponent }
+      { path: 'menu-principal', component: MenuPrincipalComponent, canActivate: [AuthGuard] }
       ]
     ),
 

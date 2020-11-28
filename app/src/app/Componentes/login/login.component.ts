@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TipoDocumento } from 'src/app/Modelos/TipoDocumento';
 import {TipoDocumentoService} from '../../Servicios/tipo-documento.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/Servicios/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -22,8 +24,10 @@ export class LoginComponent implements OnInit {
   Mensajes = {
     RD: 'Revisar los datos ingresados...'
   };
+  returnUrl: string;
+  error = '';
 
-  constructor(public formBuilder: FormBuilder, private tipoDocumentoService: TipoDocumentoService) { }
+  constructor(public formBuilder: FormBuilder, private tipoDocumentoService: TipoDocumentoService,  private authenticationService: AuthenticationService, private route: ActivatedRoute, private router: Router,) { }
 
   ngOnInit() {
     this.FormLogin = this.formBuilder.group({
@@ -42,7 +46,7 @@ export class LoginComponent implements OnInit {
       Nacionalidad: ['', Validators.required],
       FechaNacimiento: ['', Validators.required]
     });
-
+    this.returnUrl = '/menu-principal';
        // this.GetTokerLogin();
   }
 
@@ -55,6 +59,16 @@ export class LoginComponent implements OnInit {
 
   loginCuenta() {
     this.FormLogin.markAllAsTouched();
+    this.authenticationService.login(this.FormLogin.controls.Usuario.value, this.FormLogin.controls.Password.value)
+      .subscribe(
+        data => {
+          this.router.navigate([this.returnUrl]);
+        },
+        error => {
+          this.error = error;
+        }
+      );
+
   }
 
   forgotPassword(){
