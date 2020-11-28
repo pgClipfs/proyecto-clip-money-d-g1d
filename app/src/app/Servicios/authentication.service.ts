@@ -19,7 +19,7 @@ export class AuthenticationService {
   }
 
   public get currentUserValue(): LoginRequest {
-    return this.currentUserSubject.value;
+    return this.currentUserSubject.value; 
   }
 
   login(username: string, password: string): Observable<any> {
