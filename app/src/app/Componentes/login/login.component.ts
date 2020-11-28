@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
     });
 
     // this.GetTokerLogin();
+    this.returnUrl = '/menu-principal';
   }
 
   GetTiposDocumentos() {

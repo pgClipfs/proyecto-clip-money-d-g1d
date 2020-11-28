@@ -36,7 +36,8 @@ import { ModalQuienesSomosComponent } from './Componentes/modal-quienes-somos/mo
       [
       { path: '', redirectTo: '/login', pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
-      { path: 'menu-principal', component: MenuPrincipalComponent, canActivate: [AuthGuard] }
+      { path: 'menu-principal', component: MenuPrincipalComponent, canActivate: [AuthGuard] },
+      { path: '**', redirectTo: '/login', pathMatch: 'full' }
       ]
     ),
 
