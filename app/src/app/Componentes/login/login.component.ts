@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TipoDocumento } from 'src/app/Modelos/TipoDocumento';
-import {TipoDocumentoService} from '../../Servicios/tipo-documento.service';
+import { TipoDocumentoService } from '../../Servicios/tipo-documento.service';
+import { ModalQuienesSomosService } from '../../Servicios/modal-quienes-somos.service';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,7 @@ export class LoginComponent implements OnInit {
     RD: 'Revisar los datos ingresados...'
   };
 
-  constructor(public formBuilder: FormBuilder, private tipoDocumentoService: TipoDocumentoService) { }
+  constructor(public formBuilder: FormBuilder, private tipoDocumentoService: TipoDocumentoService, private modalQuienesSomosService: ModalQuienesSomosService) { }
 
   ngOnInit() {
     this.FormLogin = this.formBuilder.group({
@@ -43,12 +44,13 @@ export class LoginComponent implements OnInit {
       FechaNacimiento: ['', Validators.required]
     });
 
-       // this.GetTokerLogin();
+    // this.GetTokerLogin();
   }
 
   GetTiposDocumentos() {
-    this.tipoDocumentoService.get().subscribe((res: TipoDocumento[]) => { this.Documentos = res;
-                                                                          console.log(this.Documentos);
+    this.tipoDocumentoService.get().subscribe((res: TipoDocumento[]) => {
+      this.Documentos = res;
+      console.log(this.Documentos);
     });
   }
 
@@ -57,30 +59,32 @@ export class LoginComponent implements OnInit {
     this.FormLogin.markAllAsTouched();
   }
 
-  forgotPassword(){
+  forgotPassword() {
     alert('redirigir a recuperar contraseña');
   }
 
-  crearCliente()
-  {
+  crearCliente() {
     this.AccionABMC = 'R';
     this.GetTiposDocumentos();
   }
 
-  cancelar()
-  {
+  cancelar() {
     this.AccionABMC = 'C';
     this.FormLogin.reset();
     this.FormRegistro.reset();
   }
 
-  Grabar()
-  {
+  Grabar() {
     this.FormRegistro.markAllAsTouched();
   }
 
   subirFoto() {
-   alert("botones subir foto")
+    alert("En construccion - botones subir foto");
 
+  }
+
+
+  llamarModal() {
+    this.modalQuienesSomosService.Alert('Nicolas Alvarez, Jimena Bustos Paulich, Melani Crespo, Martin Diaz, Maximiliano Iglesias del Castillo, Matias LLorens, Joel Ocampo, Melania Peralta Flores, Tomas Pozzo - Programa Clip 2020 - Grupo 1D -', 'Conoce a nuestro Equipo!', 'i');
   }
 }

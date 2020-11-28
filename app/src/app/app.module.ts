@@ -13,13 +13,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 
 import { APP_BASE_HREF } from '@angular/common';
+import { ModalQuienesSomosComponent } from './Componentes/modal-quienes-somos/modal-quienes-somos.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     HomeComponent,
     MenuPrincipalComponent,
-    InicioComponent
+    InicioComponent,
+    ModalQuienesSomosComponent
   ],
   imports: [
     BrowserModule,
