@@ -16,15 +16,13 @@ import { AuthGuard } from './helpers/auth.guard';
 
 
 import { APP_BASE_HREF } from '@angular/common';
-import { ModalQuienesSomosComponent } from './Componentes/modal-quienes-somos/modal-quienes-somos.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     HomeComponent,
     MenuPrincipalComponent,
-    InicioComponent,
-    ModalQuienesSomosComponent
+    InicioComponent
   ],
   imports: [
     BrowserModule,
