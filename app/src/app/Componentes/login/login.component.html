@@ -1,6 +1,6 @@
 <div class="container-fluid bg-light">
 
-    <h3 class="text-center">Bienvenido</h3>
+    <!-- <h3 class="text-center">Bienvenido</h3> -->
     <img class="center"src="assets/img/fondo-money-clip-logo.png" alt="logo-billetera-virtual-moneyClip">
     <h3 class="texto text-center">{{TituloAccionABMC[AccionABMC]}}</h3>
 
@@ -49,9 +49,16 @@
             
             <button class="btn btn-primary w-100" (click)=crearCliente()>Registrarse como cliente</button>
             
-        </div>
-       
+            </div>
+            <br>
+            <div class="justify-content-center">
+
+                <a href="#">Quienes somos</a>
+        
+            </div>
     </form>
+
+
 
     <form name="FormRegistro" [formGroup]='FormRegistro' *ngIf="AccionABMC == 'R'">
         <fieldset [disabled]="AccionABMC==='C'">
@@ -77,8 +84,9 @@
 
             <!--campo contraseña-->
             <div class="form-group row">
-                <label class="col-form-label col-12">Contraseña: <span
-                        class="text-danger">*</span></label>
+                <label class="col-form-label col-12">Contraseña: 
+                    <span class="text-danger">*</span>
+                </label>
                 <div class="col-12">
                     <input type="password" class="form-control" formControlName="PassEncriptada"
              [ngClass]="{'is-invalid': (FormRegistro.controls.PassEncriptada.touched || submitted)  
@@ -136,7 +144,7 @@
             </div>
 
              <!--campo idTipoDocumento-->
-             <div class="form-group row">
+            <!--  <div class="form-group row">
                 <label class="col-form-label col-12" >
                     Tipo de documento: <span class="text-danger">*</span>
                 </label>
@@ -153,7 +161,7 @@
                         Dato requerido.
                     </span>
                 </div>
-            </div>
+            </div> -->
 
             <!--campo nroDocumento-->
             <div class="form-group row">
@@ -214,7 +222,7 @@
             </div>
 
               <!--campo idNacionalidad-->
-              <div class="form-group row">
+             <!--  <div class="form-group row">
                 <label class="col-form-label col-12" >
                     Nacionalidad: <span class="text-danger">*</span>
                 </label>
@@ -232,7 +240,7 @@
                         Dato requerido.
                     </span>
                 </div>
-            </div>
+            </div> -->
 
             
             <!--campo fechaNacimiento-->
@@ -260,6 +268,9 @@
         <!-- Botones Grabar, Cancelar/Volver' -->
         <div class="row justify-content-center">
             <div class="container col-12">
+            <button type="button" class="btn btn-primary " id="fotoDocumento" name="fotoDocumento" (click)="subirFoto()">
+                Sube tus fotos de documento
+            </button>
             <button type="button" class="btn btn-primary " (click)="Grabar()">
                 <span class="fas fa-check"></span> Completar registro
             </button>

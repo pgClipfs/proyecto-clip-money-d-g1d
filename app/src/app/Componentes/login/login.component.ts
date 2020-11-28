@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     RD: 'Revisar los datos ingresados...'
   };
 
-  constructor(public formBuilder: FormBuilder, private tipoDocumentoService: TipoDocumentoService){ }
+  constructor(public formBuilder: FormBuilder, private tipoDocumentoService: TipoDocumentoService) { }
 
   ngOnInit() {
     this.FormLogin = this.formBuilder.group({
@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
   }
 
 
-  loginCuenta(){
+  loginCuenta() {
     this.FormLogin.markAllAsTouched();
   }
 
@@ -77,5 +77,10 @@ export class LoginComponent implements OnInit {
   Grabar()
   {
     this.FormRegistro.markAllAsTouched();
+  }
+
+  subirFoto() {
+   alert("botones subir foto")
+
   }
 }
