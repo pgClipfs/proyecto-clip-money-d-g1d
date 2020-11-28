@@ -9,6 +9,8 @@ import { HomeComponent } from './Componentes/home/home.component';
 import { MenuPrincipalComponent} from './Componentes/menuPrincipal/menu-principal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InicioComponent } from './componentes/inicio/inicio.component';
+import { TipoDocumentoService } from './Servicios/tipo-documento.service';
+import { APP_BASE_HREF } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -26,13 +28,14 @@ import { InicioComponent } from './componentes/inicio/inicio.component';
     (
       [
       { path: '', redirectTo: '/login', pathMatch: 'full' },
+      { path: '**', redirectTo: '/login', pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
       { path: 'menu-principal', component: MenuPrincipalComponent }
       ]
     ),
 
   ],
-  providers: [],
+  providers: [{provide: APP_BASE_HREF, useValue : '/'} , TipoDocumentoService],
   bootstrap: [InicioComponent]
 })
 export class AppModule { }
