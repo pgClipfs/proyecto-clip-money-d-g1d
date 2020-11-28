@@ -19,7 +19,7 @@ namespace ProyectoClipMoney2020.Models
             {
                 conn.Open();
 
-                SqlCommand comm = new SqlCommand("obtener_login", conn);
+                SqlCommand comm = new SqlCommand("SEL_Login", conn);
                 comm.CommandType = System.Data.CommandType.StoredProcedure;
                 comm.Parameters.Add(new SqlParameter("@username", ploginRequest.Username));
                 comm.Parameters.Add(new SqlParameter("@password", Encriptacion.GetSHA256(ploginRequest.Password)));

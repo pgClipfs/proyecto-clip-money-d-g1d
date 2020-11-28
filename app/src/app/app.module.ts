@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
+import { AuthInterceptorService } from '../app/interceptors/auth-interceptor.service';
+
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './Componentes/login/login.component';
 import { HomeComponent } from './Componentes/home/home.component';
@@ -32,7 +34,11 @@ import { InicioComponent } from './componentes/inicio/inicio.component';
     ),
 
   ],
-  providers: [],
+  providers: [{
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+  }],
   bootstrap: [InicioComponent]
 })
 export class AppModule { }

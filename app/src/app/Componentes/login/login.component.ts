@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TipoDocumento } from 'src/app/Modelos/TipoDocumento';
-import { TipoDocumentoService } from '../../Servicios/tipo-documento.service'
+import {TipoDocumentoService} from '../../Servicios/tipo-documento.service';
 
 @Component({
   selector: 'app-login',
@@ -20,37 +20,35 @@ export class LoginComponent implements OnInit {
   FormLogin: FormGroup;
   FormRegistro: FormGroup;
   Mensajes = {
-    RD: " Revisar los datos ingresados..."
+    RD: 'Revisar los datos ingresados...'
   };
 
   constructor(public formBuilder: FormBuilder, private tipoDocumentoService: TipoDocumentoService) { }
 
   ngOnInit() {
     this.FormLogin = this.formBuilder.group({
-      Usuario: ["", Validators.required],
-      Password: ["", Validators.required]
+      Usuario: ['', Validators.required],
+      Password: ['', Validators.required]
     });
     this.FormRegistro = this.formBuilder.group({
-      Usuario: ["", Validators.required],
-      PassEncriptada: ["", Validators.required],
-      Nombre: ["", Validators.required],
-      Apellido: ["", Validators.required],
-      TipoDocumento: ["", Validators.required],
-      NroDocumento: ["", Validators.required],
-      Email: ["", Validators.required],
-      Telefono: ["", Validators.required],
-      Nacionalidad: ["", Validators.required],
-      FechaNacimiento: ["", Validators.required]
+      Usuario: ['', Validators.required],
+      PassEncriptada: ['', Validators.required],
+      Nombre: ['', Validators.required],
+      Apellido: ['', Validators.required],
+      TipoDocumento: ['', Validators.required],
+      NroDocumento: ['', Validators.required],
+      Email: ['', Validators.required],
+      Telefono: ['', Validators.required],
+      Nacionalidad: ['', Validators.required],
+      FechaNacimiento: ['', Validators.required]
     });
 
-
-
-    //this.GetTokerLogin();
+       // this.GetTokerLogin();
   }
+
   GetTiposDocumentos() {
-    this.tipoDocumentoService.get().subscribe((res: TipoDocumento[]) => {
-      this.Documentos = res;
-      console.log(this.Documentos)
+    this.tipoDocumentoService.get().subscribe((res: TipoDocumento[]) => { this.Documentos = res;
+                                                                          console.log(this.Documentos);
     });
   }
 
@@ -59,24 +57,25 @@ export class LoginComponent implements OnInit {
     this.FormLogin.markAllAsTouched();
   }
 
-  forgotPassword() {
-    alert("redirigir a recuperar contraseña")
+  forgotPassword(){
+    alert('redirigir a recuperar contraseña');
   }
 
-
-  crearCliente() {
+  crearCliente()
+  {
     this.AccionABMC = 'R';
     this.GetTiposDocumentos();
-
-
   }
-  cancelar() {
+
+  cancelar()
+  {
     this.AccionABMC = 'C';
     this.FormLogin.reset();
     this.FormRegistro.reset();
-
   }
-  Grabar() {
+
+  Grabar()
+  {
     this.FormRegistro.markAllAsTouched();
   }
 
