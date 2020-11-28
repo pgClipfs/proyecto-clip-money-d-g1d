@@ -12,6 +12,8 @@ import { MenuPrincipalComponent} from './Componentes/menuPrincipal/menu-principa
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 
+import { APP_BASE_HREF } from '@angular/common';
+
 @NgModule({
   declarations: [
     LoginComponent,
@@ -38,7 +40,7 @@ import { InicioComponent } from './componentes/inicio/inicio.component';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
       multi: true
-  }],
+  }, {provide: APP_BASE_HREF, useValue : '/'}],
   bootstrap: [InicioComponent]
 })
 export class AppModule { }
