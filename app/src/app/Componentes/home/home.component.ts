@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from 'src/app/Servicios/authentication.service';
 
 @Component({
   selector: 'app-home',
@@ -7,14 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
   }
 
   Cerrar()
   {
-    
+    this.authenticationService.logout();
   }
   openNav() {
     document.getElementById("mySidepanel").style.width = "250px";
