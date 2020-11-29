@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TipoDocumento } from 'src/app/Modelos/TipoDocumento';
 import { TipoDocumentoService } from '../../Servicios/tipo-documento.service';
 import { ModalQuienesSomosService } from '../../Servicios/modal-quienes-somos.service';
+import { ModalLoginIncorrectoService } from '../../Servicios/modal-login-incorrecto.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/Servicios/authentication.service';
 @Component({
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit {
   };
   returnUrl: string;
   error = '';
-  constructor(public formBuilder: FormBuilder, private tipoDocumentoService: TipoDocumentoService, private modalQuienesSomosService: ModalQuienesSomosService,  private authenticationService: AuthenticationService, private route: ActivatedRoute, private router: Router) { }
+  constructor(public formBuilder: FormBuilder, private tipoDocumentoService: TipoDocumentoService, private modalQuienesSomosService: ModalQuienesSomosService, private modalLoginIncorrectoService: ModalLoginIncorrectoService, private authenticationService: AuthenticationService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.FormLogin = this.formBuilder.group({
@@ -43,7 +44,9 @@ export class LoginComponent implements OnInit {
       Email: ['', Validators.required],
       Telefono: ['', Validators.required],
       Nacionalidad: ['', Validators.required],
-      FechaNacimiento: ['', Validators.required]
+      FechaNacimiento: ['', Validators.required, /*  Validators.pattern(
+        "(0[1-9]|[12][0-9]|3[01])[-/](0[1-9]|1[012])[-/](19|20)[0-9]{2}"
+      )*/]
     });
 
     // this.GetTokerLogin();
@@ -66,10 +69,21 @@ export class LoginComponent implements OnInit {
           this.router.navigate([this.returnUrl]);
         },
         error => {
-          this.error = error;
+          /* this.error = error; */
+          this.modalLoginIncorrectoService.Alert('Verifique que los datos ingresados sean correctos. En caso de no contar con una cuenta registrese por favor.', '¡Ingreso incorrecto!', 'i');
         }
       );
   }
+
+ /* validarMayoriadeEdad(fechaActual : Date, fechaNacimiento : string) {
+    var arrFecha = itemCopy.FechaAlta.substr(0, 10).split("/");
+    if (arrFecha.length == 3)
+      itemCopy.FechaAlta = new Date(
+        arrFecha[2],
+        arrFecha[1] - 1,
+        arrFecha[0]
+      ).toISOString();
+  } */
 
   forgotPassword() {
     alert('redirigir a recuperar contraseña');

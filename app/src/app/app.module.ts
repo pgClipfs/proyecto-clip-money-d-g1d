@@ -17,6 +17,7 @@ import { AuthGuard } from './helpers/auth.guard';
 
 import { APP_BASE_HREF } from '@angular/common';
 import { ModalQuienesSomosComponent } from './Componentes/modal-quienes-somos/modal-quienes-somos.component';
+import { ModalLoginIncorrectoComponent } from './Componentes/modal-login-incorrecto/modal-login-incorrecto.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ModalQuienesSomosComponent } from './Componentes/modal-quienes-somos/mo
     HomeComponent,
     MenuPrincipalComponent,
     InicioComponent,
-    ModalQuienesSomosComponent
+    ModalQuienesSomosComponent,
+    ModalLoginIncorrectoComponent
   ],
   imports: [
     BrowserModule,
