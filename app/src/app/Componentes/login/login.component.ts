@@ -6,6 +6,7 @@ import { ModalQuienesSomosService } from '../../Servicios/modal-quienes-somos.se
 import { ModalLoginIncorrectoService } from '../../Servicios/modal-login-incorrecto.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/Servicios/authentication.service';
+import { ClienteService } from 'src/app/Servicios/cliente.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -22,34 +23,44 @@ export class LoginComponent implements OnInit {
   AccionABMC = 'C';
   FormLogin: FormGroup;
   FormRegistro: FormGroup;
+  submitted = false;
   Mensajes = {
     RD: 'Revisar los datos ingresados...'
   };
   returnUrl: string;
   error = '';
-  constructor(public formBuilder: FormBuilder, private tipoDocumentoService: TipoDocumentoService, private modalQuienesSomosService: ModalQuienesSomosService, private modalLoginIncorrectoService: ModalLoginIncorrectoService, private authenticationService: AuthenticationService, private route: ActivatedRoute, private router: Router) { }
+  constructor
+  (
+    public formBuilder: FormBuilder,
+    private tipoDocumentoService: TipoDocumentoService,
+    private modalQuienesSomosService: ModalQuienesSomosService,
+    private modalLoginIncorrectoService: ModalLoginIncorrectoService,
+    private authenticationService: AuthenticationService,
+    private clienteService: ClienteService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.FormLogin = this.formBuilder.group({
-      Usuario: ['', Validators.required],
-      Password: ['', Validators.required]
+      Usuario: ['', [Validators.required]],
+      Password: ['', [Validators.required]]
     });
     this.FormRegistro = this.formBuilder.group({
-      Usuario: ['', Validators.required],
-      PassEncriptada: ['', Validators.required],
-      Nombre: ['', Validators.required],
-      Apellido: ['', Validators.required],
-      TipoDocumento: ['', Validators.required],
-      NroDocumento: ['', Validators.required],
-      Email: ['', Validators.required],
-      Telefono: ['', Validators.required],
-      Nacionalidad: ['', Validators.required],
-      FechaNacimiento: ['', Validators.required, /*  Validators.pattern(
-        "(0[1-9]|[12][0-9]|3[01])[-/](0[1-9]|1[012])[-/](19|20)[0-9]{2}"
-      )*/]
+      IdCliente: [0],
+      Usuario: ['', [Validators.required]],
+      PassEncriptada: ['', [Validators.required]],
+      Nombre: ['', [Validators.required]],
+      Apellido: ['', [Validators.required]],
+      TipoDocumento: ['', [Validators.required]],
+      NroDocumento: ['', [Validators.required]],
+      Email: ['', [Validators.required]],
+      Telefono: ['', [Validators.required]],      
+      FechaNacimiento: ['', [Validators.required,, Validators.pattern('(0[1-9]|[12][0-9]|3[01])[-/](0[1-9]|1[012])[-/](19|20)[0-9]{2}')]]
     });
 
-    // this.GetTokerLogin();
+    // this.GetTokerLogin();  
+    //Nacionalidad: ['', [Validators.required]],
     this.returnUrl = '/menu-principal';
   }
 
@@ -90,23 +101,61 @@ export class LoginComponent implements OnInit {
   }
 
   crearCliente() {
+    this.FormRegistro.reset();
     this.AccionABMC = 'R';
     this.GetTiposDocumentos();
+    this.submitted=false;
+   
+
   }
 
   cancelar() {
     this.AccionABMC = 'C';
     this.FormLogin.reset();
-    this.FormRegistro.reset();
+    //this.FormRegistro.reset();
   }
 
   Grabar() {
-    this.FormRegistro.markAllAsTouched();
+    //this.FormRegistro.markAllAsTouched();
+    this.submitted = true;
+
+    if(this.FormRegistro.invalid) {
+      console.log(this.FormRegistro)
+      return;
+    }
+
+    //crea una copia de los datos del formulario para cambiar la fecha
+    const itemCopy  = {...this.FormRegistro.value};
+
+    var arrFecha = itemCopy.FechaNacimiento.substr(0,10).split('/');
+    if(arrFecha.length == 3)
+      itemCopy.FechaNacimiento = new Date (
+        arrFecha[2],
+        arrFecha[1]-1,
+        arrFecha[0]
+      ).toISOString();
+
+    if(itemCopy.IdCliente==0||itemCopy.IdCliente==null)
+    {
+      itemCopy.IdCliente=0;
+        this.clienteService.post(itemCopy).subscribe( data => {
+          this.cancelar();
+          this.modalQuienesSomosService.Alert('Se registro exitosamente', '', 's');
+        },
+        error => {          
+          this.modalLoginIncorrectoService.Alert('Usuario ya existente.', '¡Ingreso incorrecto!', 'w');
+        }
+        /*(res: any) => {
+        this.cancelar();
+        this.modalQuienesSomosService.Alert('Se registro exitosamente', '', 's');}*/
+        );
+      
+    }
   }
 
   subirFoto() {
     alert("En construccion - botones subir foto");
-
+ 
   }
 
 
