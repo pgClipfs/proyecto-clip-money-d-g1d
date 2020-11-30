@@ -1,0 +1,25 @@
+<nav class="navbar-expand-lg">
+    <div id="mySidepanel" class="sidepanel">
+    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+    <img src="assets/img/persona.jpg" alt="foto-usuario">
+    <p class="usuario">Usuario</p>
+    <a href="#">Operaciones</a>
+    <a href="#">Cuentas</a>
+    <a href="#">Historial</a>
+    <br>
+    <br>
+    <a href="#">Ayuda</a>
+    <a href="#">Mi Perfil</a>
+    <a href="#">Configuración</a>
+    <br>
+    <button class="btn btn-primary w-100" id="quienesSomosBtn" (click)="llamarModal()">Quienes somos</button>
+    
+    <a class="nav-link" (click)="Cerrar()" routerLink="/login">Salir</a>
+    
+  </div>
+  
+  <button class="openbtn" (click)="openNav()">&#9776;</button>
+
+  <p class="usuario-home">Hola! Usuario</p>
+</nav>
+

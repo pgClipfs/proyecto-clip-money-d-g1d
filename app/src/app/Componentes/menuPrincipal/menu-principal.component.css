@@ -1,0 +1,25 @@
+
+#advertencia{
+    width: 100px;
+    padding: 10px;
+    margin: 10px;
+}
+
+button{
+    color: #5e5b52;
+    font-size: 20px;
+    font-weight: bold;
+    background: none;
+    border: none;
+    float: right;
+}
+
+#dineroDisponible{
+    text-align: right;
+}
+
+#advertenciaText{
+    text-align: right;
+}
+
+
