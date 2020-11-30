@@ -32,6 +32,32 @@ namespace ProyectoClipMoney2020.Models
                 }
 
             }
+            return result; 
+
+        }
+
+        public bool ValidarLoginExistente(string username)
+        {
+            string strConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
+            bool result = true;
+
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+                conn.Open();
+
+                SqlCommand comm = new SqlCommand("BuscarLoginExistente", conn);
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+                comm.Parameters.Add(new SqlParameter("@username", username));
+                
+
+                SqlDataReader reader = comm.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    result = false;
+                }
+
+            }
             return result;
 
         }

@@ -11,13 +11,22 @@ import { HomeComponent } from './Componentes/home/home.component';
 import { MenuPrincipalComponent} from './Componentes/menuPrincipal/menu-principal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InicioComponent } from './componentes/inicio/inicio.component';
+import { AuthGuard } from './helpers/auth.guard';
+
+
+
+import { APP_BASE_HREF } from '@angular/common';
+import { ModalQuienesSomosComponent } from './Componentes/modal-quienes-somos/modal-quienes-somos.component';
+import { ModalLoginIncorrectoComponent } from './Componentes/modal-login-incorrecto/modal-login-incorrecto.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     HomeComponent,
     MenuPrincipalComponent,
-    InicioComponent
+    InicioComponent,
+    ModalQuienesSomosComponent,
+    ModalLoginIncorrectoComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +38,8 @@ import { InicioComponent } from './componentes/inicio/inicio.component';
       [
       { path: '', redirectTo: '/login', pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
-      { path: 'menu-principal', component: MenuPrincipalComponent }
+      { path: 'menu-principal', component: MenuPrincipalComponent, canActivate: [AuthGuard] },
+      { path: '**', redirectTo: '/login', pathMatch: 'full' }
       ]
     ),
 
@@ -38,7 +48,7 @@ import { InicioComponent } from './componentes/inicio/inicio.component';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
       multi: true
-  }],
+  }, {provide: APP_BASE_HREF, useValue : '/'}],
   bootstrap: [InicioComponent]
 })
 export class AppModule { }

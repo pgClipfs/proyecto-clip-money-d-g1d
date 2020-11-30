@@ -53,7 +53,8 @@
             <br>
             <div class="justify-content-center">
 
-                <a href="#">Quienes somos</a>
+                <!-- <a href="#">Quienes somos</a> -->
+                <button class="btn btn-primary" (click)="llamarModal()">Quienes somos</button>
         
             </div>
     </form>
@@ -75,9 +76,11 @@
                             && FormRegistro.controls.Usuario.errors?.required">
                         Dato requerido.
                     </span>
-                    <span class="text-danger" *ngIf="(FormRegistro.controls.Usuario.errors?.minlength || FormRegistro.controls.Usuario.errors?.maxlength) ">
+
+                  
+                    <!--span class="text-danger" *ngIf="(FormRegistro.controls.Usuario.errors?.minlength || FormRegistro.controls.Usuario.errors?.maxlength) ">
                         Dato texto, 4 a 55 caracteres.
-                    </span>
+                    </span-->
     
                 </div>
             </div>
@@ -96,9 +99,10 @@
                             && FormRegistro.controls.PassEncriptada.errors?.required">
                         Dato requerido.
                     </span>
-                    <span class="text-danger" *ngIf="(FormRegistro.controls.PassEncriptada.errors?.minlength || FormRegistro.controls.PassEncriptada.errors?.maxlength) ">
+                
+                    <!--span class="text-danger" *ngIf="(FormRegistro.controls.PassEncriptada.errors?.minlength || FormRegistro.controls.PassEncriptada.errors?.maxlength) ">
                         Dato texto, 4 a 55 caracteres.
-                    </span>
+                    </span-->
     
                 </div>
             </div>
@@ -116,9 +120,10 @@
                             && FormRegistro.controls.Nombre.errors?.required">
                         Dato requerido.
                     </span>
-                    <span class="text-danger" *ngIf="(FormRegistro.controls.Nombre.errors?.minlength || FormRegistro.controls.Nombre.errors?.maxlength) ">
+                   
+                    <!--span class="text-danger" *ngIf="(FormRegistro.controls.Nombre.errors?.minlength || FormRegistro.controls.Nombre.errors?.maxlength) ">
                         Dato texto, 4 a 55 caracteres.
-                    </span>
+                    </span-->
     
                 </div>
             </div>
@@ -136,15 +141,16 @@
                             && FormRegistro.controls.Apellido.errors?.required">
                         Dato requerido.
                     </span>
-                    <span class="text-danger" *ngIf="(FormRegistro.controls.Apellido.errors?.minlength || FormRegistro.controls.Apellido.errors?.maxlength) ">
+                 
+                    <!--span class="text-danger" *ngIf="(FormRegistro.controls.Apellido.errors?.minlength || FormRegistro.controls.Apellido.errors?.maxlength) ">
                         Dato texto, 4 a 55 caracteres.
-                    </span>
+                    </span-->
     
                 </div>
             </div>
 
              <!--campo idTipoDocumento-->
-            <!--  <div class="form-group row">
+             <div class="form-group row">
                 <label class="col-form-label col-12" >
                     Tipo de documento: <span class="text-danger">*</span>
                 </label>
@@ -152,7 +158,7 @@
                     <select  class="form-control" formControlName="TipoDocumento"
             [ngClass]="{'is-invalid': (FormRegistro.controls.TipoDocumento.touched || submitted)  
                 && FormRegistro.controls.TipoDocumento.errors}" >
-                        <option *ngFor="let opt of Documentos" [ngValue]="opt.idTipoDocumento">
+                        <option *ngFor="let opt of Documentos" [ngValue]="opt">
                             ‌{{ opt.nombreTipoDocumento }}
                         <option>
                     </select>
@@ -160,8 +166,9 @@
                             && FormRegistro.controls.TipoDocumento.errors?.required">
                         Dato requerido.
                     </span>
+                  
                 </div>
-            </div> -->
+            </div>
 
             <!--campo nroDocumento-->
             <div class="form-group row">
@@ -176,9 +183,10 @@
                             && FormRegistro.controls.NroDocumento.errors?.required">
                         Dato requerido.
                     </span>
-                    <span class="text-danger" *ngIf="FormRegistro.controls.NroDocumento.errors?.pattern">
+                   
+                    <!--span class="text-danger" *ngIf="FormRegistro.controls.NroDocumento.errors?.pattern">
                         Dato numérico, 1 a 7 dígitos.
-                    </span>
+                    </span-->
                 </div>
             </div>
 
@@ -195,9 +203,10 @@
                             && FormRegistro.controls.Email.errors?.required">
                         Dato requerido.
                     </span>
-                    <span class="text-danger" *ngIf="(FormRegistro.controls.Email.errors?.minlength || FormRegistro.controls.Email.errors?.maxlength) ">
+                  
+                    <!--span class="text-danger" *ngIf="(FormRegistro.controls.Email.errors?.minlength || FormRegistro.controls.Email.errors?.maxlength) ">
                         Dato texto, 4 a 55 caracteres.
-                    </span>
+                    </span-->
     
                 </div>
             </div>
@@ -215,9 +224,10 @@
                             && FormRegistro.controls.Telefono.errors?.required">
                         Dato requerido.
                     </span>
-                    <span class="text-danger" *ngIf="FormRegistro.controls.Telefono.errors?.pattern">
+                  
+                    <!--span class="text-danger" *ngIf="FormRegistro.controls.Telefono.errors?.pattern">
                         Dato numérico, 1 a 7 dígitos.
-                    </span>
+                    </span-->
                 </div>
             </div>
 
@@ -259,7 +269,7 @@
                     </span>
                     <span class="text-danger" *ngIf="FormRegistro.controls.FechaNacimiento.errors?.pattern">
                         Dato fecha, formato dd/mm/aaaa.
-            </span>
+                    </span>                    
                 </div>
             </div>
 

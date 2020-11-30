@@ -7,6 +7,8 @@ using System.Net.Http;
 using System.Threading;
 using System.Web.Http;
 using Microsoft.IdentityModel.Tokens;
+using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace ProyectoClipMoney2020.Controllers
 {
@@ -16,6 +18,7 @@ namespace ProyectoClipMoney2020.Controllers
     {
         [HttpGet]
         [Route("echoping")]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult EchoPing()
         {
             return Ok(true);
@@ -23,6 +26,7 @@ namespace ProyectoClipMoney2020.Controllers
 
         [HttpGet]
         [Route("echouser")]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult EchoUser()
         {
             var identity = Thread.CurrentPrincipal.Identity;
@@ -31,6 +35,7 @@ namespace ProyectoClipMoney2020.Controllers
 
         [HttpPost]
         [Route("authenticate")]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult Authenticate(LoginRequest login)
         {
             if (login == null)
