@@ -76,3 +76,14 @@ footer {
   width: 100vh;
   color: white;
 }
+
+#quienesSomosBtn{
+  color: black;
+  background: none;
+  border: none;
+
+}
+
+#quienesSomosBtn:hover{
+  color: blue;
+}

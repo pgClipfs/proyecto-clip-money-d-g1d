@@ -6,7 +6,7 @@ import {Cuenta} from './Cuenta';
 
 
 export class Cliente {
-    idCliente: number;
+    IdCliente: number;
     Nombre: string;
     Apellido: string;
     FechaNacimiento: string;

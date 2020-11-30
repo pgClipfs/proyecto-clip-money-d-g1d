@@ -44,14 +44,17 @@ namespace ProyectoClipMoney2020.Controllers
         public IHttpActionResult PostCliente(Cliente cliente)
         {
             
-            if (!ModelState.IsValid)
+          
+            int id=0; 
+            
+            GestorLogin gestorLogin = new GestorLogin();            
+            if(gestorLogin.ValidarLoginExistente(cliente.usuario))
             {
-                return BadRequest(ModelState);
+                GestorCliente gestorCliente = new GestorCliente();
+                id = gestorCliente.registrarCliente(cliente);
+                cliente.idCliente = id;
             }
-            int id;
-            GestorCliente gestorCliente = new GestorCliente();
-            id=gestorCliente.registrarCliente(cliente);
-            cliente.idCliente = id;
+            
 
             if(id==0)
             {

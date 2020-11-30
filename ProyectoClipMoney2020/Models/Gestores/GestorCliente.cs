@@ -205,8 +205,8 @@ namespace ProyectoClipMoney2020.Models.Gestores
                 comm.Parameters.Add(new SqlParameter("@telefono", cliente.telefono));               
                 // comm.Parameters.Add(new SqlParameter("@idNacionalidad", cliente.nacionalidad.idNacionalidad));
                 comm.Parameters.Add(new SqlParameter("@idTipoDocumento", cliente.tipoDocumento.idTipoDocumento));
-                comm.Parameters.Add(new SqlParameter("@idDomicilio", cliente.domicilio.idDomicilio));
-                comm.Parameters.Add(new SqlParameter("@idNivel", cliente.situacionCrediticia.idNivel));
+                //comm.Parameters.Add(new SqlParameter("@idDomicilio", cliente.domicilio.idDomicilio));
+                comm.Parameters.Add(new SqlParameter("@idNivel", 1));
                 comm.Parameters.Add(new SqlParameter("@fechaNacimiento", cliente.ObtenerFecha()));
 
                 id = Convert.ToInt32(comm.ExecuteScalar());
