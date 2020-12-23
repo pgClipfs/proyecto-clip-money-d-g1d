@@ -82,6 +82,7 @@ footer {
   color: white;
 }
 
+<<<<<<< HEAD
 @media only screen and (min-width: 600px) {
  #mySidepanel{
    display: none;
@@ -92,3 +93,15 @@ footer {
   
 }
 }
+=======
+#quienesSomosBtn{
+  color: black;
+  background: none;
+  border: none;
+
+}
+
+#quienesSomosBtn:hover{
+  color: blue;
+}
+>>>>>>> a791af0ec6a1dfd1cce32a69365b9786a30a02f4
