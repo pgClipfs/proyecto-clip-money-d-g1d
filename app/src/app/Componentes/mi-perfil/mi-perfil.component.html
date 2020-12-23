@@ -1,14 +1,12 @@
+<!-- <form name="FormRegistro" [formGroup]='FormRegistro'> -->
 
-<form name="FormRegistro" [formGroup]='FormRegistro'>
-
-    <div class="form-group row">
+    <!--campo usuario-->
+<!--     <div class="form-group row">
         <label class="col-form-label col-12">Usuario: <span
                 class="text-danger">*</span></label>
         <div class="col-12">
-            <input type="text" class="form-control" formControlName="Usuario"
-     [ngClass]="{'is-invalid': (FormRegistro.controls.Usuario.touched || submitted)  
-        && FormRegistro.controls.Usuario.errors}" />
-          <!--   cuando halla validators, poner esta parte -->
+            <input type="text" class="form-control" formControlName="Usuario"/>
+          
 
             <span class="text-danger" *ngIf="(FormRegistro.controls.Usuario.touched || submitted) 
                     && FormRegistro.controls.Usuario.errors?.required">
@@ -16,7 +14,149 @@
             </span>
 
         </div>
-    </div>
-    
+    </div> -->
 
-</form>
+     <!--campo nombre-->
+ <!--     <div class="form-group row">
+        <label class="col-form-label col-12">Nombre: <span
+                class="text-danger">*</span></label>
+        <div class="col-12">
+            <input type="text" class="form-control" formControlName="Nombre"/>
+
+            <span class="text-danger" *ngIf="(FormRegistro.controls.Nombre.touched || submitted) 
+                    && FormRegistro.controls.Nombre.errors?.required">
+                Dato requerido.
+            </span>
+
+
+        </div>
+    </div> -->
+
+    <!--campo apellido-->
+ <!--    <div class="form-group row">
+        <label class="col-form-label col-12">Apellido: <span
+                class="text-danger">*</span></label>
+        <div class="col-12">
+            <input type="text" class="form-control" formControlName="Apellido"/>
+
+            <span class="text-danger" *ngIf="(FormRegistro.controls.Apellido.touched || submitted) 
+                    && FormRegistro.controls.Apellido.errors?.required">
+                Dato requerido.
+            </span>
+         
+
+        </div>
+    </div> -->
+
+     <!--campo idTipoDocumento-->
+<!--      <div class="form-group row">
+        <label class="col-form-label col-12" >
+            Tipo de documento: <span class="text-danger">*</span>
+        </label>
+        <div class="col-12">
+            <select  class="form-control" formControlName="TipoDocumento">
+                <option *ngFor="let opt of Documentos" [ngValue]="opt">
+                    ‌{{ opt.nombreTipoDocumento }}
+                <option>
+            </select>
+            <span class="text-danger" *ngIf="(FormRegistro.controls.TipoDocumento.touched || submitted) 
+                    && FormRegistro.controls.TipoDocumento.errors?.required">
+                Dato requerido.
+            </span>
+          
+        </div>
+    </div> -->
+
+    <!--campo nroDocumento-->
+ <!--    <div class="form-group row">
+        <label class="col-form-label col-12" >
+            Numero de documento: <span class="text-danger">*</span>
+        </label>
+        <div class="col-12">
+            <input type="text" class="form-control" formControlName="NroDocumento" />
+            <span class="text-danger" *ngIf="(FormRegistro.controls.NroDocumento.touched || submitted) 
+                    && FormRegistro.controls.NroDocumento.errors?.required">
+                Dato requerido.
+            </span>
+           
+
+        </div>
+    </div>
+ -->
+    <!--campo email-->
+<!--     <div class="form-group row">
+        <label class="col-form-label col-12">Email: <span
+                class="text-danger">*</span></label>
+        <div class="col-12">
+            <input type="text" class="form-control" formControlName="Email"
+        [ngClass]="{'is-invalid': (FormRegistro.controls.Email.touched || submitted)  
+        && FormRegistro.controls.Email.errors}" />
+
+            <span class="text-danger" *ngIf="(FormRegistro.controls.Email.touched || submitted) 
+                    && FormRegistro.controls.Email.errors?.required">
+                Dato requerido.
+            </span>
+          
+
+        </div>
+    </div> -->
+
+    <!--campo telefono-->
+<!--     <div class="form-group row">
+        <label class="col-form-label col-12" >
+            Teléfono <span class="text-danger">*</span>
+        </label>
+        <div class="col-12">
+            <input type="text" class="form-control" formControlName="Telefono"
+    [ngClass]="{'is-invalid': (FormRegistro.controls.Telefono.touched || submitted)  
+        && FormRegistro.controls.Telefono.errors}" />
+            <span class="text-danger" *ngIf="(FormRegistro.controls.Telefono.touched || submitted) 
+                    && FormRegistro.controls.Telefono.errors?.required">
+                Dato requerido.
+            </span>
+          
+
+        </div>
+    </div> -->
+
+      <!--campo idNacionalidad-->
+ <!--      <div class="form-group row">
+        <label class="col-form-label col-12" >
+            Nacionalidad: <span class="text-danger">*</span>
+        </label>
+        <br>
+        <div class="col-12">
+            <select  class="form-control" formControlName="Nacionalidad"
+    [ngClass]="{'is-invalid': (FormRegistro.controls.Nacionalidad.touched || submitted)  
+        && FormRegistro.controls.Nacionalidad.errors}" >
+                <option *ngFor="let opt of Documentos" [ngValue]="opt.Nacionalidad">
+                    ‌{{ opt.NombreTipoDocumento }}
+                <option>
+            </select>
+            <span class="text-danger" *ngIf="(FormRegistro.controls.Nacionalidad.touched || submitted) 
+                    && FormRegistro.controls.Nacionalidad.errors?.required">
+                Dato requerido.
+            </span>
+        </div>
+    </div>
+ -->
+    
+    <!--campo fechaNacimiento-->
+ <!--    <div class="form-group row">
+        <label class="col-form-label col-12">Fecha de nacimiento: <span
+                class="text-danger">*</span></label>
+        <div class="col-12">
+            <input class="form-control"
+                        formControlName="FechaNacimiento"/>
+
+            <span class="text-danger" *ngIf="(FormRegistro.controls.FechaNacimiento.touched || submitted) 
+                   && FormRegistro.controls.FechaNacimiento.errors?.required">
+                Dato requerido.
+            </span>
+            <span class="text-danger" *ngIf="FormRegistro.controls.FechaNacimiento.errors?.pattern">
+                Dato fecha, formato dd/mm/aaaa.
+            </span>                    
+        </div>
+    </div>
+
+</form> -->
