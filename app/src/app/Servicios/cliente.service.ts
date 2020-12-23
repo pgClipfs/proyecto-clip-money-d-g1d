@@ -20,8 +20,15 @@ export class ClienteService {
   {
     return this.httpClient.post(this.resourceUrl, obj);
   }
+
+  put(IdCliente: number, obj: Cliente)
+  {
+    return this.httpClient.put(this.resourceUrl+IdCliente, obj);
+  }
+
+  getById(IdCliente: number)
+  {
+    return this.httpClient.get(this.resourceUrl+IdCliente);
+  }
+  
 }
-
-
-
-
