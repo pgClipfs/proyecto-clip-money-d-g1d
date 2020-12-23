@@ -18,6 +18,8 @@ import { AuthGuard } from './helpers/auth.guard';
 import { APP_BASE_HREF } from '@angular/common';
 import { ModalQuienesSomosComponent } from './Componentes/modal-quienes-somos/modal-quienes-somos.component';
 import { ModalLoginIncorrectoComponent } from './Componentes/modal-login-incorrecto/modal-login-incorrecto.component';
+import { TransaccionesComponent } from './Componentes/transacciones/transacciones.component';
+import { MovimientosComponent } from './Componentes/movimientos/movimientos.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { ModalLoginIncorrectoComponent } from './Componentes/modal-login-incorre
     MenuPrincipalComponent,
     InicioComponent,
     ModalQuienesSomosComponent,
-    ModalLoginIncorrectoComponent
+    ModalLoginIncorrectoComponent,
+    TransaccionesComponent,
+    MovimientosComponent
   ],
   imports: [
     BrowserModule,
