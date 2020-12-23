@@ -20,6 +20,7 @@ import { ModalQuienesSomosComponent } from './Componentes/modal-quienes-somos/mo
 import { ModalLoginIncorrectoComponent } from './Componentes/modal-login-incorrecto/modal-login-incorrecto.component';
 import { TransaccionesComponent } from './Componentes/transacciones/transacciones.component';
 import { MovimientosComponent } from './Componentes/movimientos/movimientos.component';
+import { MiPerfilComponent } from './Componentes/mi-perfil/mi-perfil.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MovimientosComponent } from './Componentes/movimientos/movimientos.comp
     ModalQuienesSomosComponent,
     ModalLoginIncorrectoComponent,
     TransaccionesComponent,
-    MovimientosComponent
+    MovimientosComponent,
+    MiPerfilComponent
   ],
   imports: [
     BrowserModule,
