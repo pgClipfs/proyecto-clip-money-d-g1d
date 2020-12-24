@@ -21,6 +21,7 @@ import { ModalLoginIncorrectoComponent } from './Componentes/modal-login-incorre
 import { TransaccionesComponent } from './Componentes/transacciones/transacciones.component';
 import { MovimientosComponent } from './Componentes/movimientos/movimientos.component';
 import { MiPerfilComponent } from './Componentes/mi-perfil/mi-perfil.component';
+import { LoginRequest } from './Modelos/LoginRequest';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { MiPerfilComponent } from './Componentes/mi-perfil/mi-perfil.component';
       { path: '', redirectTo: '/login', pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
       { path: 'menu-principal', component: MenuPrincipalComponent, canActivate: [AuthGuard] },
+      { path: 'app-mi-perfil', component: MiPerfilComponent, canActivate: [AuthGuard] },
       { path: '**', redirectTo: '/login', pathMatch: 'full' }
       ]
     ),
@@ -54,7 +56,7 @@ import { MiPerfilComponent } from './Componentes/mi-perfil/mi-perfil.component';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
       multi: true
-  }, {provide: APP_BASE_HREF, useValue : '/'}],
+  }, {provide: APP_BASE_HREF, useValue : '/'}, LoginRequest],
   bootstrap: [InicioComponent]
 })
 export class AppModule { }
