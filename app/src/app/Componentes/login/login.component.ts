@@ -7,7 +7,6 @@ import { ModalLoginIncorrectoService } from '../../Servicios/modal-login-incorre
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/Servicios/authentication.service';
 import { ClienteService } from 'src/app/Servicios/cliente.service';
-import { stringify } from '@angular/compiler/src/util';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -116,26 +115,6 @@ export class LoginComponent implements OnInit {
     //this.FormRegistro.reset();
   }
 
-  validarEdad() {
-    let edad= (<HTMLInputElement>document.getElementById("FechaNacimiento")).value;
-    let fecha = new Date();
-    let fNac = new Date(edad);
-    let edadFinal = fecha.getFullYear() - fNac.getFullYear();
-
-    if(edadFinal >=18){
-      document.getElementById("matchEdad").innerHTML = '';
-      document.getElementById("noMatchEdad").innerHTML = '';
-      let botonGrabar = (<HTMLInputElement>document.getElementById("Grabar")).disabled = false;
-    }
-    else{
-      document.getElementById("matchEdad").innerHTML = '';
-      document.getElementById("noMatchEdad").innerHTML = 'Es requerido ser mayor de edad.';
-      let botonGrabar = (<HTMLInputElement>document.getElementById("Grabar")).disabled = true;
-    }
-
-    
-  }
-
   Grabar() {
     //this.FormRegistro.markAllAsTouched();
     this.submitted = true;
@@ -144,7 +123,6 @@ export class LoginComponent implements OnInit {
       console.log(this.FormRegistro)
       return;
     }
-
 
     //crea una copia de los datos del formulario para cambiar la fecha
     const itemCopy  = {...this.FormRegistro.value};

@@ -68,9 +68,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "app:build",
-            "sslKey": "C:/Users/Maxi/source/Billetera_Clip/proyecto-clip-money-d-g1d/app/ssl/server.key",
-            "sslCert": "C:/Users/Maxi/source/Billetera_Clip/proyecto-clip-money-d-g1d/app/ssl/server.crt"
+            "browserTarget": "app:build"
           },
           "configurations": {
             "production": {
