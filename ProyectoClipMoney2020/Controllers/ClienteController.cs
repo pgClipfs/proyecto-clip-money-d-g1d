@@ -61,6 +61,7 @@ namespace ProyectoClipMoney2020.Controllers
                 return NotFound();
             }
             else
+           
             return Ok(cliente);
 
         }
