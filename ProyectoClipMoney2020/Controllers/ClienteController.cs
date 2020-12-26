@@ -64,7 +64,23 @@ namespace ProyectoClipMoney2020.Controllers
             return Ok(cliente);
 
         }
-        
+
+        //POST que admite objetos: consulta datos de cliente
+        [HttpPost]
+        [Route("ObtenerCliente")]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        public IHttpActionResult ObtenerCliente(LoginRequest loginRequest)
+        {
+            GestorCliente gestorCliente = new GestorCliente();
+
+            Cliente cliente = gestorCliente.ObtenerDatosClientePorLogin(loginRequest);
+
+            if (cliente == null)
+            {
+                return NotFound();  // status 404
+            }
+            return Ok(cliente);   // en cliente vemos response.data
+        }
 
         // PUT: api/Cliente/5
         public void Put(int id, [FromBody]string value)

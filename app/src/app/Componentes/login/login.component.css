@@ -80,3 +80,13 @@ a {
     width: 50%;
   }
 }
+
+#quienesSomosBtn{
+  background: none;
+  border: none;
+
+}
+
+#quienesSomosBtn:hover{
+  color: blue;
+}
