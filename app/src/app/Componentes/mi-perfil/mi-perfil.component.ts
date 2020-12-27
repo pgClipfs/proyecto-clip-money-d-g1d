@@ -70,7 +70,7 @@ export class MiPerfilComponent implements OnInit {
     this.clienteService.postLogin(this.loginRequest).subscribe((res: any) => {
       const itemCopy  = {...res};
       //itemCopy.fechaNacimiento=res.fechaNacimiento;
-      console.log(res);
+      
       
       itemCopy.fechaNacimiento = this.datepipe.transform(res.fechaNacimiento , 'dd/MM/yyyy');    
       
