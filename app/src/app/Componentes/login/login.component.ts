@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
     private clienteService: ClienteService,
     private route: ActivatedRoute,
     private router: Router,
-    private loginRequest: LoginRequest
+    
     //private loginRequest: LoginRequest
   ) { 
     
@@ -68,14 +68,10 @@ export class LoginComponent implements OnInit {
       Telefono: ['', [Validators.required]],      
       FechaNacimiento: ['', [Validators.required,, Validators.pattern('(0[1-9]|[12][0-9]|3[01])[-/](0[1-9]|1[012])[-/](19|20)[0-9]{2}')]]
     });
-
+    console.log(this.authenticationService.currentUserValue.Username);
     // this.GetTokerLogin();  
     //Nacionalidad: ['', [Validators.required]],
-    if(this.loginRequest.Username===undefined)
-    {
-      this.loginRequest.Username='';
-      this.loginRequest.Password='';
-    }
+    
     
     this.returnUrl='/menu-principal';
 
@@ -96,9 +92,7 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(this.FormLogin.controls.Usuario.value, this.FormLogin.controls.Password.value)
       .subscribe(
         data => {
-          this.loginRequest.Username=this.FormLogin.controls.Usuario.value,
-          this.loginRequest.Password=this.FormLogin.controls.Password.value,
-          this.router.navigate([this.returnUrl]);
+                    this.router.navigate([this.returnUrl]);
         },
         error => {
           /* this.error = error; */
@@ -205,7 +199,8 @@ export class LoginComponent implements OnInit {
   }
 
   getLogin(): LoginRequest
-  {
-    return this.loginRequest;
+    {   
+    
+    return JSON.parse(localStorage.getItem('loginRequest'));
   }
 }

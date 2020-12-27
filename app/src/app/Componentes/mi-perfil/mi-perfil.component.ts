@@ -5,7 +5,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {LoginComponent} from '../login/login.component';
 import { LoginRequest } from 'src/app/Modelos/LoginRequest';
-import { DatePipe } from '@angular/common'
+import { DatePipe } from '@angular/common';
+import { AuthenticationService } from 'src/app/Servicios/authentication.service';
 
 
 
@@ -24,6 +25,7 @@ export class MiPerfilComponent implements OnInit {
   constructor(public formBuilder: FormBuilder, 
     private clienteService: ClienteService, 
     private router: Router, 
+    private authenticationService: AuthenticationService,
     private comp: LoginComponent, 
     private loginRequest: LoginRequest,
     public datepipe: DatePipe
@@ -52,7 +54,7 @@ export class MiPerfilComponent implements OnInit {
         /*     SituacionCrediticia: [''],
             Cuentas: [''], */
       });
-
+      
       this.CargarUsuario();
 
   }
