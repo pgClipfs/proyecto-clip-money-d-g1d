@@ -16,6 +16,7 @@ import { LoginRequest } from 'src/app/Modelos/LoginRequest';
 })
 export class LoginComponent implements OnInit {
 
+ 
   TituloAccionABMC = {
     R: 'Registrarse',
     C: 'Iniciar sesión',
@@ -31,6 +32,9 @@ export class LoginComponent implements OnInit {
   };
   returnUrl: string;
   error = '';
+  
+ 
+  
   constructor
   (
     public formBuilder: FormBuilder,
@@ -42,7 +46,10 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private loginRequest: LoginRequest
-  ) { }
+    //private loginRequest: LoginRequest
+  ) { 
+    
+  }
 
   ngOnInit() {
     this.FormLogin = this.formBuilder.group({
@@ -64,11 +71,16 @@ export class LoginComponent implements OnInit {
 
     // this.GetTokerLogin();  
     //Nacionalidad: ['', [Validators.required]],
-    this.returnUrl = '/menu-principal';
+    if(this.loginRequest.Username===undefined)
+    {
+      this.loginRequest.Username='';
+      this.loginRequest.Password='';
+    }
+    
+    this.returnUrl='/menu-principal';
 
     //set de manera default usuario y contraseña
-    this.loginRequest.Username='Default';
-    this.loginRequest.Password='Default';
+  
   }
 
   GetTiposDocumentos() {

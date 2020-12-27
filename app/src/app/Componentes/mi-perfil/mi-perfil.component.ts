@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {LoginComponent} from '../login/login.component';
 import { LoginRequest } from 'src/app/Modelos/LoginRequest';
+import { DatePipe } from '@angular/common'
 
 
 
@@ -24,7 +25,8 @@ export class MiPerfilComponent implements OnInit {
     private clienteService: ClienteService, 
     private router: Router, 
     private comp: LoginComponent, 
-    private loginRequest: LoginRequest
+    private loginRequest: LoginRequest,
+    public datepipe: DatePipe
     ){
   
   }
@@ -58,7 +60,14 @@ export class MiPerfilComponent implements OnInit {
   CargarUsuario(){
   this.loginRequest= this.comp.getLogin();
     this.clienteService.postLogin(this.loginRequest).subscribe((res: any) => {
-      this.FormMiPerfil.patchValue(res)}
+      const itemCopy  = {...res};
+      //itemCopy.fechaNacimiento=res.fechaNacimiento;
+      
+      itemCopy.fechaNacimiento = this.datepipe.transform(res.fechaNacimiento , 'dd/MM/yyyy');    
+      
+      this.FormMiPerfil.patchValue(itemCopy),
+      
+    console.log(res)}
   );
   }
 
