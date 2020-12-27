@@ -50,23 +50,18 @@
     </div>
 
     <!--campo idTipoDocumento-->
-<!--     <div class="form-group row">
+    <div class="form-group row">
         <label class="col-form-label col-12">
             Tipo de documento: <span class="text-danger">*</span>
         </label>
         <div class="col-12">
-            <select class="form-control" formControlName="tipoDocumento">
-                <option *ngFor="let opt of Documentos" [ngValue]="opt">
-                    ‌{{ opt.nombreTipoDocumento }}
-                <option>
-            </select>
-            <span class="text-danger" *ngIf="(FormMiPerfil.controls.tipoDocumento.touched || submitted) 
-                    && FormMiPerfil.controls.tipoDocumento.errors?.required">
-                Dato requerido.
-            </span>
+            <select class="form-control" formControlName="tipoDocumento" >
+                <option *ngIf=(nombreTipoDocumento) selected>{{nombreTipoDocumento}}</option>
+                    <option value="" hidden ></option>
+            </select>       
 
         </div>
-    </div> -->
+    </div> 
 
     <!--campo nroDocumento-->
     <div class="form-group row">

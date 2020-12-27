@@ -9,6 +9,7 @@ import { AuthenticationService } from 'src/app/Servicios/authentication.service'
 import { ClienteService } from 'src/app/Servicios/cliente.service';
 import { stringify } from '@angular/compiler/src/util';
 import { LoginRequest } from 'src/app/Modelos/LoginRequest';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -45,7 +46,7 @@ export class LoginComponent implements OnInit {
     private clienteService: ClienteService,
     private route: ActivatedRoute,
     private router: Router,
-    
+    private loginRequest: LoginRequest
     //private loginRequest: LoginRequest
   ) { 
     
@@ -68,7 +69,7 @@ export class LoginComponent implements OnInit {
       Telefono: ['', [Validators.required]],      
       FechaNacimiento: ['', [Validators.required,, Validators.pattern('(0[1-9]|[12][0-9]|3[01])[-/](0[1-9]|1[012])[-/](19|20)[0-9]{2}')]]
     });
-    console.log(this.authenticationService.currentUserValue.Username);
+    
     // this.GetTokerLogin();  
     //Nacionalidad: ['', [Validators.required]],
     
@@ -82,7 +83,7 @@ export class LoginComponent implements OnInit {
   GetTiposDocumentos() {
     this.tipoDocumentoService.get().subscribe((res: TipoDocumento[]) => {
       this.Documentos = res;
-      console.log(this.Documentos);
+      
     });
   }
 
