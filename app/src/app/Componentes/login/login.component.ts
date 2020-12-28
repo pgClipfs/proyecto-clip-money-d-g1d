@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
     RD: 'Revisar los datos ingresados...'
   };
   returnUrl: string;
+  recuperarPass: string;
   error = '';
   constructor
   (
@@ -59,12 +60,13 @@ export class LoginComponent implements OnInit {
       NroDocumento: ['', [Validators.required]],
       Email: ['', [Validators.required]],
       Telefono: ['', [Validators.required]],      
-      FechaNacimiento: ['', [Validators.required,, Validators.pattern('(0[1-9]|[12][0-9]|3[01])[-/](0[1-9]|1[012])[-/](19|20)[0-9]{2}')]]
+      FechaNacimiento: ['', [Validators.required, Validators.pattern('(0[1-9]|[12][0-9]|3[01])[-/](0[1-9]|1[012])[-/](19|20)[0-9]{2}')]]
     });
 
     // this.GetTokerLogin();  
     //Nacionalidad: ['', [Validators.required]],
     this.returnUrl = '/menu-principal';
+    this.recuperarPass = '/recuperar-password';
 
     //set de manera default usuario y contraseña
     this.loginRequest.Username='Default';
@@ -106,7 +108,7 @@ export class LoginComponent implements OnInit {
   } */
 
   forgotPassword() {
-    alert('redirigir a recuperar contraseña');
+    this.router.navigate([this.recuperarPass]);
   }
 
   crearCliente() {
