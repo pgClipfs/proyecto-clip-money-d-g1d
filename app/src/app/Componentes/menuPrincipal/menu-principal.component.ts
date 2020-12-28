@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu-principal',
@@ -7,11 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuPrincipalComponent implements OnInit {
 
-  
+  returnURl: string;
 
-  constructor() { }
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+
+  this.returnURl= '/app-mi-perfil';
+
+  }
+  
+  miPerfil(){
+
+    this.router.navigate([this.returnURl]);
+
   }
 
 }

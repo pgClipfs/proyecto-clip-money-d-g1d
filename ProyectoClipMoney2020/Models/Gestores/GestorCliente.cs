@@ -23,22 +23,22 @@ namespace ProyectoClipMoney2020.Models.Gestores
                 SqlCommand comm = new SqlCommand("obtenerClienteConLogin", conn);
                 comm.CommandType = System.Data.CommandType.StoredProcedure;
                 comm.Parameters.Add(new SqlParameter("@username", ploginRequest.Username));
-                comm.Parameters.Add(new SqlParameter("@password", ploginRequest.Password));
+                comm.Parameters.Add(new SqlParameter("@password", Encriptacion.GetSHA256(ploginRequest.Password)));
 
                 SqlDataReader dr = comm.ExecuteReader();
                 if (dr.Read())
                 {
-                    var nacionalidad = new Nacionalidad()
+                    /*var nacionalidad = new Nacionalidad()
                     {
                         idNacionalidad = dr.GetInt32(10),
                         descripcionNacionalidad = dr.GetString(11)
-                    };
+                    };*/
                     var tipoDocumento = new TipoDocumento()
                     {
-                        idTipoDocumento = dr.GetInt32(12),
+                        idTipoDocumento = dr.GetByte(12),
                         nombreTipoDocumento = dr.GetString(13)
                     };
-                    var localidad = new Localidad()
+                    /*var localidad = new Localidad()
                     {
                         idLocalidad = dr.GetInt32(15),
                         nombreLocalidad = dr.GetString(16)
@@ -58,7 +58,7 @@ namespace ProyectoClipMoney2020.Models.Gestores
                     {
                         idNivel = dr.GetInt32(21),
                         descripcionNivel = dr.GetString(22)
-                    };
+                    };*/
                     cliente.idCliente = dr.GetInt64(0);
                     cliente.usuario = dr.GetString(1).Trim();
                     cliente.passEncriptada = dr.GetString(2).Trim();
@@ -66,13 +66,13 @@ namespace ProyectoClipMoney2020.Models.Gestores
                     cliente.apellido = dr.GetString(4);
                     cliente.nroDocumento = dr.GetInt32(5);
                     cliente.email = dr.GetString(6);
-                    cliente.telefono = dr.GetInt32(7);
+                    cliente.telefono = dr.GetInt64(7);
                     cliente.fotoFrenteDocumento=null;//8;
                     cliente.fotoDorsoDocumento=null;//9;                    
-                    cliente.nacionalidad=nacionalidad;                    
+                    //cliente.nacionalidad=nacionalidad;                   
                     cliente.tipoDocumento = tipoDocumento;
-                    cliente.situacionCrediticia = situacionCrediticia;
-                    cliente.fechaNacimiento = dr.GetDateTime(23);
+                    //cliente.situacionCrediticia = situacionCrediticia;
+                    cliente.fechaNacimiento = dr.GetDateTime(27);
 
                     cliente.cuentas=gestorCuenta.ObtenerCuentas(cliente.idCliente);
 

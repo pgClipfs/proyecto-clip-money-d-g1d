@@ -21,6 +21,9 @@ import { ModalLoginIncorrectoComponent } from './Componentes/modal-login-incorre
 import { TransaccionesComponent } from './Componentes/transacciones/transacciones.component';
 import { MovimientosComponent } from './Componentes/movimientos/movimientos.component';
 import { MiPerfilComponent } from './Componentes/mi-perfil/mi-perfil.component';
+import { LoginRequest } from './Modelos/LoginRequest';
+import { NewPasswordComponent } from './Componentes/new-password/new-password.component';
+import { RecuperarPasswordComponent } from './Componentes/recuperar-password/recuperar-password.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,9 @@ import { MiPerfilComponent } from './Componentes/mi-perfil/mi-perfil.component';
     ModalLoginIncorrectoComponent,
     TransaccionesComponent,
     MovimientosComponent,
-    MiPerfilComponent
+    MiPerfilComponent,
+    NewPasswordComponent,
+    RecuperarPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -45,16 +50,22 @@ import { MiPerfilComponent } from './Componentes/mi-perfil/mi-perfil.component';
       { path: '', redirectTo: '/login', pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
       { path: 'menu-principal', component: MenuPrincipalComponent, canActivate: [AuthGuard] },
+      { path: 'app-mi-perfil', component: MiPerfilComponent, canActivate: [AuthGuard] },
+      { path: 'recuperar-password', component: RecuperarPasswordComponent },
+      { path: 'new-password', component: NewPasswordComponent },
       { path: '**', redirectTo: '/login', pathMatch: 'full' }
       ]
     ),
 
   ],
+  exports: [
+    RecuperarPasswordComponent
+  ],
   providers: [{
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
       multi: true
-  }, {provide: APP_BASE_HREF, useValue : '/'}],
+  }, {provide: APP_BASE_HREF, useValue : '/'}, LoginRequest],
   bootstrap: [InicioComponent]
 })
 export class AppModule { }

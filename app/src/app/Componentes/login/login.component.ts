@@ -7,6 +7,8 @@ import { ModalLoginIncorrectoService } from '../../Servicios/modal-login-incorre
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/Servicios/authentication.service';
 import { ClienteService } from 'src/app/Servicios/cliente.service';
+import { stringify } from '@angular/compiler/src/util';
+import { LoginRequest } from 'src/app/Modelos/LoginRequest';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -28,6 +30,7 @@ export class LoginComponent implements OnInit {
     RD: 'Revisar los datos ingresados...'
   };
   returnUrl: string;
+  recuperarPass: string;
   error = '';
   constructor
   (
@@ -38,7 +41,8 @@ export class LoginComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private clienteService: ClienteService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private loginRequest: LoginRequest
   ) { }
 
   ngOnInit() {
@@ -56,12 +60,17 @@ export class LoginComponent implements OnInit {
       NroDocumento: ['', [Validators.required]],
       Email: ['', [Validators.required]],
       Telefono: ['', [Validators.required]],      
-      FechaNacimiento: ['', [Validators.required,, Validators.pattern('(0[1-9]|[12][0-9]|3[01])[-/](0[1-9]|1[012])[-/](19|20)[0-9]{2}')]]
+      FechaNacimiento: ['', [Validators.required, Validators.pattern('(0[1-9]|[12][0-9]|3[01])[-/](0[1-9]|1[012])[-/](19|20)[0-9]{2}')]]
     });
 
     // this.GetTokerLogin();  
     //Nacionalidad: ['', [Validators.required]],
     this.returnUrl = '/menu-principal';
+    this.recuperarPass = '/recuperar-password';
+
+    //set de manera default usuario y contraseña
+    this.loginRequest.Username='Default';
+    this.loginRequest.Password='Default';
   }
 
   GetTiposDocumentos() {
@@ -77,6 +86,8 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(this.FormLogin.controls.Usuario.value, this.FormLogin.controls.Password.value)
       .subscribe(
         data => {
+          this.loginRequest.Username=this.FormLogin.controls.Usuario.value,
+          this.loginRequest.Password=this.FormLogin.controls.Password.value,
           this.router.navigate([this.returnUrl]);
         },
         error => {
@@ -97,7 +108,7 @@ export class LoginComponent implements OnInit {
   } */
 
   forgotPassword() {
-    alert('redirigir a recuperar contraseña');
+    this.router.navigate([this.recuperarPass]);
   }
 
   crearCliente() {
@@ -113,6 +124,26 @@ export class LoginComponent implements OnInit {
     this.AccionABMC = 'C';
     this.FormLogin.reset();
     //this.FormRegistro.reset();
+  }
+
+  validarEdad() {
+    let edad= (<HTMLInputElement>document.getElementById("FechaNacimiento")).value;
+    let fecha = new Date();
+    let fNac = new Date(edad);
+    let edadFinal = fecha.getFullYear() - fNac.getFullYear();
+
+    if(edadFinal >=18){
+      document.getElementById("matchEdad").innerHTML = '';
+      document.getElementById("noMatchEdad").innerHTML = '';
+      let botonGrabar = (<HTMLInputElement>document.getElementById("Grabar")).disabled = false;
+    }
+    else{
+      document.getElementById("matchEdad").innerHTML = '';
+      document.getElementById("noMatchEdad").innerHTML = 'Es requerido ser mayor de edad.';
+      let botonGrabar = (<HTMLInputElement>document.getElementById("Grabar")).disabled = true;
+    }
+
+
   }
 
   Grabar() {
@@ -161,5 +192,10 @@ export class LoginComponent implements OnInit {
 
   llamarModal() {
     this.modalQuienesSomosService.Alert('MoneyClip es una billetera virtual. Accede a tu dinero rápido, fácil y en cualquier parte. Desarrollado por: Nicolas Alvarez, Jimena Bustos Paulich, Melani Crespo, Martin Diaz, Maximiliano Iglesias del Castillo, Matias LLorens, Joel Ocampo, Melania Peralta Flores, Tomas Pozzo * Programa Clip 2020 - Grupo 1D', 'Conoce a nuestro Equipo!', 'i');
+  }
+
+  getLogin(): LoginRequest
+  {
+    return this.loginRequest;
   }
 }
