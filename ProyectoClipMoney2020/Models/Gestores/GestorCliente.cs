@@ -15,10 +15,7 @@ namespace ProyectoClipMoney2020.Models.Gestores
             GestorCuenta gestorCuenta = new GestorCuenta();
             var cliente = new Cliente();
             string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
-            if(ploginRequest.Username == null)
-            {
-                return null;
-            }
+
             using (SqlConnection conn = new SqlConnection(StrConn))
             {
                 conn.Open();
@@ -76,9 +73,8 @@ namespace ProyectoClipMoney2020.Models.Gestores
                     cliente.tipoDocumento = tipoDocumento;
                     //cliente.situacionCrediticia = situacionCrediticia;
                     cliente.fechaNacimiento = dr.GetDateTime(27);
-                    
 
-                    //cliente.cuentas=gestorCuenta.ObtenerCuentas(cliente.idCliente);
+                    cliente.cuentas=gestorCuenta.ObtenerCuentas(cliente.idCliente);
 
 
                 }
@@ -221,69 +217,6 @@ namespace ProyectoClipMoney2020.Models.Gestores
             }
             return id;
         }
-
-
-        public int crearModificarDomicilio(Cliente cliente)
-        {
-            int boo = 0;
-
-            string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
-
-            using (SqlConnection conn = new SqlConnection(StrConn))
-            {
-                conn.Open();
-
-                SqlCommand comm = conn.CreateCommand();
-                
-                comm.CommandText = "crearDomicilio";
-                comm.CommandType = System.Data.CommandType.StoredProcedure;
-                //comm.Parameters.Add(new SqlParameter("@idCliente", cliente.idCliente));
-                comm.Parameters.Add(new SqlParameter("@idLocalidad", cliente.domicilio.localidad.idLocalidad));
-                comm.Parameters.Add(new SqlParameter("@calle", cliente.domicilio.calle));
-                comm.Parameters.Add(new SqlParameter("@barrio", cliente.domicilio.barrio));
-                comm.Parameters.Add(new SqlParameter("@codigoPostal", cliente.domicilio.codigoPostal));
-                comm.Parameters.Add(new SqlParameter("@numero", cliente.domicilio.numero));
-
-                boo = Convert.ToInt32(comm.ExecuteScalar());
-
-
-
-
-            }
-
-            return boo;
-        }
-        public int actualizarCliente(Cliente cliente)
-        {
-            int boo = 0;
-
-            string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
-            int boo2=this.crearModificarDomicilio(cliente);
-            if(boo2!=0)
-            { 
-            using (SqlConnection conn = new SqlConnection(StrConn))
-            {
-                conn.Open();
-
-                SqlCommand comm = conn.CreateCommand();
-                comm.CommandText = "actualizarCliente";
-                comm.CommandType = System.Data.CommandType.StoredProcedure;
-                //comm.Parameters.Add(new SqlParameter("@idCliente", cliente.idCliente));
-                comm.Parameters.Add(new SqlParameter("@idCliente", cliente.idCliente));
-                comm.Parameters.Add(new SqlParameter("@email", cliente.email));
-                comm.Parameters.Add(new SqlParameter("@telefono", cliente.telefono));
-                comm.Parameters.Add(new SqlParameter("@idDomicilio", boo2));
-
-                boo = Convert.ToInt32(comm.ExecuteScalar());
-
-
-
-
-            }
-            }
-            return boo;
-        }
-
 
     }
 }

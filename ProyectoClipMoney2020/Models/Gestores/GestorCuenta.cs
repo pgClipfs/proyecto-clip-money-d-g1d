@@ -50,7 +50,7 @@ namespace ProyectoClipMoney2020.Models
         }
 
 
-        public Cuenta ObtenerCuentaPorCvu(string cvu)
+        public Cuenta ObtenerCuentaPorCvu(long cvu)
         {
             var cuenta = new Cuenta();
             string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
@@ -69,16 +69,15 @@ namespace ProyectoClipMoney2020.Models
                     cuenta.cvu = dr.GetString(0);
                     cuenta.alias = dr.GetString(1).Trim();
                     cuenta.saldo = dr.GetDecimal(2);
-                    if(!dr.IsDBNull(3))
-                    cuenta.observacion = dr.GetString(3)?.Trim();
+                    cuenta.observacion = dr.GetString(3).Trim();
                     var tipoCuenta = new TipoCuenta()
                     {
-                        idTipoCuenta = dr.GetByte(4),
+                        idTipoCuenta = dr.GetInt32(4),
                         nombreTipoCuenta = dr.GetString(5)
                     };
                     var estadoCuenta = new EstadoCuenta()
                     {
-                        idEstadoCuenta = dr.GetByte(6),
+                        idEstadoCuenta = dr.GetInt32(6),
                         nombreEstadoCuenta = dr.GetString(7)
                     };
                     cuenta.tipoCuenta = tipoCuenta;

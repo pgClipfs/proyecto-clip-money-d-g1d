@@ -13,6 +13,5 @@ namespace ProyectoClipMoney2020.Models
         public TipoOperacion tipoOperacion { get; set; }
         public EstadoOperacion estadoOperacion { get; set; }
         public string cvuHasta { get; set; }
-        public string cvuDesde { get; set; }
     }
 }

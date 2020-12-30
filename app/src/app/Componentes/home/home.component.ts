@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginRequest } from 'src/app/Modelos/LoginRequest';
 import { AuthenticationService } from 'src/app/Servicios/authentication.service';
 import { ModalQuienesSomosService } from '../../Servicios/modal-quienes-somos.service';
-import { ClienteService } from '../../Servicios/cliente.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,27 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
- 
-  nombreCompleto:string;
-  loginRequest:LoginRequest;
 
-  constructor(private router: Router ,private clienteService: ClienteService, private authenticationService: AuthenticationService, private modalQuienesSomosService: ModalQuienesSomosService) { }
+  constructor(private authenticationService: AuthenticationService, private modalQuienesSomosService: ModalQuienesSomosService) { }
 
   ngOnInit(): void {
-    
-    this.nombreCompleto='';
-    this.loginRequest=JSON.parse(localStorage.getItem('loginRequest'));
-    this.clienteService.postLogin(this.loginRequest).subscribe((res: any) => {
-      const itemCopy  = {...res};
-      //itemCopy.fechaNacimiento=res.fechaNacimiento;
-      this.nombreCompleto=itemCopy.nombre+' '+itemCopy.apellido;
-          
-      
-      
-    });
   }
-  
- 
 
   Cerrar()
   {

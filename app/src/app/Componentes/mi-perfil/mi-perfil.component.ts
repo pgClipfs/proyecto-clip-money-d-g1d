@@ -5,13 +5,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {LoginComponent} from '../login/login.component';
 import { LoginRequest } from 'src/app/Modelos/LoginRequest';
-import { DatePipe } from '@angular/common';
-import { AuthenticationService } from 'src/app/Servicios/authentication.service';
-import { TipoDocumento } from 'src/app/Modelos/TipoDocumento';
-import { TipoDocumentoService } from 'src/app/Servicios/tipo-documento.service';
-import { ModalQuienesSomosService } from '../../Servicios/modal-quienes-somos.service';
-import { CommonModule } from '@angular/common';
-import { Domicilio } from 'src/app/Modelos/Domicilio';
 
 
 
@@ -25,19 +18,13 @@ export class MiPerfilComponent implements OnInit {
 
   FormMiPerfil: FormGroup;
   submitted= false;
-  Documentos: TipoDocumento[] = [];
-  nombreTipoDocumento:string;
- 
-  stringDomicilio:string;
+  
 
   constructor(public formBuilder: FormBuilder, 
     private clienteService: ClienteService, 
     private router: Router, 
     private comp: LoginComponent, 
-    private modalQuienesSomosService: ModalQuienesSomosService,
-    private loginRequest: LoginRequest,
-    public datepipe: DatePipe,
-    private tipoDocumentoService: TipoDocumentoService
+    private loginRequest: LoginRequest
     ){
   
   }
@@ -56,104 +43,36 @@ export class MiPerfilComponent implements OnInit {
             FotoDorsoDocumento: [''], */
         email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}')]],
         telefono: ['', [Validators.required, Validators.pattern('[0-9]{8,20}')]],
-        domicilio: ['',[Validators.required]],
+        domicilio: ['',[Validators.required, Validators.maxLength(120)]],
         nacionalidad: [''],
    /*      PassEncriptada: [''], */
         usuario: ['']
         /*     SituacionCrediticia: [''],
             Cuentas: [''], */
       });
-     
+
       this.CargarUsuario();
-      this.GetTiposDocumentos();
-      
-      
 
   }
-  CargarDomicilioLocal() {
-    if(localStorage.getItem('domicilio')==null)
-    {
-      return;
-    }
-    else
-    {
-      var domicilioLocal=JSON.parse(localStorage.getItem('domicilio'));
-        this.stringDomicilio=domicilioLocal.Calle+' '+domicilioLocal.Numero+' '+domicilioLocal.Localidad.provincia.nombreProvincia+' '+domicilioLocal.Localidad.provincia.pais.nombrePais;
-        this.FormMiPerfil.patchValue({
-          domicilio: this.stringDomicilio,
-        });
-    }
-   
-  }
-
 
   CargarUsuario(){
   this.loginRequest= this.comp.getLogin();
     this.clienteService.postLogin(this.loginRequest).subscribe((res: any) => {
-      const itemCopy  = {...res};
-      //itemCopy.fechaNacimiento=res.fechaNacimiento;
-      
-      
-      itemCopy.fechaNacimiento = this.datepipe.transform(res.fechaNacimiento , 'dd/MM/yyyy');    
-      
-
-      
-      this.FormMiPerfil.patchValue(itemCopy)
-      this.nombreTipoDocumento=itemCopy.tipoDocumento.nombreTipoDocumento;
-      this.CargarDomicilioLocal();
-      
-    }  );
-    
-    }
-    GetTiposDocumentos() {
-      this.tipoDocumentoService.get().subscribe((res: TipoDocumento[]) => {
-        this.Documentos = res;
-               });
-    }
-
-    GetTipoDocumentoNombre(Id) {
-      var Documento = this.Documentos.filter(
-        x => x.idTipoDocumento === Id
-      )[0];
-      if (Documento) return Documento.nombreTipoDocumento;
-      else return "";
-    }
-  
-  formDomicilio(){
-    this.router.navigate(['/form-domicilio'])
+      this.FormMiPerfil.patchValue(res)}
+  );
   }
+
   Grabar(){
+
     this.submitted= true;
-    if(this.FormMiPerfil.invalid){      
+    if(this.FormMiPerfil.invalid){
+
+      console.log(this.FormMiPerfil)
       return;
-    }   
-    
-    this.loginRequest= this.comp.getLogin();
-    this.clienteService.postLogin(this.loginRequest).subscribe((res: any) => {
-      const itemCopy  = {...res};
-      //itemCopy.fechaNacimiento=res.fechaNacimiento;
-      //const itemCopy  = {...this.FormMiPerfil.value};
-      itemCopy.domicilio=JSON.parse(localStorage.getItem('domicilio'));
-      localStorage.removeItem('domicilio');
-      
-      this.clienteService.put(itemCopy.idCliente, itemCopy).subscribe( data => {
-      this.cancelar();
-      this.modalQuienesSomosService.Alert('Se registro exitosamente', '', 's');
-      },
-      error => {          
-      this.modalQuienesSomosService.Alert('Error inesperado.', '¡Ingreso incorrecto!', 'w');
-      } 
-    );      
-    
-  },
-  error => {          
-    this.modalQuienesSomosService.Alert('Error inesperado.', '¡Vuelva a ingresar!', 'w');
-    } 
-  );      
-}
 
-  
+    }
 
+  }
 
   cancelar(){
 
