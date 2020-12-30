@@ -10,6 +10,7 @@ import { AuthenticationService } from 'src/app/Servicios/authentication.service'
 import { TipoDocumento } from 'src/app/Modelos/TipoDocumento';
 import { TipoDocumentoService } from 'src/app/Servicios/tipo-documento.service';
 import { CommonModule } from '@angular/common';
+import { Domicilio } from 'src/app/Modelos/Domicilio';
 
 
 
@@ -25,6 +26,8 @@ export class MiPerfilComponent implements OnInit {
   submitted= false;
   Documentos: TipoDocumento[] = [];
   nombreTipoDocumento:string;
+ 
+  stringDomicilio:string;
 
   constructor(public formBuilder: FormBuilder, 
     private clienteService: ClienteService, 
@@ -51,7 +54,7 @@ export class MiPerfilComponent implements OnInit {
             FotoDorsoDocumento: [''], */
         email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}')]],
         telefono: ['', [Validators.required, Validators.pattern('[0-9]{8,20}')]],
-        domicilio: ['',[Validators.required, Validators.maxLength(120)]],
+        domicilio: ['',[Validators.required]],
         nacionalidad: [''],
    /*      PassEncriptada: [''], */
         usuario: ['']
@@ -61,7 +64,24 @@ export class MiPerfilComponent implements OnInit {
      
       this.CargarUsuario();
       this.GetTiposDocumentos();
+      
+      
 
+  }
+  CargarDomicilioLocal() {
+    if(localStorage.getItem('domicilio')==null)
+    {
+      return;
+    }
+    else
+    {
+      var domicilioLocal=JSON.parse(localStorage.getItem('domicilio'));
+        this.stringDomicilio=domicilioLocal.Calle+' '+domicilioLocal.Numero+' '+domicilioLocal.Localidad.provincia.nombreProvincia+' '+domicilioLocal.Localidad.provincia.pais.nombrePais;
+        this.FormMiPerfil.patchValue({
+          domicilio: this.stringDomicilio,
+        });
+    }
+   
   }
 
 
@@ -78,8 +98,10 @@ export class MiPerfilComponent implements OnInit {
       
       this.FormMiPerfil.patchValue(itemCopy)
       this.nombreTipoDocumento=itemCopy.tipoDocumento.nombreTipoDocumento;
+      this.CargarDomicilioLocal();
       
     }  );
+    
     }
     GetTiposDocumentos() {
       this.tipoDocumentoService.get().subscribe((res: TipoDocumento[]) => {
@@ -95,7 +117,9 @@ export class MiPerfilComponent implements OnInit {
       else return "";
     }
   
-
+  formDomicilio(){
+    this.router.navigate(['/form-domicilio'])
+  }
   Grabar(){
 
     this.submitted= true;

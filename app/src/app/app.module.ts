@@ -22,6 +22,7 @@ import { TransaccionesComponent } from './Componentes/transacciones/transaccione
 import { MovimientosComponent } from './Componentes/movimientos/movimientos.component';
 import { MiPerfilComponent } from './Componentes/mi-perfil/mi-perfil.component';
 import { LoginRequest } from './Modelos/LoginRequest';
+import { FormDomicilioComponent } from './Componentes/form-domicilio/form-domicilio.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { LoginRequest } from './Modelos/LoginRequest';
     ModalLoginIncorrectoComponent,
     TransaccionesComponent,
     MovimientosComponent,
-    MiPerfilComponent
+    MiPerfilComponent,
+    FormDomicilioComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +48,7 @@ import { LoginRequest } from './Modelos/LoginRequest';
       { path: '', redirectTo: '/login', pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
       { path: 'menu-principal', component: MenuPrincipalComponent, canActivate: [AuthGuard] },
+      { path: 'form-domicilio', component: FormDomicilioComponent, canActivate: [AuthGuard] },
       { path: 'app-mi-perfil', component: MiPerfilComponent, canActivate: [AuthGuard] },
       { path: '**', redirectTo: '/login', pathMatch: 'full' }
       ]

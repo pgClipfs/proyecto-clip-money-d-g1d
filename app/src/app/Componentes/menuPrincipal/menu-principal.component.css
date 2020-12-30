@@ -1,25 +1,27 @@
-
-#advertencia{
-    width: 100px;
-    padding: 10px;
-    margin: 10px;
+#advertencia {
+  width: 100px;
+  padding: 10px;
+  margin: 10px;
 }
 
-button{
-    color: #5e5b52;
-    font-size: 20px;
-    font-weight: bold;
-    background: none;
-    border: none;
-    float: right;
+button {
+  color: #5e5b52;
+  font-size: 20px;
+  font-weight: bold;
+  background: none;
+  border: none;
+  float: right;
 }
 
-#dineroDisponible{
-    text-align: right;
+#dineroDisponible {
+  text-align: right;
 }
 
-#advertenciaText{
-    text-align: right;
+#advertenciaText {
+  text-align: right;
 }
-
-
+.usuario-home {
+  float: right;
+  margin-right: 10px;
+  padding: 10px;
+}
