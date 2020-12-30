@@ -15,7 +15,10 @@ namespace ProyectoClipMoney2020.Models.Gestores
             GestorCuenta gestorCuenta = new GestorCuenta();
             var cliente = new Cliente();
             string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
-
+            if(ploginRequest.Username == null)
+            {
+                return null;
+            }
             using (SqlConnection conn = new SqlConnection(StrConn))
             {
                 conn.Open();
@@ -73,8 +76,9 @@ namespace ProyectoClipMoney2020.Models.Gestores
                     cliente.tipoDocumento = tipoDocumento;
                     //cliente.situacionCrediticia = situacionCrediticia;
                     cliente.fechaNacimiento = dr.GetDateTime(27);
+                    
 
-                    cliente.cuentas=gestorCuenta.ObtenerCuentas(cliente.idCliente);
+                    //cliente.cuentas=gestorCuenta.ObtenerCuentas(cliente.idCliente);
 
 
                 }

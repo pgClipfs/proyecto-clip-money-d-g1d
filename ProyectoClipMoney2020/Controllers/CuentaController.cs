@@ -21,7 +21,7 @@ namespace ProyectoClipMoney2020.Controllers
         }
 
         // GET: api/Cuenta/5
-        public Cuenta Get(long cvu)
+        public Cuenta Get(string cvu)
         {
             GestorCuenta gCuenta = new GestorCuenta();
             return gCuenta.ObtenerCuentaPorCvu(cvu);
