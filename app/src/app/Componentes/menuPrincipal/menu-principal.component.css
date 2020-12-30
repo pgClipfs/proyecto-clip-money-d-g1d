@@ -22,6 +22,24 @@
     text-align: right;
 }
 
+/* #contenedor_principal{
+    display: flex;
+    flex-direction: column;
+
+justify-content: center;
+} */
+
+.container{
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+
+}
+a a.enlace{
+    margin: 0;
+    padding: 0;
+}
 /* .boton_dineroDisponible{
    width: 80%;
     height: 150px;
@@ -40,11 +58,12 @@
 
   } */
 
-  .container{
-      margin-top: 10px;
-      margin-bottom: 10px;
-      border: none;
-      margin-left: 0;
-      margin-right: 0;
-  }
+.navbar .navbar-nav{
+    display: flex;
+    justify-content: space-between;
+    
+}
 
+.navbar{
+    margin-bottom: 50px;
+}
