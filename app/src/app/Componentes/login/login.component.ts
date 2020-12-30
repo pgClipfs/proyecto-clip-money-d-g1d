@@ -73,14 +73,9 @@ export class LoginComponent implements OnInit {
     
     // this.GetTokerLogin();  
     //Nacionalidad: ['', [Validators.required]],
-<<<<<<< HEAD
-    this.returnUrl = '/menu-principal';
-    this.recuperarPass = '/recuperar-password';
-=======
     
     
     this.returnUrl='/menu-principal';
->>>>>>> b5ff761e134c1de683dd2d79919bcac138133791
 
     //set de manera default usuario y contraseña
   

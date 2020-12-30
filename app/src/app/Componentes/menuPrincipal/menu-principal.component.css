@@ -4,7 +4,6 @@
   margin: 10px;
 }
 
-<<<<<<< HEAD
  button{
     color: #5e5b52;
     font-size: 20px;
@@ -13,16 +12,6 @@
     border: none;
     float: right;
 } 
-=======
-button {
-  color: #5e5b52;
-  font-size: 20px;
-  font-weight: bold;
-  background: none;
-  border: none;
-  float: right;
-}
->>>>>>> b5ff761e134c1de683dd2d79919bcac138133791
 
 #dineroDisponible {
   text-align: right;
@@ -36,7 +25,6 @@ button {
   margin-right: 10px;
   padding: 10px;
 }
-<<<<<<< HEAD
 
 /* #contenedor_principal{
     display: flex;
@@ -83,5 +71,3 @@ a a.enlace{
 .navbar{
     margin-bottom: 50px;
 }
-=======
->>>>>>> b5ff761e134c1de683dd2d79919bcac138133791

@@ -1,3 +1,4 @@
+  
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -22,12 +23,7 @@ import { TransaccionesComponent } from './Componentes/transacciones/transaccione
 import { MovimientosComponent } from './Componentes/movimientos/movimientos.component';
 import { MiPerfilComponent } from './Componentes/mi-perfil/mi-perfil.component';
 import { LoginRequest } from './Modelos/LoginRequest';
-<<<<<<< HEAD
-import { NewPasswordComponent } from './Componentes/new-password/new-password.component';
-import { RecuperarPasswordComponent } from './Componentes/recuperar-password/recuperar-password.component';
-=======
 import { FormDomicilioComponent } from './Componentes/form-domicilio/form-domicilio.component';
->>>>>>> b5ff761e134c1de683dd2d79919bcac138133791
 
 @NgModule({
   declarations: [
@@ -40,12 +36,7 @@ import { FormDomicilioComponent } from './Componentes/form-domicilio/form-domici
     TransaccionesComponent,
     MovimientosComponent,
     MiPerfilComponent,
-<<<<<<< HEAD
-    NewPasswordComponent,
-    RecuperarPasswordComponent
-=======
     FormDomicilioComponent
->>>>>>> b5ff761e134c1de683dd2d79919bcac138133791
   ],
   imports: [
     BrowserModule,
@@ -60,15 +51,10 @@ import { FormDomicilioComponent } from './Componentes/form-domicilio/form-domici
       { path: 'menu-principal', component: MenuPrincipalComponent, canActivate: [AuthGuard] },
       { path: 'form-domicilio', component: FormDomicilioComponent, canActivate: [AuthGuard] },
       { path: 'app-mi-perfil', component: MiPerfilComponent, canActivate: [AuthGuard] },
-      { path: 'recuperar-password', component: RecuperarPasswordComponent },
-      { path: 'new-password', component: NewPasswordComponent },
       { path: '**', redirectTo: '/login', pathMatch: 'full' }
       ]
     ),
 
-  ],
-  exports: [
-    RecuperarPasswordComponent
   ],
   providers: [{
       provide: HTTP_INTERCEPTORS,
