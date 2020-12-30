@@ -45,7 +45,7 @@ export class FormDomicilioComponent implements OnInit {
         Calle: ['',[Validators.required]],
         Numero: ['', [Validators.required, Validators.pattern('[0-9]{1,7}')]],
         Barrio: ['',[Validators.required]],
-        CP: ['', [Validators.required, Validators.pattern('[0-9]{1,7}')]]
+        CodigoPostal: ['', [Validators.required, Validators.pattern('[0-9]{1,7}')]]
       });
 
       this.cargarPaises();
@@ -78,6 +78,7 @@ export class FormDomicilioComponent implements OnInit {
   cancelar(){
     
     this.FormDomicilio.reset();
+    
     this.router.navigate(['/app-mi-perfil']);
  
 

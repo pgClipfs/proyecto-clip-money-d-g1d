@@ -9,6 +9,7 @@ import { DatePipe } from '@angular/common';
 import { AuthenticationService } from 'src/app/Servicios/authentication.service';
 import { TipoDocumento } from 'src/app/Modelos/TipoDocumento';
 import { TipoDocumentoService } from 'src/app/Servicios/tipo-documento.service';
+import { ModalQuienesSomosService } from '../../Servicios/modal-quienes-somos.service';
 import { CommonModule } from '@angular/common';
 import { Domicilio } from 'src/app/Modelos/Domicilio';
 
@@ -33,6 +34,7 @@ export class MiPerfilComponent implements OnInit {
     private clienteService: ClienteService, 
     private router: Router, 
     private comp: LoginComponent, 
+    private modalQuienesSomosService: ModalQuienesSomosService,
     private loginRequest: LoginRequest,
     public datepipe: DatePipe,
     private tipoDocumentoService: TipoDocumentoService
@@ -121,16 +123,37 @@ export class MiPerfilComponent implements OnInit {
     this.router.navigate(['/form-domicilio'])
   }
   Grabar(){
-
     this.submitted= true;
-    if(this.FormMiPerfil.invalid){
-
-      console.log(this.FormMiPerfil)
+    if(this.FormMiPerfil.invalid){      
       return;
+    }   
+    
+    this.loginRequest= this.comp.getLogin();
+    this.clienteService.postLogin(this.loginRequest).subscribe((res: any) => {
+      const itemCopy  = {...res};
+      //itemCopy.fechaNacimiento=res.fechaNacimiento;
+      //const itemCopy  = {...this.FormMiPerfil.value};
+      itemCopy.domicilio=JSON.parse(localStorage.getItem('domicilio'));
+      localStorage.removeItem('domicilio');
+      
+      this.clienteService.put(itemCopy.idCliente, itemCopy).subscribe( data => {
+      this.cancelar();
+      this.modalQuienesSomosService.Alert('Se registro exitosamente', '', 's');
+      },
+      error => {          
+      this.modalQuienesSomosService.Alert('Error inesperado.', '¡Ingreso incorrecto!', 'w');
+      } 
+    );      
+    
+  },
+  error => {          
+    this.modalQuienesSomosService.Alert('Error inesperado.', '¡Vuelva a ingresar!', 'w');
+    } 
+  );      
+}
 
-    }
+  
 
-  }
 
   cancelar(){
 

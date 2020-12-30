@@ -38,6 +38,8 @@ export class AuthenticationService {
 
   logout(): void {
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('domicilio');
+    localStorage.removeItem('loginRequest');
     this.currentUserSubject.next(null);
   }
 }

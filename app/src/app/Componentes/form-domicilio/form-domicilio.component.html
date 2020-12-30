@@ -109,11 +109,11 @@
         <label class="col-form-label col-12">Cod. Postal: <span
         class="text-danger">*</span></label>
         <div class="col-12">
-            <input type="text" class="form-control" formControlName="CP"
-            [ngClass]="{'is-invalid': (FormDomicilio.controls.CP.touched || submitted)  
-            && FormDomicilio.controls.CP.errors}" />
-            <span class="text-danger" *ngIf="(FormDomicilio.controls.CP.touched || submitted) 
-            && FormDomicilio.controls.CP.errors?.required">
+            <input type="text" class="form-control" formControlName="CodigoPostal"
+            [ngClass]="{'is-invalid': (FormDomicilio.controls.CodigoPostal.touched || submitted)  
+            && FormDomicilio.controls.CodigoPostal.errors}" />
+            <span class="text-danger" *ngIf="(FormDomicilio.controls.CodigoPostal.touched || submitted) 
+            && FormDomicilio.controls.CodigoPostal.errors?.required">
             Dato requerido.
             </span>         
         </div>
