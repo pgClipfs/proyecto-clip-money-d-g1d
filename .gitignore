@@ -355,7 +355,6 @@ MigrationBackup/
 .ionide/
 
 # certificados seguridad
->>>>>>> c4f0e1768c68dad6a655ebd4fe6a573c184aa046
 app/ssl
 app/angular.json
 app/package.json
