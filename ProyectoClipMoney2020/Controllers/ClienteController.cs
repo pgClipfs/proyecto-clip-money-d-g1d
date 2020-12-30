@@ -82,10 +82,18 @@ namespace ProyectoClipMoney2020.Controllers
             }
             return Ok(cliente);   // en cliente vemos response.data
         }
-
-        // PUT: api/Cliente/5
-        public void Put(int id, [FromBody]string value)
+        [HttpPut]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        public IHttpActionResult Put(int id, Cliente cliente)
         {
+            GestorCliente gestorCliente = new GestorCliente();
+            int boo=gestorCliente.actualizarCliente(cliente);
+            if (boo == 0)
+            {
+                return NotFound();
+            }
+            else
+                return Ok(cliente);
         }
 
         // DELETE: api/Cliente/5

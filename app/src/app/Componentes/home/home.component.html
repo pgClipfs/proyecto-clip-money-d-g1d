@@ -2,7 +2,7 @@
     <div id="mySidepanel" class="sidepanel">
     <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
     <img src="assets/img/persona.jpg" alt="foto-usuario">
-    <p class="usuario">Usuario</p>
+    <p class="usuario">{{nombreCompleto}}</p>
     <a href="#">Cuenta en Pesos</a>
     <a href="#">Cuenta en Dólares</a>
     <a href="#">Transacciones</a>
@@ -10,7 +10,7 @@
     <br>
     <br>
     <a href="#">Ayuda</a>
-    <a href="#">Mi Perfil</a>
+    <a class="nav-link" routerLink="/app-mi-perfil" >Mi Perfil</a>
     <a href="#">Configuración</a>
     <br>
     <a href="#">Quienes somos?</a> -->
@@ -45,7 +45,7 @@
   
   <button class="openbtn" (click)="openNav()">&#9776;</button>
 
-  <p class="usuario-home">Hola! Usuario</p>
+  <!--p class="usuario-home">Hola! {{nombreCompleto}}</p-->
 </nav>
 
  -->
