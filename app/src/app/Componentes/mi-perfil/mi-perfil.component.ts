@@ -27,6 +27,7 @@ export class MiPerfilComponent implements OnInit {
   submitted= false;
   Documentos: TipoDocumento[] = [];
   nombreTipoDocumento:string;
+  bandera: number;
  
   stringDomicilio:string;
 
@@ -39,6 +40,7 @@ export class MiPerfilComponent implements OnInit {
     public datepipe: DatePipe,
     private tipoDocumentoService: TipoDocumentoService
     ){
+      this.bandera=0;
   
   }
 
@@ -78,10 +80,13 @@ export class MiPerfilComponent implements OnInit {
     else
     {
       var domicilioLocal=JSON.parse(localStorage.getItem('domicilio'));
-        this.stringDomicilio=domicilioLocal.Calle+' '+domicilioLocal.Numero+' '+domicilioLocal.Localidad.provincia.nombreProvincia+' '+domicilioLocal.Localidad.provincia.pais.nombrePais;
+     
+        this.stringDomicilio=domicilioLocal.calle+' '+domicilioLocal.numero+' '+domicilioLocal.localidad.provincia.nombreProvincia+' '+domicilioLocal.localidad.provincia.pais.nombrePais;
+        console.log(this.stringDomicilio);
         this.FormMiPerfil.patchValue({
           domicilio: this.stringDomicilio,
-        });
+        });   
+        
     }
    
   }
@@ -95,15 +100,22 @@ export class MiPerfilComponent implements OnInit {
       
       
       itemCopy.fechaNacimiento = this.datepipe.transform(res.fechaNacimiento , 'dd/MM/yyyy');    
+      console.log(itemCopy);
       
-
+      //this.stringDomicilio=itemCopy.domicilio.calle+' '+itemCopy.domicilio.numero+' '+itemCopy.domicilio.localidad.provincia.nombreProvincia+' '+itemCopy.domicilio.localidad.provincia.pais.nombrePais;
+      if(localStorage.getItem('domicilio')==null && itemCopy.domicilio!==null) 
+      {   
+          
+          this.stringDomicilio=itemCopy.domicilio.calle+' '+itemCopy.domicilio.numero+' '+itemCopy.domicilio.localidad.provincia.nombreProvincia+' '+itemCopy.domicilio.localidad.provincia.pais.nombrePais;
+          localStorage.setItem('domicilio', JSON.stringify(itemCopy.domicilio));
+          console.log(JSON.parse(localStorage.getItem('domicilio')));
+          itemCopy.domicilio=this.stringDomicilio;             
       
-      this.FormMiPerfil.patchValue(itemCopy)
-      this.nombreTipoDocumento=itemCopy.tipoDocumento.nombreTipoDocumento;
-      this.CargarDomicilioLocal();
-      
-    }  );
-    
+      }
+        this.FormMiPerfil.patchValue(itemCopy)
+        this.nombreTipoDocumento=itemCopy.tipoDocumento.nombreTipoDocumento;
+        this.CargarDomicilioLocal();   
+      });  
     }
     GetTiposDocumentos() {
       this.tipoDocumentoService.get().subscribe((res: TipoDocumento[]) => {
@@ -120,6 +132,8 @@ export class MiPerfilComponent implements OnInit {
     }
   
   formDomicilio(){
+    this.bandera=1;
+
     this.router.navigate(['/form-domicilio'])
   }
   Grabar(){
@@ -135,6 +149,9 @@ export class MiPerfilComponent implements OnInit {
       //const itemCopy  = {...this.FormMiPerfil.value};
       itemCopy.domicilio=JSON.parse(localStorage.getItem('domicilio'));
       localStorage.removeItem('domicilio');
+      itemCopy.email=this.FormMiPerfil.value.email;;
+      
+      itemCopy.telefono=this.FormMiPerfil.value.telefono;;
       
       this.clienteService.put(itemCopy.idCliente, itemCopy).subscribe( data => {
       this.cancelar();
@@ -156,7 +173,7 @@ export class MiPerfilComponent implements OnInit {
 
 
   cancelar(){
-
+    localStorage.removeItem('domicilio');
     this.router.navigate(['/menu-principal'])
 
   }

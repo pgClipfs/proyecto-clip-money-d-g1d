@@ -1,7 +1,7 @@
 import {Provincia} from './Provincia';
 
 export class Localidad {
-    IdLocalidad: number;
+    idLocalidad: number;
     NombreLocalidad: string;
     CodigoPostal: string;
     Provincia: Provincia;
