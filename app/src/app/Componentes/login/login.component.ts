@@ -141,7 +141,7 @@ export class LoginComponent implements OnInit {
       if(anioString.length === 4 && edadFinal >= 18){
         if(difMes <= 0 && (fecha.getDate() < diaNac)){
           document.getElementById("matchEdad").innerHTML = '';
-          document.getElementById("noMatchEdad").innerHTML = '';
+          document.getElementById("noMatchEdad").innerHTML = 'Es requerido ser mayor de edad.';
           let botonGrabar = (<HTMLInputElement>document.getElementById("Grabar")).disabled = true;          
         }
 
