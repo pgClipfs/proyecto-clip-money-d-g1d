@@ -18,8 +18,11 @@ button{
     text-align: right;
 }
 
-#advertenciaText{
+#advertenciaText {
     text-align: right;
 }
-
-
+.usuario-home {
+    float: right;
+    margin-right: 10px;
+    padding: 10px;
+}

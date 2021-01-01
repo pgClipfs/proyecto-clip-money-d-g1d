@@ -15,7 +15,7 @@ import { AuthGuard } from './helpers/auth.guard';
 
 
 
-import { APP_BASE_HREF } from '@angular/common';
+import { APP_BASE_HREF, DatePipe } from '@angular/common';
 import { ModalQuienesSomosComponent } from './Componentes/modal-quienes-somos/modal-quienes-somos.component';
 import { ModalLoginIncorrectoComponent } from './Componentes/modal-login-incorrecto/modal-login-incorrecto.component';
 import { TransaccionesComponent } from './Componentes/transacciones/transacciones.component';
@@ -24,6 +24,9 @@ import { MiPerfilComponent } from './Componentes/mi-perfil/mi-perfil.component';
 import { LoginRequest } from './Modelos/LoginRequest';
 import { NewPasswordComponent } from './Componentes/new-password/new-password.component';
 import { RecuperarPasswordComponent } from './Componentes/recuperar-password/recuperar-password.component';
+import { FormDomicilioComponent } from './Componentes/form-domicilio/form-domicilio.component';
+import { pipe } from 'rxjs';
+
 
 @NgModule({
   declarations: [
@@ -37,7 +40,8 @@ import { RecuperarPasswordComponent } from './Componentes/recuperar-password/rec
     MovimientosComponent,
     MiPerfilComponent,
     NewPasswordComponent,
-    RecuperarPasswordComponent
+    RecuperarPasswordComponent,
+    FormDomicilioComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +57,7 @@ import { RecuperarPasswordComponent } from './Componentes/recuperar-password/rec
       { path: 'app-mi-perfil', component: MiPerfilComponent, canActivate: [AuthGuard] },
       { path: 'recuperar-password', component: RecuperarPasswordComponent },
       { path: 'new-password', component: NewPasswordComponent },
+      { path: 'form-domicilio', component: FormDomicilioComponent, canActivate: [AuthGuard] },
       { path: '**', redirectTo: '/login', pathMatch: 'full' }
       ]
     ),
@@ -65,7 +70,7 @@ import { RecuperarPasswordComponent } from './Componentes/recuperar-password/rec
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
       multi: true
-  }, {provide: APP_BASE_HREF, useValue : '/'}, LoginRequest],
+  }, {provide: APP_BASE_HREF, useValue : '/'}, LoginRequest, DatePipe],
   bootstrap: [InicioComponent]
 })
 export class AppModule { }
