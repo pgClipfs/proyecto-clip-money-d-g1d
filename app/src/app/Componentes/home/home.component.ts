@@ -21,6 +21,35 @@ export class HomeComponent implements OnInit {
     this.returnURl= '/app-mi-perfil';
 
   }
+<<<<<<< HEAD
+=======
+  
+ 
+  cuentaEnDolares()
+  {
+    this.modalQuienesSomosService.Alert('Disculpe las molestias', 'En desarrollo', 'i')
+  }
+  cuentaEnPesos()
+  {
+    this.clienteService.postLogin(this.loginRequest).subscribe((res: any) => {
+      const itemCopy  = {...res};
+      //itemCopy.fechaNacimiento=res.fechaNacimiento;
+      if(itemCopy.domicilio==null || itemCopy.domicilio==undefined)
+      {
+        this.modalQuienesSomosService.Alert('Primero complete sus datos en mi perfil','Error, datos incompletos', 'w')
+      }
+      else
+      {
+        this.router.navigate(['/cuenta-pesos']);
+      }
+      
+      
+          
+      
+      
+    });
+  }
+>>>>>>> 1fc2e7c1e34889d804a6302942e5f8254646fa54
 
   Cerrar()
   {

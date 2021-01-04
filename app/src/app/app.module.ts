@@ -22,6 +22,12 @@ import { TransaccionesComponent } from './Componentes/transacciones/transaccione
 import { MovimientosComponent } from './Componentes/movimientos/movimientos.component';
 import { MiPerfilComponent } from './Componentes/mi-perfil/mi-perfil.component';
 import { LoginRequest } from './Modelos/LoginRequest';
+<<<<<<< HEAD
+=======
+import { FormDomicilioComponent } from './Componentes/form-domicilio/form-domicilio.component';
+import { MyInterceptor } from './interceptors/my-interceptor';
+import { CuentaComponent } from './Componentes/cuenta/cuenta.component';
+>>>>>>> 1fc2e7c1e34889d804a6302942e5f8254646fa54
 
 @NgModule({
   declarations: [
@@ -33,7 +39,13 @@ import { LoginRequest } from './Modelos/LoginRequest';
     ModalLoginIncorrectoComponent,
     TransaccionesComponent,
     MovimientosComponent,
+<<<<<<< HEAD
     MiPerfilComponent
+=======
+    MiPerfilComponent,
+    FormDomicilioComponent,
+    CuentaComponent
+>>>>>>> 1fc2e7c1e34889d804a6302942e5f8254646fa54
   ],
   imports: [
     BrowserModule,
@@ -47,6 +59,7 @@ import { LoginRequest } from './Modelos/LoginRequest';
       { path: 'login', component: LoginComponent },
       { path: 'menu-principal', component: MenuPrincipalComponent, canActivate: [AuthGuard] },
       { path: 'app-mi-perfil', component: MiPerfilComponent, canActivate: [AuthGuard] },
+      { path: 'cuenta-pesos', component: CuentaComponent, canActivate: [AuthGuard] },
       { path: '**', redirectTo: '/login', pathMatch: 'full' }
       ]
     ),
@@ -56,7 +69,11 @@ import { LoginRequest } from './Modelos/LoginRequest';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
       multi: true
+<<<<<<< HEAD
   }, {provide: APP_BASE_HREF, useValue : '/'}, LoginRequest],
+=======
+  }, {provide: APP_BASE_HREF, useValue : '/'}, LoginRequest, DatePipe, { provide: HTTP_INTERCEPTORS, useClass: MyInterceptor, multi: true }],
+>>>>>>> 1fc2e7c1e34889d804a6302942e5f8254646fa54
   bootstrap: [InicioComponent]
 })
 export class AppModule { }

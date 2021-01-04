@@ -15,6 +15,7 @@ namespace ProyectoClipMoney2020.Models
         public TipoCuenta tipoCuenta { get; set; }
         public EstadoCuenta estadoCuenta { get; set; }
         public Operacion[] operaciones { get; set; }
+        public long idCliente { get; set; }
 
         public Cuenta()
         {
