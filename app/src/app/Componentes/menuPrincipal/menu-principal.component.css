@@ -58,12 +58,3 @@ a a.enlace{
 
   } */
 
-.navbar .navbar-nav{
-    display: flex;
-    justify-content: space-between;
-    
-}
-
-.navbar{
-    margin-bottom: 50px;
-}

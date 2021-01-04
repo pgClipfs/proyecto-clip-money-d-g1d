@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/Servicios/authentication.service';
 import { ModalQuienesSomosService } from '../../Servicios/modal-quienes-somos.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-home',
@@ -9,9 +11,15 @@ import { ModalQuienesSomosService } from '../../Servicios/modal-quienes-somos.se
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private authenticationService: AuthenticationService, private modalQuienesSomosService: ModalQuienesSomosService) { }
+  returnURl: string;
+
+
+
+  constructor(private authenticationService: AuthenticationService, private modalQuienesSomosService: ModalQuienesSomosService, private router: Router) { }
 
   ngOnInit(): void {
+    this.returnURl= '/app-mi-perfil';
+
   }
 
   Cerrar()
@@ -30,4 +38,11 @@ export class HomeComponent implements OnInit {
     this.modalQuienesSomosService.Alert('MoneyClip es una billetera virtual. Accede a tu dinero rápido, fácil y en cualquier parte. Desarrollado por: Nicolas Alvarez, Jimena Bustos Paulich, Melani Crespo, Martin Diaz, Maximiliano Iglesias del Castillo, Matias LLorens, Joel Ocampo, Melania Peralta Flores, Tomas Pozzo * Programa Clip 2020 - Grupo 1D', 'Conoce a nuestro Equipo!', 'i');
   }
 
+ 
+  
+  miPerfil(){
+
+    this.router.navigate([this.returnURl]);
+
+  }
 }
