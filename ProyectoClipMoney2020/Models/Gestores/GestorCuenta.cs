@@ -18,7 +18,7 @@ namespace ProyectoClipMoney2020.Models
             {
                 conn.Open();
                 SqlCommand comm = conn.CreateCommand();
-                comm.CommandText = "obtener_cuentas";
+                comm.CommandText = "obtener_cuenta";
                 comm.CommandType = System.Data.CommandType.StoredProcedure;
 
                 SqlDataReader dr = comm.ExecuteReader();

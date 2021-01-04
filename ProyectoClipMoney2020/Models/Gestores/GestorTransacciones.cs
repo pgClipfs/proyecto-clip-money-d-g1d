@@ -53,5 +53,53 @@ namespace ProyectoClipMoney2020.Models.Gestores
 
         }
 
+        public List<Operacion> ultimosDiezMovimientos(Operacion op)
+        {
+            var operaciones = new List<Operacion>();
+            string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
+            
+            using (SqlConnection conn = new SqlConnection(StrConn))
+            {
+                conn.Open();
+
+                SqlCommand comm = conn.CreateCommand();
+                comm.CommandText = "SEL_Ultimos10Movimientos";
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+                comm.Parameters.Add(new SqlParameter("@cvuDesde", op.cvuDesde));
+
+                SqlDataReader dr = comm.ExecuteReader();
+                while (dr.Read())
+                {
+                    var operacion = new Operacion();
+                    var tipoOperacion = new TipoOperacion()
+                    {
+                        nombreOperacion = dr.GetString(2)
+                    };
+                    var estadoOperacion = new EstadoOperacion()
+                    {
+                        nombreEstadoOperacion = dr.GetString(6)
+                    };
+
+                    operacion.idOperacion = dr.GetInt64(0);
+                    operacion.fechaOperacion = dr.GetDateTime(1);
+                    operacion.tipoOperacion = tipoOperacion;
+                    operacion.cvuDesde = dr.GetString(3);
+                    if (!dr.IsDBNull(4))
+                        operacion.cvuHasta = dr.GetString(4)?.Trim();
+                    operacion.monto = dr.GetDecimal(5);
+                    operacion.estadoOperacion = estadoOperacion;
+                    operaciones.Add(operacion);                 
+                }
+                dr.Close();
+            }
+            return operaciones;
+        }
+
+        internal IEnumerable<Operacion> ultimosDiezMovimientos()
+        {
+            throw new NotImplementedException();
+        }
+
+        
     }
 }
