@@ -90,12 +90,15 @@ export class LoginComponent implements OnInit {
 
   loginCuenta() {
     this.FormLogin.markAllAsTouched();
+    //this.modalQuienesSomosService.BloquearPantalla();
     this.authenticationService.login(this.FormLogin.controls.Usuario.value, this.FormLogin.controls.Password.value)
       .subscribe(
         data => {
+            //this.modalQuienesSomosService.DesbloquearPantalla();
                     this.router.navigate([this.returnUrl]);
         },
         error => {
+          //this.modalQuienesSomosService.DesbloquearPantalla();
           /* this.error = error; */
           this.modalLoginIncorrectoService.Alert('Verifique que los datos ingresados sean correctos. En caso de no contar con una cuenta registrese por favor.', '¡Ingreso incorrecto!', 'i');
         }

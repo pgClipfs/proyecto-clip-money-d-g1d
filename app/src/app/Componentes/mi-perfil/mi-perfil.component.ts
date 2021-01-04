@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClienteService } from '../../Servicios/cliente.service';
+import { CuentaService } from '../../Servicios/cuenta.service';
 import { Cliente } from '../../Modelos/Cliente';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -12,6 +13,7 @@ import { TipoDocumentoService } from 'src/app/Servicios/tipo-documento.service';
 import { ModalQuienesSomosService } from '../../Servicios/modal-quienes-somos.service';
 import { CommonModule } from '@angular/common';
 import { Domicilio } from 'src/app/Modelos/Domicilio';
+import { Cuenta } from 'src/app/Modelos/Cuenta';
 
 
 
@@ -28,20 +30,23 @@ export class MiPerfilComponent implements OnInit {
   Documentos: TipoDocumento[] = [];
   nombreTipoDocumento:string;
   bandera: number;
+  
  
   stringDomicilio:string;
 
   constructor(public formBuilder: FormBuilder, 
     private clienteService: ClienteService, 
+    private cuentaService: CuentaService,
     private router: Router, 
     private comp: LoginComponent, 
     private modalQuienesSomosService: ModalQuienesSomosService,
     private loginRequest: LoginRequest,
     public datepipe: DatePipe,
+    
     private tipoDocumentoService: TipoDocumentoService
     ){
       this.bandera=0;
-  
+       
   }
 
   ngOnInit()
@@ -64,8 +69,7 @@ export class MiPerfilComponent implements OnInit {
         usuario: ['']
         /*     SituacionCrediticia: [''],
             Cuentas: [''], */
-      });
-     
+      });      
       this.CargarUsuario();
       this.GetTiposDocumentos();
       
@@ -101,6 +105,7 @@ export class MiPerfilComponent implements OnInit {
       
       itemCopy.fechaNacimiento = this.datepipe.transform(res.fechaNacimiento , 'dd/MM/yyyy');    
       console.log(itemCopy);
+     
       
       //this.stringDomicilio=itemCopy.domicilio.calle+' '+itemCopy.domicilio.numero+' '+itemCopy.domicilio.localidad.provincia.nombreProvincia+' '+itemCopy.domicilio.localidad.provincia.pais.nombrePais;
       if(localStorage.getItem('domicilio')==null && itemCopy.domicilio!==null) 
@@ -147,6 +152,21 @@ export class MiPerfilComponent implements OnInit {
       const itemCopy  = {...res};
       //itemCopy.fechaNacimiento=res.fechaNacimiento;
       //const itemCopy  = {...this.FormMiPerfil.value};
+      if(itemCopy.domicilio==null || itemCopy.domicilio==undefined)
+      {
+        //const itemCopy2  = {...res};
+          var cuenta:Cuenta;
+          cuenta = {idCliente:0,Cvu:'',Alias:'',Saldo:'',Observacion:'', TipoCuenta:null,EstadoCuenta:null,Operaciones:null }
+          cuenta.idCliente=itemCopy.idCliente;
+          console.log(cuenta);
+        
+        this.cuentaService.post(cuenta).subscribe( (res: any) =>{
+        },
+        error => {
+          this.modalQuienesSomosService.Alert('Error en el registro', 'Error inesperado', 'w');
+        }       
+        );
+      }
       itemCopy.domicilio=JSON.parse(localStorage.getItem('domicilio'));
       localStorage.removeItem('domicilio');
       itemCopy.email=this.FormMiPerfil.value.email;;

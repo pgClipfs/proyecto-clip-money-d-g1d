@@ -23,6 +23,8 @@ import { MovimientosComponent } from './Componentes/movimientos/movimientos.comp
 import { MiPerfilComponent } from './Componentes/mi-perfil/mi-perfil.component';
 import { LoginRequest } from './Modelos/LoginRequest';
 import { FormDomicilioComponent } from './Componentes/form-domicilio/form-domicilio.component';
+import { MyInterceptor } from './interceptors/my-interceptor';
+import { CuentaComponent } from './Componentes/cuenta/cuenta.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { FormDomicilioComponent } from './Componentes/form-domicilio/form-domici
     TransaccionesComponent,
     MovimientosComponent,
     MiPerfilComponent,
-    FormDomicilioComponent
+    FormDomicilioComponent,
+    CuentaComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +53,7 @@ import { FormDomicilioComponent } from './Componentes/form-domicilio/form-domici
       { path: 'menu-principal', component: MenuPrincipalComponent, canActivate: [AuthGuard] },
       { path: 'form-domicilio', component: FormDomicilioComponent, canActivate: [AuthGuard] },
       { path: 'app-mi-perfil', component: MiPerfilComponent, canActivate: [AuthGuard] },
+      { path: 'cuenta-pesos', component: CuentaComponent, canActivate: [AuthGuard] },
       { path: '**', redirectTo: '/login', pathMatch: 'full' }
       ]
     ),
@@ -59,7 +63,7 @@ import { FormDomicilioComponent } from './Componentes/form-domicilio/form-domici
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
       multi: true
-  }, {provide: APP_BASE_HREF, useValue : '/'}, LoginRequest, DatePipe],
+  }, {provide: APP_BASE_HREF, useValue : '/'}, LoginRequest, DatePipe, { provide: HTTP_INTERCEPTORS, useClass: MyInterceptor, multi: true }],
   bootstrap: [InicioComponent]
 })
 export class AppModule { }

@@ -1,0 +1,106 @@
+<app-home></app-home>
+<div class="container">
+    <form name="FormCuenta" [formGroup]='FormCuenta' *ngIf="Accion == 'C'">    
+        <!--campo cvu-->
+        <div class="form-group row">
+            <label class="col-form-label col-12">CVU: </label>
+            <div class="col-12">
+                <input type="text" class="form-control" formControlName="cvu" [readonly]="true"/>
+            </div>
+        </div>
+        
+        <!-- campo alias -->
+        <div class="form-group row">
+        <label class="col-form-label col-12">Alias: </label>
+        <div class="col-12 input-group">
+            <input type="text" class="form-control" formControlName="alias" [readonly]="true"/>
+            <span class="input-group-btn">                
+                <button type="button" class="w-100 btn btn-sm btn-outline-primary" title="Modificar"(click)="formAlias()" >
+                <span class="fas fa-pencil-alt"></span>
+                </button>                   
+              </span>           
+        </div>
+    </div>
+
+        <!--campo saldo-->
+        <div class="form-group row">
+            <label class="col-form-label col-12">Saldo: </label>
+            <div class="col-12">
+                <input type="text" class="form-control" formControlName="saldo" [readonly]="true" />    
+            </div>
+        </div>
+    
+        <!--campo observacion-->
+        <div class="form-group row">
+            <label class="col-form-label col-12">Observaciones:</label>
+            <div class="col-12">
+                <div class="form-group">
+                  <label for=""></label>
+                 
+                </div>
+                <textarea class="form-control" name="" id="" rows="3" formControlName="observacion" [readonly]="true" ></textarea>
+                <!--input type="text" class="form-control" formControlName="observacion" [readonly]="true" /-->    
+            </div>
+        </div>
+    
+        <!--campo tipoCuenta-->
+        <div class="form-group row">
+            <label class="col-form-label col-12">Tipo de cuenta: </label>
+            <div class="col-12">
+                <input type="text" class="form-control" formControlName="tipoCuenta" [readonly]="true"/>                  
+            </div>
+        </div> 
+        
+        <!--campo estadoCuenta-->
+        <div class="form-group row">
+            <label class="col-form-label col-12">Estado: </label>
+            <div class="col-12">
+                <input type="text" class="form-control" formControlName="estadoCuenta" [readonly]="true"/>                  
+            </div>
+        </div>         
+    
+        <!-- Boton Volver-->
+        <div class="row justify-content-center">
+            <div class="container col-12">
+                <button type="button" class="btn btn-primary " (click)="Volver()" id="Volver">
+                    <span class="fas fa-undo"></span> Volver al menu principal
+                </button>                
+            </div>
+        </div>
+    
+    </form>
+
+    <form name="FormAlias" [formGroup]='FormAlias' *ngIf="Accion == 'A'">
+       
+        <fieldset [disabled]="Accion==='C'">
+            <!--campo Alias nuevo-->
+            <h2>Ingrese alias para la cuenta {{this.FormCuenta.value.cvu}}</h2>
+            <div class="form-group row">
+                <label class="col-form-label col-12">Nuevo alias: <span
+                        class="text-danger">*</span></label>
+                <div class="col-12">
+                    <input type="text" class="form-control" formControlName="alias"
+             [ngClass]="{'is-invalid': (FormAlias.controls.alias.touched || submitted)  
+                && FormAlias.controls.alias.errors}" />    
+                    <span class="text-danger" *ngIf="(FormAlias.controls.alias.touched || submitted) 
+                            && FormAlias.controls.alias.errors?.required">
+                        Dato requerido.
+                    </span>
+                </div>
+            </div>
+        </fieldset>
+        <div class="row justify-content-center">
+            <div class="container col-12">
+                <button type="button" class="btn btn-primary " id="grabarAlias" name="grabarAlias" (click)="grabarAlias()">
+                    <span class="fas fa-check"></span> Registrar alias
+                </button>                
+                &nbsp;
+                <button type="button" class="btn btn-danger" (click)="Cancelar()">
+                    <span class="fas fa-undo"></span> Cancelar
+                </button>
+            </div>
+        </div>
+            
+    </form>
+    
+    </div>
