@@ -1,4 +1,6 @@
-<form name="FormMiPerfil" [formGroup]='FormMiPerfil'>
+<app-home></app-home>
+<div class="container">
+    <form name="FormMiPerfil" [formGroup]='FormMiPerfil'>
 
     <!-- campo Id -->
 
@@ -8,7 +10,7 @@
     <div class="form-group row">
         <label class="col-form-label col-12">Usuario: <span class="text-danger">*</span></label>
         <div class="col-12">
-            <input type="text" class="form-control" formControlName="usuario" disabled/>
+            <input type="text" class="form-control" formControlName="usuario" [readonly]="true"/>
 
 
             <span class="text-danger" *ngIf="(FormMiPerfil.controls.usuario.touched || submitted) 
@@ -23,7 +25,7 @@
     <div class="form-group row">
         <label class="col-form-label col-12">Nombre: <span class="text-danger">*</span></label>
         <div class="col-12">
-            <input type="text" class="form-control" formControlName="nombre" />
+            <input type="text" class="form-control" formControlName="nombre" [readonly]="true"/>
 
             <span class="text-danger" *ngIf="(FormMiPerfil.controls.nombre.touched || submitted) 
                     && FormMiPerfil.controls.nombre.errors?.required">
@@ -38,7 +40,7 @@
     <div class="form-group row">
         <label class="col-form-label col-12">Apellido: <span class="text-danger">*</span></label>
         <div class="col-12">
-            <input type="text" class="form-control" formControlName="apellido" />
+            <input type="text" class="form-control" formControlName="apellido" [readonly]="true"/>
 
             <span class="text-danger" *ngIf="(FormMiPerfil.controls.apellido.touched || submitted) 
                     && FormMiPerfil.controls.apellido.errors?.required">
@@ -49,24 +51,19 @@
         </div>
     </div>
 
-    <!--campo idTipoDocumento-->
-<!--     <div class="form-group row">
-        <label class="col-form-label col-12">
-            Tipo de documento: <span class="text-danger">*</span>
-        </label>
-        <div class="col-12">
-            <select class="form-control" formControlName="tipoDocumento">
-                <option *ngFor="let opt of Documentos" [ngValue]="opt">
-                    ‌{{ opt.nombreTipoDocumento }}
-                <option>
-            </select>
-            <span class="text-danger" *ngIf="(FormMiPerfil.controls.tipoDocumento.touched || submitted) 
-                    && FormMiPerfil.controls.tipoDocumento.errors?.required">
-                Dato requerido.
-            </span>
+   <!--campo idTipoDocumento-->
+   <div class="form-group row">
+    <label class="col-form-label col-12">
+        Tipo de documento: <span class="text-danger">*</span>
+    </label>
+    <div class="col-12">
+        <select class="form-control" formControlName="tipoDocumento" >
+            <option *ngIf=(nombreTipoDocumento) selected>{{nombreTipoDocumento}}</option>
+                <option value="" hidden ></option>
+        </select>       
 
-        </div>
-    </div> -->
+    </div>
+</div> 
 
     <!--campo nroDocumento-->
     <div class="form-group row">
@@ -74,7 +71,7 @@
             Número de documento: <span class="text-danger">*</span>
         </label>
         <div class="col-12">
-            <input type="text" class="form-control" formControlName="nroDocumento" />
+            <input type="text" class="form-control" formControlName="nroDocumento" [readonly]="true"/>
             <span class="text-danger" *ngIf="(FormMiPerfil.controls.nroDocumento.touched || submitted) 
                     && FormMiPerfil.controls.nroDocumento.errors?.required">
                 Dato requerido.
@@ -88,7 +85,7 @@
     <div class="form-group row">
         <label class="col-form-label col-12">Fecha de nacimiento: <span class="text-danger">*</span></label>
         <div class="col-12">
-            <input class="form-control" formControlName="fechaNacimiento" />
+            <input class="form-control" formControlName="fechaNacimiento" [readonly]="true"/>
 
             <span class="text-danger" *ngIf="(FormMiPerfil.controls.fechaNacimiento.touched || submitted) 
                        && FormMiPerfil.controls.fechaNacimiento.errors?.required">
@@ -157,14 +154,18 @@
 
     <div class="form-group row">
         <label class="col-form-label col-12">Domicilio: <span class="text-danger">*</span></label>
-        <div class="col-12">
-            <input type="text" class="form-control" formControlName="domicilio" />
-
-
+        <div class="col-12 input-group">
+            <input type="text" class="form-control" formControlName="domicilio" [readonly]="true"[ngClass]="{'is-invalid': (FormMiPerfil.controls.domicilio.touched || submitted)  
+            && FormMiPerfil.controls.domicilio.errors}" />
+            <span class="input-group-btn">                
+                <button type="button" class="w-100 btn btn-sm btn-outline-primary" title="Modificar"(click)="formDomicilio()" >
+                <span class="fas fa-pencil-alt"></span>
+                </button>                   
+              </span>          
             <span class="text-danger" *ngIf="(FormMiPerfil.controls.domicilio.touched || submitted) 
                     && FormMiPerfil.controls.domicilio.errors?.required">
                 Dato requerido.
-            </span>
+            </span>     
 
         </div>
     </div>
@@ -189,3 +190,4 @@
     </div>
 
 </form>
+</div>
