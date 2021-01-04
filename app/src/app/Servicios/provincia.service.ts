@@ -16,4 +16,3 @@ export class ProvinciaService {
     return this.httpClient.get(this.resourceUrl+idPais);
   }
 }
-© 2021 GitHub, Inc.
