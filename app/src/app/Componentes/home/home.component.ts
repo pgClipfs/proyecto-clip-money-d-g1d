@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginRequest } from 'src/app/Modelos/LoginRequest';
 import { AuthenticationService } from 'src/app/Servicios/authentication.service';
 import { ModalQuienesSomosService } from '../../Servicios/modal-quienes-somos.service';
+import { ClienteService } from '../../Servicios/cliente.service';
 import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-home',
@@ -10,16 +11,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+ 
+  nombreCompleto:string;
+  loginRequest:LoginRequest;
 
-  returnURl: string;
-
-
-
-  constructor(private authenticationService: AuthenticationService, private modalQuienesSomosService: ModalQuienesSomosService, private router: Router) { }
+  constructor(private router: Router ,private clienteService: ClienteService, private authenticationService: AuthenticationService, private modalQuienesSomosService: ModalQuienesSomosService) { }
 
   ngOnInit(): void {
-    this.returnURl= '/app-mi-perfil';
-
+    
+    this.nombreCompleto='';
+    this.loginRequest=JSON.parse(localStorage.getItem('loginRequest'));
+    this.clienteService.postLogin(this.loginRequest).subscribe((res: any) => {
+      const itemCopy  = {...res};
+      //itemCopy.fechaNacimiento=res.fechaNacimiento;
+      this.nombreCompleto=itemCopy.nombre+' '+itemCopy.apellido;
+          
+      
+      
+    });
   }
   
  
@@ -64,11 +73,4 @@ export class HomeComponent implements OnInit {
     this.modalQuienesSomosService.Alert('MoneyClip es una billetera virtual. Accede a tu dinero rápido, fácil y en cualquier parte. Desarrollado por: Nicolas Alvarez, Jimena Bustos Paulich, Melani Crespo, Martin Diaz, Maximiliano Iglesias del Castillo, Matias LLorens, Joel Ocampo, Melania Peralta Flores, Tomas Pozzo * Programa Clip 2020 - Grupo 1D', 'Conoce a nuestro Equipo!', 'i');
   }
 
- 
-  
-  miPerfil(){
-
-    this.router.navigate([this.returnURl]);
-
-  }
 }
