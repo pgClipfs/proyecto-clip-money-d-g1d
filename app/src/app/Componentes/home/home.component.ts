@@ -21,8 +21,6 @@ export class HomeComponent implements OnInit {
     this.returnURl= '/app-mi-perfil';
 
   }
-<<<<<<< HEAD
-=======
   
  
   cuentaEnDolares()
@@ -49,7 +47,6 @@ export class HomeComponent implements OnInit {
       
     });
   }
->>>>>>> 1fc2e7c1e34889d804a6302942e5f8254646fa54
 
   Cerrar()
   {

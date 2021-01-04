@@ -85,14 +85,8 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(this.FormLogin.controls.Usuario.value, this.FormLogin.controls.Password.value)
       .subscribe(
         data => {
-<<<<<<< HEAD
-          this.loginRequest.Username=this.FormLogin.controls.Usuario.value,
-          this.loginRequest.Password=this.FormLogin.controls.Password.value,
-          this.router.navigate([this.returnUrl]);
-=======
             //this.modalQuienesSomosService.DesbloquearPantalla();
                     this.router.navigate([this.returnUrl]);
->>>>>>> 1fc2e7c1e34889d804a6302942e5f8254646fa54
         },
         error => {
           //this.modalQuienesSomosService.DesbloquearPantalla();
