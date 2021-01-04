@@ -15,7 +15,10 @@ namespace ProyectoClipMoney2020.Models.Gestores
             GestorCuenta gestorCuenta = new GestorCuenta();
             var cliente = new Cliente();
             string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
-
+            if(ploginRequest.Username == null)
+            {
+                return null;
+            }
             using (SqlConnection conn = new SqlConnection(StrConn))
             {
                 conn.Open();
@@ -95,15 +98,10 @@ namespace ProyectoClipMoney2020.Models.Gestores
                     cliente.fotoFrenteDocumento = null;//8;
                     cliente.fotoDorsoDocumento = null;//9;                  
                     cliente.tipoDocumento = tipoDocumento;
-<<<<<<< HEAD
-                    //cliente.situacionCrediticia = situacionCrediticia;
-                    cliente.fechaNacimiento = dr.GetDateTime(27);
-=======
                     
                     cliente.fechaNacimiento = dr.GetDateTime(27);                
->>>>>>> 1fc2e7c1e34889d804a6302942e5f8254646fa54
 
-                    cliente.cuentas=gestorCuenta.ObtenerCuentas(cliente.idCliente);
+                    //cliente.cuentas=gestorCuenta.ObtenerCuentas(cliente.idCliente);
 
 
                 }
@@ -247,8 +245,6 @@ namespace ProyectoClipMoney2020.Models.Gestores
             return id;
         }
 
-<<<<<<< HEAD
-=======
 
         public int crearModificarDomicilio(Cliente cliente)
         {
@@ -337,6 +333,5 @@ namespace ProyectoClipMoney2020.Models.Gestores
         }
 
 
->>>>>>> 1fc2e7c1e34889d804a6302942e5f8254646fa54
     }
 }

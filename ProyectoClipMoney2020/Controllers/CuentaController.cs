@@ -22,13 +22,9 @@ namespace ProyectoClipMoney2020.Controllers
         }
 
         // GET: api/Cuenta/5
-<<<<<<< HEAD
-        public Cuenta Get(long cvu)
-=======
         //FALTA CORS Y MAS
         [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult Get(long id)
->>>>>>> 1fc2e7c1e34889d804a6302942e5f8254646fa54
         {
             GestorCuenta gestorCuenta = new GestorCuenta();
             Cuenta cuenta = gestorCuenta.ObtenerCuentaPesosPorIdCliente(id);
