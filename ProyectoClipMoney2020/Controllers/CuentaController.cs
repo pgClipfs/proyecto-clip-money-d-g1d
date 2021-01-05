@@ -69,7 +69,7 @@ namespace ProyectoClipMoney2020.Controllers
         public IHttpActionResult PutAlias(int id, Cuenta cuenta)
         {
             GestorCuenta gestorCuenta = new GestorCuenta();
-            int boo = gestorCuenta.ActualizarCuenta(cuenta);
+            int boo = gestorCuenta.ActualizarCuenta(id, cuenta);
             if (boo == 0)
             {
                 return NotFound();
