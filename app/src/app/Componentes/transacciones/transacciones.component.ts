@@ -17,4 +17,8 @@ export class TransaccionesComponent implements OnInit {
     this.modalQuienesSomosService.Alert('En construccion');
   }
 
+  retirarDolares(){
+    this.modalQuienesSomosService.Alert('En construccion');
+  }
+
 }
