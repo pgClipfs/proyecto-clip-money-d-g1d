@@ -358,3 +358,6 @@ MigrationBackup/
 app/ssl
 app/angular.json
 app/package.json
+
+#revisar!
+applicationhost.config
