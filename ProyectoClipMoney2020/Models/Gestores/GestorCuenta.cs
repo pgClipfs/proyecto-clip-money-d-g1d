@@ -96,9 +96,29 @@ namespace ProyectoClipMoney2020.Models
             return cuentas;
         }
 
-        public int ActualizarCuenta(Cuenta cuenta)
+        public int ActualizarCuenta(int id,Cuenta cuenta)
         {
-            throw new NotImplementedException();
+            int boo = 0;            
+            string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();            
+            
+                using (SqlConnection conn = new SqlConnection(StrConn))
+                {
+                    conn.Open();
+
+                    SqlCommand comm = conn.CreateCommand();
+                    comm.CommandText = "actualizarAlias";
+                    comm.CommandType = System.Data.CommandType.StoredProcedure;
+                    //comm.Parameters.Add(new SqlParameter("@idCliente", cliente.idCliente));
+                    comm.Parameters.Add(new SqlParameter("@idCliente", id));
+                    comm.Parameters.Add(new SqlParameter("@alias", cuenta.alias));                  
+
+                    boo = Convert.ToInt32(comm.ExecuteScalar());
+
+                }
+            
+
+            return boo;
+           
         }
 
         public Cuenta ObtenerCuentaPesosPorIdCliente(long idCliente)
