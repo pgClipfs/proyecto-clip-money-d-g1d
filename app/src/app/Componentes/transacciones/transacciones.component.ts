@@ -13,9 +13,19 @@ export class TransaccionesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ingresarPesos(){
+    this.modalQuienesSomosService.Alert('ingresar pesos');
+  }
+  
   ingresarDolares(){
     this.modalQuienesSomosService.Alert('En construccion');
   }
+
+  retirarPesos(){
+    this.modalQuienesSomosService.Alert('retirar pesos');
+  }
+
+
 
   retirarDolares(){
     this.modalQuienesSomosService.Alert('En construccion');

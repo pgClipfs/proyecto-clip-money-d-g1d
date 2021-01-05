@@ -1,40 +1,61 @@
-<p>transacciones works!</p>
-<div class="container1">
-        <div class="col">
-            <div class="ingresarDinero">
-                <div class="justify-content-center">
-                    <button type="button" class="btn btn-primary w-100" (click)="ingresarDinero()">Ingresar Dinero</button>
-                </div>
-            </div>
-            <div= class="retirarDinero">
-                <div class="justify-content-center">
-                    <button type="button" class="btn btn-primary w-100" (click)="retirarDinero()">Retirar Dinero</button>
-                </div>
-            </div>
-</div>
-<div class="container2">
+<app-home></app-home>
+
+<div class="container">
+
     <div class="col">
-        <div class="ingresarPesos">
+        
+        <div id="ingresarDinero" class="dropdown">
+            <button class="btn btn-primary w-100 dropdown-toggle" type="button" data-toggle="dropdown">Ingresar Dinero
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a href="#" (click)="ingresarPesos()">Ingresar PESOS</a></li>
+                    <li><a href="#" (click)="ingresarDolares()">Ingresar DÓLARES</a></li>
+                  </ul>
+        </div>
+
+        <br>
+
+        <div id="retirarDinero" class="dropdown">
+            <button class="btn btn-primary w-100 dropdown-toggle" type="button" data-toggle="dropdown">Retirar Dinero
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a href="#" (click)="retirarPesos()">Retirar PESOS</a></li>
+                    <li><a href="#" (click)="retirarDolares()">Retirar DÓLARES</a></li>
+                  </ul>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- <div class="container">
+    <div class="col">
+        <div id="ingresarPesos">
             <div class="justify-content-center">
-                <button type="button" class="btn btn-primary w-100" (click)="ingresarPesos()">Ingresar Pesos</button>
+                <button type="button" class="btn btn-primary w-100" (click)="ingresarPesos()">Ingresar
+                    Pesos</button>
             </div>
         </div>
-        <div class="ingresarDolares">
+        <div id="ingresarDolares">
             <div class="justify-content-center">
-                <button type="button" class="btn btn-primary w-100" (click)="ingresarDolares()">Ingresar Dolares</button>
+                <button type="button" class="btn btn-primary w-100" (click)="ingresarDolares()">Ingresar
+                    Dolares</button>
             </div>
         </div>
     </div>
 </div>
+ -->
 
-<div class="container3">
+
+
+<!-- <div class="container">
     <div class="col">
-        <div class="retirarPesos">
+        <div id="retirarPesos">
             <div class="justify-content-center">
                 <button type="button" class="btn btn-primary w-100" (click)="retirarPesos()">Retirar Pesos</button>
             </div>
         </div>
-        <div class="retirarDolares">
+        <div id="retirarDolares">
             <div class="justify-content-center">
                 <button type="button" class="btn btn-primary w-100" (click)="retirarDolares()">Retirar Dolares</button>
             </div>
@@ -42,18 +63,4 @@
     </div>
 </div>
 
-            <!-- /div>
-            <div class="row">
-                <div class="card-img-overlay">
-                    <h4 class="card-title"> </h4>
-                    <p class="card-text"> </p>
-                    <button class="btn btn-primary">Retirar en Pesos</button>
-                </div>
-                <div class="card-img-overlay">
-                    <h4 class="card-title"> </h4>
-                    <p class="card-text"> </p>
-                    <button class="btn btn-primary">Retirar en Dolares</button>
-                </div>
-             
-            </div> -->
-        
+</div> -->
