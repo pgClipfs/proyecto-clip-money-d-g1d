@@ -26,6 +26,7 @@ export class MenuPrincipalComponent implements OnInit {
   this.returnURl= '/app-mi-perfil';
   this.nombreCompleto='';
   this.loginRequest=JSON.parse(localStorage.getItem('loginRequest'));
+  console.log(this.loginRequest);
   this.clienteService.postLogin(this.loginRequest).subscribe((res: any) => {
     const itemCopy  = {...res};
     //itemCopy.fechaNacimiento=res.fechaNacimiento;
