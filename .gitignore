@@ -11,3 +11,9 @@ app/package.json
 ProyectoClipMoney2020/Bundles
 
 
+# Ionide (cross platform F# VS Code tools) working folder
+.ionide/
+app/ssl
+app/package.json
+app/angular.json
+>>>>>>> 25ef4fbd53e7ab03e5be0064d2648976e94e5109

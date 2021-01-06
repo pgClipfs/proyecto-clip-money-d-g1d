@@ -10,7 +10,6 @@ using System.Web.Http.Cors;
 
 namespace ProyectoClipMoney2020.Controllers
 {
-    
     [AllowAnonymous]
     [RoutePrefix("api/transacciones")]
     public class TransaccionesController : ApiController
@@ -25,7 +24,7 @@ namespace ProyectoClipMoney2020.Controllers
             GestorCuenta gestorCuenta = new GestorCuenta();
             Cuenta cuenta;
             cuenta = gestorCuenta.ObtenerCuentaPorCvu(operacion.cvuDesde);
-            if(operacion.monto>0)
+            if (operacion.monto > 0)
             {
                 cuenta.saldo -= operacion.monto;
                 if (cuenta.saldo >= 0)
@@ -41,8 +40,8 @@ namespace ProyectoClipMoney2020.Controllers
             else
             {
                 return NotFound();
-            }          
-            
+            }
+
         }
 
         [HttpPost]
@@ -51,8 +50,8 @@ namespace ProyectoClipMoney2020.Controllers
         public IHttpActionResult RealizarDeposito(Operacion operacion)
         {
             GestorTransacciones gestorTransacciones = new GestorTransacciones();
-            
-            if(operacion.monto>0)
+
+            if (operacion.monto > 0)
             {
                 gestorTransacciones.realizarDeposito(operacion);
                 return Ok();
@@ -61,8 +60,24 @@ namespace ProyectoClipMoney2020.Controllers
             {
                 return NotFound();
             }
-            
+
         }
 
+        [HttpGet]
+        [Route("ultimos-mov")]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        public IEnumerable<Operacion> Get(Operacion op)
+        {
+            if (op.cvuDesde == null)
+                throw new HttpResponseException(HttpStatusCode.BadRequest); //error 400
+            GestorTransacciones gOperacion = new GestorTransacciones();
+            if (gOperacion.ultimosDiezMovimientos(op) == null)
+            {
+                return (IEnumerable<Operacion>)BadRequest(); //error 400
+            }
+            else {
+                return gOperacion.ultimosDiezMovimientos(op);
+            }           
+        }
     }
 }

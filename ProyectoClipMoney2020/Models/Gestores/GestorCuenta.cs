@@ -249,4 +249,3 @@ namespace ProyectoClipMoney2020.Models
         }
     }
 }
-

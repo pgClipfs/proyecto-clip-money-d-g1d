@@ -25,6 +25,9 @@ import { LoginRequest } from './Modelos/LoginRequest';
 import { FormDomicilioComponent } from './Componentes/form-domicilio/form-domicilio.component';
 import { MyInterceptor } from './interceptors/my-interceptor';
 import { CuentaComponent } from './Componentes/cuenta/cuenta.component';
+import { RecuperarPasswordComponent } from './Componentes/recuperar-password/recuperar-password.component';
+import { NewPasswordComponent } from './Componentes/new-password/new-password.component';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +41,9 @@ import { CuentaComponent } from './Componentes/cuenta/cuenta.component';
     MovimientosComponent,
     MiPerfilComponent,
     FormDomicilioComponent,
-    CuentaComponent
+    CuentaComponent,
+    RecuperarPasswordComponent,
+    NewPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -55,11 +60,16 @@ import { CuentaComponent } from './Componentes/cuenta/cuenta.component';
       { path: 'app-mi-perfil', component: MiPerfilComponent, canActivate: [AuthGuard] },
       { path: 'cuenta-pesos', component: CuentaComponent, canActivate: [AuthGuard] },
       { path: 'transacciones', component: TransaccionesComponent, canActivate: [AuthGuard] },
+      { path: 'recuperar-password', component: RecuperarPasswordComponent },
+      { path: 'new-password', component: NewPasswordComponent },
 
       { path: '**', redirectTo: '/login', pathMatch: 'full' }
       ]
     ),
 
+  ],
+  exports: [
+    RecuperarPasswordComponent
   ],
   providers: [{
       provide: HTTP_INTERCEPTORS,

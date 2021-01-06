@@ -26,7 +26,6 @@ namespace ProyectoClipMoney2020.Models.Gestores
                 while (dr.Read())
                 {
                     var pais = new Pais();
-                   
                     pais.idPais = dr.GetInt32(0);
                     pais.nombrePais = dr.GetString(1);
 
@@ -85,17 +84,17 @@ namespace ProyectoClipMoney2020.Models.Gestores
                 SqlCommand comm = new SqlCommand("obtenerLocalidades", conn);
                 comm.CommandType = System.Data.CommandType.StoredProcedure;
                 comm.Parameters.Add(new SqlParameter("@idProvincia", idProvincia));
-                
-                
+
+
 
                 SqlDataReader dr = comm.ExecuteReader();
 
                 while (dr.Read())
                 {
                     var localidad = new Localidad();
-                    localidad.idLocalidad=dr.GetInt64(0);
-                    localidad.nombreLocalidad= dr.GetString(1);
-                    localidad.codigoPostal= dr.GetString(2);
+                    localidad.idLocalidad = dr.GetInt64(0);
+                    localidad.nombreLocalidad = dr.GetString(1);
+                    localidad.codigoPostal = dr.GetString(2);
                     var pais = new Pais()
                     {
                         idPais = dr.GetInt32(3),

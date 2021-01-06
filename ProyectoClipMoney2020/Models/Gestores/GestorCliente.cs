@@ -15,7 +15,7 @@ namespace ProyectoClipMoney2020.Models.Gestores
             GestorCuenta gestorCuenta = new GestorCuenta();
             var cliente = new Cliente();
             string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
-            if(ploginRequest.Username == null)
+            if (ploginRequest.Username == null)
             {
                 return null;
             }
@@ -51,7 +51,7 @@ namespace ProyectoClipMoney2020.Models.Gestores
                     {
                         idNacionalidad = dr.GetInt32(10),
                         descripcionNacionalidad = dr.GetString(11)
-                    };*/                    
+                    };*/
                     if (!dr.IsDBNull(14))
                     {
                         var pais = new Pais()
@@ -98,8 +98,8 @@ namespace ProyectoClipMoney2020.Models.Gestores
                     cliente.fotoFrenteDocumento = null;//8;
                     cliente.fotoDorsoDocumento = null;//9;                  
                     cliente.tipoDocumento = tipoDocumento;
-                    
-                    cliente.fechaNacimiento = dr.GetDateTime(27);                
+
+                    cliente.fechaNacimiento = dr.GetDateTime(27);
 
                     //cliente.cuentas=gestorCuenta.ObtenerCuentas(cliente.idCliente);
 
@@ -125,7 +125,7 @@ namespace ProyectoClipMoney2020.Models.Gestores
 
                 SqlCommand comm = new SqlCommand("obtenerClienteConId", conn);
                 comm.CommandType = System.Data.CommandType.StoredProcedure;
-                comm.Parameters.Add(new SqlParameter("@idCliente", idCliente));                
+                comm.Parameters.Add(new SqlParameter("@idCliente", idCliente));
 
                 SqlDataReader dr = comm.ExecuteReader();
                 if (dr.Read())
@@ -141,11 +141,11 @@ namespace ProyectoClipMoney2020.Models.Gestores
                         idTipoDocumento = dr.GetByte(12),
                         nombreTipoDocumento = dr.GetString(13)
                     };
-                    
+
                     var pais = new Pais()
                     {
                         idPais = dr.GetInt32(23),
-                        nombrePais=dr.GetString(24)
+                        nombrePais = dr.GetString(24)
                     };
                     var provincia = new Provincia()
                     {
@@ -171,8 +171,8 @@ namespace ProyectoClipMoney2020.Models.Gestores
                         numero = dr.GetString(16),
                         barrio = dr.GetString(17),
                         codigoPostal = dr.GetString(18),
-                        localidad = localidad                        
-                        
+                        localidad = localidad
+
                     };
 
                     var situacionCrediticia = new SituacionCrediticia()
@@ -194,7 +194,7 @@ namespace ProyectoClipMoney2020.Models.Gestores
                     cliente.tipoDocumento = tipoDocumento;
                     cliente.domicilio = domicilio;
                     cliente.situacionCrediticia = situacionCrediticia;
-                   
+
                     cliente.fechaNacimiento = dr.GetDateTime(27);
 
                     cliente.cuentas = gestorCuenta.ObtenerCuentas(cliente.idCliente);
@@ -212,15 +212,15 @@ namespace ProyectoClipMoney2020.Models.Gestores
         {
             int id = 0;
             string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
-          
-                
+
+
 
             using (SqlConnection conn = new SqlConnection(StrConn))
             {
                 conn.Open();
 
                 SqlCommand comm = conn.CreateCommand();
-                comm.CommandText="registrarCliente";
+                comm.CommandText = "registrarCliente";
                 comm.CommandType = System.Data.CommandType.StoredProcedure;
                 //comm.Parameters.Add(new SqlParameter("@idCliente", cliente.idCliente));
                 comm.Parameters.Add(new SqlParameter("@usuario", cliente.usuario));
@@ -229,7 +229,7 @@ namespace ProyectoClipMoney2020.Models.Gestores
                 comm.Parameters.Add(new SqlParameter("@apellido", cliente.apellido));
                 comm.Parameters.Add(new SqlParameter("@nroDocumento", cliente.nroDocumento));
                 comm.Parameters.Add(new SqlParameter("@email", cliente.email));
-                comm.Parameters.Add(new SqlParameter("@telefono", cliente.telefono));               
+                comm.Parameters.Add(new SqlParameter("@telefono", cliente.telefono));
                 // comm.Parameters.Add(new SqlParameter("@idNacionalidad", cliente.nacionalidad.idNacionalidad));
                 comm.Parameters.Add(new SqlParameter("@idTipoDocumento", cliente.tipoDocumento.idTipoDocumento));
                 //comm.Parameters.Add(new SqlParameter("@idDomicilio", cliente.domicilio.idDomicilio));
@@ -237,10 +237,10 @@ namespace ProyectoClipMoney2020.Models.Gestores
                 comm.Parameters.Add(new SqlParameter("@fechaNacimiento", cliente.ObtenerFecha()));
 
                 id = Convert.ToInt32(comm.ExecuteScalar());
-                
-              
 
-                
+
+
+
             }
             return id;
         }
@@ -249,9 +249,9 @@ namespace ProyectoClipMoney2020.Models.Gestores
         public int crearModificarDomicilio(Cliente cliente)
         {
             int boo = 0;
-            if (cliente.domicilio.idDomicilio==0)
-            { 
-            
+            if (cliente.domicilio.idDomicilio == 0)
+            {
+
 
                 string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
 
@@ -260,7 +260,6 @@ namespace ProyectoClipMoney2020.Models.Gestores
                     conn.Open();
 
                     SqlCommand comm = conn.CreateCommand();
-                
                     comm.CommandText = "crearDomicilio";
                     comm.CommandType = System.Data.CommandType.StoredProcedure;
                     //comm.Parameters.Add(new SqlParameter("@idCliente", cliente.idCliente));
@@ -272,7 +271,7 @@ namespace ProyectoClipMoney2020.Models.Gestores
 
                     boo = Convert.ToInt32(comm.ExecuteScalar());
 
-                }            
+                }
             }
             else
             {
@@ -306,28 +305,28 @@ namespace ProyectoClipMoney2020.Models.Gestores
             int boo = 0;
 
             string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
-            int boo2=this.crearModificarDomicilio(cliente);
-            if(boo2!=0)
-            { 
-            using (SqlConnection conn = new SqlConnection(StrConn))
+            int boo2 = this.crearModificarDomicilio(cliente);
+            if (boo2 != 0)
             {
-                conn.Open();
+                using (SqlConnection conn = new SqlConnection(StrConn))
+                {
+                    conn.Open();
 
-                SqlCommand comm = conn.CreateCommand();
-                comm.CommandText = "actualizarCliente";
-                comm.CommandType = System.Data.CommandType.StoredProcedure;
-                //comm.Parameters.Add(new SqlParameter("@idCliente", cliente.idCliente));
-                comm.Parameters.Add(new SqlParameter("@idCliente", cliente.idCliente));
-                comm.Parameters.Add(new SqlParameter("@email", cliente.email));
-                comm.Parameters.Add(new SqlParameter("@telefono", cliente.telefono));
-                comm.Parameters.Add(new SqlParameter("@idDomicilio", boo2));
+                    SqlCommand comm = conn.CreateCommand();
+                    comm.CommandText = "actualizarCliente";
+                    comm.CommandType = System.Data.CommandType.StoredProcedure;
+                    //comm.Parameters.Add(new SqlParameter("@idCliente", cliente.idCliente));
+                    comm.Parameters.Add(new SqlParameter("@idCliente", cliente.idCliente));
+                    comm.Parameters.Add(new SqlParameter("@email", cliente.email));
+                    comm.Parameters.Add(new SqlParameter("@telefono", cliente.telefono));
+                    comm.Parameters.Add(new SqlParameter("@idDomicilio", boo2));
 
-                boo = Convert.ToInt32(comm.ExecuteScalar());
-
-
+                    boo = Convert.ToInt32(comm.ExecuteScalar());
 
 
-            }
+
+
+                }
             }
             return boo;
         }

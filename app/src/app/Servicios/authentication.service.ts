@@ -12,7 +12,7 @@ export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<LoginRequest>;
   public currentUser: Observable<LoginRequest>;
   resourceUrl: string;
-  constructor(private httpClient: HttpClient,private loginRequest:LoginRequest) {
+  constructor(private httpClient: HttpClient, private loginRequest:LoginRequest) {
     this.currentUserSubject = new BehaviorSubject<LoginRequest>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
     this.resourceUrl='https://localhost:44368/api/login/authenticate';

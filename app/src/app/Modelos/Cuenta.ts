@@ -12,7 +12,6 @@ export class Cuenta {
     EstadoCuenta: EstadoCuenta;
     Operaciones: Operacion[];
     idCliente: number;
-    
 
   }
 
