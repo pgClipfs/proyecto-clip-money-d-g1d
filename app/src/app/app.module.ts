@@ -15,9 +15,19 @@ import { AuthGuard } from './helpers/auth.guard';
 
 
 
-import { APP_BASE_HREF } from '@angular/common';
+import { APP_BASE_HREF, DatePipe } from '@angular/common';
 import { ModalQuienesSomosComponent } from './Componentes/modal-quienes-somos/modal-quienes-somos.component';
 import { ModalLoginIncorrectoComponent } from './Componentes/modal-login-incorrecto/modal-login-incorrecto.component';
+import { TransaccionesComponent } from './Componentes/transacciones/transacciones.component';
+import { MovimientosComponent } from './Componentes/movimientos/movimientos.component';
+import { MiPerfilComponent } from './Componentes/mi-perfil/mi-perfil.component';
+import { LoginRequest } from './Modelos/LoginRequest';
+import { FormDomicilioComponent } from './Componentes/form-domicilio/form-domicilio.component';
+import { MyInterceptor } from './interceptors/my-interceptor';
+import { CuentaComponent } from './Componentes/cuenta/cuenta.component';
+import { RecuperarPasswordComponent } from './Componentes/recuperar-password/recuperar-password.component';
+import { NewPasswordComponent } from './Componentes/new-password/new-password.component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +36,14 @@ import { ModalLoginIncorrectoComponent } from './Componentes/modal-login-incorre
     MenuPrincipalComponent,
     InicioComponent,
     ModalQuienesSomosComponent,
-    ModalLoginIncorrectoComponent
+    ModalLoginIncorrectoComponent,
+    TransaccionesComponent,
+    MovimientosComponent,
+    MiPerfilComponent,
+    FormDomicilioComponent,
+    CuentaComponent,
+    RecuperarPasswordComponent,
+    NewPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -39,16 +56,26 @@ import { ModalLoginIncorrectoComponent } from './Componentes/modal-login-incorre
       { path: '', redirectTo: '/login', pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
       { path: 'menu-principal', component: MenuPrincipalComponent, canActivate: [AuthGuard] },
+      { path: 'form-domicilio', component: FormDomicilioComponent, canActivate: [AuthGuard] },
+      { path: 'app-mi-perfil', component: MiPerfilComponent, canActivate: [AuthGuard] },
+      { path: 'cuenta-pesos', component: CuentaComponent, canActivate: [AuthGuard] },
+      { path: 'transacciones', component: TransaccionesComponent, canActivate: [AuthGuard] },
+      { path: 'recuperar-password', component: RecuperarPasswordComponent },
+      { path: 'new-password', component: NewPasswordComponent },
+
       { path: '**', redirectTo: '/login', pathMatch: 'full' }
       ]
     ),
 
   ],
+  exports: [
+    RecuperarPasswordComponent
+  ],
   providers: [{
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
       multi: true
-  }, {provide: APP_BASE_HREF, useValue : '/'}],
+  }, {provide: APP_BASE_HREF, useValue : '/'}, LoginRequest, DatePipe, { provide: HTTP_INTERCEPTORS, useClass: MyInterceptor, multi: true }],
   bootstrap: [InicioComponent]
 })
 export class AppModule { }

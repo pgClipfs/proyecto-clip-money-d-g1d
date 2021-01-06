@@ -1,0 +1,190 @@
+<app-home></app-home>
+<div class="container">
+<form name="FormMiPerfil" [formGroup]='FormMiPerfil'>
+
+    <!--campo usuario-->
+    <div class="form-group row">
+        <label class="col-form-label col-12">Usuario: <span class="text-danger">*</span></label>
+        <div class="col-12">
+            <input type="text" class="form-control" formControlName="usuario" [readonly]="true"/>
+
+
+            <span class="text-danger" *ngIf="(FormMiPerfil.controls.usuario.touched || submitted) 
+                    && FormMiPerfil.controls.usuario.errors?.required">
+                Dato requerido.
+            </span>
+
+        </div>
+    </div>
+
+    <!--campo nombre-->
+    <div class="form-group row">
+        <label class="col-form-label col-12">Nombre: <span class="text-danger">*</span></label>
+        <div class="col-12">
+            <input type="text" class="form-control" formControlName="nombre" [readonly]="true" />
+
+            <span class="text-danger" *ngIf="(FormMiPerfil.controls.nombre.touched || submitted) 
+                    && FormMiPerfil.controls.nombre.errors?.required">
+                Dato requerido.
+            </span>
+
+
+        </div>
+    </div>
+
+    <!--campo apellido-->
+    <div class="form-group row">
+        <label class="col-form-label col-12">Apellido: <span class="text-danger">*</span></label>
+        <div class="col-12">
+            <input type="text" class="form-control" formControlName="apellido"[readonly]="true" />
+
+            <span class="text-danger" *ngIf="(FormMiPerfil.controls.apellido.touched || submitted) 
+                    && FormMiPerfil.controls.apellido.errors?.required">
+                Dato requerido.
+            </span>
+
+
+        </div>
+    </div>
+
+    <!--campo idTipoDocumento-->
+    <div class="form-group row">
+        <label class="col-form-label col-12">
+            Tipo de documento: <span class="text-danger">*</span>
+        </label>
+        <div class="col-12">
+            <select class="form-control" formControlName="tipoDocumento" >
+                <option *ngIf=(nombreTipoDocumento) selected>{{nombreTipoDocumento}}</option>
+                    <option value="" hidden ></option>
+            </select>       
+
+        </div>
+    </div> 
+
+    <!--campo nroDocumento-->
+    <div class="form-group row">
+        <label class="col-form-label col-12">
+            Número de documento: <span class="text-danger">*</span>
+        </label>
+        <div class="col-12">
+            <input type="text" class="form-control" formControlName="nroDocumento"[readonly]="true" />
+            <span class="text-danger" *ngIf="(FormMiPerfil.controls.nroDocumento.touched || submitted) 
+                    && FormMiPerfil.controls.nroDocumento.errors?.required">
+                Dato requerido.
+            </span>
+
+
+        </div>
+    </div>
+
+    <!--campo fechaNacimiento-->
+    <div class="form-group row">
+        <label class="col-form-label col-12">Fecha de nacimiento: <span class="text-danger">*</span></label>
+        <div class="col-12">
+            <input class="form-control" formControlName="fechaNacimiento" [readonly]="true"/>
+
+            <span class="text-danger" *ngIf="(FormMiPerfil.controls.fechaNacimiento.touched || submitted) 
+                       && FormMiPerfil.controls.fechaNacimiento.errors?.required">
+                Dato requerido.
+            </span>
+            <span class="text-danger" *ngIf="FormMiPerfil.controls.fechaNacimiento.errors?.pattern">
+                Dato fecha, formato dd/mm/aaaa.
+            </span>
+        </div>
+    </div>
+
+    <!--campo idNacionalidad-->
+<!--     <div class="form-group row">
+        <label class="col-form-label col-12">
+            Nacionalidad: <span class="text-danger">*</span>
+        </label>
+        <br>
+        <div class="col-12">
+            <select class="form-control" formControlName="nacionalidad" [ngClass]="{'is-invalid': (FormMiPerfil.controls.nacionalidad.touched || submitted)  
+        && FormMiPerfil.controls.nacionalidad.errors}">
+                <option *ngFor="let opt of Documentos" [ngValue]="opt.Nacionalidad">
+                    ‌{{ opt.NombreTipoDocumento }}
+                <option>
+            </select>
+            <span class="text-danger" *ngIf="(FormMiPerfil.controls.nacionalidad.touched || submitted) 
+                    && FormMiPerfil.controls.nacionalidad.errors?.required">
+                Dato requerido.
+            </span>
+        </div>
+    </div> -->
+
+    <!--campo email-->
+    <div class="form-group row">
+        <label class="col-form-label col-12">Email: <span class="text-danger">*</span></label>
+        <div class="col-12">
+            <input type="text" class="form-control" formControlName="email" [ngClass]="{'is-invalid': (FormMiPerfil.controls.email.touched || submitted)  
+        && FormMiPerfil.controls.email.errors}" />
+
+            <span class="text-danger" *ngIf="(FormMiPerfil.controls.email.touched || submitted) 
+                    && FormMiPerfil.controls.email.errors?.required">
+                Dato requerido.
+            </span>
+
+
+        </div>
+    </div>
+
+    <!--campo telefono-->
+    <div class="form-group row">
+        <label class="col-form-label col-12">
+            Teléfono <span class="text-danger">*</span>
+        </label>
+        <div class="col-12">
+            <input type="text" class="form-control" formControlName="telefono" [ngClass]="{'is-invalid': (FormMiPerfil.controls.telefono.touched || submitted)  
+        && FormMiPerfil.controls.telefono.errors}" />
+            <span class="text-danger" *ngIf="(FormMiPerfil.controls.telefono.touched || submitted) 
+                    && FormMiPerfil.controls.telefono.errors?.required">
+                Dato requerido.
+            </span>
+
+
+        </div>
+    </div>
+
+    <!-- campo domicilio -->
+    <div class="form-group row">
+        <label class="col-form-label col-12">Domicilio: <span class="text-danger">*</span></label>
+        <div class="col-12 input-group">
+            &nbsp;
+            <input type="text" class="form-control" formControlName="domicilio" [readonly]="true"[ngClass]="{'is-invalid': (FormMiPerfil.controls.domicilio.touched || submitted)  
+            && FormMiPerfil.controls.domicilio.errors}" />
+            &nbsp;
+            <span class="input-group-btn">                
+                <button type="button" class="w-100 btn btn-sm btn-outline-primary" title="Modificar"(click)="formDomicilio()" >
+                <span class="fas fa-pencil-alt"></span>
+                </button>                   
+              </span>          
+            <span class="text-danger" *ngIf="(FormMiPerfil.controls.domicilio.touched || submitted) 
+                    && FormMiPerfil.controls.domicilio.errors?.required">
+                Dato requerido.
+            </span>     
+
+        </div>
+    </div>
+
+    <!-- campo pais -->
+
+    <!-- campo provincia -->
+
+    <!-- campo localidad -->
+
+    <!-- Botones Grabar, Cancelar/Volver' -->
+    <div class="row justify-content-center">
+        <div class="container col-12">
+            <button type="button" class="btn btn-primary " (click)="Grabar()" id="Grabar">
+                <span class="fas fa-check"></span> Guardar Cambios
+            </button>
+            &nbsp;
+            <button type="button" class="btn btn-danger" (click)="cancelar()">
+                <span class="fas fa-undo"></span> Cancelar y volver a Menú principal
+            </button>
+        </div>
+    </div>
+
+</form>
+</div>

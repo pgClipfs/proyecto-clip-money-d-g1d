@@ -1,33 +1,110 @@
 <app-home></app-home>
-<div class="container">
 
+
+<div class="container justify-content-center" id="contenedor_principal" >
+    <h2 class="w-100 usuario-home text-success">Hola! {{nombreCompleto}}</h2>
     <div class="container">
-        <div class="card" style="width: 80%">
+        <div class="card" style="width: 90%">
             <div class="row no-gutters">
-                <div class="col-sm-5">
+                <div class="col-sm-5" *ngIf='active==1'>
+                    <img id="advertencia" src="assets/img/success.jpg" class="card-img-top" alt="advertencia">
+               </div>
+                <div class="col-sm-5" *ngIf='active==0'>
                     <img id="advertencia" src="assets/img/advertencia.png" class="card-img-top" alt="advertencia">
                 </div>
                 <div class="col-sm-7" id="advertenciaText">
-                    <div class="card-body">
+                    <div class="card-body">                        
+                        <p class="card-text" *ngIf='active==0'>Para ACTIVAR tu cuenta, completa tus datos en</p>
+                        <p class="card-text text-success font-weight-bold" *ngIf='active==1'>Cuenta activa.</p>
+                        <button class="btn btn-primary" (click)=miPerfil()>Mi Perfil</button>
+                    </div>
+                </div>               
+            </div>
+        </div>
+    </div>   
+
+    <!-- 
+    <div class="container">
+            <div class="card bg-light mb-3 mt-2 border-0" id="dineroDisponible" style="width: 90%">
+                <div class="card-body">
+                    <h5 class="card-title">Dinero disponible</h5>
+                    <p class="card-text">$0</p>
+                </div>
+            </div>
+        </div>  -->
+    <a class="enlace btn " (click)="cuentaEnPesos()">  
+        <div class="boton_dineroDisponible">
+            <div class="container">
+                <div class="card img-fluid border-0" style="width: 90%">
+                    <img class="card-img-top" src="assets/img/cuentapesos.jpg" alt="cuenta pesos" style="width:100%">
+                </div>
+            </div> 
+        </div>
+    </a>
+    <a (click)="cuentaEnDolares()" class="enlace btn">
+        <div class="boton_dineroDisponible">
+            <div class="container">
+                <div class="card img-fluid border-0" style="width: 90%">
+                    <img class="card-img-top" src="assets/img/cuentadolares.jpg" alt="cuenta dolares" style="width:100%">
+                </div>
+            </div> 
+        </div>
+    </a>
+    <a routerLink="/transacciones" class="enlace" >
+        <div class="boton_dineroDisponible">
+            <div class="container">
+                <div class="card img-fluid border-0" style="width: 90%">
+                    <img class="card-img-top" src="assets/img/transacciones.jpg" alt="transacciones" style="width:100%">
+                </div>
+            </div> 
+        </div>
+    </a>
+    <a href="https://www.google.com/"  class="enlace">
+        <div class="boton_dineroDisponible">
+            <div class="container">
+                <div class="card img-fluid border-0" style="width: 90%">
+                    <img class="card-img-top" src="assets/img/movimientos.jpg" alt="movimientos" style="width:100%">
+                </div>
+            </div> 
+        </div>
+    </a>
+
+
+</div>
+
+<!--div class="container">
+    
+    <div class="container">
+        <h2 class="w-100 usuario-home text-success">Hola! {{nombreCompleto}}</h2>
+        <div class="card" style="width: 80%">
+            <div class="row no-gutters">
+                <div class="col-sm-5" *ngIf='active==1'>
+                    <img id="advertencia" src="assets/img/success.jpg" class="card-img-top" alt="advertencia">
+                </div>
+                <div class="col-sm-5" *ngIf='active==0'>
+                    <img id="advertencia" src="assets/img/advertencia.png" class="card-img-top" alt="advertencia">
+                </div>
+                <div class="col-sm-7" id="advertenciaText">
+                    <div class="card-body"-->
                         <!-- <h5 class="card-title"> </h5> -->
-                        <p class="card-text">Para ACTIVAR tu cuenta, completa tus datos en</p>
-                        <button class="btn btn-primary">Mi Perfil</button>
+                        <!--p class="card-text" *ngIf='active==0'>Para ACTIVAR tu cuenta, completa tus datos en</p>
+                        <p class="card-text text-success font-weight-bold" *ngIf='active==1'>Cuenta activa.</p>
+                        <button class="btn btn-primary" (click)=miPerfil()>Mi Perfil</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
+    
     <div class="container">
-        <div class="card bg-light mb-3 mt-2" id="dineroDisponible" style="width: 80%">
+        <div class="card bg-light mb-3 mt-2" id="dineroDisponible" style="width: 80%"-->
             <!-- <div class="card-header"></div> -->
-            <div class="card-body">
+            <!--div class="card-body">
                 <h5 class="card-title">Dinero disponible</h5>
                 <p class="card-text">$0</p>
             </div>
         </div>
     </div>
-
     <div class="container">
         <div class="card img-fluid" style="width: 80%">
             <img class="card-img-top" src="assets/img/chico-celu.png" alt="Operaciones" style="width:100%">
@@ -38,7 +115,6 @@
             </div>
         </div>
     </div>
-
     <div class="container">
         <div class="card img-fluid" style="width: 80%">
             <img class="card-img-top" src="assets/img/chica-shop.png" alt="Historial" style="width:100%">
@@ -49,7 +125,6 @@
             </div>
         </div>
     </div>
-
     <div class="container">
         <div class="card img-fluid" style="width: 80%">
             <img class="card-img-top" src="assets/img/chanchito.png" alt="Cuentas" style="width:100%">
@@ -60,5 +135,4 @@
             </div>
         </div>
     </div>
-
-</div>
+</div-->

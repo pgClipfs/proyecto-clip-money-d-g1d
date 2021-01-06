@@ -1,25 +1,64 @@
-
-#advertencia{
+#advertencia {
     width: 100px;
     padding: 10px;
     margin: 10px;
-}
-
-button{
+  }
+  
+  button {
     color: #5e5b52;
     font-size: 20px;
     font-weight: bold;
     background: none;
     border: none;
     float: right;
-}
-
-#dineroDisponible{
+  }
+  
+  #dineroDisponible {
     text-align: right;
-}
-
-#advertenciaText{
+  }
+  
+  #advertenciaText {
     text-align: right;
-}
-
-
+  }
+  
+  /* #contenedor_principal{
+    display: flex;
+    flex-direction: column;
+  justify-content: center;
+  } */
+  
+  .container {
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+  }
+  a a.enlace {
+    margin: 0;
+    padding: 0;
+  }
+  /* .boton_dineroDisponible{
+   width: 80%;
+    height: 150px;
+   background-repeat:no-repeat;
+   background-size: 100%;
+  } */
+  
+  /* @media only screen and (max-width: 600px) {
+    .boton_dineroDisponible{
+        width: 70%;
+         height: 150px;
+        background-image: url(/assets/img/chico-celu.png);
+        background-repeat:no-repeat;
+        background-size: 100%;
+     }
+  } */
+  
+  .navbar .navbar-nav {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .navbar {
+    margin-bottom: 50px;
+  }
