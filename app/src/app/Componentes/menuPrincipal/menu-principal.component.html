@@ -6,21 +6,21 @@
     <h2 class="w-100 usuario-home text-success">Hola! {{nombreCompleto}}</h2>
 
     <div class="container">
-        <div class="card" style="width: 90%">
-            <div class="row no-gutters">
-                <div class="col-sm-5" *ngIf='active==1'>
+        <div class="card"  id="advertencia_container" style="width: 90%">
+            <div class="row no-gutters" id="advertencia_container_2">
+                <span class="col" *ngIf='active==1'>
                     <img id="advertencia" src="assets/img/success.jpg" class="card-img-top" alt="advertencia">
-               </div>
-                <div class="col-sm-5" *ngIf='active==0'>
+                </span>
+                <span class="col" *ngIf='active==0'>
                     <img id="advertencia" src="assets/img/advertencia.png" class="card-img-top" alt="advertencia">
-                </div>
-                <div class="col-sm-7" id="advertenciaText">
-                    <div class="card-body">                        
+                </span>
+                <span class="col" id="advertenciaText">
+                    <span class="card-body">                        
                         <p class="card-text" *ngIf='active==0'>Para ACTIVAR tu cuenta, completa tus datos en</p>
-                        <p class="card-text text-success font-weight-bold" *ngIf='active==1'>Cuenta activa.</p>
+                        <p class="card-text text-success font-weight-bold" *ngIf='active==1'>Cuenta activa</p>
                         <button class="btn btn-primary" (click)=miPerfil()>Mi Perfil</button>
-                    </div>
-                </div>               
+                    </span>
+                </span>               
             </div>
         </div>
     </div>   
