@@ -8,10 +8,16 @@
     margin-bottom: 50px;
   }
 
+  #advertencia_container{
+  padding:10px;
+  display: flexbox;
+  flex-direction: column;
+}
+
+
 #advertencia {
-    width: 100px;
-    padding: 10px;
-    margin: 10px;
+    width: 70px;
+    margin-top: 10px;
   }
 
 button {
@@ -48,3 +54,5 @@ button {
 .card-img-top{
   width: 100%;
 }
+
+
