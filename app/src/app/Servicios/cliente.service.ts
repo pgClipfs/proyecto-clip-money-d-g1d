@@ -11,7 +11,7 @@ export class ClienteService {
   resourceUrl: string;
   constructor(private httpClient: HttpClient)
   {
-    this.resourceUrl='https://localhost:44368/api/cliente';
+    this.resourceUrl='https://localhost:44368/api/cliente/';
   }
 
 

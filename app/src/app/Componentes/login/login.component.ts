@@ -9,6 +9,7 @@ import { AuthenticationService } from 'src/app/Servicios/authentication.service'
 import { ClienteService } from 'src/app/Servicios/cliente.service';
 import { stringify } from '@angular/compiler/src/util';
 import { LoginRequest } from 'src/app/Modelos/LoginRequest';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,6 +17,7 @@ import { LoginRequest } from 'src/app/Modelos/LoginRequest';
 })
 export class LoginComponent implements OnInit {
 
+ 
   TituloAccionABMC = {
     R: 'Registrarse',
     C: 'Iniciar sesión',
@@ -30,8 +32,10 @@ export class LoginComponent implements OnInit {
     RD: 'Revisar los datos ingresados...'
   };
   returnUrl: string;
-  recuperarPass: string;
   error = '';
+  
+ 
+  
   constructor
   (
     public formBuilder: FormBuilder,
@@ -43,7 +47,10 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private loginRequest: LoginRequest
-  ) { }
+    //private loginRequest: LoginRequest
+  ) { 
+    
+  }
 
   ngOnInit() {
     this.FormLogin = this.formBuilder.group({
@@ -60,23 +67,23 @@ export class LoginComponent implements OnInit {
       NroDocumento: ['', [Validators.required]],
       Email: ['', [Validators.required]],
       Telefono: ['', [Validators.required]],      
-      FechaNacimiento: ['', [Validators.required, Validators.pattern('(0[1-9]|[12][0-9]|3[01])[-/](0[1-9]|1[012])[-/](19|20)[0-9]{2}')]]
+      FechaNacimiento: ['', [Validators.required,, Validators.pattern('(0[1-9]|[12][0-9]|3[01])[-/](0[1-9]|1[012])[-/](19|20)[0-9]{2}')]]
     });
-
+    
     // this.GetTokerLogin();  
     //Nacionalidad: ['', [Validators.required]],
-    this.returnUrl = '/menu-principal';
-    this.recuperarPass = '/recuperar-password';
+    
+    
+    this.returnUrl='/menu-principal';
 
     //set de manera default usuario y contraseña
-    this.loginRequest.Username='Default';
-    this.loginRequest.Password='Default';
+  
   }
 
   GetTiposDocumentos() {
     this.tipoDocumentoService.get().subscribe((res: TipoDocumento[]) => {
       this.Documentos = res;
-      console.log(this.Documentos);
+      
     });
   }
 
@@ -108,10 +115,7 @@ export class LoginComponent implements OnInit {
       ).toISOString();
   } */
 
-  forgotPassword() {
-    this.router.navigate([this.recuperarPass]);
-  }
-
+  
   crearCliente() {
     this.FormRegistro.reset();
     this.AccionABMC = 'R';
@@ -196,7 +200,8 @@ export class LoginComponent implements OnInit {
   }
 
   getLogin(): LoginRequest
-  {
-    return this.loginRequest;
+    {   
+    
+    return JSON.parse(localStorage.getItem('loginRequest'));
   }
 }

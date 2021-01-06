@@ -1,5 +1,6 @@
 <app-home></app-home>
 
+
 <div class="container justify-content-center" id="contenedor_principal" >
     <h2 class="w-100 usuario-home text-success">Hola! {{nombreCompleto}}</h2>
     <div class="container">
@@ -49,7 +50,7 @@
             </div> 
         </div>
     </a>
-    <a href="https://www.google.com/"  class="enlace" >
+    <a routerLink="/transacciones" class="enlace" >
         <div class="boton_dineroDisponible">
             <div class="container">
                 <div class="card img-fluid border-0" style="width: 90%">
@@ -74,12 +75,12 @@
 <!--div class="container">
     
     <div class="container">
-        <div class="card" style="width: 90%">
+        <h2 class="w-100 usuario-home text-success">Hola! {{nombreCompleto}}</h2>
+        <div class="card" style="width: 80%">
             <div class="row no-gutters">
                 <div class="col-sm-5" *ngIf='active==1'>
                     <img id="advertencia" src="assets/img/success.jpg" class="card-img-top" alt="advertencia">
                 </div>
-
                 <div class="col-sm-5" *ngIf='active==0'>
                     <img id="advertencia" src="assets/img/advertencia.png" class="card-img-top" alt="advertencia">
                 </div>
@@ -88,10 +89,7 @@
                     <div class="card-body"-->
                         <!-- <h5 class="card-title"> </h5> -->
                         <!--p class="card-text" *ngIf='active==0'>Para ACTIVAR tu cuenta, completa tus datos en</p>
-
                         <p class="card-text text-success font-weight-bold" *ngIf='active==1'>Cuenta activa.</p>
-
-
                         <button class="btn btn-primary" (click)=miPerfil()>Mi Perfil</button>
                     </div>
                 </div>
@@ -107,13 +105,35 @@
                 <p class="card-text">$0</p>
             </div>
         </div>
-    
+    </div>
     <div class="container">
-            <div class="card bg-light mb-3 mt-2 border-0" id="dineroDisponible" style="width: 90%">
-                <div class="card-body">
-                    <h5 class="card-title">Dinero disponible</h5>
-                    <p class="card-text">$0</p>
-                </div>
+        <div class="card img-fluid" style="width: 80%">
+            <img class="card-img-top" src="assets/img/chico-celu.png" alt="Operaciones" style="width:100%">
+            <div class="card-img-overlay">
+                <h4 class="card-title"> </h4>
+                <p class="card-text"> </p>
+                <button class="btn btn-primary">Operaciones</button>
             </div>
-        </div>  -->
-    
+        </div>
+    </div>
+    <div class="container">
+        <div class="card img-fluid" style="width: 80%">
+            <img class="card-img-top" src="assets/img/chica-shop.png" alt="Historial" style="width:100%">
+            <div class="card-img-overlay">
+                <h4 class="card-title"> </h4>
+                <p class="card-text"> </p>
+                <button class="btn btn-primary">Historial</button>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card img-fluid" style="width: 80%">
+            <img class="card-img-top" src="assets/img/chanchito.png" alt="Cuentas" style="width:100%">
+            <div class="card-img-overlay">
+                <h4 class="card-title"> </h4>
+                <p class="card-text"> </p>
+                <button class="btn btn-primary">Cuentas</button>
+            </div>
+        </div>
+    </div>
+</div-->
