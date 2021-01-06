@@ -70,23 +70,27 @@ namespace ProyectoClipMoney2020.Models
             Correo.Priority = MailPriority.Normal;
 
             SmtpClient ServerEmail = new SmtpClient();
-            ServerEmail.Credentials = new NetworkCredential("bclipmoney1d@gmail.com", "Mayonesa_42");
             ServerEmail.Host = "smtp.gmail.com";
             ServerEmail.Port = 587;
             ServerEmail.EnableSsl = true;
+            ServerEmail.DeliveryMethod = SmtpDeliveryMethod.Network;
+            ServerEmail.UseDefaultCredentials = false;
+            ServerEmail.Credentials = new NetworkCredential("bclipmoney1d@gmail.com", "Mayonesa_42");
             try
             {
                 ServerEmail.Send(Correo);
-                Correo.Dispose();
                 correoEnviado = true;
                 return correoEnviado;
             }
             catch (Exception e)
             {
                 Console.Write(e);
-                Correo.Dispose();
                 correoEnviado = false;
                 return correoEnviado;
+            }
+            finally
+            {
+                Correo.Dispose();
             }
         }
 

@@ -70,7 +70,7 @@ export class RecuperarPasswordComponent implements OnInit {
           //this.modalQuienesSomosService.Alert().close;
           this.router.navigate([this.returnNewPassword]);
         },
-        5000);
+        3000);
       },
       error => {
         /* this.error = error; */
