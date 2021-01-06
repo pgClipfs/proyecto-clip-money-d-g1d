@@ -355,7 +355,10 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
->>>>>>> 3e815da5f02c0d172a642ff6d1b080fa1a96a92a
 app/ssl
 app/package.json
 app/angular.json
+<<<<<<< HEAD
+=======
+>>>>>>> 4c21c2b283ff88f440517250306656bbbd7d12f9
+>>>>>>> d3f9108510fb7bc3d967d3faa12544d4e43f0df5
