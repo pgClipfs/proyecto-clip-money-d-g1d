@@ -157,10 +157,16 @@
 
     <div class="form-group row">
         <label class="col-form-label col-12">Domicilio: <span class="text-danger">*</span></label>
-        <div class="col-12">
-            <input type="text" class="form-control" formControlName="domicilio" />
-
-
+        <div class="col-12 input-group">
+            &nbsp;
+            <input type="text" class="form-control" formControlName="domicilio" [readonly]="true"[ngClass]="{'is-invalid': (FormMiPerfil.controls.domicilio.touched || submitted)  
+            && FormMiPerfil.controls.domicilio.errors}" />
+            &nbsp;
+            <span class="input-group-btn">                
+                <button type="button" class="w-100 btn btn-sm btn-outline-primary" title="Modificar"(click)="formDomicilio()" >
+                <span class="fas fa-pencil-alt"></span>
+                </button>                   
+              </span>          
             <span class="text-danger" *ngIf="(FormMiPerfil.controls.domicilio.touched || submitted) 
                     && FormMiPerfil.controls.domicilio.errors?.required">
                 Dato requerido.

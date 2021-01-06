@@ -22,8 +22,9 @@ import { TransaccionesComponent } from './Componentes/transacciones/transaccione
 import { MovimientosComponent } from './Componentes/movimientos/movimientos.component';
 import { MiPerfilComponent } from './Componentes/mi-perfil/mi-perfil.component';
 import { LoginRequest } from './Modelos/LoginRequest';
-import { NewPasswordComponent } from './Componentes/new-password/new-password.component';
-import { RecuperarPasswordComponent } from './Componentes/recuperar-password/recuperar-password.component';
+import { FormDomicilioComponent } from './Componentes/form-domicilio/form-domicilio.component';
+import { MyInterceptor } from './interceptors/my-interceptor';
+import { CuentaComponent } from './Componentes/cuenta/cuenta.component';
 
 @NgModule({
   declarations: [
@@ -36,8 +37,8 @@ import { RecuperarPasswordComponent } from './Componentes/recuperar-password/rec
     TransaccionesComponent,
     MovimientosComponent,
     MiPerfilComponent,
-    NewPasswordComponent,
-    RecuperarPasswordComponent
+    FormDomicilioComponent,
+    CuentaComponent
   ],
   imports: [
     BrowserModule,
@@ -51,21 +52,22 @@ import { RecuperarPasswordComponent } from './Componentes/recuperar-password/rec
       { path: 'login', component: LoginComponent },
       { path: 'menu-principal', component: MenuPrincipalComponent, canActivate: [AuthGuard] },
       { path: 'app-mi-perfil', component: MiPerfilComponent, canActivate: [AuthGuard] },
-      { path: 'recuperar-password', component: RecuperarPasswordComponent },
-      { path: 'new-password', component: NewPasswordComponent },
+      { path: 'cuenta-pesos', component: CuentaComponent, canActivate: [AuthGuard] },
+      { path: 'transacciones', component: TransaccionesComponent, canActivate: [AuthGuard] },
+
       { path: '**', redirectTo: '/login', pathMatch: 'full' }
       ]
     ),
 
   ],
-  exports: [
+ /*  exports: [
     RecuperarPasswordComponent
-  ],
+  ], */
   providers: [{
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
       multi: true
-  }, {provide: APP_BASE_HREF, useValue : '/'}, LoginRequest],
+  }, {provide: APP_BASE_HREF, useValue : '/'}, LoginRequest, DatePipe, { provide: HTTP_INTERCEPTORS, useClass: MyInterceptor, multi: true }],
   bootstrap: [InicioComponent]
 })
 export class AppModule { }
