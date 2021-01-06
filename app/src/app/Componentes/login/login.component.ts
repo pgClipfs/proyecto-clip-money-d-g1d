@@ -115,10 +115,7 @@ export class LoginComponent implements OnInit {
       ).toISOString();
   } */
 
-  forgotPassword() {
-    alert('redirigir a recuperar contraseña');
-  }
-
+  
   crearCliente() {
     this.FormRegistro.reset();
     this.AccionABMC = 'R';
