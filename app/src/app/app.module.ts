@@ -25,12 +25,9 @@ import { LoginRequest } from './Modelos/LoginRequest';
 import { FormDomicilioComponent } from './Componentes/form-domicilio/form-domicilio.component';
 import { MyInterceptor } from './interceptors/my-interceptor';
 import { CuentaComponent } from './Componentes/cuenta/cuenta.component';
-<<<<<<< HEAD
-=======
 import { RecuperarPasswordComponent } from './Componentes/recuperar-password/recuperar-password.component';
 import { NewPasswordComponent } from './Componentes/new-password/new-password.component';
 
->>>>>>> 4c21c2b283ff88f440517250306656bbbd7d12f9
 
 @NgModule({
   declarations: [
