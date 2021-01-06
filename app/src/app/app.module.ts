@@ -22,10 +22,11 @@ import { TransaccionesComponent } from './Componentes/transacciones/transaccione
 import { MovimientosComponent } from './Componentes/movimientos/movimientos.component';
 import { MiPerfilComponent } from './Componentes/mi-perfil/mi-perfil.component';
 import { LoginRequest } from './Modelos/LoginRequest';
-import { NewPasswordComponent } from './Componentes/new-password/new-password.component';
-import { RecuperarPasswordComponent } from './Componentes/recuperar-password/recuperar-password.component';
 import { FormDomicilioComponent } from './Componentes/form-domicilio/form-domicilio.component';
-import { pipe } from 'rxjs';
+import { MyInterceptor } from './interceptors/my-interceptor';
+import { CuentaComponent } from './Componentes/cuenta/cuenta.component';
+import { RecuperarPasswordComponent } from './Componentes/recuperar-password/recuperar-password.component';
+import { NewPasswordComponent } from './Componentes/new-password/new-password.component';
 
 
 @NgModule({
@@ -39,9 +40,10 @@ import { pipe } from 'rxjs';
     TransaccionesComponent,
     MovimientosComponent,
     MiPerfilComponent,
-    NewPasswordComponent,
+    FormDomicilioComponent,
+    CuentaComponent,
     RecuperarPasswordComponent,
-    FormDomicilioComponent
+    NewPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -54,10 +56,13 @@ import { pipe } from 'rxjs';
       { path: '', redirectTo: '/login', pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
       { path: 'menu-principal', component: MenuPrincipalComponent, canActivate: [AuthGuard] },
+      { path: 'form-domicilio', component: FormDomicilioComponent, canActivate: [AuthGuard] },
       { path: 'app-mi-perfil', component: MiPerfilComponent, canActivate: [AuthGuard] },
+      { path: 'cuenta-pesos', component: CuentaComponent, canActivate: [AuthGuard] },
+      { path: 'transacciones', component: TransaccionesComponent, canActivate: [AuthGuard] },
       { path: 'recuperar-password', component: RecuperarPasswordComponent },
       { path: 'new-password', component: NewPasswordComponent },
-      { path: 'form-domicilio', component: FormDomicilioComponent, canActivate: [AuthGuard] },
+
       { path: '**', redirectTo: '/login', pathMatch: 'full' }
       ]
     ),
@@ -70,7 +75,7 @@ import { pipe } from 'rxjs';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
       multi: true
-  }, {provide: APP_BASE_HREF, useValue : '/'}, LoginRequest, DatePipe],
+  }, {provide: APP_BASE_HREF, useValue : '/'}, LoginRequest, DatePipe, { provide: HTTP_INTERCEPTORS, useClass: MyInterceptor, multi: true }],
   bootstrap: [InicioComponent]
 })
 export class AppModule { }
