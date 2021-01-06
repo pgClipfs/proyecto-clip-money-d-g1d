@@ -9,6 +9,7 @@ import { AuthenticationService } from 'src/app/Servicios/authentication.service'
 import { ClienteService } from 'src/app/Servicios/cliente.service';
 import { stringify } from '@angular/compiler/src/util';
 import { LoginRequest } from 'src/app/Modelos/LoginRequest';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,6 +17,7 @@ import { LoginRequest } from 'src/app/Modelos/LoginRequest';
 })
 export class LoginComponent implements OnInit {
 
+ 
   TituloAccionABMC = {
     R: 'Registrarse',
     C: 'Iniciar sesión',
@@ -30,8 +32,10 @@ export class LoginComponent implements OnInit {
     RD: 'Revisar los datos ingresados...'
   };
   returnUrl: string;
-  recuperarPass: string;
   error = '';
+  
+ 
+  
   constructor
   (
     public formBuilder: FormBuilder,
@@ -43,7 +47,10 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private loginRequest: LoginRequest
-  ) { }
+    //private loginRequest: LoginRequest
+  ) { 
+    
+  }
 
   ngOnInit() {
     this.FormLogin = this.formBuilder.group({
@@ -60,35 +67,41 @@ export class LoginComponent implements OnInit {
       NroDocumento: ['', [Validators.required]],
       Email: ['', [Validators.required]],
       Telefono: ['', [Validators.required]],      
-      FechaNacimiento: ['', [Validators.required,Validators.minLength(10), Validators.maxLength(10)]]
+      FechaNacimiento: ['', [Validators.required,, Validators.pattern('(0[1-9]|[12][0-9]|3[01])[-/](0[1-9]|1[012])[-/](19|20)[0-9]{2}')]]
     });
-
+    
     // this.GetTokerLogin();  
     //Nacionalidad: ['', [Validators.required]],
-    this.returnUrl = '/menu-principal';
-    this.recuperarPass = '/recuperar-password';
+    
+    
+    this.returnUrl='/menu-principal';
 
     //set de manera default usuario y contraseña
-    // this.loginRequest.Username='Default';
-    // this.loginRequest.Password='Default';
+  
   }
 
   GetTiposDocumentos() {
     this.tipoDocumentoService.get().subscribe((res: TipoDocumento[]) => {
       this.Documentos = res;
+      
     });
   }
 
 
   loginCuenta() {
     this.FormLogin.markAllAsTouched();
+    //this.modalQuienesSomosService.BloquearPantalla();
     this.authenticationService.login(this.FormLogin.controls.Usuario.value, this.FormLogin.controls.Password.value)
       .subscribe(
         data => {
-          this.router.navigate([this.returnUrl]);
-          },
+            //this.modalQuienesSomosService.DesbloquearPantalla();
+                    this.router.navigate([this.returnUrl]);
+        },
         error => {
-          }
+          //this.modalQuienesSomosService.DesbloquearPantalla();
+          /* this.error = error; */
+          this.modalLoginIncorrectoService.Alert('Verifique que los datos ingresados sean correctos. En caso de no contar con una cuenta registrese por favor.', '¡Ingreso incorrecto!', 'i');
+        }
       );
   }
 
@@ -102,10 +115,7 @@ export class LoginComponent implements OnInit {
       ).toISOString();
   } */
 
-  forgotPassword() {
-    this.router.navigate([this.recuperarPass]);
-  }
-
+  
   crearCliente() {
     this.FormRegistro.reset();
     this.AccionABMC = 'R';
@@ -125,33 +135,21 @@ export class LoginComponent implements OnInit {
     let edad= (<HTMLInputElement>document.getElementById("FechaNacimiento")).value;
     let fecha = new Date();
     let fNac = new Date(edad);
-    let anioNac = fNac.getFullYear();
-    let anioString = anioNac.toString();
-    let anioHoy = fecha.getFullYear();
-    let edadFinal = anioHoy - anioNac;
-    let difMes = fecha.getMonth() - fNac.getMonth();
-    let diaNac = fNac.getDate()+1;
-    
-    // (difMes === 0  && fecha.getDate() <= diaNac))
-      if(anioString.length === 4 && edadFinal >= 18){
-        if(difMes <= 0 && (fecha.getDate() < diaNac)){
-          document.getElementById("matchEdad").innerHTML = '';
-          document.getElementById("noMatchEdad").innerHTML = 'Es requerido ser mayor de edad.';
-          let botonGrabar = (<HTMLInputElement>document.getElementById("Grabar")).disabled = true;          
-        }
+    let edadFinal = fecha.getFullYear() - fNac.getFullYear();
 
-        else{
-          document.getElementById("matchEdad").innerHTML = '';
-          document.getElementById("noMatchEdad").innerHTML = '';
-          let botonGrabar = (<HTMLInputElement>document.getElementById("Grabar")).disabled = false;
-        
-        }
-        }
-      else{
-        document.getElementById("noMatchEdad").innerHTML = 'Es requerido ser mayor de edad.';
-        let botonGrabar = (<HTMLInputElement>document.getElementById("Grabar")).disabled = true
-      }
-      }
+    if(edadFinal >=18){
+      document.getElementById("matchEdad").innerHTML = '';
+      document.getElementById("noMatchEdad").innerHTML = '';
+      let botonGrabar = (<HTMLInputElement>document.getElementById("Grabar")).disabled = false;
+    }
+    else{
+      document.getElementById("matchEdad").innerHTML = '';
+      document.getElementById("noMatchEdad").innerHTML = 'Es requerido ser mayor de edad.';
+      let botonGrabar = (<HTMLInputElement>document.getElementById("Grabar")).disabled = true;
+    }
+
+
+  }
 
   Grabar() {
     //this.FormRegistro.markAllAsTouched();
@@ -165,13 +163,13 @@ export class LoginComponent implements OnInit {
     //crea una copia de los datos del formulario para cambiar la fecha
     const itemCopy  = {...this.FormRegistro.value};
 
-    // var arrFecha = itemCopy.FechaNacimiento.substr(0,10).split('/');
-    // if(arrFecha.length == 3)
-    //   itemCopy.FechaNacimiento = new Date (
-    //     arrFecha[2],
-    //     arrFecha[1]-1,
-    //     arrFecha[0]
-    //   ).toISOString();
+    var arrFecha = itemCopy.FechaNacimiento.substr(0,10).split('/');
+    if(arrFecha.length == 3)
+      itemCopy.FechaNacimiento = new Date (
+        arrFecha[2],
+        arrFecha[1]-1,
+        arrFecha[0]
+      ).toISOString();
 
     if(itemCopy.IdCliente==0||itemCopy.IdCliente==null)
     {
@@ -202,7 +200,8 @@ export class LoginComponent implements OnInit {
   }
 
   getLogin(): LoginRequest
-  {
+    {   
+    
     return JSON.parse(localStorage.getItem('loginRequest'));
   }
 }
