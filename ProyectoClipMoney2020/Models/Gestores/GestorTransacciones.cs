@@ -73,20 +73,25 @@ namespace ProyectoClipMoney2020.Models.Gestores
                     var operacion = new Operacion();
                     var tipoOperacion = new TipoOperacion()
                     {
-                        nombreOperacion = dr.GetString(2)
+                        idTipoOperacion = dr.GetByte(3),
+                        nombreOperacion = dr.GetString(4)
+
                     };
                     var estadoOperacion = new EstadoOperacion()
                     {
+                        idEstadoOeracion= dr.GetByte(5),
                         nombreEstadoOperacion = dr.GetString(6)
                     };
 
                     operacion.idOperacion = dr.GetInt64(0);
                     operacion.fechaOperacion = dr.GetDateTime(1);
+                    operacion.monto = dr.GetDecimal(2);
                     operacion.tipoOperacion = tipoOperacion;
-                    operacion.cvuDesde = dr.GetString(3);
-                    if (!dr.IsDBNull(4))
-                        operacion.cvuHasta = dr.GetString(4)?.Trim();
-                    operacion.monto = dr.GetDecimal(5);
+                    operacion.cvuDesde = dr.GetString(7);
+                    
+                    if (!dr.IsDBNull(8))
+                        operacion.cvuHasta = dr.GetString(8)?.Trim();
+                    
                     operacion.estadoOperacion = estadoOperacion;
                     operaciones.Add(operacion);                 
                 }

@@ -62,15 +62,16 @@ import { NewPasswordComponent } from './Componentes/new-password/new-password.co
       { path: 'transacciones', component: TransaccionesComponent, canActivate: [AuthGuard] },
       { path: 'recuperar-password', component: RecuperarPasswordComponent },
       { path: 'new-password', component: NewPasswordComponent },
+      { path: 'movimientos', component: MovimientosComponent},
 
       { path: '**', redirectTo: '/login', pathMatch: 'full' }
       ]
     ),
 
   ],
-  exports: [
+ /*  exports: [
     RecuperarPasswordComponent
-  ],
+  ], */
   providers: [{
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,

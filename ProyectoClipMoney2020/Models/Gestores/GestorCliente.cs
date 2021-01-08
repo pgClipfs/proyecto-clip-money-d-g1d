@@ -103,6 +103,8 @@ namespace ProyectoClipMoney2020.Models.Gestores
 
                     //cliente.cuentas=gestorCuenta.ObtenerCuentas(cliente.idCliente);
 
+/*                     cliente.cuentas=gestorCuenta.ObtenerCuentas(cliente.idCliente);
+ */
 
                 }
 
@@ -260,7 +262,6 @@ namespace ProyectoClipMoney2020.Models.Gestores
                     conn.Open();
 
                     SqlCommand comm = conn.CreateCommand();
-
                     comm.CommandText = "crearDomicilio";
                     comm.CommandType = System.Data.CommandType.StoredProcedure;
                     //comm.Parameters.Add(new SqlParameter("@idCliente", cliente.idCliente));
