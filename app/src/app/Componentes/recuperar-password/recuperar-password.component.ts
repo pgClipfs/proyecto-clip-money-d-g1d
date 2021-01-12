@@ -63,18 +63,18 @@ export class RecuperarPasswordComponent implements OnInit {
     this.RecuperarPasswordService.post(this.FormRecuperarPassword.controls.Email.value)
     .subscribe(
       data => {
-        this.modalQuienesSomosService.Alert('Se envió exitosamente el correo para recuperar su contraseña. Recuerde revisar la carpeta de spam', '', 's');
+        this.modalQuienesSomosService.Alert('Se envió exitosamente el correo para recuperar su contraseña. Recuerde revisar la carpeta de spam', '¡Éxito!', 's');
         localStorage.setItem("datoUsuario", JSON.stringify((<HTMLInputElement>document.getElementById("Email")).value));
         setTimeout(() => 
         {
           //this.modalQuienesSomosService.Alert().close;
           this.router.navigate([this.returnNewPassword]);
         },
-        5000);
+        3000);
       },
       error => {
         /* this.error = error; */
-        this.modalLoginIncorrectoService.Alert('Verifique que el email ingresado sea correcto. En caso de no contar con una cuenta registrese por favor.', '', 'i');
+        this.modalLoginIncorrectoService.Alert('Verifique que el email ingresado sea correcto. En caso de no contar con una cuenta registrese por favor.', '¡Atención!', 'i');
         localStorage.setItem("datoUsuario", JSON.stringify((<HTMLInputElement>document.getElementById("Email")).value));
       }
     );
