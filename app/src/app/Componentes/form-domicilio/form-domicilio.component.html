@@ -7,18 +7,18 @@
             Pais: <span class="text-danger">*</span>
         </label>
         <div class="col-12">
-            <select  class="form-control" formControlName="pais" (change)='cargarProvincias()'
-            [ngClass]="{'is-invalid': (FormDomicilio.controls.pais.touched || submitted)  
-            && FormDomicilio.controls.pais.errors}" >
+            <select  class="form-control" formControlName="Pais" (change)='cargarProvincias()'
+            [ngClass]="{'is-invalid': (FormDomicilio.controls.Pais.touched || submitted)  
+            && FormDomicilio.controls.Pais.errors}" >
                 <option *ngFor="let opt of Paises" [ngValue]="opt.idPais">
                     ‌{{ opt.nombrePais}}
                 <option>
             </select>
-            <span class="text-danger" *ngIf="(FormDomicilio.controls.pais.touched || submitted) 
-                    && FormDomicilio.controls.pais.errors?.required">
+            <span class="text-danger" *ngIf="(FormDomicilio.controls.Pais.touched || submitted) 
+                    && FormDomicilio.controls.Pais.errors?.required">
                 Dato requerido.
             </span>
-          
+
         </div>
       </div>
        <!--campo idProvincia-->
@@ -27,18 +27,18 @@
             Provincia: <span class="text-danger">*</span>
         </label>
         <div class="col-12">
-            <select  class="form-control" formControlName="provincia"  (change)='cargarLocalidades()'
-            [ngClass]="{'is-invalid': (FormDomicilio.controls.provincia.touched || submitted)  
-            && FormDomicilio.controls.provincia.errors}" >
+            <select  class="form-control" formControlName="Provincia"  (change)='cargarLocalidades()'
+            [ngClass]="{'is-invalid': (FormDomicilio.controls.Provincia.touched || submitted)  
+            && FormDomicilio.controls.Provincia.errors}" >
                 <option *ngFor="let opt of Provincias" [ngValue]="opt.idProvincia">
                     ‌{{ opt.nombreProvincia }}
                 <option>
             </select>
-            <span class="text-danger" *ngIf="(FormDomicilio.controls.provincia.touched || submitted) 
-                    && FormDomicilio.controls.provincia.errors?.required">
+            <span class="text-danger" *ngIf="(FormDomicilio.controls.Provincia.touched || submitted) 
+                    && FormDomicilio.controls.Provincia.errors?.required">
                 Dato requerido.
             </span>
-          
+
         </div>
       </div>
       <!--campo idLocalidad-->
@@ -47,18 +47,18 @@
             Localidad: <span class="text-danger">*</span>
         </label>
         <div class="col-12">
-            <select  class="form-control" formControlName="localidad" 
-            [ngClass]="{'is-invalid': (FormDomicilio.controls.localidad.touched || submitted)  
-            && FormDomicilio.controls.localidad.errors}" >
-                <option *ngFor="let opt of Localidades" [ngValue]="opt.idLocalidad">
+            <select  class="form-control" formControlName="Localidad" 
+            [ngClass]="{'is-invalid': (FormDomicilio.controls.Localidad.touched || submitted)  
+            && FormDomicilio.controls.Localidad.errors}" >
+                <option *ngFor="let opt of Localidades" [ngValue]="opt">
                     ‌{{ opt.nombreLocalidad }}
                 <option>
             </select>
-            <span class="text-danger" *ngIf="(FormDomicilio.controls.localidad.touched || submitted) 
-                    && FormDomicilio.controls.localidad.errors?.required">
+            <span class="text-danger" *ngIf="(FormDomicilio.controls.Localidad.touched || submitted) 
+                    && FormDomicilio.controls.Localidad.errors?.required">
                 Dato requerido.
             </span>
-          
+
         </div>
       </div>
     <!--campo calle-->
@@ -66,11 +66,11 @@
         <label class="col-form-label col-12">Calle: <span
         class="text-danger">*</span></label>
         <div class="col-12">
-            <input type="text" class="form-control" formControlName="calle"
-            [ngClass]="{'is-invalid': (FormDomicilio.controls.calle.touched || submitted)  
-            && FormDomicilio.controls.calle.errors}" />
-            <span class="text-danger" *ngIf="(FormDomicilio.controls.calle.touched || submitted) 
-            && FormDomicilio.controls.calle.errors?.required">
+            <input type="text" class="form-control" formControlName="Calle"
+            [ngClass]="{'is-invalid': (FormDomicilio.controls.Calle.touched || submitted)  
+            && FormDomicilio.controls.Calle.errors}" />
+            <span class="text-danger" *ngIf="(FormDomicilio.controls.Calle.touched || submitted) 
+            && FormDomicilio.controls.Calle.errors?.required">
             Dato requerido.
             </span>         
         </div>

@@ -31,10 +31,9 @@ namespace ProyectoClipMoney2020.Models.Gestores
                 SqlDataReader dr = comm.ExecuteReader();
                 if (dr.Read())
                 {
-                    cliente = new Cliente();
-                    /*Nacionalidad nacionalidad = new Nacionalidad()
+                    /*var nacionalidad = new Nacionalidad()
                     {
-                        idNacionalidad = dr.GetByte(10),
+                        idNacionalidad = dr.GetInt32(10),
                         descripcionNacionalidad = dr.GetString(11)
                     };*/
                     var tipoDocumento = new TipoDocumento()
@@ -42,51 +41,25 @@ namespace ProyectoClipMoney2020.Models.Gestores
                         idTipoDocumento = dr.GetByte(12),
                         nombreTipoDocumento = dr.GetString(13)
                     };
-                    /*var situacionCrediticia = new SituacionCrediticia()
+                    /*var localidad = new Localidad()
                     {
-                        idNivel = dr.GetInt64(25),
-                        descripcionNivel = dr.GetString(26)
+                        idLocalidad = dr.GetInt32(15),
+                        nombreLocalidad = dr.GetString(16)
                     };
-                    var nacionalidad = new Nacionalidad()
+                    var domicilio = new Domicilio()
                     {
-                        idNacionalidad = dr.GetInt32(10),
-                        descripcionNacionalidad = dr.GetString(11)
+                        idDomicilio = dr.GetInt32(14),
+                        localidad = localidad,
+                        calle = dr.GetString(17),
+                        barrio = dr.GetString(18),
+                        codigoPostal = dr.GetString(19),
+                        numero = dr.GetString(20)
+                    };
+                    var situacionCrediticia = new SituacionCrediticia()
+                    {
+                        idNivel = dr.GetInt32(21),
+                        descripcionNivel = dr.GetString(22)
                     };*/
-                    if (!dr.IsDBNull(14))
-                    {
-                        var pais = new Pais()
-                        {
-                            idPais = dr.GetInt32(23),
-                            nombrePais = dr.GetString(24)
-                        };
-                        var provincia = new Provincia()
-                        {
-                            idProvincia = dr.GetInt32(21),
-                            nombreProvincia = dr.GetString(22),
-                            pais = pais
-
-                        };
-                        var localidad = new Localidad()
-                        {
-                            idLocalidad = dr.GetInt64(19),
-                            nombreLocalidad = dr.GetString(20),
-                            codigoPostal = dr.GetString(18),
-                            provincia = provincia
-
-                        };
-                        var domicilio = new Domicilio()
-                        {
-                            idDomicilio = dr.GetInt32(14),
-                            calle = dr.GetString(15),
-                            numero = dr.GetString(16),
-                            barrio = dr.GetString(17),
-                            codigoPostal = dr.GetString(18),
-                            localidad = localidad
-
-                        };
-
-                        cliente.domicilio = domicilio;
-                    }
                     cliente.idCliente = dr.GetInt64(0);
                     cliente.usuario = dr.GetString(1).Trim();
                     cliente.passEncriptada = dr.GetString(2).Trim();
@@ -96,15 +69,15 @@ namespace ProyectoClipMoney2020.Models.Gestores
                     cliente.email = dr.GetString(6);
                     cliente.telefono = dr.GetInt64(7);
                     cliente.fotoFrenteDocumento = null;//8;
-                    cliente.fotoDorsoDocumento = null;//9;                  
+                    cliente.fotoDorsoDocumento = null;//9;                    
+                    //cliente.nacionalidad=nacionalidad;                   
                     cliente.tipoDocumento = tipoDocumento;
-
+                    //cliente.situacionCrediticia = situacionCrediticia;
                     cliente.fechaNacimiento = dr.GetDateTime(27);
+
 
                     //cliente.cuentas=gestorCuenta.ObtenerCuentas(cliente.idCliente);
 
-/*                     cliente.cuentas=gestorCuenta.ObtenerCuentas(cliente.idCliente);
- */
 
                 }
 
@@ -251,55 +224,31 @@ namespace ProyectoClipMoney2020.Models.Gestores
         public int crearModificarDomicilio(Cliente cliente)
         {
             int boo = 0;
-            if (cliente.domicilio.idDomicilio == 0)
+
+            string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
+
+            using (SqlConnection conn = new SqlConnection(StrConn))
             {
+                conn.Open();
+
+                SqlCommand comm = conn.CreateCommand();
+
+                comm.CommandText = "crearDomicilio";
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+                //comm.Parameters.Add(new SqlParameter("@idCliente", cliente.idCliente));
+                comm.Parameters.Add(new SqlParameter("@idLocalidad", cliente.domicilio.localidad.idLocalidad));
+                comm.Parameters.Add(new SqlParameter("@calle", cliente.domicilio.calle));
+                comm.Parameters.Add(new SqlParameter("@barrio", cliente.domicilio.barrio));
+                comm.Parameters.Add(new SqlParameter("@codigoPostal", cliente.domicilio.codigoPostal));
+                comm.Parameters.Add(new SqlParameter("@numero", cliente.domicilio.numero));
+
+                boo = Convert.ToInt32(comm.ExecuteScalar());
 
 
-                string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
 
-                using (SqlConnection conn = new SqlConnection(StrConn))
-                {
-                    conn.Open();
-
-                    SqlCommand comm = conn.CreateCommand();
-                    comm.CommandText = "crearDomicilio";
-                    comm.CommandType = System.Data.CommandType.StoredProcedure;
-                    //comm.Parameters.Add(new SqlParameter("@idCliente", cliente.idCliente));
-                    comm.Parameters.Add(new SqlParameter("@idLocalidad", cliente.domicilio.localidad.idLocalidad));
-                    comm.Parameters.Add(new SqlParameter("@calle", cliente.domicilio.calle));
-                    comm.Parameters.Add(new SqlParameter("@barrio", cliente.domicilio.barrio));
-                    comm.Parameters.Add(new SqlParameter("@codigoPostal", cliente.domicilio.codigoPostal));
-                    comm.Parameters.Add(new SqlParameter("@numero", cliente.domicilio.numero));
-
-                    boo = Convert.ToInt32(comm.ExecuteScalar());
-
-                }
-            }
-            else
-            {
-                boo = cliente.domicilio.idDomicilio;
-                string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
-
-                using (SqlConnection conn = new SqlConnection(StrConn))
-                {
-                    conn.Open();
-
-                    SqlCommand comm = conn.CreateCommand();
-
-                    comm.CommandText = "actualizarDomicilio";
-                    comm.CommandType = System.Data.CommandType.StoredProcedure;
-                    //comm.Parameters.Add(new SqlParameter("@idCliente", cliente.idCliente));
-                    comm.Parameters.Add(new SqlParameter("@idDomicilio", cliente.domicilio.idDomicilio));
-                    comm.Parameters.Add(new SqlParameter("@idLocalidad", cliente.domicilio.localidad.idLocalidad));
-                    comm.Parameters.Add(new SqlParameter("@calle", cliente.domicilio.calle));
-                    comm.Parameters.Add(new SqlParameter("@barrio", cliente.domicilio.barrio));
-                    comm.Parameters.Add(new SqlParameter("@codigoPostal", cliente.domicilio.codigoPostal));
-                    comm.Parameters.Add(new SqlParameter("@numero", cliente.domicilio.numero));
-                    comm.ExecuteScalar();
-
-                }
 
             }
+
             return boo;
         }
         public int actualizarCliente(Cliente cliente)

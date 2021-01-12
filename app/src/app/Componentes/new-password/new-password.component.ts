@@ -136,7 +136,7 @@ export class NewPasswordComponent implements OnInit {
         {
           this.router.navigate([this.returnLogin]);
         },
-        3000);
+        5000);
         
         //localStorage.removeItem("datoUsuario");
       },

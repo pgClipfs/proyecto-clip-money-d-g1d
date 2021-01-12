@@ -10,6 +10,7 @@ using System.Web.Http.Cors;
 
 namespace ProyectoClipMoney2020.Controllers
 {
+
     [AllowAnonymous]
     [RoutePrefix("api/transacciones")]
     public class TransaccionesController : ApiController
@@ -63,22 +64,21 @@ namespace ProyectoClipMoney2020.Controllers
 
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("ultimos-mov")]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public IHttpActionResult PostOperaciones(Operacion op)
+        public IEnumerable<Operacion> Get(Operacion op)
         {
             if (op.cvuDesde == null)
                 throw new HttpResponseException(HttpStatusCode.BadRequest); //error 400
             GestorTransacciones gOperacion = new GestorTransacciones();
             if (gOperacion.ultimosDiezMovimientos(op) == null)
             {
-                return NotFound(); //error 400
+                return (IEnumerable<Operacion>)BadRequest(); //error 400
             }
-            else
-            {
-                return Ok(gOperacion.ultimosDiezMovimientos(op));
-            }
+            else {
+                return gOperacion.ultimosDiezMovimientos(op);
+            }           
         }
     }
 }

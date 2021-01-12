@@ -20,6 +20,7 @@ namespace ProyectoClipMoney2020.Controllers
             GestorDomicilio gestorCliente = new GestorDomicilio();
             List<Localidad> localidades = gestorCliente.ObtenerLocalidades(id);
 
+
             if (localidades == null)
             {
                 return NotFound();  // status 404

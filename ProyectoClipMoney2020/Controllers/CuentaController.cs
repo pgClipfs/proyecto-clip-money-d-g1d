@@ -1,16 +1,15 @@
-﻿using ProyectoClipMoney2020.Models;
-using ProyectoClipMoney2020.Models.Gestores;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.Cors;
+using System.Web.Routing;
+using ProyectoClipMoney2020.Models;
 
 namespace ProyectoClipMoney2020.Controllers
 {
-    [AllowAnonymous]
+    [Authorize]
     [RoutePrefix("api/cuenta")]
     public class CuentaController : ApiController
     {
@@ -22,62 +21,22 @@ namespace ProyectoClipMoney2020.Controllers
         }
 
         // GET: api/Cuenta/5
-        //FALTA CORS Y MAS
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public IHttpActionResult Get(long id)
+        public Cuenta Get(string cvu)
         {
-            GestorCuenta gestorCuenta = new GestorCuenta();
-            Cuenta cuenta = gestorCuenta.ObtenerCuentaPesosPorIdCliente(id);
-
-            if (cuenta == null)
-            {
-                return NotFound();  // status 404
-            }
-            return Ok(cuenta);   // en cliente vemos response.data
-
-
+            GestorCuenta gCuenta = new GestorCuenta();
+            return gCuenta.ObtenerCuentaPorCvu(cvu);
         }
-        
+
         // POST: api/Cuenta
-        [HttpPost]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public IHttpActionResult PostCuenta(Cuenta cuenta)
+        public void Post([FromBody]string value)
         {
-            int id = 0;
-            GestorCuenta gestorCuenta = new GestorCuenta();
-        
-            if (gestorCuenta.ValidarCuentaExistente(cuenta.idCliente))
-            {
-                GestorCliente gestorCliente = new GestorCliente();
-                id = gestorCuenta.CrearCuenta(cuenta.idCliente);               
-            }
-
-
-            if (id == 0)
-            {
-                return NotFound();
-            }
-            else
-
-                return Ok(cuenta.idCliente);
-
         }
 
-        // PUT: api/Cuenta/5  
-        [HttpPut]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public IHttpActionResult PutAlias(int id, Cuenta cuenta)
+        // PUT: api/Cuenta/5
+        public void Put(int id, [FromBody]string value)
         {
-            GestorCuenta gestorCuenta = new GestorCuenta();
-            int boo = gestorCuenta.ActualizarCuenta(id, cuenta);
-            if (boo == 0)
-            {
-                return NotFound();
-            }
-            else
-                return Ok(cuenta);
         }
-      
+
         // DELETE: api/Cuenta/5
         public void Delete(int id)
         {

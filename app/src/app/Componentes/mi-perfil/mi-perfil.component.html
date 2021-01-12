@@ -1,6 +1,10 @@
 <app-home></app-home>
 <div class="container">
-<form name="FormMiPerfil" [formGroup]='FormMiPerfil'>
+    <form name="FormMiPerfil" [formGroup]='FormMiPerfil'>
+
+    <!-- campo Id -->
+
+
 
     <!--campo usuario-->
     <div class="form-group row">
@@ -21,7 +25,7 @@
     <div class="form-group row">
         <label class="col-form-label col-12">Nombre: <span class="text-danger">*</span></label>
         <div class="col-12">
-            <input type="text" class="form-control" formControlName="nombre" [readonly]="true" />
+            <input type="text" class="form-control" formControlName="nombre" [readonly]="true"/>
 
             <span class="text-danger" *ngIf="(FormMiPerfil.controls.nombre.touched || submitted) 
                     && FormMiPerfil.controls.nombre.errors?.required">
@@ -36,7 +40,7 @@
     <div class="form-group row">
         <label class="col-form-label col-12">Apellido: <span class="text-danger">*</span></label>
         <div class="col-12">
-            <input type="text" class="form-control" formControlName="apellido"[readonly]="true" />
+            <input type="text" class="form-control" formControlName="apellido" [readonly]="true"/>
 
             <span class="text-danger" *ngIf="(FormMiPerfil.controls.apellido.touched || submitted) 
                     && FormMiPerfil.controls.apellido.errors?.required">
@@ -47,19 +51,19 @@
         </div>
     </div>
 
-    <!--campo idTipoDocumento-->
-    <div class="form-group row">
-        <label class="col-form-label col-12">
-            Tipo de documento: <span class="text-danger">*</span>
-        </label>
-        <div class="col-12">
-            <select class="form-control" formControlName="tipoDocumento" >
-                <option *ngIf=(nombreTipoDocumento) selected>{{nombreTipoDocumento}}</option>
-                    <option value="" hidden ></option>
-            </select>       
+   <!--campo idTipoDocumento-->
+   <div class="form-group row">
+    <label class="col-form-label col-12">
+        Tipo de documento: <span class="text-danger">*</span>
+    </label>
+    <div class="col-12">
+        <select class="form-control" formControlName="tipoDocumento" >
+            <option *ngIf=(nombreTipoDocumento) selected>{{nombreTipoDocumento}}</option>
+                <option value="" hidden ></option>
+        </select>       
 
-        </div>
-    </div> 
+    </div>
+</div> 
 
     <!--campo nroDocumento-->
     <div class="form-group row">
@@ -67,7 +71,7 @@
             Número de documento: <span class="text-danger">*</span>
         </label>
         <div class="col-12">
-            <input type="text" class="form-control" formControlName="nroDocumento"[readonly]="true" />
+            <input type="text" class="form-control" formControlName="nroDocumento" [readonly]="true"/>
             <span class="text-danger" *ngIf="(FormMiPerfil.controls.nroDocumento.touched || submitted) 
                     && FormMiPerfil.controls.nroDocumento.errors?.required">
                 Dato requerido.
@@ -147,13 +151,12 @@
     </div>
 
     <!-- campo domicilio -->
+
     <div class="form-group row">
         <label class="col-form-label col-12">Domicilio: <span class="text-danger">*</span></label>
         <div class="col-12 input-group">
-            &nbsp;
             <input type="text" class="form-control" formControlName="domicilio" [readonly]="true"[ngClass]="{'is-invalid': (FormMiPerfil.controls.domicilio.touched || submitted)  
             && FormMiPerfil.controls.domicilio.errors}" />
-            &nbsp;
             <span class="input-group-btn">                
                 <button type="button" class="w-100 btn btn-sm btn-outline-primary" title="Modificar"(click)="formDomicilio()" >
                 <span class="fas fa-pencil-alt"></span>

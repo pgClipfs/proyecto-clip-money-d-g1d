@@ -1,58 +1,28 @@
- 
-  .navbar .navbar-nav {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .navbar {
-    margin-bottom: 50px;
-  }
 
-  #advertencia_container{
-  padding:10px;
-  display: flexbox;
-  flex-direction: column;
+#advertencia{
+    width: 100px;
+    padding: 10px;
+    margin: 10px;
 }
 
-
-#advertencia {
-    width: 70px;
-    margin-top: 10px;
-  }
-
-button {
+button{
     color: #5e5b52;
     font-size: 20px;
     font-weight: bold;
     background: none;
     border: none;
     float: right;
-  }
-  
-#dineroDisponible {
-    text-align: right;
-  }
-  
-#advertenciaText {
-    text-align: right;
-  }
-  
-.container {
-    justify-content: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border: none;
-
-  }
-  a a.enlace {
-    margin: 0;
-    padding: 0;
-    border: 0;
-  }
- 
-
-.card-img-top{
-  width: 100%;
 }
 
+#dineroDisponible{
+    text-align: right;
+}
 
+#advertenciaText {
+    text-align: right;
+}
+.usuario-home {
+    float: right;
+    margin-right: 10px;
+    padding: 10px;
+}

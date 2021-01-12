@@ -57,7 +57,7 @@ namespace ProyectoClipMoney2020.Models.Gestores
         {
             var operaciones = new List<Operacion>();
             string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
-
+            
             using (SqlConnection conn = new SqlConnection(StrConn))
             {
                 conn.Open();
@@ -73,35 +73,33 @@ namespace ProyectoClipMoney2020.Models.Gestores
                     var operacion = new Operacion();
                     var tipoOperacion = new TipoOperacion()
                     {
-                        idTipoOperacion = dr.GetByte(3),
-                        nombreOperacion = dr.GetString(4)
-
+                        nombreOperacion = dr.GetString(2)
                     };
                     var estadoOperacion = new EstadoOperacion()
                     {
-                        idEstadoOeracion = dr.GetByte(5),
                         nombreEstadoOperacion = dr.GetString(6)
                     };
 
                     operacion.idOperacion = dr.GetInt64(0);
                     operacion.fechaOperacion = dr.GetDateTime(1);
-                    operacion.monto = dr.GetDecimal(2);
                     operacion.tipoOperacion = tipoOperacion;
-                    operacion.cvuDesde = dr.GetString(7);
-
-                    if (!dr.IsDBNull(8))
-                        operacion.cvuHasta = dr.GetString(8)?.Trim();
-
+                    operacion.cvuDesde = dr.GetString(3);
+                    if (!dr.IsDBNull(4))
+                        operacion.cvuHasta = dr.GetString(4)?.Trim();
+                    operacion.monto = dr.GetDecimal(5);
                     operacion.estadoOperacion = estadoOperacion;
-                    operaciones.Add(operacion);
+                    operaciones.Add(operacion);                 
                 }
                 dr.Close();
             }
             return operaciones;
         }
 
-       
+        internal IEnumerable<Operacion> ultimosDiezMovimientos()
+        {
+            throw new NotImplementedException();
+        }
 
-
+        
     }
 }

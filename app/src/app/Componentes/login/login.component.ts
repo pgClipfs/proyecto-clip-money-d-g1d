@@ -9,7 +9,6 @@ import { AuthenticationService } from 'src/app/Servicios/authentication.service'
 import { ClienteService } from 'src/app/Servicios/cliente.service';
 import { stringify } from '@angular/compiler/src/util';
 import { LoginRequest } from 'src/app/Modelos/LoginRequest';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,7 +16,6 @@ import { LoginRequest } from 'src/app/Modelos/LoginRequest';
 })
 export class LoginComponent implements OnInit {
 
- 
   TituloAccionABMC = {
     R: 'Registrarse',
     C: 'Iniciar sesión',
@@ -32,12 +30,9 @@ export class LoginComponent implements OnInit {
     RD: 'Revisar los datos ingresados...'
   };
   returnUrl: string;
+  recuperarPass: string;
   error = '';
-  
- 
-  
   constructor
-<<<<<<< HEAD
     (
       public formBuilder: FormBuilder,
       private tipoDocumentoService: TipoDocumentoService,
@@ -49,22 +44,6 @@ export class LoginComponent implements OnInit {
       private router: Router,
       private loginRequest: LoginRequest
     ) { }
-=======
-  (
-    public formBuilder: FormBuilder,
-    private tipoDocumentoService: TipoDocumentoService,
-    private modalQuienesSomosService: ModalQuienesSomosService,
-    private modalLoginIncorrectoService: ModalLoginIncorrectoService,
-    private authenticationService: AuthenticationService,
-    private clienteService: ClienteService,
-    private route: ActivatedRoute,
-    private router: Router,
-    private loginRequest: LoginRequest
-    //private loginRequest: LoginRequest
-  ) { 
-    
-  }
->>>>>>> c93430b702c9222e8c33479361b7daa133c5f612
 
   ngOnInit() {
     this.FormLogin = this.formBuilder.group({
@@ -83,44 +62,32 @@ export class LoginComponent implements OnInit {
       Telefono: ['', [Validators.required]],
       FechaNacimiento: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]]
     });
-    
+
     // this.GetTokerLogin();  
     //Nacionalidad: ['', [Validators.required]],
-    
-    
-    this.returnUrl='/menu-principal';
+    this.returnUrl = '/menu-principal';
+    this.recuperarPass = '/recuperar-password';
 
     //set de manera default usuario y contraseña
-  
+    // this.loginRequest.Username='Default';
+    // this.loginRequest.Password='Default';
   }
 
   GetTiposDocumentos() {
     this.tipoDocumentoService.get().subscribe((res: TipoDocumento[]) => {
       this.Documentos = res;
-      
     });
   }
 
 
   loginCuenta() {
     this.FormLogin.markAllAsTouched();
-    //this.modalQuienesSomosService.BloquearPantalla();
     this.authenticationService.login(this.FormLogin.controls.Usuario.value, this.FormLogin.controls.Password.value)
       .subscribe(
         data => {
-<<<<<<< HEAD
           this.router.navigate([this.returnUrl]);
         },
         error => {
-=======
-            //this.modalQuienesSomosService.DesbloquearPantalla();
-                    this.router.navigate([this.returnUrl]);
-        },
-        error => {
-          //this.modalQuienesSomosService.DesbloquearPantalla();
-          /* this.error = error; */
-          this.modalLoginIncorrectoService.Alert('Verifique que los datos ingresados sean correctos. En caso de no contar con una cuenta registrese por favor.', '¡Ingreso incorrecto!', 'i');
->>>>>>> c93430b702c9222e8c33479361b7daa133c5f612
         }
       );
   }
@@ -135,7 +102,10 @@ export class LoginComponent implements OnInit {
        ).toISOString();
    } */
 
-  
+  forgotPassword() {
+    this.router.navigate([this.recuperarPass]);
+  }
+
   crearCliente() {
     this.FormRegistro.reset();
     this.AccionABMC = 'R';
@@ -198,7 +168,6 @@ export class LoginComponent implements OnInit {
     let anioHoy = fecha.getFullYear();
     let edadFinal = anioHoy - anioNac;
     let difMes = fecha.getMonth() - fNac.getMonth();
-<<<<<<< HEAD
     let diaNac = fNac.getDate() + 1;
 
     if(anioString.length === 4){
@@ -227,32 +196,6 @@ export class LoginComponent implements OnInit {
       let botonGrabar = (<HTMLInputElement>document.getElementById("Grabar")).disabled = true;
     }
   }
-=======
-    let diaNac = fNac.getDate()+1;
-    
-    
-    // (difMes === 0  && fecha.getDate() <= diaNac))
-      if(anioString.length === 4 && edadFinal >= 18){
-        if(difMes <= 0 && (fecha.getDate() < diaNac)){
-          document.getElementById("matchEdad").innerHTML = '';
-          document.getElementById("noMatchEdad").innerHTML = '';
-          let botonGrabar = (<HTMLInputElement>document.getElementById("Grabar")).disabled = false;
-        }
-
-        else{
-          document.getElementById("matchEdad").innerHTML = '';
-          document.getElementById("noMatchEdad").innerHTML = 'Es requerido ser mayor de edad.';
-          let botonGrabar = (<HTMLInputElement>document.getElementById("Grabar")).disabled = true;          
-          
-        
-        }
-        }
-      else{
-        document.getElementById("noMatchEdad").innerHTML = 'Es requerido ser mayor de edad.';
-        let botonGrabar = (<HTMLInputElement>document.getElementById("Grabar")).disabled = true
-      }
-    }
->>>>>>> c93430b702c9222e8c33479361b7daa133c5f612
 
   Grabar() {
     //this.FormRegistro.markAllAsTouched();
@@ -266,13 +209,13 @@ export class LoginComponent implements OnInit {
     //crea una copia de los datos del formulario para cambiar la fecha
     const itemCopy = { ...this.FormRegistro.value };
 
-   /* var arrFecha = itemCopy.FechaNacimiento.substr(0,10).split('/');
-    if(arrFecha.length == 3)
-      itemCopy.FechaNacimiento = new Date (
-        arrFecha[2],
-        arrFecha[1]-1,
-        arrFecha[0]
-      ).toISOString();*/
+    // var arrFecha = itemCopy.FechaNacimiento.substr(0,10).split('/');
+    // if(arrFecha.length == 3)
+    //   itemCopy.FechaNacimiento = new Date (
+    //     arrFecha[2],
+    //     arrFecha[1]-1,
+    //     arrFecha[0]
+    //   ).toISOString();
 
     if (itemCopy.IdCliente == 0 || itemCopy.IdCliente == null) {
       itemCopy.IdCliente = 0;
@@ -298,16 +241,10 @@ export class LoginComponent implements OnInit {
 
 
   llamarModal() {
-    this.modalQuienesSomosService.Alert('MoneyClip es una billetera virtual. Accede a tu dinero rápido, fácil y en cualquier parte. Desarrollado por: Jimena Bustos Paulich, Melani Crespo, Martin Diaz, Maximiliano Iglesias del Castillo, Matias LLorens, Joel Ocampo, Melania Peralta Flores, Tomas Pozzo, Nelio Bena * Programa Clip 2020 - Grupo 1D', 'Conoce a nuestro Equipo!', 'i');
+    this.modalQuienesSomosService.Alert('MoneyClip es una billetera virtual. Accede a tu dinero rápido, fácil y en cualquier parte. Desarrollado por: Nicolas Alvarez, Jimena Bustos Paulich, Melani Crespo, Martin Diaz, Maximiliano Iglesias del Castillo, Matias LLorens, Joel Ocampo, Melania Peralta Flores, Tomas Pozzo * Programa Clip 2020 - Grupo 1D', 'Conoce a nuestro Equipo!', 'i');
   }
 
-<<<<<<< HEAD
   getLogin(): LoginRequest {
-=======
-  getLogin(): LoginRequest
-    {   
-    
->>>>>>> c93430b702c9222e8c33479361b7daa133c5f612
     return JSON.parse(localStorage.getItem('loginRequest'));
   }
 }

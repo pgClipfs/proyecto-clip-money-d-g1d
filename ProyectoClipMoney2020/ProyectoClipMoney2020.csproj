@@ -150,15 +150,11 @@
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\CuentaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LocalidadController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\PaisController.cs" />
-    <Compile Include="Controllers\ProvinciaController.cs" />
     <Compile Include="Controllers\RecuperarPassController.cs" />
     <Compile Include="Controllers\TipoDocumentoController.cs" />
     <Compile Include="Controllers\TokenGenerator.cs" />
     <Compile Include="Controllers\TokenValidationHandler.cs" />
-    <Compile Include="Controllers\TransaccionesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -170,7 +166,6 @@
     <Compile Include="Models\Clases\RecuperarPass.cs" />
     <Compile Include="Models\Gestores\GestorCliente.cs" />
     <Compile Include="Models\Gestores\GestorCuenta.cs" />
-    <Compile Include="Models\Gestores\GestorDomicilio.cs" />
     <Compile Include="Models\Gestores\GestorLogin.cs" />
     <Compile Include="Models\Clases\Localidad.cs" />
     <Compile Include="Models\Clases\LoginRequest.cs" />
@@ -184,7 +179,6 @@
     <Compile Include="Models\Clases\TipoOperacion.cs" />
     <Compile Include="Models\Gestores\GestorRecuperarPass.cs" />
     <Compile Include="Models\Gestores\GestorTipoDocumento.cs" />
-    <Compile Include="Models\Gestores\GestorTransacciones.cs" />
     <Compile Include="Models\Soporte\Encriptacion.cs" />
     <Compile Include="Models\Soporte\RandomCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

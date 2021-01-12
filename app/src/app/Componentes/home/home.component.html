@@ -1,50 +1,26 @@
-<div class="container-fluid">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" routerLink="/menu-principal">Menu principal <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">          
-            <a class="nav-link">{{nombreCompleto}}</a>
-          </li>
-  
-          <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Cuentas
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">           
-                <a class="dropdown-item btn" (click)="cuentaEnPesos();" >Cuenta en Pesos</a>
-                <a class="dropdown-item btn" (click)="cuentaEnDolares();">Cuenta en Dólares</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/transacciones">Transacciones</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" (click)="movimientos();">Movimientos</a>
-            </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Ayuda
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">Configuración</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/app-mi-perfil" >Mi Perfil</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="#" (click)="llamarModal()">Quienes somos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" (click)="Cerrar()" routerLink="/login">Salir</a>
-            </li>
-        </ul>
-      </div>
-    </nav>
+<nav class="navbar-expand-lg">
+    <div id="mySidepanel" class="sidepanel">
+    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+    <img src="assets/img/persona.jpg" alt="foto-usuario">
+    <p class="usuario">{{nombreCompleto}}</p>
+    <a href="#">Cuenta en Pesos</a>
+    <a href="#">Cuenta en Dólares</a>
+    <a href="#">Transacciones</a>
+    <a href="#">Movimientos</a>
+    <br>
+    <br>
+    <a href="#">Ayuda</a>
+    <a class="nav-link" routerLink="/app-mi-perfil" >Mi Perfil</a>
+    <a href="#">Configuración</a>
+    <br>
+    <button class="btn btn-primary w-100" id="quienesSomosBtn" (click)="llamarModal()">Quienes somos</button>
+    
+    <a class="nav-link" (click)="Cerrar()" routerLink="/login">Salir</a>
+    
   </div>
+  
+  <button class="openbtn" (click)="openNav()">&#9776;</button>
+
+  <!--p class="usuario-home">Hola! {{nombreCompleto}}</p-->
+</nav>
+
