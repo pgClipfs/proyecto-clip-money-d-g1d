@@ -1,9 +1,8 @@
-.navbar .navbar-nav{
+.navbar .navbar-nav {
   display: flex;
   justify-content: space-between;
-  
 }
 
-.navbar{
+.navbar {
   margin-bottom: 50px;
 }

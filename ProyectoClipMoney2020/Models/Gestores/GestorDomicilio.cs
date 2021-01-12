@@ -26,7 +26,6 @@ namespace ProyectoClipMoney2020.Models.Gestores
                 while (dr.Read())
                 {
                     var pais = new Pais();
-
                     pais.idPais = dr.GetInt32(0);
                     pais.nombrePais = dr.GetString(1);
 
