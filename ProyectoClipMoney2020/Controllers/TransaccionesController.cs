@@ -75,9 +75,10 @@ namespace ProyectoClipMoney2020.Controllers
             {
                 return NotFound(); //error 400
             }
-            else {
+            else
+            {
                 return Ok(gOperacion.ultimosDiezMovimientos(op));
-            }           
+            }
         }
     }
 }
