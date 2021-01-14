@@ -95,11 +95,53 @@ namespace ProyectoClipMoney2020.Models.Gestores
             return operaciones;
         }
 
+<<<<<<< HEAD
         internal IEnumerable<Operacion> ultimosDiezMovimientos()
         {
             throw new NotImplementedException();
         }
 
         
+=======
+        public void realizarTransferencia(Operacion operacion)
+        {
+
+            string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
+
+            using (SqlConnection conn = new SqlConnection(StrConn))
+            {
+                conn.Open();
+
+                SqlCommand comm = conn.CreateCommand();
+                comm.CommandText = "transferencia";
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+                //comm.Parameters.Add(new SqlParameter("@idCliente", cliente.idCliente));
+                comm.Parameters.Add(new SqlParameter("@monto", operacion.monto));
+                comm.Parameters.Add(new SqlParameter("@cvuDesde", operacion.cvuDesde));
+                comm.Parameters.Add(new SqlParameter("@cvuHasta", operacion.cvuHasta));
+                comm.ExecuteScalar();
+            }
+        }
+
+        public void realizarGiro(Operacion operacion)
+        {
+            string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
+
+            using (SqlConnection conn = new SqlConnection(StrConn))
+            {
+                conn.Open();
+
+                SqlCommand comm = conn.CreateCommand();
+                comm.CommandText = "giro";
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+                //comm.Parameters.Add(new SqlParameter("@idCliente", cliente.idCliente));
+                comm.Parameters.Add(new SqlParameter("@monto", operacion.monto));
+                comm.Parameters.Add(new SqlParameter("@cvuDesde", operacion.cvuDesde));
+
+                comm.ExecuteScalar();
+            }
+
+        }
+>>>>>>> f5f479443c35d3cb24ef40f0a03c3162da3ef534
     }
 }

@@ -16,6 +16,32 @@ namespace ProyectoClipMoney2020.Controllers
     public class TransaccionesController : ApiController
     {
 
+        
+        //[Route("verificarCvuHasta")]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        public IHttpActionResult Get(long id)
+        {
+
+            GestorCuenta gestorCuenta = new GestorCuenta();
+            Cuenta cuenta;
+            //Cuenta cuentaHasta;
+            
+            var str = new String('0', 22 - id.ToString().Length);
+            str += id;
+            cuenta = gestorCuenta.ObtenerCuentaPorCvu(str);
+            if (cuenta == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(cuenta);
+            }
+            //cuentaHasta = gestorCuenta.ObtenerCuentaPorCvu(operacion.cvuHasta);
+
+        }
+       
+
         [HttpPost]
         [Route("extraccion")]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
@@ -64,7 +90,12 @@ namespace ProyectoClipMoney2020.Controllers
 
         }
 
+<<<<<<< HEAD
         [HttpGet]
+=======
+
+        [HttpPost]
+>>>>>>> f5f479443c35d3cb24ef40f0a03c3162da3ef534
         [Route("ultimos-mov")]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IEnumerable<Operacion> Get(Operacion op)
@@ -80,5 +111,67 @@ namespace ProyectoClipMoney2020.Controllers
                 return gOperacion.ultimosDiezMovimientos(op);
             }           
         }
+
+        [HttpPost]
+        [Route("giro")]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        public IHttpActionResult RealizarGiro(Operacion operacion)
+        {
+            GestorTransacciones gestorTransacciones = new GestorTransacciones();
+            GestorCuenta gestorCuenta = new GestorCuenta();
+            Cuenta cuenta;
+            cuenta = gestorCuenta.ObtenerCuentaPorCvu(operacion.cvuDesde);
+            if (operacion.monto > 0)
+            {
+                var limite = Decimal.Multiply(1.1m, cuenta.saldo);
+                if (operacion.monto > limite)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    gestorTransacciones.realizarGiro(operacion);
+                    return Ok(operacion);
+                }
+            }
+            else
+            {
+                return NotFound();
+            }
+               
+
+        }
+       
+
+        [HttpPost]
+        [Route("transferencia")]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        public IHttpActionResult RealizarTransferencia(Operacion operacion)
+        {
+            GestorTransacciones gestorTransacciones = new GestorTransacciones();
+            GestorCuenta gestorCuenta = new GestorCuenta();
+            Cuenta cuentaDesde;
+            //Cuenta cuentaHasta;
+            cuentaDesde = gestorCuenta.ObtenerCuentaPorCvu(operacion.cvuDesde);
+            //cuentaHasta = gestorCuenta.ObtenerCuentaPorCvu(operacion.cvuHasta);
+            if (operacion.monto > 0)
+            {
+                cuentaDesde.saldo -= operacion.monto;
+                if (cuentaDesde.saldo >= 0)
+                {
+                    gestorTransacciones.realizarTransferencia(operacion);
+                    return Ok();
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            else
+            {
+                return NotFound();
+            }            
+        }
+
     }
 }

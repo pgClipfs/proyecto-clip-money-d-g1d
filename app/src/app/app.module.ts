@@ -23,10 +23,14 @@ import { MovimientosComponent } from './Componentes/movimientos/movimientos.comp
 import { MiPerfilComponent } from './Componentes/mi-perfil/mi-perfil.component';
 import { LoginRequest } from './Modelos/LoginRequest';
 import { NewPasswordComponent } from './Componentes/new-password/new-password.component';
+<<<<<<< HEAD
 import { RecuperarPasswordComponent } from './Componentes/recuperar-password/recuperar-password.component';
 import { FormDomicilioComponent } from './Componentes/form-domicilio/form-domicilio.component';
 import { pipe } from 'rxjs';
 
+=======
+import { RetirarPesosComponent } from './Componentes/retirar-pesos/retirar-pesos.component';
+>>>>>>> f5f479443c35d3cb24ef40f0a03c3162da3ef534
 
 @NgModule({
   declarations: [
@@ -41,7 +45,12 @@ import { pipe } from 'rxjs';
     MiPerfilComponent,
     NewPasswordComponent,
     RecuperarPasswordComponent,
+<<<<<<< HEAD
     FormDomicilioComponent
+=======
+    NewPasswordComponent,
+    RetirarPesosComponent
+>>>>>>> f5f479443c35d3cb24ef40f0a03c3162da3ef534
   ],
   imports: [
     BrowserModule,
