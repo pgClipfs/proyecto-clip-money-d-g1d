@@ -95,6 +95,14 @@ namespace ProyectoClipMoney2020.Models.Gestores
             return operaciones;
         }
 
+<<<<<<< HEAD
+        internal IEnumerable<Operacion> ultimosDiezMovimientos()
+        {
+            throw new NotImplementedException();
+        }
+
+        
+=======
         public void realizarTransferencia(Operacion operacion)
         {
 
@@ -134,5 +142,6 @@ namespace ProyectoClipMoney2020.Models.Gestores
             }
 
         }
+>>>>>>> f5f479443c35d3cb24ef40f0a03c3162da3ef534
     }
 }

@@ -90,8 +90,12 @@ namespace ProyectoClipMoney2020.Controllers
 
         }
 
+<<<<<<< HEAD
+        [HttpGet]
+=======
 
         [HttpPost]
+>>>>>>> f5f479443c35d3cb24ef40f0a03c3162da3ef534
         [Route("ultimos-mov")]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IEnumerable<Operacion> Get(Operacion op)

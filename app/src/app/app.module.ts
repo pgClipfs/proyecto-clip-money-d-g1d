@@ -22,12 +22,15 @@ import { TransaccionesComponent } from './Componentes/transacciones/transaccione
 import { MovimientosComponent } from './Componentes/movimientos/movimientos.component';
 import { MiPerfilComponent } from './Componentes/mi-perfil/mi-perfil.component';
 import { LoginRequest } from './Modelos/LoginRequest';
-import { FormDomicilioComponent } from './Componentes/form-domicilio/form-domicilio.component';
-import { MyInterceptor } from './interceptors/my-interceptor';
-import { CuentaComponent } from './Componentes/cuenta/cuenta.component';
-import { RecuperarPasswordComponent } from './Componentes/recuperar-password/recuperar-password.component';
 import { NewPasswordComponent } from './Componentes/new-password/new-password.component';
+<<<<<<< HEAD
+import { RecuperarPasswordComponent } from './Componentes/recuperar-password/recuperar-password.component';
+import { FormDomicilioComponent } from './Componentes/form-domicilio/form-domicilio.component';
+import { pipe } from 'rxjs';
+
+=======
 import { RetirarPesosComponent } from './Componentes/retirar-pesos/retirar-pesos.component';
+>>>>>>> f5f479443c35d3cb24ef40f0a03c3162da3ef534
 
 @NgModule({
   declarations: [
@@ -40,11 +43,14 @@ import { RetirarPesosComponent } from './Componentes/retirar-pesos/retirar-pesos
     TransaccionesComponent,
     MovimientosComponent,
     MiPerfilComponent,
-    FormDomicilioComponent,
-    CuentaComponent,
+    NewPasswordComponent,
     RecuperarPasswordComponent,
+<<<<<<< HEAD
+    FormDomicilioComponent
+=======
     NewPasswordComponent,
     RetirarPesosComponent
+>>>>>>> f5f479443c35d3cb24ef40f0a03c3162da3ef534
   ],
   imports: [
     BrowserModule,
@@ -57,27 +63,23 @@ import { RetirarPesosComponent } from './Componentes/retirar-pesos/retirar-pesos
       { path: '', redirectTo: '/login', pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
       { path: 'menu-principal', component: MenuPrincipalComponent, canActivate: [AuthGuard] },
-      { path: 'form-domicilio', component: FormDomicilioComponent, canActivate: [AuthGuard] },
       { path: 'app-mi-perfil', component: MiPerfilComponent, canActivate: [AuthGuard] },
-      { path: 'cuenta-pesos', component: CuentaComponent, canActivate: [AuthGuard] },
-      { path: 'transacciones', component: TransaccionesComponent, canActivate: [AuthGuard] },
       { path: 'recuperar-password', component: RecuperarPasswordComponent },
       { path: 'new-password', component: NewPasswordComponent },
-      { path: 'movimientos', component: MovimientosComponent},
-
+      { path: 'form-domicilio', component: FormDomicilioComponent, canActivate: [AuthGuard] },
       { path: '**', redirectTo: '/login', pathMatch: 'full' }
       ]
     ),
 
   ],
- /*  exports: [
+  exports: [
     RecuperarPasswordComponent
-  ], */
+  ],
   providers: [{
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
       multi: true
-  }, {provide: APP_BASE_HREF, useValue : '/'}, LoginRequest, DatePipe, { provide: HTTP_INTERCEPTORS, useClass: MyInterceptor, multi: true }],
+  }, {provide: APP_BASE_HREF, useValue : '/'}, LoginRequest, DatePipe],
   bootstrap: [InicioComponent]
 })
 export class AppModule { }
