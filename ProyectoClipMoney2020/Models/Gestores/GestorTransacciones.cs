@@ -57,7 +57,6 @@ namespace ProyectoClipMoney2020.Models.Gestores
         {
             var operaciones = new List<Operacion>();
             string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
-            
             using (SqlConnection conn = new SqlConnection(StrConn))
             {
                 conn.Open();
@@ -73,33 +72,56 @@ namespace ProyectoClipMoney2020.Models.Gestores
                     var operacion = new Operacion();
                     var tipoOperacion = new TipoOperacion()
                     {
-                        nombreOperacion = dr.GetString(2)
+                        idTipoOperacion = dr.GetByte(3),
+                        nombreOperacion = dr.GetString(4)
+
                     };
                     var estadoOperacion = new EstadoOperacion()
                     {
+                        idEstadoOeracion = dr.GetByte(5),
                         nombreEstadoOperacion = dr.GetString(6)
                     };
 
                     operacion.idOperacion = dr.GetInt64(0);
                     operacion.fechaOperacion = dr.GetDateTime(1);
+                    operacion.monto = dr.GetDecimal(2);
                     operacion.tipoOperacion = tipoOperacion;
-                    operacion.cvuDesde = dr.GetString(3);
-                    if (!dr.IsDBNull(4))
-                        operacion.cvuHasta = dr.GetString(4)?.Trim();
-                    operacion.monto = dr.GetDecimal(5);
+                    operacion.cvuDesde = dr.GetString(7);
+
+                    if (!dr.IsDBNull(8))
+                        operacion.cvuHasta = dr.GetString(8)?.Trim();
+
                     operacion.estadoOperacion = estadoOperacion;
-                    operaciones.Add(operacion);                 
+                    operaciones.Add(operacion);
                 }
                 dr.Close();
             }
             return operaciones;
         }
 
-        internal IEnumerable<Operacion> ultimosDiezMovimientos()
+        public void realizarTransferencia(Operacion operacion)
+        {
+
+            string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
+
+            using (SqlConnection conn = new SqlConnection(StrConn))
+            {
+                conn.Open();
+
+                SqlCommand comm = conn.CreateCommand();
+                comm.CommandText = "transferencia";
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+                //comm.Parameters.Add(new SqlParameter("@idCliente", cliente.idCliente));
+                comm.Parameters.Add(new SqlParameter("@monto", operacion.monto));
+                comm.Parameters.Add(new SqlParameter("@cvuDesde", operacion.cvuDesde));
+                comm.Parameters.Add(new SqlParameter("@cvuHasta", operacion.cvuHasta));
+                comm.ExecuteScalar();
+            }
+        }
+
+        internal void realizarGiro(Operacion operacion)
         {
             throw new NotImplementedException();
         }
-
-        
     }
 }

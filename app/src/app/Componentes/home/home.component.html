@@ -37,7 +37,25 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/app-mi-perfil" >Mi Perfil</a>
+            <a class="nav-link" routerLink="/transacciones">Transacciones</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/movimientos">Movimientos</a>
+          </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Ayuda
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item"  routerLink="/app-mi-perfil" >Mi Perfil</a>
+            <a class="dropdown-item" href="#">Configuración</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/app-mi-perfil" >Mi Perfil</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link btn"(click)="llamarModal()">Quienes somos</a>
           </li>
           <li class="nav-item">
               <a class="nav-link btn"(click)="llamarModal()">Quienes somos</a>
