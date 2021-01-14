@@ -121,44 +121,7 @@ export class LoginComponent implements OnInit {
     //this.FormRegistro.reset();
   }
 
-  // validarEdad() {
-  //   let edad= (<HTMLInputElement>document.getElementById("FechaNacimiento")).value;
-  //   let fecha = new Date();
-  //   let fNac = new Date(edad);
-  //   let anioNac = fNac.getFullYear();
-  //   let anioString = anioNac.toString();
-  //   let anioHoy = fecha.getFullYear();
-  //   let edadFinal = anioHoy - anioNac;
-  //   let difMes = fecha.getMonth() - fNac.getMonth();
-  //   let diaNac = fNac.getDate()+1;
-
-  //   console.log(edadFinal);
-  //   console.log(difMes);
-  //   console.log(diaNac);
-
-  //   // (difMes === 0  && fecha.getDate() <= diaNac))
-  //     if(anioString.length === 4){
-  //       if(difMes < 0 || difMes === 0 && (fecha.getDate() < diaNac)){
-  //         edadFinal--
-  //         document.getElementById("matchEdad").innerHTML = '';
-  //         document.getElementById("noMatchEdad").innerHTML = 'Es requerido ser mayor de edad.';
-  //         let botonGrabar = (<HTMLInputElement>document.getElementById("Grabar")).disabled = true;            
-  //         }
-
-  //       else{
-  //         document.getElementById("matchEdad").innerHTML = '';
-  //         document.getElementById("noMatchEdad").innerHTML = '';
-  //         let botonGrabar = (<HTMLInputElement>document.getElementById("Grabar")).disabled = false;  
-
-  //         }
-  //       }
-  //     else{
-  //       document.getElementById("noMatchEdad").innerHTML = 'Es requerido ser mayor de edad.';
-  //       let botonGrabar = (<HTMLInputElement>document.getElementById("Grabar")).disabled = true
-  //     }
-  //     }
-
-
+  
   validarEdad() {
     let edad = (<HTMLInputElement>document.getElementById("FechaNacimiento")).value;
     let fecha = new Date();
