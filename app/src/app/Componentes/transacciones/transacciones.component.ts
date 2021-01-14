@@ -31,4 +31,8 @@ export class TransaccionesComponent implements OnInit {
     this.modalQuienesSomosService.Alert('En construccion');
   }
 
+  transferir(){
+    this.modalQuienesSomosService.Alert('En construccion');
+  }
+
 }
