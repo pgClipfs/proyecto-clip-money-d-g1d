@@ -71,7 +71,7 @@ export class MovimientosComponent implements OnInit {
       this.transaccionesService.post(itemcopy2).subscribe((res2: any) => {
         const itemcopy3 = {...res2};
         console.log("datos de operaciones: "+ JSON.stringify(itemcopy3));
-        console.log(res);
+        console.log(res2);
 
         
         this.operaciones = res2;
@@ -84,6 +84,5 @@ export class MovimientosComponent implements OnInit {
   
   });
 
-}
 }
 }

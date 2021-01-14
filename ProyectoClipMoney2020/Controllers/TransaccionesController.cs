@@ -91,24 +91,6 @@ namespace ProyectoClipMoney2020.Controllers
 
 
         [HttpPost]
-        [Route("ultimos-mov")]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public IHttpActionResult PostOperaciones(Operacion op)
-        {
-            if (op.cvuDesde == null)
-                throw new HttpResponseException(HttpStatusCode.BadRequest); //error 400
-            GestorTransacciones gOperacion = new GestorTransacciones();
-            if (gOperacion.ultimosDiezMovimientos(op) == null)
-            {
-                return NotFound(); //error 400
-            }
-            else
-            {
-                return Ok(gOperacion.ultimosDiezMovimientos(op));
-            }
-        }
-
-        [HttpPost]
         [Route("giro")]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult RealizarGiro(Operacion operacion)
@@ -187,3 +169,4 @@ namespace ProyectoClipMoney2020.Controllers
         }
     }
 }
+
