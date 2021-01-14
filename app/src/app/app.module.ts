@@ -27,7 +27,7 @@ import { MyInterceptor } from './interceptors/my-interceptor';
 import { CuentaComponent } from './Componentes/cuenta/cuenta.component';
 import { RecuperarPasswordComponent } from './Componentes/recuperar-password/recuperar-password.component';
 import { NewPasswordComponent } from './Componentes/new-password/new-password.component';
-import { ImagenDniComponent } from './Componentes/imagen-dni/imagen-dni.component';
+import { RetirarPesosComponent } from './Componentes/retirar-pesos/retirar-pesos.component';
 
 
 @NgModule({
@@ -45,7 +45,7 @@ import { ImagenDniComponent } from './Componentes/imagen-dni/imagen-dni.componen
     CuentaComponent,
     RecuperarPasswordComponent,
     NewPasswordComponent,
-    ImagenDniComponent
+    RetirarPesosComponent
   ],
   imports: [
     BrowserModule,
