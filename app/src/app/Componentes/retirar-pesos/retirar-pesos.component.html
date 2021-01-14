@@ -1,0 +1,37 @@
+<app-home></app-home>
+
+<div class="container">
+
+<h3>Retirar PESOS</h3>
+<br>
+
+<!--campo saldo-->
+<div class="form-group row">
+    <label class="col-form-label col-12">Saldo Disponible: </label>
+    <div class="col-12">
+        <input type="text" class="form-control" formControlName="saldo" [readonly]="true" />    
+    </div>
+</div>
+
+<label for="montoRetiroPesos">Ingrese el monto</label>
+<input id="montoRetiroPesos" type="number">
+
+<div id="confirmarExtraccion">
+    <button type="button" class="btn btn-warning btn-primary w-100" (click)="confirmarExtraccion()">Confirmar Extracción</button>
+</div>
+
+<!--campo Giro al descubierto disponible-->
+<div class="form-group row">
+    <label class="col-form-label col-12">Giro al Descubierto Disponible: </label>
+    
+    <!-- debemos convertir este input en el 10% del saldo de la cuenta -->
+    <div class="col-12">
+        <input type="text" class="form-control" formControlName="saldo" [readonly]="true" />    
+    </div>
+</div>
+
+<div id="confirmarExtraccion">
+    <button type="button" class="btn btn-warning btn-primary w-100" (click)="condicionesGiroAlDecubierto()">Conocé las Condiciones de Giro al Descubierto</button>
+</div>
+
+</div>
