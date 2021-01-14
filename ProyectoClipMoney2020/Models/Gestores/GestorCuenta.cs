@@ -164,6 +164,36 @@ namespace ProyectoClipMoney2020.Models
 
         }
 
+                SqlDataReader dr = comm.ExecuteReader();
+                if (dr.Read())
+                {
+                    cuenta.cvu = dr.GetString(0);
+                    cuenta.alias = dr.GetString(1).Trim();
+                    cuenta.saldo = dr.GetDecimal(2);
+                    if (!dr.IsDBNull(3))
+                        cuenta.observacion = dr.GetString(3)?.Trim();
+                    var tipoCuenta = new TipoCuenta()
+                    {
+                        idTipoCuenta = dr.GetByte(4),
+                        nombreTipoCuenta = dr.GetString(5)
+                    };
+                    var estadoCuenta = new EstadoCuenta()
+                    {
+                        idEstadoCuenta = dr.GetByte(6),
+                        nombreEstadoCuenta = dr.GetString(7)
+                    };
+                    cuenta.tipoCuenta = tipoCuenta;
+                    cuenta.estadoCuenta = estadoCuenta;
+
+                }
+
+                dr.Close();
+            }
+
+            return cuenta;
+
+        }
+
         public Cuenta ObtenerCuentaPorCvu(string cvu)
         {
             var cuenta = new Cuenta();

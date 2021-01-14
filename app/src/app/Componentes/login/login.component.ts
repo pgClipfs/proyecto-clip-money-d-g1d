@@ -164,8 +164,7 @@ export class LoginComponent implements OnInit {
         document.getElementById("noMatchEdad").innerHTML = 'Es requerido ser mayor de edad.';
         let botonGrabar = (<HTMLInputElement>document.getElementById("Grabar")).disabled = true
       }
-
-  }
+    }
 
   Grabar() {
     //this.FormRegistro.markAllAsTouched();
@@ -179,13 +178,13 @@ export class LoginComponent implements OnInit {
     //crea una copia de los datos del formulario para cambiar la fecha
     const itemCopy  = {...this.FormRegistro.value};
 
-    var arrFecha = itemCopy.FechaNacimiento.substr(0,10).split('/');
+   /* var arrFecha = itemCopy.FechaNacimiento.substr(0,10).split('/');
     if(arrFecha.length == 3)
       itemCopy.FechaNacimiento = new Date (
         arrFecha[2],
         arrFecha[1]-1,
         arrFecha[0]
-      ).toISOString();
+      ).toISOString();*/
 
     if(itemCopy.IdCliente==0||itemCopy.IdCliente==null)
     {
@@ -212,7 +211,7 @@ export class LoginComponent implements OnInit {
 
 
   llamarModal() {
-    this.modalQuienesSomosService.Alert('MoneyClip es una billetera virtual. Accede a tu dinero rápido, fácil y en cualquier parte. Desarrollado por: Nicolas Alvarez, Jimena Bustos Paulich, Melani Crespo, Martin Diaz, Maximiliano Iglesias del Castillo, Matias LLorens, Joel Ocampo, Melania Peralta Flores, Tomas Pozzo * Programa Clip 2020 - Grupo 1D', 'Conoce a nuestro Equipo!', 'i');
+    this.modalQuienesSomosService.Alert('MoneyClip es una billetera virtual. Accede a tu dinero rápido, fácil y en cualquier parte. Desarrollado por: Jimena Bustos Paulich, Melani Crespo, Martin Diaz, Maximiliano Iglesias del Castillo, Matias LLorens, Joel Ocampo, Melania Peralta Flores, Tomas Pozzo, Nelio Bena * Programa Clip 2020 - Grupo 1D', 'Conoce a nuestro Equipo!', 'i');
   }
 
   getLogin(): LoginRequest

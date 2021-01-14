@@ -68,9 +68,9 @@ import { ImagenDniComponent } from './Componentes/imagen-dni/imagen-dni.componen
     ),
 
   ],
-  exports: [
+ /*  exports: [
     RecuperarPasswordComponent
-  ],
+  ], */
   providers: [{
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,

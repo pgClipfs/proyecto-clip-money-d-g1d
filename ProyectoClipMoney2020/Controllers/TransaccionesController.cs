@@ -172,17 +172,17 @@ namespace ProyectoClipMoney2020.Controllers
         [HttpGet]
         [Route("ultimos-mov")]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public IEnumerable<Operacion> Get(Operacion op)
+        public IHttpActionResult PostOperaciones(Operacion op)
         {
             if (op.cvuDesde == null)
                 throw new HttpResponseException(HttpStatusCode.BadRequest); //error 400
             GestorTransacciones gOperacion = new GestorTransacciones();
             if (gOperacion.ultimosDiezMovimientos(op) == null)
             {
-                return (IEnumerable<Operacion>)BadRequest(); //error 400
+                return NotFound(); //error 400
             }
             else {
-                return gOperacion.ultimosDiezMovimientos(op);
+                return Ok(gOperacion.ultimosDiezMovimientos(op));
             }           
         }
     }

@@ -103,6 +103,8 @@ namespace ProyectoClipMoney2020.Models.Gestores
 
                     //cliente.cuentas=gestorCuenta.ObtenerCuentas(cliente.idCliente);
 
+/*                     cliente.cuentas=gestorCuenta.ObtenerCuentas(cliente.idCliente);
+ */
 
                 }
 
