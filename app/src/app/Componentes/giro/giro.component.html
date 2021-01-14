@@ -1,0 +1,36 @@
+<app-home></app-home>
+
+<form name="formGiro" [formGroup]='formGiro'>
+    <div *ngIf = "saldoActual">
+        <label class="col-form-label col-12">Saldo Disponible: ${{saldoActual}} </label>
+    </div>
+
+    <label for="montoRetiroPesos">Ingrese el monto</label>
+    <div>
+      <input id="montoRetiroPesos" type="text" formControlName='montoRetiroPesos' [ngClass]="{'is-invalid': (formGiro.controls.montoRetiroPesos.touched || submitted)  
+    && formGiro.controls.montoRetiroPesos.errors}" />
+      <span class="text-danger" *ngIf="(formGiro.controls.montoRetiroPesos.touched || submitted) 
+                && formGiro.controls.montoRetiroPesos.errors?.required">
+        Dato requerido.
+      </span>
+      <span class="text-danger" *ngIf="(formGiro.controls.montoRetiroPesos.errors?.min) ">
+        Ingrese valor mayor a 0.
+      </span>
+      <span class="text-danger" *ngIf="formGiro.controls.montoRetiroPesos.errors?.pattern">
+        Solo caracteres numericos.
+      </span>
+      <span class="text-danger" *ngIf="(validarMontoMin)">
+        El monto mínimo deberia ser mayor a ${{saldoActual}}
+      </span>
+      <span class="text-danger" *ngIf="(validarMontoMax)">
+        El monto maximo deberia ser ${{saldoActual * 1.1}}
+      </span>
+    </div>
+
+  </form>
+  <br>
+
+  <div id="confirmarExtraccionGiro">
+    <button type="button" class="btn btn-warning btn-primary w-100" (click)="confirmarGiro()">Confirmar
+      Giro al Descubierto</button>
+  </div>

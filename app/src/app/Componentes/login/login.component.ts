@@ -132,6 +132,7 @@ export class LoginComponent implements OnInit {
   }
 
   validarEdad() {
+
     let edad= (<HTMLInputElement>document.getElementById("FechaNacimiento")).value;
     let fecha = new Date();
     let fNac = new Date(edad);
