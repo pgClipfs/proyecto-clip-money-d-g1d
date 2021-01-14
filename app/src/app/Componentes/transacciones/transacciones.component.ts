@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalQuienesSomosService } from '../../Servicios/modal-quienes-somos.service';
 
 @Component({
   selector: 'app-transacciones',
@@ -7,13 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransaccionesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modalQuienesSomosService: ModalQuienesSomosService) {}
 
   ngOnInit(): void {
   }
 
-<<<<<<< HEAD
-=======
   ingresarPesos(){
     this.modalQuienesSomosService.Alert('ingresar pesos');
   }
@@ -36,5 +35,4 @@ export class TransaccionesComponent implements OnInit {
     this.modalQuienesSomosService.Alert('En construccion');
   }
 
->>>>>>> f5f479443c35d3cb24ef40f0a03c3162da3ef534
 }

@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginRequest } from 'src/app/Modelos/LoginRequest';
+import { ClienteService } from 'src/app/Servicios/cliente.service';
+import { CuentaService } from 'src/app/Servicios/cuenta.service';
+import {TransaccionesService} from '../../Servicios/transacciones.service';
+import { Operacion } from 'src/app/Modelos/Operacion';
 
 @Component({
   selector: 'app-movimientos',
@@ -6,14 +11,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./movimientos.component.css']
 })
 export class MovimientosComponent implements OnInit {
+  
+  loginRequest: LoginRequest;
+  operaciones: Operacion[];
+  
 
-  constructor() { }
+  constructor(
+    private clienteService: ClienteService, 
+    private cuentaService: CuentaService,
+    private transaccionesService: TransaccionesService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(){
 
-<<<<<<< HEAD
-=======
     this.loginRequest=JSON.parse(localStorage.getItem('loginRequest'));
     this.clienteService.postLogin(this.loginRequest).subscribe((res: any) => {
     const itemCopy  = {...res};
@@ -45,5 +54,4 @@ export class MovimientosComponent implements OnInit {
   });
 
 }
->>>>>>> f5f479443c35d3cb24ef40f0a03c3162da3ef534
 }

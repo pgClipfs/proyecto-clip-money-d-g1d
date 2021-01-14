@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Cors;
-using ProyectoClipMoney2020.Models;
+﻿using ProyectoClipMoney2020.Models;
 using ProyectoClipMoney2020.Models.Gestores;
 using System;
 using System.Collections.Generic;
