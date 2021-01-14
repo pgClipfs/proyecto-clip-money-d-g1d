@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
       NroDocumento: ['', [Validators.required]],
       Email: ['', [Validators.required]],
       Telefono: ['', [Validators.required]],      
-      FechaNacimiento: ['', [Validators.required,, Validators.pattern('(0[1-9]|[12][0-9]|3[01])[-/](0[1-9]|1[012])[-/](19|20)[0-9]{2}')]]
+      FechaNacimiento: ['', [Validators.required,Validators.minLength(10), Validators.maxLength(10)]]
     });
     
     // this.GetTokerLogin();  
@@ -132,22 +132,38 @@ export class LoginComponent implements OnInit {
   }
 
   validarEdad() {
+
     let edad= (<HTMLInputElement>document.getElementById("FechaNacimiento")).value;
     let fecha = new Date();
     let fNac = new Date(edad);
-    let edadFinal = fecha.getFullYear() - fNac.getFullYear();
+    let anioNac = fNac.getFullYear();
+    let anioString = anioNac.toString();
+    let anioHoy = fecha.getFullYear();
+    let edadFinal = anioHoy - anioNac;
+    let difMes = fecha.getMonth() - fNac.getMonth();
+    let diaNac = fNac.getDate()+1;
+    
+    
+    // (difMes === 0  && fecha.getDate() <= diaNac))
+      if(anioString.length === 4 && edadFinal >= 18){
+        if(difMes <= 0 && (fecha.getDate() < diaNac)){
+          document.getElementById("matchEdad").innerHTML = '';
+          document.getElementById("noMatchEdad").innerHTML = '';
+          let botonGrabar = (<HTMLInputElement>document.getElementById("Grabar")).disabled = false;
+        }
 
-    if(edadFinal >=18){
-      document.getElementById("matchEdad").innerHTML = '';
-      document.getElementById("noMatchEdad").innerHTML = '';
-      let botonGrabar = (<HTMLInputElement>document.getElementById("Grabar")).disabled = false;
-    }
-    else{
-      document.getElementById("matchEdad").innerHTML = '';
-      document.getElementById("noMatchEdad").innerHTML = 'Es requerido ser mayor de edad.';
-      let botonGrabar = (<HTMLInputElement>document.getElementById("Grabar")).disabled = true;
-    }
-
+        else{
+          document.getElementById("matchEdad").innerHTML = '';
+          document.getElementById("noMatchEdad").innerHTML = 'Es requerido ser mayor de edad.';
+          let botonGrabar = (<HTMLInputElement>document.getElementById("Grabar")).disabled = true;          
+          
+        
+        }
+        }
+      else{
+        document.getElementById("noMatchEdad").innerHTML = 'Es requerido ser mayor de edad.';
+        let botonGrabar = (<HTMLInputElement>document.getElementById("Grabar")).disabled = true
+      }
 
   }
 
