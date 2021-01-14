@@ -59,11 +59,8 @@ import { NewPasswordComponent } from './Componentes/new-password/new-password.co
       { path: 'form-domicilio', component: FormDomicilioComponent, canActivate: [AuthGuard] },
       { path: 'app-mi-perfil', component: MiPerfilComponent, canActivate: [AuthGuard] },
       { path: 'cuenta-pesos', component: CuentaComponent, canActivate: [AuthGuard] },
-      { path: 'transacciones', component: TransaccionesComponent, canActivate: [AuthGuard] },
-      { path: 'recuperar-password', component: RecuperarPasswordComponent },
-      { path: 'new-password', component: NewPasswordComponent },
+      { path: 'transacciones', component: TransaccionesComponent},
       { path: 'movimientos', component: MovimientosComponent},
-
       { path: '**', redirectTo: '/login', pathMatch: 'full' }
       ]
     ),

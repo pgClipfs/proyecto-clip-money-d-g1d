@@ -15,6 +15,7 @@ export class TransaccionesComponent implements OnInit {
 
   ingresarPesos(){
     this.modalQuienesSomosService.Alert('ingresar pesos');
+    
   }
   
   ingresarDolares(){
