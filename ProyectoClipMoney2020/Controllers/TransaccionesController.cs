@@ -151,7 +151,7 @@ namespace ProyectoClipMoney2020.Controllers
             }            
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("ultimos-mov")]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult PostOperaciones(Operacion op)
@@ -163,9 +163,10 @@ namespace ProyectoClipMoney2020.Controllers
             {
                 return NotFound(); //error 400
             }
-            else {
+            else
+            {
                 return Ok(gOperacion.ultimosDiezMovimientos(op));
-            }           
+            }
         }
     }
 }

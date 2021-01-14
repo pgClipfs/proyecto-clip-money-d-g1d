@@ -28,6 +28,7 @@ import { CuentaComponent } from './Componentes/cuenta/cuenta.component';
 import { RecuperarPasswordComponent } from './Componentes/recuperar-password/recuperar-password.component';
 import { NewPasswordComponent } from './Componentes/new-password/new-password.component';
 import { RetirarPesosComponent } from './Componentes/retirar-pesos/retirar-pesos.component';
+import { GiroComponent } from './Componentes/giro/giro.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { RetirarPesosComponent } from './Componentes/retirar-pesos/retirar-pesos
     CuentaComponent,
     RecuperarPasswordComponent,
     NewPasswordComponent,
-    RetirarPesosComponent
+    RetirarPesosComponent,
+    GiroComponent
   ],
   imports: [
     BrowserModule,
@@ -61,8 +63,10 @@ import { RetirarPesosComponent } from './Componentes/retirar-pesos/retirar-pesos
       { path: 'form-domicilio', component: FormDomicilioComponent, canActivate: [AuthGuard] },
       { path: 'app-mi-perfil', component: MiPerfilComponent, canActivate: [AuthGuard] },
       { path: 'cuenta-pesos', component: CuentaComponent, canActivate: [AuthGuard] },
-      { path: 'transacciones', component: TransaccionesComponent},
-      { path: 'movimientos', component: MovimientosComponent},
+      { path: 'transacciones', component: TransaccionesComponent, canActivate: [AuthGuard] },
+      { path: 'movimientos', component: MovimientosComponent, canActivate: [AuthGuard] },
+      { path: 'retirar-pesos', component: RetirarPesosComponent, canActivate: [AuthGuard]},
+      { path: 'giro-descubierto', component: GiroComponent, canActivate: [AuthGuard]},
       { path: '**', redirectTo: '/login', pathMatch: 'full' }
       ]
     ),
