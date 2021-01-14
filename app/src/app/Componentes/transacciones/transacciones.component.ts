@@ -15,6 +15,7 @@ export class TransaccionesComponent implements OnInit {
 
   ingresarPesos(){
     this.modalQuienesSomosService.Alert('ingresar pesos');
+    
   }
   
   ingresarDolares(){
@@ -28,6 +29,10 @@ export class TransaccionesComponent implements OnInit {
 
 
   retirarDolares(){
+    this.modalQuienesSomosService.Alert('En construccion');
+  }
+
+  transferir(){
     this.modalQuienesSomosService.Alert('En construccion');
   }
 
