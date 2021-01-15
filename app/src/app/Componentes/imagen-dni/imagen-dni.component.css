@@ -5,3 +5,12 @@ img {
     width: 7em;
     margin-top: 25px;
 }
+
+.card {
+    border: none;
+}
+
+.contenedorFoto {
+    display: flexbox;
+    flex-direction: row;
+}

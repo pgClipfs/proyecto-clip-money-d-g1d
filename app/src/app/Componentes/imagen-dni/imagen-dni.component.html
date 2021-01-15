@@ -1,4 +1,3 @@
-<app-home></app-home>
 
 <div class="container">
 
@@ -10,23 +9,29 @@
 
     <div class="card">
 
-      <a href="*">
-        <img class="card-img-top rounded-circle" src="../../../assets/img/photo-boton.jpg" alt="foto dni frente">
-      </a>
+      <div class="contenedorFoto">
+        <span>
+          <a href="*">
+            <img class="card-img-top rounded-circle" src="../../../assets/img/photo-boton.jpg" alt="foto dni frente">
+          </a>
+          <p class="card-text">Frente</p>
+        </span>
 
-      <a href="*">
-        <img class="card-img-top rounded-circle" src="../../../assets/img/photo-boton.jpg" alt="foto dni dorso">
-      </a>
+        <span>
+          <a href="*">
+            <img class="card-img-top rounded-circle" src="../../../assets/img/photo-boton.jpg" alt="foto dni dorso">
+          </a>
+          <p class="card-text">Dorso</p>
+        </span>
+      </div>  
 
       <div class="card-body">
 
-        <p class="card-text">Frente</p>
-        <p class="card-text">Dorso</p>
         <div>
           <button type="button" class="btn btn-light" (click)="cancelar()">Cancelar</button>
         </div>
         <div>
-          <button type="button" class="btn btn-outline-warning" (click)="subir()">Subir</button>
+          <button type="button" class="btn btn-warning" (click)="subir()">Subir</button>
         </div>
 
       </div>
