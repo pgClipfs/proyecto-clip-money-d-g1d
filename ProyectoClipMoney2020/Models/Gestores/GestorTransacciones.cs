@@ -119,11 +119,6 @@ namespace ProyectoClipMoney2020.Models.Gestores
             }
         }
 
-<<<<<<< HEAD
-        internal void realizarGiro(Operacion operacion)
-        {
-            throw new NotImplementedException();
-=======
         public void realizarGiro(Operacion operacion)
         {
             string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
@@ -142,7 +137,6 @@ namespace ProyectoClipMoney2020.Models.Gestores
                 comm.ExecuteScalar();
             }
 
->>>>>>> 2a67159b3bf8e399d9a580f0c9f4204769438415
         }
     }
 }

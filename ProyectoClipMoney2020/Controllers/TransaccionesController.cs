@@ -170,36 +170,6 @@ namespace ProyectoClipMoney2020.Controllers
         }
        
 
-        [HttpPost]
-        [Route("transferencia")]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public IHttpActionResult RealizarTransferencia(Operacion operacion)
-        {
-            GestorTransacciones gestorTransacciones = new GestorTransacciones();
-            GestorCuenta gestorCuenta = new GestorCuenta();
-            Cuenta cuentaDesde;
-            //Cuenta cuentaHasta;
-            cuentaDesde = gestorCuenta.ObtenerCuentaPorCvu(operacion.cvuDesde);
-            //cuentaHasta = gestorCuenta.ObtenerCuentaPorCvu(operacion.cvuHasta);
-            if (operacion.monto > 0)
-            {
-                cuentaDesde.saldo -= operacion.monto;
-                if (cuentaDesde.saldo >= 0)
-                {
-                    gestorTransacciones.realizarTransferencia(operacion);
-                    return Ok();
-                }
-                else
-                {
-                    return NotFound();
-                }
-            }
-            else
-            {
-                return NotFound();
-            }            
-        }
-
     }
 }
 
