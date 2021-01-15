@@ -119,9 +119,30 @@ namespace ProyectoClipMoney2020.Models.Gestores
             }
         }
 
+<<<<<<< HEAD
         internal void realizarGiro(Operacion operacion)
         {
             throw new NotImplementedException();
+=======
+        public void realizarGiro(Operacion operacion)
+        {
+            string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
+
+            using (SqlConnection conn = new SqlConnection(StrConn))
+            {
+                conn.Open();
+
+                SqlCommand comm = conn.CreateCommand();
+                comm.CommandText = "giro";
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+                //comm.Parameters.Add(new SqlParameter("@idCliente", cliente.idCliente));
+                comm.Parameters.Add(new SqlParameter("@monto", operacion.monto));
+                comm.Parameters.Add(new SqlParameter("@cvuDesde", operacion.cvuDesde));
+
+                comm.ExecuteScalar();
+            }
+
+>>>>>>> 2a67159b3bf8e399d9a580f0c9f4204769438415
         }
     }
 }

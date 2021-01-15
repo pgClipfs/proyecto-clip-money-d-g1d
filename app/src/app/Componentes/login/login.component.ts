@@ -132,8 +132,7 @@ export class LoginComponent implements OnInit {
   }
 
   validarEdad() {
-
-    let edad= (<HTMLInputElement>document.getElementById("FechaNacimiento")).value;
+    let edad = (<HTMLInputElement>document.getElementById("FechaNacimiento")).value;
     let fecha = new Date();
     let fNac = new Date(edad);
     let anioNac = fNac.getFullYear();
@@ -141,30 +140,34 @@ export class LoginComponent implements OnInit {
     let anioHoy = fecha.getFullYear();
     let edadFinal = anioHoy - anioNac;
     let difMes = fecha.getMonth() - fNac.getMonth();
-    let diaNac = fNac.getDate()+1;
-    
-    
-    // (difMes === 0  && fecha.getDate() <= diaNac))
-      if(anioString.length === 4 && edadFinal >= 18){
-        if(difMes <= 0 && (fecha.getDate() < diaNac)){
-          document.getElementById("matchEdad").innerHTML = '';
-          document.getElementById("noMatchEdad").innerHTML = '';
-          let botonGrabar = (<HTMLInputElement>document.getElementById("Grabar")).disabled = false;
-        }
+    let diaNac = fNac.getDate() + 1;
 
-        else{
-          document.getElementById("matchEdad").innerHTML = '';
-          document.getElementById("noMatchEdad").innerHTML = 'Es requerido ser mayor de edad.';
-          let botonGrabar = (<HTMLInputElement>document.getElementById("Grabar")).disabled = true;          
-          
-        
-        }
-        }
+    if(anioString.length === 4){
+      if (difMes < 0 || difMes === 0 && (fecha.getDate() < diaNac)) {
+        edadFinal--;
+      }  
       else{
-        document.getElementById("noMatchEdad").innerHTML = 'Es requerido ser mayor de edad.';
-        let botonGrabar = (<HTMLInputElement>document.getElementById("Grabar")).disabled = true
+          document.getElementById("noMatchEdad").innerHTML = 'Es requerido ser mayor de edad.';
+          let botonGrabar = (<HTMLInputElement>document.getElementById("Grabar")).disabled = true
       }
+    
+    this.mayoriaEdad(edadFinal);
     }
+  }
+
+  mayoriaEdad(edadValidar: number) {
+
+    if (edadValidar >= 18) {
+      document.getElementById("matchEdad").innerHTML = '';
+      document.getElementById("noMatchEdad").innerHTML = '';
+      let botonGrabar = (<HTMLInputElement>document.getElementById("Grabar")).disabled = false;
+    }
+    else {
+      document.getElementById("matchEdad").innerHTML = '';
+      document.getElementById("noMatchEdad").innerHTML = 'Es requerido ser mayor de edad.';
+      let botonGrabar = (<HTMLInputElement>document.getElementById("Grabar")).disabled = true;
+    }
+  }
 
   Grabar() {
     //this.FormRegistro.markAllAsTouched();
