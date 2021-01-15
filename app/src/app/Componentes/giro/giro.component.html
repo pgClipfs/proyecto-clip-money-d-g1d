@@ -10,10 +10,10 @@
     </div>
     
 
-    <label for="montoRetiroPesos">Ingrese el monto</label>
+    <div *ngIf="(saldoActual>0)"><label for="montoRetiroPesos">Ingrese el monto</label></div>
     <div>
-      <input id="montoRetiroPesos" type="text" formControlName='montoRetiroPesos' [ngClass]="{'is-invalid': (formGiro.controls.montoRetiroPesos.touched || submitted)  
-    && formGiro.controls.montoRetiroPesos.errors}" />
+      <div *ngIf="(saldoActual>0)"><input id="montoRetiroPesos" type="text" formControlName='montoRetiroPesos' [ngClass]="{'is-invalid': (formGiro.controls.montoRetiroPesos.touched || submitted)  
+    && formGiro.controls.montoRetiroPesos.errors}" /></div>
       <span class="text-danger" *ngIf="(formGiro.controls.montoRetiroPesos.touched || submitted) 
                 && formGiro.controls.montoRetiroPesos.errors?.required">
         Dato requerido.
@@ -35,7 +35,7 @@
   </form>
   <br>
 
-  <div id="confirmarExtraccionGiro">
+  <div *ngIf="(saldoActual>0)" id="confirmarExtraccionGiro">
     <button type="button" class="btn btn-warning btn-primary w-100" (click)="confirmarGiro()">Confirmar
       Giro al Descubierto</button>
   </div>
