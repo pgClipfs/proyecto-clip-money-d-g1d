@@ -2,9 +2,13 @@
 
 <div class="container">
 <form name="formGiro" [formGroup]='formGiro'>
-    <div *ngIf = "saldoActual">
+    <!-- <div *ngIf = "saldoActual">
         <label class="col-form-label col-12" id="saldo_disponible">Saldo Disponible: ${{saldoActual}} </label>
+    </div> -->
+    <div>
+      <label class="col-form-label col-12" id="saldo_disponible">Saldo + Giro al Descubierto disponible: ${{saldoActual * 1.1}} </label>
     </div>
+    
 
     <label for="montoRetiroPesos">Ingrese el monto</label>
     <div>
@@ -18,13 +22,13 @@
         Ingrese valor mayor a 0.
       </span>
       <span class="text-danger" *ngIf="formGiro.controls.montoRetiroPesos.errors?.pattern">
-        Solo caracteres numericos.
+        Sólo caracteres numéricos.
       </span>
       <span class="text-danger" *ngIf="(validarMontoMin)">
-        El monto mínimo deberia ser mayor a ${{saldoActual}}
+        El monto mínimo debería ser mayor a ${{saldoActual}}
       </span>
       <span class="text-danger" *ngIf="(validarMontoMax)">
-        El monto maximo deberia ser ${{saldoActual * 1.1}}
+        El monto máximo debería ser ${{saldoActual * 1.1}}
       </span>
     </div>
 
