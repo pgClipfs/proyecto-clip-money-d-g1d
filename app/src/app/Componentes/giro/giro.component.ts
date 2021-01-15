@@ -82,4 +82,11 @@ export class GiroComponent implements OnInit {
     });
   }
 
+  condicionesGiro(){
+
+    this.modalQuienesSomosService.Alert('Condiciones', 'Bases y condiciones', 'i');
+
+  }
+
+  
 }
