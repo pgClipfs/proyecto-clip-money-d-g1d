@@ -38,7 +38,7 @@ namespace ProyectoClipMoney2020.Controllers
         [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult Authenticate(LoginRequest login)
         {
-            if (login == null)
+            if (login.Username == null || login.Password == null)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
             GestorLogin gLogin = new GestorLogin();

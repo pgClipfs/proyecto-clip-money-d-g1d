@@ -1,8 +1,9 @@
 <app-home></app-home>
 
+<div class="container">
 <form name="formGiro" [formGroup]='formGiro'>
     <div *ngIf = "saldoActual">
-        <label class="col-form-label col-12">Saldo Disponible: ${{saldoActual}} </label>
+        <label class="col-form-label col-12" id="saldo_disponible">Saldo Disponible: ${{saldoActual}} </label>
     </div>
 
     <label for="montoRetiroPesos">Ingrese el monto</label>
@@ -34,7 +35,13 @@
     <button type="button" class="btn btn-warning btn-primary w-100" (click)="confirmarGiro()">Confirmar
       Giro al Descubierto</button>
   </div>
-
-  <div id="confirmarExtraccionGiro">
-    <button type="button" class="btn btn-warning btn-primary w-100">Condiciones Giro al Descubierto</button>
+  <br>
+  <div id="condicionesGiro">
+    <button type="button" class="btn btn-outline-warning w-100" (click)="condicionesGiro()">Condiciones Giro al Descubierto
+      Giro al Descubierto</button>
   </div>
+
+
+
+
+</div>
