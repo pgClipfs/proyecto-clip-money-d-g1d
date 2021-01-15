@@ -36,6 +36,7 @@ export class HomeComponent implements OnInit {
   {
     this.modalQuienesSomosService.Alert('Disculpe las molestias', 'En desarrollo', 'i')
   }
+  
   cuentaEnPesos()
   {
     this.clienteService.postLogin(this.loginRequest).subscribe((res: any) => {
@@ -48,10 +49,7 @@ export class HomeComponent implements OnInit {
       else
       {
         this.router.navigate(['/cuenta-pesos']);
-      }
-      
-      
-          
+      }  
       
       
     });

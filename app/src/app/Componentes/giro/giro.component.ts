@@ -74,9 +74,6 @@ export class GiroComponent implements OnInit {
           },
           error => {this.modalQuienesSomosService.Alert('Cuenta inexistente','Error','w')});
         }
-        
-
-        
       });
       
     });
