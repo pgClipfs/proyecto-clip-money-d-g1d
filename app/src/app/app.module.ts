@@ -28,6 +28,7 @@ import { CuentaComponent } from './Componentes/cuenta/cuenta.component';
 import { RecuperarPasswordComponent } from './Componentes/recuperar-password/recuperar-password.component';
 import { NewPasswordComponent } from './Componentes/new-password/new-password.component';
 import { RetirarPesosComponent } from './Componentes/retirar-pesos/retirar-pesos.component';
+import { GiroComponent } from './Componentes/giro/giro.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { RetirarPesosComponent } from './Componentes/retirar-pesos/retirar-pesos
     CuentaComponent,
     RecuperarPasswordComponent,
     NewPasswordComponent,
-    RetirarPesosComponent
+    RetirarPesosComponent,
+    GiroComponent
   ],
   imports: [
     BrowserModule,
@@ -64,6 +66,8 @@ import { RetirarPesosComponent } from './Componentes/retirar-pesos/retirar-pesos
       { path: 'recuperar-password', component: RecuperarPasswordComponent },
       { path: 'new-password', component: NewPasswordComponent },
       { path: 'movimientos', component: MovimientosComponent},
+      { path: 'retirar-pesos', component: RetirarPesosComponent, canActivate: [AuthGuard]},
+      { path: 'giro-descubierto', component: GiroComponent, canActivate: [AuthGuard]},
 
       { path: '**', redirectTo: '/login', pathMatch: 'full' }
       ]
