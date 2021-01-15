@@ -30,6 +30,10 @@ namespace ProyectoClipMoney2020.Models
                 {
                     result = true;
                 }
+                else
+                {
+                    result = false;
+                }
 
             }
             return result; 

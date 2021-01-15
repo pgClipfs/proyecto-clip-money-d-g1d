@@ -60,7 +60,7 @@ export class RetirarPesosComponent implements OnInit {
           this.modalQuienesSomosService.Alert('La operación se realizo con éxito', 'Extracción', 's');
            this.router.navigate(['/menu-principal']);
         },
-        error => {this.modalQuienesSomosService.Alert('Cuenta inexistente','Error','w')});
+        error => {this.modalQuienesSomosService.Alert('Saldo insuficiente','Error','w')});
       });
       
     });

@@ -17,7 +17,7 @@ export class MovimientosComponent implements OnInit {
   operaciones: Operacion[];
   
 
-  constructor(public ultimosMovimientos: UltimosMovimientosService,
+  constructor(
     private clienteService: ClienteService, 
     private cuentaService: CuentaService,
     private transaccionesService: TransaccionesService) { }

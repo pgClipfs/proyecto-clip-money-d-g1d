@@ -137,7 +137,7 @@ namespace ProyectoClipMoney2020.Controllers
                
 
         }
-       
+
 
         [HttpPost]
         [Route("transferencia")]
@@ -166,8 +166,10 @@ namespace ProyectoClipMoney2020.Controllers
             else
             {
                 return NotFound();
-            }            
+            }
         }
+
 
     }
 }
+
