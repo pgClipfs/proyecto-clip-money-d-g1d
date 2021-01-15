@@ -208,7 +208,7 @@ export class LoginComponent implements OnInit {
   }
 
   subirFoto() {
-    alert("En construccion - botones subir foto");
+    this.router.navigate(['/imagen-dni']);
  
   }
 

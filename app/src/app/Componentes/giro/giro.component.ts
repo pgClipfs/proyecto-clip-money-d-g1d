@@ -74,9 +74,6 @@ export class GiroComponent implements OnInit {
           },
           error => {this.modalQuienesSomosService.Alert('Cuenta inexistente','Error','w')});
         }
-        
-
-        
       });
       
     });
@@ -84,9 +81,10 @@ export class GiroComponent implements OnInit {
 
   condicionesGiro(){
 
-    this.modalQuienesSomosService.Alert('Condiciones', 'Bases y condiciones', 'i');
+    //this.modalQuienesSomosService.Alert('Condiciones', 'Bases y condiciones', 'i');
+    this.router.navigate(['/giro-condiciones']);
 
   }
 
-
+  
 }

@@ -91,6 +91,24 @@ namespace ProyectoClipMoney2020.Controllers
 
 
         [HttpPost]
+        [Route("ultimos-mov")]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        public IHttpActionResult PostOperaciones(Operacion op)
+        {
+            if (op.cvuDesde == null)
+                throw new HttpResponseException(HttpStatusCode.BadRequest); //error 400
+            GestorTransacciones gOperacion = new GestorTransacciones();
+            if (gOperacion.ultimosDiezMovimientos(op) == null)
+            {
+                return NotFound(); //error 400
+            }
+            else
+            {
+                return Ok(gOperacion.ultimosDiezMovimientos(op));
+            }
+        }
+
+        [HttpPost]
         [Route("giro")]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult RealizarGiro(Operacion operacion)
@@ -108,7 +126,7 @@ namespace ProyectoClipMoney2020.Controllers
                 }
                 else
                 {
-                    gestorTransacciones.realizarExtraccion(operacion);
+                    gestorTransacciones.realizarGiro(operacion);
                     return Ok(operacion);
                 }
             }
@@ -118,55 +136,6 @@ namespace ProyectoClipMoney2020.Controllers
             }
                
 
-        }
-       
-
-        [HttpPost]
-        [Route("transferencia")]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public IHttpActionResult RealizarTransferencia(Operacion operacion)
-        {
-            GestorTransacciones gestorTransacciones = new GestorTransacciones();
-            GestorCuenta gestorCuenta = new GestorCuenta();
-            Cuenta cuentaDesde;
-            //Cuenta cuentaHasta;
-            cuentaDesde = gestorCuenta.ObtenerCuentaPorCvu(operacion.cvuDesde);
-            //cuentaHasta = gestorCuenta.ObtenerCuentaPorCvu(operacion.cvuHasta);
-            if (operacion.monto > 0)
-            {
-                cuentaDesde.saldo -= operacion.monto;
-                if (cuentaDesde.saldo >= 0)
-                {
-                    gestorTransacciones.realizarTransferencia(operacion);
-                    return Ok();
-                }
-                else
-                {
-                    return NotFound();
-                }
-            }
-            else
-            {
-                return NotFound();
-            }            
-        }
-
-        [HttpPost]
-        [Route("ultimos-mov")]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public IHttpActionResult PostOperaciones(Operacion op)
-        {
-            if (op.cvuDesde == null)
-                throw new HttpResponseException(HttpStatusCode.BadRequest); //error 400
-            GestorTransacciones gOperacion = new GestorTransacciones();
-            if (gOperacion.ultimosDiezMovimientos(op) == null)
-            {
-                return NotFound(); //error 400
-            }
-            else
-            {
-                return Ok(gOperacion.ultimosDiezMovimientos(op));
-            }
         }
        
 

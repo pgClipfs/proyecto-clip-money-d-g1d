@@ -29,6 +29,8 @@ import { RecuperarPasswordComponent } from './Componentes/recuperar-password/rec
 import { NewPasswordComponent } from './Componentes/new-password/new-password.component';
 import { RetirarPesosComponent } from './Componentes/retirar-pesos/retirar-pesos.component';
 import { GiroComponent } from './Componentes/giro/giro.component';
+import { GiroCondicionesComponent } from './Componentes/giro-condiciones/giro-condiciones.component';
+import { ImagenDniComponent } from './Componentes/imagen-dni/imagen-dni.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { GiroComponent } from './Componentes/giro/giro.component';
     RecuperarPasswordComponent,
     NewPasswordComponent,
     RetirarPesosComponent,
-    GiroComponent
+    GiroComponent,
+    GiroCondicionesComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +71,12 @@ import { GiroComponent } from './Componentes/giro/giro.component';
       { path: 'movimientos', component: MovimientosComponent},
       { path: 'retirar-pesos', component: RetirarPesosComponent, canActivate: [AuthGuard]},
       { path: 'giro-descubierto', component: GiroComponent, canActivate: [AuthGuard]},
+<<<<<<< HEAD
 
+=======
+      { path: 'giro-condiciones', component: GiroCondicionesComponent, canActivate: [AuthGuard]},
+      { path: 'imagen-dni', component: ImagenDniComponent},
+>>>>>>> e56c7d02c1f61a70b37d2cc06d5f4e1dd7a85d7d
       { path: '**', redirectTo: '/login', pathMatch: 'full' }
       ]
     ),
