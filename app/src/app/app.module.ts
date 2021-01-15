@@ -71,12 +71,8 @@ import { ImagenDniComponent } from './Componentes/imagen-dni/imagen-dni.componen
       { path: 'movimientos', component: MovimientosComponent},
       { path: 'retirar-pesos', component: RetirarPesosComponent, canActivate: [AuthGuard]},
       { path: 'giro-descubierto', component: GiroComponent, canActivate: [AuthGuard]},
-<<<<<<< HEAD
-
-=======
       { path: 'giro-condiciones', component: GiroCondicionesComponent, canActivate: [AuthGuard]},
       { path: 'imagen-dni', component: ImagenDniComponent},
->>>>>>> e56c7d02c1f61a70b37d2cc06d5f4e1dd7a85d7d
       { path: '**', redirectTo: '/login', pathMatch: 'full' }
       ]
     ),

@@ -209,7 +209,6 @@ C:\Users\melani.crespo\Documents\repo billetera clip - 26 noviembre\moneyclip\pr
 C:\Users\melani.crespo\Documents\repo billetera clip - 26 noviembre\moneyclip\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\obj\Debug\ProyectoClipMoney2020.dll
 C:\Users\melani.crespo\Documents\repo billetera clip - 26 noviembre\moneyclip\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\obj\Debug\ProyectoClipMoney2020.pdb
 <<<<<<< HEAD
-<<<<<<< HEAD
 C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\ProyectoClipMoney2020.dll.config
 C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\ProyectoClipMoney2020.dll
 C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\ProyectoClipMoney2020.pdb
@@ -315,7 +314,6 @@ C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMone
 C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\obj\Debug\ProyectoClipMoney2020.csproj.CopyComplete
 C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\obj\Debug\ProyectoClipMoney2020.dll
 C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\obj\Debug\ProyectoClipMoney2020.pdb
-=======
 =======
 >>>>>>> e64268ce305676e934c5c9d2076f0d3c643ee0f9
 D:\descazrgas\CLIP\proyecto Mes5\ProyectoClipMoney2020\bin\ProyectoClipMoney2020.dll.config
@@ -423,9 +421,7 @@ D:\descazrgas\CLIP\proyecto Mes5\ProyectoClipMoney2020\obj\Debug\ProyectoClipMon
 D:\descazrgas\CLIP\proyecto Mes5\ProyectoClipMoney2020\obj\Debug\ProyectoClipMoney2020.csproj.CopyComplete
 D:\descazrgas\CLIP\proyecto Mes5\ProyectoClipMoney2020\obj\Debug\ProyectoClipMoney2020.dll
 D:\descazrgas\CLIP\proyecto Mes5\ProyectoClipMoney2020\obj\Debug\ProyectoClipMoney2020.pdb
-<<<<<<< HEAD
 >>>>>>> 1400b9a512e8ff75baed167b7c9e1b3ff7462ab9
-=======
 C:\Users\melania.peralta\Documents\GitHub\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\ProyectoClipMoney2020.dll.config
 C:\Users\melania.peralta\Documents\GitHub\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\ProyectoClipMoney2020.dll
 C:\Users\melania.peralta\Documents\GitHub\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\ProyectoClipMoney2020.pdb
@@ -531,4 +527,3 @@ C:\Users\melania.peralta\Documents\GitHub\proyecto-clip-money-d-g1d\ProyectoClip
 C:\Users\melania.peralta\Documents\GitHub\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\obj\Debug\ProyectoClipMoney2020.csproj.CopyComplete
 C:\Users\melania.peralta\Documents\GitHub\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\obj\Debug\ProyectoClipMoney2020.dll
 C:\Users\melania.peralta\Documents\GitHub\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\obj\Debug\ProyectoClipMoney2020.pdb
->>>>>>> e64268ce305676e934c5c9d2076f0d3c643ee0f9
