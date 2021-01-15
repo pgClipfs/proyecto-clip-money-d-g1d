@@ -208,6 +208,114 @@ C:\Users\melani.crespo\Documents\repo billetera clip - 26 noviembre\moneyclip\pr
 C:\Users\melani.crespo\Documents\repo billetera clip - 26 noviembre\moneyclip\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\obj\Debug\ProyectoClipMoney2020.csproj.CopyComplete
 C:\Users\melani.crespo\Documents\repo billetera clip - 26 noviembre\moneyclip\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\obj\Debug\ProyectoClipMoney2020.dll
 C:\Users\melani.crespo\Documents\repo billetera clip - 26 noviembre\moneyclip\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\obj\Debug\ProyectoClipMoney2020.pdb
+<<<<<<< HEAD
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\ProyectoClipMoney2020.dll.config
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\ProyectoClipMoney2020.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\ProyectoClipMoney2020.pdb
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\csc.exe
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\csc.exe.config
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\csc.rsp
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\csi.exe
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\csi.exe.config
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\csi.rsp
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\System.AppContext.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\System.Console.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\System.IO.Compression.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\System.Net.Http.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\System.Net.Sockets.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\System.ValueTuple.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\System.Xml.XPath.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\vbc.exe
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\vbc.exe.config
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\vbc.rsp
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\VBCSCompiler.exe
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\Antlr3.Runtime.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\Microsoft.IdentityModel.Logging.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\Microsoft.IdentityModel.Tokens.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\Newtonsoft.Json.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\System.Net.Http.Formatting.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\System.Web.Cors.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\System.Web.Helpers.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\System.Web.Http.Cors.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\System.Web.Http.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\System.Web.Http.WebHost.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\System.Web.Mvc.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\System.Web.Optimization.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\System.Web.Razor.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\System.Web.Webpages.Deployment.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\System.Web.Webpages.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\System.Web.Webpages.Razor.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\WebGrease.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\Antlr3.Runtime.pdb
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\Microsoft.IdentityModel.Logging.xml
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\Microsoft.IdentityModel.Tokens.xml
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\System.Web.Http.Cors.xml
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\System.Web.Optimization.xml
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\System.Web.Razor.xml
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\System.Web.Webpages.xml
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\System.Web.Webpages.Deployment.xml
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\System.Web.Webpages.Razor.xml
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\System.Web.Helpers.xml
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\System.Web.Mvc.xml
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\Newtonsoft.Json.xml
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\System.Net.Http.Formatting.xml
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\System.Web.Http.xml
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\System.Web.Http.WebHost.xml
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\es\System.Web.Razor.resources.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\es\System.Web.Webpages.resources.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\es\System.Web.Webpages.Deployment.resources.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\es\System.Web.Webpages.Razor.resources.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\es\System.Web.Helpers.resources.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\es\System.Web.Mvc.resources.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\es\System.Net.Http.Formatting.resources.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\es\System.Web.Http.resources.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\es\System.Web.Http.WebHost.resources.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\obj\Debug\ProyectoClipMoney2020.csprojAssemblyReference.cache
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\obj\Debug\ProyectoClipMoney2020.csproj.CoreCompileInputs.cache
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\obj\Debug\ProyectoClipMoney2020.csproj.CopyComplete
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\obj\Debug\ProyectoClipMoney2020.dll
+C:\Users\mariajimena.bustos\Documents\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\obj\Debug\ProyectoClipMoney2020.pdb
+=======
+>>>>>>> e64268ce305676e934c5c9d2076f0d3c643ee0f9
 D:\descazrgas\CLIP\proyecto Mes5\ProyectoClipMoney2020\bin\ProyectoClipMoney2020.dll.config
 D:\descazrgas\CLIP\proyecto Mes5\ProyectoClipMoney2020\bin\ProyectoClipMoney2020.dll
 D:\descazrgas\CLIP\proyecto Mes5\ProyectoClipMoney2020\bin\ProyectoClipMoney2020.pdb
@@ -313,6 +421,7 @@ D:\descazrgas\CLIP\proyecto Mes5\ProyectoClipMoney2020\obj\Debug\ProyectoClipMon
 D:\descazrgas\CLIP\proyecto Mes5\ProyectoClipMoney2020\obj\Debug\ProyectoClipMoney2020.csproj.CopyComplete
 D:\descazrgas\CLIP\proyecto Mes5\ProyectoClipMoney2020\obj\Debug\ProyectoClipMoney2020.dll
 D:\descazrgas\CLIP\proyecto Mes5\ProyectoClipMoney2020\obj\Debug\ProyectoClipMoney2020.pdb
+>>>>>>> 1400b9a512e8ff75baed167b7c9e1b3ff7462ab9
 C:\Users\melania.peralta\Documents\GitHub\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\ProyectoClipMoney2020.dll.config
 C:\Users\melania.peralta\Documents\GitHub\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\ProyectoClipMoney2020.dll
 C:\Users\melania.peralta\Documents\GitHub\proyecto-clip-money-d-g1d\ProyectoClipMoney2020\bin\ProyectoClipMoney2020.pdb
