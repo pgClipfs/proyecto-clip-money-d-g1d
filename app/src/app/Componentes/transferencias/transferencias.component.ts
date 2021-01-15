@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TransaccionesService} from '../../Servicios/transacciones.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-transferencias',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransferenciasComponent implements OnInit {
 
-  constructor() { }
+  submitted=false;
+  formTransferencia: FormGroup;
+
+  constructor(
+    
+    private transaccionesService: TransaccionesService,
+    public formBuilder: FormBuilder,
+  ) { }
 
   ngOnInit(): void {
+    this.formTransferencia = this.formBuilder.group({
+      Destino: ['', [Validators.required]],
+      Monto: ['', [Validators.required]]
+       });
   }
+
+aceptar(){}
+
+cancelar(){}
 
 }

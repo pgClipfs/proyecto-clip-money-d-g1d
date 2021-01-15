@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Cuenta } from '../Modelos/Cuenta';
 import { Operacion } from '../Modelos/Operacion';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -31,4 +32,7 @@ export class TransaccionesService {
     return this.httpClient.post(this.resourceUrl + 'giro', obj);
   }
 
+  postTransferencia(obj: Operacion){
+    return this.httpClient.post(this.resourceUrl + 'transferencia', obj);
+  }
 }

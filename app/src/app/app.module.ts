@@ -75,7 +75,9 @@ import { TransferenciasComponent } from './Componentes/transferencias/transferen
       { path: 'giro-descubierto', component: GiroComponent, canActivate: [AuthGuard]},
       { path: 'giro-condiciones', component: GiroCondicionesComponent, canActivate: [AuthGuard]},
       { path: 'imagen-dni', component: ImagenDniComponent},
+      {path: 'transferencias', component: TransferenciasComponent, canActivate: [AuthGuard]}, 
       { path: '**', redirectTo: '/login', pathMatch: 'full' }
+      
       ]
     ),
 

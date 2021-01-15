@@ -1,2 +1,58 @@
 <app-home></app-home>
 
+<form name="formTransferencia" [formGroup]='formTransferencia'>
+        <!--campo destino-->
+        <div class="form-group row">
+            
+            <label class="col-form-label col-12">CVU Destino: <span
+                    class="text-danger">*</span></label>
+            <div class="col-12">
+                <input type="text" class="form-control" formControlName="Destino"
+         [ngClass]="{'is-invalid': (formTransferencia.controls.Usuario.touched || submitted)  
+            && formTransferencia.controls.Usuario.errors}" />
+            &nbsp;
+            <span class="input-group-btn">                
+                <button type="button" class="w-100 btn btn-sm btn-outline-primary" title="Modificar"(click)="formDomicilio()" >
+                <span class="fas fa-search"></span>
+                </button>                   
+              </span>  
+
+                <span class="text-danger" *ngIf="(formTransferencia.controls.Usuario.touched || submitted) 
+                        && formTransferencia.controls.Usuario.errors?.required">
+                    Dato requerido.
+                </span>
+
+            </div>
+        </div>
+
+        <!--campo monto-->
+        <div class="form-group row">
+            <label class="col-form-label col-12">Monto a transferir: 
+                <span class="text-danger">*</span>
+            </label>
+            <div class="col-12">
+                <input type="text" class="form-control" formControlName="Monto"
+         [ngClass]="{'is-invalid': (formTransferencia.controls.Monto.touched || submitted)  
+            && formTransferencia.controls.Monto.errors}" />
+
+                <span class="text-danger" *ngIf="(formTransferencia.controls.Monto.touched || submitted) 
+                        && formTransferencia.controls.Monto.errors?.required">
+                    Dato requerido.
+                </span>
+            
+               
+            </div>
+        </div>
+
+    <!-- Botones Grabar, Cancelar/Volver' -->
+    <div class="row justify-content-center">
+        <button type="button" class="btn btn-danger" (click)="aceptar()">
+            <span class="fas fa-undo"></span> Aceptar
+        </button>
+      
+        <button type="button" class="btn btn-danger" (click)="cancelar()">
+            <span class="fas fa-undo"></span> Cancelar
+        </button>
+    </div>
+    
+</form>
