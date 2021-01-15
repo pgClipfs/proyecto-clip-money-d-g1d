@@ -31,6 +31,7 @@ import { RetirarPesosComponent } from './Componentes/retirar-pesos/retirar-pesos
 import { GiroComponent } from './Componentes/giro/giro.component';
 import { GiroCondicionesComponent } from './Componentes/giro-condiciones/giro-condiciones.component';
 import { ImagenDniComponent } from './Componentes/imagen-dni/imagen-dni.component';
+import { TransferenciasComponent } from './Componentes/transferencias/transferencias.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { ImagenDniComponent } from './Componentes/imagen-dni/imagen-dni.componen
     NewPasswordComponent,
     RetirarPesosComponent,
     GiroComponent,
-    GiroCondicionesComponent
+    GiroCondicionesComponent,
+    TransferenciasComponent
   ],
   imports: [
     BrowserModule,
