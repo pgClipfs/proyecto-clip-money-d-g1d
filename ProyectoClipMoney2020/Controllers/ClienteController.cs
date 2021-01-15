@@ -1,7 +1,7 @@
 ﻿using ProyectoClipMoney2020.Models;
 using ProyectoClipMoney2020.Models.Gestores;
 using System.Web.Http;
-using EnableCorsAttribute = System.Web.Http.Cors.EnableCorsAttribute;
+using System.Web.Http.Cors;
 
 namespace ProyectoClipMoney2020.Controllers
 {
