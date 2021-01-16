@@ -7,8 +7,7 @@ import { Operacion } from '../Modelos/Operacion';
 @Injectable({
   providedIn: 'root'
 })
-export class TransaccionesService {
-  
+export class TransaccionesService { 
 
   resourceUrl: string;
 
@@ -35,4 +34,9 @@ export class TransaccionesService {
   postTransferencia(obj: Operacion){
     return this.httpClient.post(this.resourceUrl + 'transferencia', obj);
   }
+
+  postDeposito(obj: Operacion) {
+    return this.httpClient.post(this.resourceUrl + 'deposito', obj);
+  }
+  
 }

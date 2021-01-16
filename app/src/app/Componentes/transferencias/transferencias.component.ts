@@ -25,8 +25,17 @@ export class TransferenciasComponent implements OnInit {
        });
   }
 
-aceptar(){}
-
-cancelar(){}
+aceptar(){
 
 }
+
+cancelar(){
+
+}
+
+buscarCvu(){
+  
+}
+
+}
+

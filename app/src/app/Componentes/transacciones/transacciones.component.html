@@ -7,10 +7,11 @@
         <div id="ingresarDinero" class="dropdown">
             <button class="btn btn-warning w-100 dropdown-toggle" type="button" data-toggle="dropdown">Ingresar Dinero
                 <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                    <li><a href="#" (click)="ingresarPesos()">Ingresar PESOS</a></li>
-                    <li><a href="#" (click)="ingresarDolares()">Ingresar DÓLARES</a></li>
-                  </ul>
+                <ul class="dropdown-menu p-2">
+                    <li><a class="btn-warning btn nav-link" (click)="ingresarPesos()">Ingresar PESOS</a></li>
+                    &nbsp;
+                    <li><a class="btn-warning btn nav-link" (click)="ingresarDolares()">Ingresar DÓLARES</a></li>
+                </ul>
         </div>
 
         <br>
@@ -18,12 +19,14 @@
         <div id="retirarDinero" class="dropdown">
             <button class="btn btn-warning w-100 dropdown-toggle" type="button" data-toggle="dropdown">Retirar Dinero
                 <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                    <li><a href="#" (click)="retirarPesos()">Retirar PESOS</a></li>
-                    <li><a href="#" (click)="retirarDolares()">Retirar DÓLARES</a></li>
+                <ul class="dropdown-menu p-2">
+                    <li><a class="btn-warning btn nav-link"  (click)="retirarPesos()">Retirar PESOS</a></li>
+                    &nbsp;
+                    <li><a class="btn-warning btn nav-link"  (click)="retirarDolares()">Retirar DÓLARES</a></li>
                   </ul>
         </div>
 
+        <br>
         <br>
 
         <div id="transferencias">
