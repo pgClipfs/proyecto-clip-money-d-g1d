@@ -1,10 +1,5 @@
 ﻿using ProyectoClipMoney2020.Models;
 using ProyectoClipMoney2020.Models.Gestores;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -82,12 +77,14 @@ namespace ProyectoClipMoney2020.Controllers
             }
             return Ok(cliente);   // en cliente vemos response.data
         }
+
+        // PUT: api/Cliente/5
         [HttpPut]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult Put(int id, Cliente cliente)
         {
             GestorCliente gestorCliente = new GestorCliente();
-            int boo=gestorCliente.actualizarCliente(cliente);
+            int boo = gestorCliente.actualizarCliente(cliente);
             if (boo == 0)
             {
                 return NotFound();
@@ -95,10 +92,11 @@ namespace ProyectoClipMoney2020.Controllers
             else
                 return Ok(cliente);
         }
-
-        // DELETE: api/Cliente/5
-        public void Delete(int id)
+            // DELETE: api/Cliente/5
+            public void Delete(int id)
         {
         }
+
+
     }
 }

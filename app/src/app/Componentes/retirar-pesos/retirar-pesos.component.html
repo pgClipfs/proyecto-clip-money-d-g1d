@@ -1,0 +1,66 @@
+<app-home></app-home>
+
+<div class="container">
+
+  <h3>Retirar PESOS</h3>
+  <br>
+
+  <!--campo saldo-->
+  <!-- <div class="form-group row">
+    <label class="col-form-label col-12">Saldo Disponible: </label>
+    <div class="col-12">
+      <input type="text" class="form-control" formControlName="saldo" [readonly]="true" />
+    </div>
+  </div> -->
+
+  <form name="formExtraccion" [formGroup]='formExtraccion'>
+    <div *ngIf = "saldoActual">
+        <label class="col-form-label col-12" id="saldo_campo">Saldo Disponible: ${{saldoActual}} </label>
+    </div>
+
+    <label for="montoRetiroPesos">Ingrese el monto</label>
+    <div>
+      <input id="montoRetiroPesos" type="text" formControlName='montoRetiroPesos' [ngClass]="{'is-invalid': (formExtraccion.controls.montoRetiroPesos.touched || submitted)  
+    && formExtraccion.controls.montoRetiroPesos.errors}" />
+      <span class="text-danger" *ngIf="(formExtraccion.controls.montoRetiroPesos.touched || submitted) 
+                && formExtraccion.controls.montoRetiroPesos.errors?.required">
+        Dato requerido.
+      </span>
+      <span class="text-danger" *ngIf="(formExtraccion.controls.montoRetiroPesos.errors?.min) ">
+        Ingrese valor mayor a 0.
+      </span>
+      <span class="text-danger" *ngIf="formExtraccion.controls.montoRetiroPesos.errors?.pattern">
+        Solo caracteres numericos.
+      </span>
+    </div>
+
+  </form>
+  
+  <br>
+
+  <div id="confirmarExtraccion">
+    <button type="button" class="btn btn-warning btn-primary w-100" (click)="confirmarExtraccion()">Confirmar
+      Extracción</button>
+  </div>
+
+  <br>
+  
+  <div id="giro">
+    <button type="button" class="btn btn-warning btn-primary w-100" (click)="irAlGiro()">Giro Descubierto
+    </button>
+  </div>
+
+
+
+  <!-- <div class="form-group row">
+    <label class="col-form-label col-12">Giro al Descubierto Disponible: </label>
+    
+    <div class="col-12">
+        <input type="text" class="form-control" formControlName="saldo" [readonly]="true" />    
+    </div>
+</div>
+<div id="confirmarExtraccion">
+    <button type="button" class="btn btn-warning btn-primary w-100" (click)="condicionesGiroAlDecubierto()">Conocé las Condiciones de Giro al Descubierto</button>
+</div> -->
+
+</div>

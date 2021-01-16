@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginRequest } from 'src/app/Modelos/LoginRequest';
 import { ClienteService } from 'src/app/Servicios/cliente.service';
 import { CuentaService } from 'src/app/Servicios/cuenta.service';
-
+import { UltimosMovimientosService } from '../../Servicios/ultimos-movimientos.service';
 import {TransaccionesService} from '../../Servicios/transacciones.service';
 import { Operacion } from 'src/app/Modelos/Operacion';
 

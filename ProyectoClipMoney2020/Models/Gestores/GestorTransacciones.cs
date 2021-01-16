@@ -57,7 +57,6 @@ namespace ProyectoClipMoney2020.Models.Gestores
         {
             var operaciones = new List<Operacion>();
             string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
-
             using (SqlConnection conn = new SqlConnection(StrConn))
             {
                 conn.Open();
@@ -120,9 +119,24 @@ namespace ProyectoClipMoney2020.Models.Gestores
             }
         }
 
-        internal void realizarGiro(Operacion operacion)
+        public void realizarGiro(Operacion operacion)
         {
-            throw new NotImplementedException();
+            string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
+
+            using (SqlConnection conn = new SqlConnection(StrConn))
+            {
+                conn.Open();
+
+                SqlCommand comm = conn.CreateCommand();
+                comm.CommandText = "giro";
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+                //comm.Parameters.Add(new SqlParameter("@idCliente", cliente.idCliente));
+                comm.Parameters.Add(new SqlParameter("@monto", operacion.monto));
+                comm.Parameters.Add(new SqlParameter("@cvuDesde", operacion.cvuDesde));
+
+                comm.ExecuteScalar();
+            }
+
         }
     }
 }

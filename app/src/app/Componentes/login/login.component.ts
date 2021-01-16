@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
       NroDocumento: ['', [Validators.required]],
       Email: ['', [Validators.required]],
       Telefono: ['', [Validators.required]],      
-      FechaNacimiento: ['', [Validators.required,, Validators.pattern('(0[1-9]|[12][0-9]|3[01])[-/](0[1-9]|1[012])[-/](19|20)[0-9]{2}')]]
+      FechaNacimiento: ['', [Validators.required,Validators.minLength(10), Validators.maxLength(10)]]
     });
     
     // this.GetTokerLogin();  
@@ -115,10 +115,7 @@ export class LoginComponent implements OnInit {
       ).toISOString();
   } */
 
-  forgotPassword() {
-    alert('redirigir a recuperar contraseña');
-  }
-
+  
   crearCliente() {
     this.FormRegistro.reset();
     this.AccionABMC = 'R';
@@ -135,23 +132,41 @@ export class LoginComponent implements OnInit {
   }
 
   validarEdad() {
-    let edad= (<HTMLInputElement>document.getElementById("FechaNacimiento")).value;
+    let edad = (<HTMLInputElement>document.getElementById("FechaNacimiento")).value;
     let fecha = new Date();
     let fNac = new Date(edad);
-    let edadFinal = fecha.getFullYear() - fNac.getFullYear();
+    let anioNac = fNac.getFullYear();
+    let anioString = anioNac.toString();
+    let anioHoy = fecha.getFullYear();
+    let edadFinal = anioHoy - anioNac;
+    let difMes = fecha.getMonth() - fNac.getMonth();
+    let diaNac = fNac.getDate() + 1;
 
-    if(edadFinal >=18){
+    if(anioString.length === 4){
+      if (difMes < 0 || difMes === 0 && (fecha.getDate() < diaNac)) {
+        edadFinal--;
+      }  
+      else{
+          document.getElementById("noMatchEdad").innerHTML = 'Es requerido ser mayor de edad.';
+          let botonGrabar = (<HTMLInputElement>document.getElementById("Grabar")).disabled = true
+      }
+    
+    this.mayoriaEdad(edadFinal);
+    }
+  }
+
+  mayoriaEdad(edadValidar: number) {
+
+    if (edadValidar >= 18) {
       document.getElementById("matchEdad").innerHTML = '';
       document.getElementById("noMatchEdad").innerHTML = '';
       let botonGrabar = (<HTMLInputElement>document.getElementById("Grabar")).disabled = false;
     }
-    else{
+    else {
       document.getElementById("matchEdad").innerHTML = '';
       document.getElementById("noMatchEdad").innerHTML = 'Es requerido ser mayor de edad.';
       let botonGrabar = (<HTMLInputElement>document.getElementById("Grabar")).disabled = true;
     }
-
-
   }
 
   Grabar() {
@@ -166,13 +181,13 @@ export class LoginComponent implements OnInit {
     //crea una copia de los datos del formulario para cambiar la fecha
     const itemCopy  = {...this.FormRegistro.value};
 
-    var arrFecha = itemCopy.FechaNacimiento.substr(0,10).split('/');
+   /* var arrFecha = itemCopy.FechaNacimiento.substr(0,10).split('/');
     if(arrFecha.length == 3)
       itemCopy.FechaNacimiento = new Date (
         arrFecha[2],
         arrFecha[1]-1,
         arrFecha[0]
-      ).toISOString();
+      ).toISOString();*/
 
     if(itemCopy.IdCliente==0||itemCopy.IdCliente==null)
     {
@@ -193,13 +208,13 @@ export class LoginComponent implements OnInit {
   }
 
   subirFoto() {
-    alert("En construccion - botones subir foto");
+    this.router.navigate(['/imagen-dni']);
  
   }
 
 
   llamarModal() {
-    this.modalQuienesSomosService.Alert('MoneyClip es una billetera virtual. Accede a tu dinero rápido, fácil y en cualquier parte. Desarrollado por: Nicolas Alvarez, Jimena Bustos Paulich, Melani Crespo, Martin Diaz, Maximiliano Iglesias del Castillo, Matias LLorens, Joel Ocampo, Melania Peralta Flores, Tomas Pozzo * Programa Clip 2020 - Grupo 1D', 'Conoce a nuestro Equipo!', 'i');
+    this.modalQuienesSomosService.Alert('MoneyClip es una billetera virtual. Accede a tu dinero rápido, fácil y en cualquier parte. Desarrollado por: Jimena Bustos Paulich, Melani Crespo, Martin Diaz, Maximiliano Iglesias del Castillo, Matias LLorens, Joel Ocampo, Melania Peralta Flores, Tomas Pozzo, Nelio Bena * Programa Clip 2020 - Grupo 1D', 'Conoce a nuestro Equipo!', 'i');
   }
 
   getLogin(): LoginRequest

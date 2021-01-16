@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalQuienesSomosService } from '../../Servicios/modal-quienes-somos.service';
-
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-transacciones',
   templateUrl: './transacciones.component.html',
@@ -8,7 +8,9 @@ import { ModalQuienesSomosService } from '../../Servicios/modal-quienes-somos.se
 })
 export class TransaccionesComponent implements OnInit {
 
-  constructor(private modalQuienesSomosService: ModalQuienesSomosService) { }
+  constructor(private modalQuienesSomosService: ModalQuienesSomosService, private router: Router) {
+
+   }
 
   ngOnInit(): void {
   }
@@ -23,7 +25,8 @@ export class TransaccionesComponent implements OnInit {
   }
 
   retirarPesos(){
-    this.modalQuienesSomosService.Alert('retirar pesos');
+    //this.modalQuienesSomosService.Alert('retirar pesos');
+    this.router.navigate(['/retirar-pesos']);
   }
 
 
@@ -31,5 +34,7 @@ export class TransaccionesComponent implements OnInit {
   retirarDolares(){
     this.modalQuienesSomosService.Alert('En construccion');
   }
+
+
 
 }
