@@ -27,12 +27,7 @@ export class TransferenciasComponent implements OnInit {
 
 aceptar(){
 
-}
-
-cancelar(){
-
-}
-
+};
 buscarCvu(){
   
 }
