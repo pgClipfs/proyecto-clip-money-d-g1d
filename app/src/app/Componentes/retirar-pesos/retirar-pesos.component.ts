@@ -16,7 +16,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class RetirarPesosComponent implements OnInit {
 
   formExtraccion: FormGroup;
-  submitted: false;
+  submitted = false;
   operacion: Operacion;
   loginRequest: LoginRequest;
   saldoActual: number;
@@ -26,7 +26,7 @@ export class RetirarPesosComponent implements OnInit {
   ngOnInit(): void {
 
     this.formExtraccion = this.formBuilder.group({
-      montoRetiroPesos: ['', [Validators.pattern('[0-9]*'), Validators.min(1)]]
+      montoRetiroPesos: ['', [Validators.required, Validators.pattern('[0-9]*'), Validators.min(1)]]
     });
     
     this.cargarSaldoActual();
@@ -46,6 +46,8 @@ export class RetirarPesosComponent implements OnInit {
   }
 
   confirmarExtraccion(){
+    this.submitted = true;
+
     if(this.formExtraccion.invalid){
       return;
     }

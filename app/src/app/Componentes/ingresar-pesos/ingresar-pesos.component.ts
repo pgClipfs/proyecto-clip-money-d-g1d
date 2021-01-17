@@ -26,7 +26,7 @@ export class IngresarPesosComponent implements OnInit {
   ngOnInit(): void {
 
     this.formIngreso = this.formBuilder.group({
-      montoIngresoPesos: ['', [Validators.pattern('[0-9]*'), Validators.min(1)]]
+      montoIngresoPesos: ['', [Validators.required,Validators.pattern('[0-9]*'), Validators.min(1)]]
     });
     this.cargarSaldoActual();
     
@@ -46,6 +46,8 @@ export class IngresarPesosComponent implements OnInit {
 
 
   confirmarIngreso(){
+    this.submitted = true;
+
     if(this.formIngreso.invalid){
       return;
     }

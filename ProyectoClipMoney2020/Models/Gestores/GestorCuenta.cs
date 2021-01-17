@@ -183,6 +183,7 @@ namespace ProyectoClipMoney2020.Models
                     cuenta.cvu = dr.GetString(0);
                     cuenta.alias = dr.GetString(1).Trim();
                     cuenta.saldo = dr.GetDecimal(2);
+                    //cuenta.idCliente = dr.GetInt64(8);                   
                     if (!dr.IsDBNull(3))
                         cuenta.observacion = dr.GetString(3)?.Trim();
                     var tipoCuenta = new TipoCuenta()
@@ -195,6 +196,7 @@ namespace ProyectoClipMoney2020.Models
                         idEstadoCuenta = dr.GetByte(6),
                         nombreEstadoCuenta = dr.GetString(7)
                     };
+                    cuenta.idCliente = dr.GetInt64(8);
                     cuenta.tipoCuenta = tipoCuenta;
                     cuenta.estadoCuenta = estadoCuenta;
 

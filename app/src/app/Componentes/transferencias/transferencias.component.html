@@ -1,24 +1,32 @@
 <app-home></app-home>
+<div class="container">
+    <h3>Transferencia PESOS</h3>
+    <br>
 
 <form name="formTransferencia" [formGroup]='formTransferencia'>
-        <!--campo destino-->
-        <div class="form-group row">
-            
-            <label class="col-form-label col-12">CVU Destino: <span
-                    class="text-danger">*</span></label>
-            <div class="col-12">
-                <input type="text" class="form-control" formControlName="Destino"
-         [ngClass]="{'is-invalid': (formTransferencia.controls.Usuario.touched || submitted)  
-            && formTransferencia.controls.Usuario.errors}" />
+    <div *ngIf = "saldoActual">
+        <label class="col-form-label col-12" id="saldo_campo">Saldo Disponible: ${{saldoActual}} </label>
+    </div>    
+    <!--campo destino-->
+        <div class="form-group row">            
+            <label class="col-form-label col-12">CVU Destino: <span class="text-danger">*</span></label>
+            <div class="col-12 input-group">                
+                <input type="text" class="form-control" formControlName="Destino" [ngClass]="{'is-invalid': (formTransferencia.controls.Destino.touched || submitted)  
+            && formTransferencia.controls.Destino.errors}" />
             &nbsp;
             <span class="input-group-btn">                
                 <button type="button" class="w-100 btn btn-sm btn-outline-primary" title="Modificar"(click)="buscarCvu()" >
                 <span class="fas fa-search"></span>
                 </button>                   
               </span>  
-
-                <span class="text-danger" *ngIf="(formTransferencia.controls.Usuario.touched || submitted) 
-                        && formTransferencia.controls.Usuario.errors?.required">
+              <span class="text-success w-100" *ngIf="(cvuExistente)==true">
+                    El cvu {{valorActualCvu}} existe, su propietario es: {{nombreCvuDesde}}
+            </span>
+            <span class="text-danger w-100" *ngIf="(cvuExistente)==false">
+                El cvu {{valorActualCvu}} <b>NO</b> existe
+            </span>
+                <span class="text-danger w-100" *ngIf="(formTransferencia.controls.Destino.touched || submitted) 
+                        && formTransferencia.controls.Destino.errors?.required">
                     Dato requerido.
                 </span>
 
@@ -45,14 +53,12 @@
         </div>
 
     <!-- Botones Grabar, Cancelar/Volver' -->
-    <div class="row justify-content-center">
-        <button type="button" class="btn btn-danger" (click)="aceptar()">
-            <span class="fas fa-undo"></span> Aceptar
-        </button>
-      
-        <button type="button" class="btn btn-danger" (click)="cancelar()">
-            <span class="fas fa-undo"></span> Cancelar
-        </button>
+    <div>
+        <button type="button" class="btn btn-warning btn-primary w-100" (click)="aceptar()">
+            <span class="fas fa-undo"></span> Confirmar transferencia
+        </button>     
+        
     </div>
     
 </form>
+</div>

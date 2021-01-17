@@ -135,3 +135,4 @@ D:\descazrgas\CLIP\proyecto Mes5\ProyectoClipMoney2020\obj\Debug\ProyectoClipMon
 D:\descazrgas\CLIP\proyecto Mes5\ProyectoClipMoney2020\obj\Debug\ProyectoClipMoney2020.csproj.CopyComplete
 D:\descazrgas\CLIP\proyecto Mes5\ProyectoClipMoney2020\obj\Debug\ProyectoClipMoney2020.dll
 D:\descazrgas\CLIP\proyecto Mes5\ProyectoClipMoney2020\obj\Debug\ProyectoClipMoney2020.pdb
+D:\descazrgas\CLIP\proyecto Mes5\ProyectoClipMoney2020\obj\Debug\ProyectoClipMoney2020.csprojAssemblyReference.cache

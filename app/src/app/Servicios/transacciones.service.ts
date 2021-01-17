@@ -16,7 +16,11 @@ export class TransaccionesService {
     this.resourceUrl='https://localhost:44368/api/transacciones/';
   }
 
-
+  getById(id: number)
+  {
+    return this.httpClient.get(this.resourceUrl+id);
+  } 
+  
   post(obj: Cuenta)
   {   
     return this.httpClient.post(this.resourceUrl + 'ultimos-mov', obj);
