@@ -9,14 +9,15 @@
     </div>    
     <!--campo destino-->
         <div class="form-group row">            
-            <label class="col-form-label col-12">CVU Destino: <span class="text-danger">*</span></label>
+            <label class="col-form-label col-12">Ingrese CVU Destino: <span class="text-danger">*</span></label>
             <div class="col-12 input-group">                
                 <input type="text" class="form-control" formControlName="Destino" [ngClass]="{'is-invalid': (formTransferencia.controls.Destino.touched || submitted)  
             && formTransferencia.controls.Destino.errors}" />
             &nbsp;
             <span class="input-group-btn">                
-                <button type="button" class="w-100 btn btn-sm btn-outline-primary" title="Modificar"(click)="buscarCvu()" >
-                <span class="fas fa-search"></span>
+                <button type="button" class="w-100 btn btn-sm btn-outline-primary" id= "button_check" title="Comprobar CVU"(click)="buscarCvu()" >
+                <span class="fas fa-user-check" id="check"></span>
+                <span class="comprobar_button">Comprobar</span>
                 </button>                   
               </span>  
               <span class="text-success w-100" *ngIf="(cvuExistente)==true">
