@@ -86,7 +86,16 @@ aceptar(){
       }*/
 buscarCvu(){
 
+
   this.cvuExistente;
+
+  if(this.formTransferencia.controls.Destino.errors)
+  {
+    this.valorActualCvu=this.formTransferencia.controls.Destino.value;
+    this.cvuExistente=false;
+    return;
+  }
+
   this.transaccionesService.getById(this.formTransferencia.controls.Destino.value).subscribe((res:any) => {
       this.cvuExistente=true;
       const itemCopy= {...res};
