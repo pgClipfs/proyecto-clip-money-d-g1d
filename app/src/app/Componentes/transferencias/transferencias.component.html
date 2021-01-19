@@ -4,7 +4,7 @@
     <br>
 
 <form name="formTransferencia" [formGroup]='formTransferencia'>
-    <div *ngIf = "saldoActual">
+    <div *ngIf = "saldoActual || saldoActual == 0">
         <label class="col-form-label col-12" id="saldo_campo">Saldo Disponible: ${{saldoActual}} </label>
     </div>    
     <!--campo destino-->
