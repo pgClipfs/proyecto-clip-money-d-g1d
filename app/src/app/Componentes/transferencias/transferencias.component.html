@@ -11,7 +11,7 @@
         <div class="form-group row">            
             <label class="col-form-label col-12">Ingrese CVU Destino: <span class="text-danger">*</span></label>
             <div class="col-12 input-group">                
-                <input type="text" class="form-control" formControlName="Destino" [ngClass]="{'is-invalid': (formTransferencia.controls.Destino.touched || submitted)  
+                <input type="text" class="form-control" formControlName="Destino" maxlength="22" minlength="22" [ngClass]="{'is-invalid': (formTransferencia.controls.Destino.touched || submitted)  
             && formTransferencia.controls.Destino.errors}" />
             &nbsp;
             <span class="input-group-btn">                
