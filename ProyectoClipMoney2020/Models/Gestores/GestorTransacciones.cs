@@ -57,7 +57,6 @@ namespace ProyectoClipMoney2020.Models.Gestores
         {
             var operaciones = new List<Operacion>();
             string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
-
             using (SqlConnection conn = new SqlConnection(StrConn))
             {
                 conn.Open();

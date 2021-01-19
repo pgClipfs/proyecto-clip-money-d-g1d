@@ -2,14 +2,18 @@
 
 <div class="container">
 <form name="formGiro" [formGroup]='formGiro'>
-    <div *ngIf = "saldoActual">
-        <label class="col-form-label col-12" id="saldo_disponible">Saldo + Giro al Descubierto disponible ${{saldoActual}} </label>
-    </div>
-
-    <label for="montoRetiroPesos">Ingrese el monto</label>
+    <!-- <div *ngIf = "saldoActual">
+        <label class="col-form-label col-12" id="saldo_disponible">Saldo Disponible: ${{saldoActual}} </label>
+    </div> -->
     <div>
-      <input id="montoRetiroPesos" type="text" formControlName='montoRetiroPesos' [ngClass]="{'is-invalid': (formGiro.controls.montoRetiroPesos.touched || submitted)  
-    && formGiro.controls.montoRetiroPesos.errors}" />
+      <label class="col-form-label col-12" id="saldo_disponible">Saldo + Giro al Descubierto disponible: ${{saldoActual * 1.1}} </label>
+    </div>
+    
+
+    <div *ngIf="(saldoActual>0)"><label for="montoRetiroPesos">Ingrese el monto</label></div>
+    <div>
+      <div *ngIf="(saldoActual>0)"><input id="montoRetiroPesos" type="text" formControlName='montoRetiroPesos' [ngClass]="{'is-invalid': (formGiro.controls.montoRetiroPesos.touched || submitted)  
+    && formGiro.controls.montoRetiroPesos.errors}" /></div>
       <span class="text-danger" *ngIf="(formGiro.controls.montoRetiroPesos.touched || submitted) 
                 && formGiro.controls.montoRetiroPesos.errors?.required">
         Dato requerido.
@@ -18,20 +22,20 @@
         Ingrese valor mayor a 0.
       </span>
       <span class="text-danger" *ngIf="formGiro.controls.montoRetiroPesos.errors?.pattern">
-        Solo caracteres numericos.
+        Sólo caracteres numéricos.
       </span>
       <span class="text-danger" *ngIf="(validarMontoMin)">
-        El monto mínimo deberia ser mayor a ${{saldoActual}}
+        El monto mínimo debería ser mayor a ${{saldoActual}}
       </span>
       <span class="text-danger" *ngIf="(validarMontoMax)">
-        El monto maximo deberia ser ${{saldoActual * 1.1}}
+        El monto máximo debería ser ${{saldoActual * 1.1}}
       </span>
     </div>
 
   </form>
   <br>
 
-  <div id="confirmarExtraccionGiro">
+  <div *ngIf="(saldoActual>0)" id="confirmarExtraccionGiro">
     <button type="button" class="btn btn-warning btn-primary w-100" (click)="confirmarGiro()">Confirmar
       Giro al Descubierto</button>
   </div>

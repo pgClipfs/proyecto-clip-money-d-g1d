@@ -3,11 +3,11 @@ import { Injectable } from '@angular/core';
 import { Cuenta } from '../Modelos/Cuenta';
 import { Operacion } from '../Modelos/Operacion';
 
+
 @Injectable({
   providedIn: 'root'
 })
-export class TransaccionesService {
-  
+export class TransaccionesService { 
 
   resourceUrl: string;
 
@@ -16,7 +16,11 @@ export class TransaccionesService {
     this.resourceUrl='https://localhost:44368/api/transacciones/';
   }
 
-
+  getById(id: number)
+  {
+    return this.httpClient.get(this.resourceUrl+id);
+  } 
+  
   post(obj: Cuenta)
   {   
     return this.httpClient.post(this.resourceUrl + 'ultimos-mov', obj);
@@ -31,4 +35,12 @@ export class TransaccionesService {
     return this.httpClient.post(this.resourceUrl + 'giro', obj);
   }
 
+  postTransferencia(obj: Operacion){
+    return this.httpClient.post(this.resourceUrl + 'transferencia', obj);
+  }
+
+  postDeposito(obj: Operacion) {
+    return this.httpClient.post(this.resourceUrl + 'deposito', obj);
+  }
+  
 }

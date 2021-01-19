@@ -39,7 +39,12 @@ export class GiroComponent implements OnInit {
       const itemCopy = {...resp};
       this.cuentaService.getById(itemCopy.idCliente).subscribe((resp2: any) => {
         const itemCopy2 = {...resp2};
-        this.saldoActual = itemCopy2.saldo;
+        if(itemCopy2.saldo >0){
+          this.saldoActual = itemCopy2.saldo;
+        }else{
+          this.saldoActual = 0;
+        }
+        
       });
       
     });

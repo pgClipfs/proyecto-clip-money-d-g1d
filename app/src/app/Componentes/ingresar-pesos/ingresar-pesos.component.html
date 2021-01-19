@@ -7,15 +7,11 @@
   <br>
 
   <form name="formIngreso" [formGroup]='formIngreso'>
-
-    <label for="montoRetiroPesos">Ingrese el cbu</label>
-
-    <div>
-      <input id="montoIngresoPesos" type="text" formControlName='montoIngresoPesos' [ngClass]="{'is-invalid': (formIngreso.controls.montoIngresoPesos.touched || submitted)  
-    && formIngreso.controls.montoIngresoPesos.errors}" />
-    </div>
+    <div *ngIf = "saldoActual">
+        <label class="col-form-label col-12" id="saldo_campo">Saldo Disponible: ${{saldoActual}} </label>
+    </div>   
     
-    <label for="montoRetiroPesos">Ingrese el monto</label>
+    <label for="montoIngresoPesos">Ingrese el monto</label>
 
     <div>
       <input id="montoIngresoPesos" type="text" formControlName='montoIngresoPesos' [ngClass]="{'is-invalid': (formIngreso.controls.montoIngresoPesos.touched || submitted)  
@@ -37,10 +33,8 @@
   <br>
 
   <div>
-    <button type="button" class="btn btn-light" (click)="cancelarIngreso()">Cancelar</button>
-
-    <button type="button" class="btn btn-warning " (click)="confirmarIngreso()">Confirmar
-      Ingreso</button>
+    <button type="button" class="btn btn-warning btn-primary w-100" (click)="confirmarIngreso()">Confirmar
+      Ingreso</button>      
   </div>
 
 

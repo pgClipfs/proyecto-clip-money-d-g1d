@@ -86,5 +86,20 @@ export class HomeComponent implements OnInit {
   llamarModal() {
     this.modalQuienesSomosService.Alert('MoneyClip es una billetera virtual. Accede a tu dinero rápido, fácil y en cualquier parte. Desarrollado por: Jimena Bustos Paulich, Melani Crespo, Martin Diaz, Maximiliano Iglesias del Castillo, Matias LLorens, Joel Ocampo, Melania Peralta Flores, Tomas Pozzo, Nelio Bena * Programa Clip 2020 - Grupo 1D', 'Conoce a nuestro Equipo!', 'i');
   }
+  verificarCuentaExistente()
+  {
+    this.clienteService.postLogin(this.loginRequest).subscribe((res: any) => {
+      const itemCopy  = {...res};
+      //itemCopy.fechaNacimiento=res.fechaNacimiento;
+      if(itemCopy.domicilio==null || itemCopy.domicilio==undefined)
+      {
+        this.modalQuienesSomosService.Alert('Primero complete sus datos en mi perfil','Error, datos incompletos', 'w');
+      }
+      else
+      {
+        this.router.navigate(['/transacciones']);
+      }
+    });
+  }
 
 }

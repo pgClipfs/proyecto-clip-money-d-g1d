@@ -6,11 +6,36 @@ img {
     margin-top: 25px;
 }
 
-.card {
-    border: none;
+h3{
+    margin-bottom: 50px;
 }
 
-.contenedorFoto {
-    display: flexbox;
-    flex-direction: row;
+
+#botones{
+display: flex;
+justify-content: center;
+margin-top: 50px;
+}
+
+button{
+margin-left: 20px;
+}
+
+.card-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+
+}
+
+.image-upload > input
+{
+    display: none;
+}
+
+.image-upload img
+{
+    width: 100px;
+    cursor: pointer;
 }

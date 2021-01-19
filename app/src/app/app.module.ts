@@ -31,6 +31,10 @@ import { RetirarPesosComponent } from './Componentes/retirar-pesos/retirar-pesos
 import { GiroComponent } from './Componentes/giro/giro.component';
 import { GiroCondicionesComponent } from './Componentes/giro-condiciones/giro-condiciones.component';
 import { ImagenDniComponent } from './Componentes/imagen-dni/imagen-dni.component';
+<<<<<<< HEAD
+=======
+import { TransferenciasComponent } from './Componentes/transferencias/transferencias.component';
+>>>>>>> bdada01d38358dcd99204a52032ba9ef0d075a51
 import { IngresarPesosComponent } from './Componentes/ingresar-pesos/ingresar-pesos.component';
 
 @NgModule({
@@ -51,6 +55,7 @@ import { IngresarPesosComponent } from './Componentes/ingresar-pesos/ingresar-pe
     RetirarPesosComponent,
     GiroComponent,
     GiroCondicionesComponent,
+    TransferenciasComponent,
     IngresarPesosComponent
   ],
   imports: [
@@ -75,8 +80,10 @@ import { IngresarPesosComponent } from './Componentes/ingresar-pesos/ingresar-pe
       { path: 'giro-descubierto', component: GiroComponent, canActivate: [AuthGuard]},
       { path: 'giro-condiciones', component: GiroCondicionesComponent, canActivate: [AuthGuard]},
       { path: 'imagen-dni', component: ImagenDniComponent},
-      { path: 'ingresar-pesos', component: IngresarPesosComponent},
+      { path: 'transferencias', component: TransferenciasComponent, canActivate: [AuthGuard]},
+      { path: 'ingresar-pesos', component:IngresarPesosComponent, canActivate:[AuthGuard]}, 
       { path: '**', redirectTo: '/login', pathMatch: 'full' }
+      
       ]
     ),
 

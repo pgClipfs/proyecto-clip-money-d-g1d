@@ -43,10 +43,10 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/transacciones">Transacciones</a>
+          <a class="nav-link btn" (click)="verificarCuentaExistente()">Transacciones</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" (click)="movimientos()">Movimientos</a>
+          <a class="nav-link btn" (click)="movimientos()">Movimientos</a>
         </li>
         <li class="nav-item dropdown">
           <a
@@ -67,7 +67,7 @@
           <a class="nav-link" routerLink="/app-mi-perfil">Mi Perfil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" (click)="llamarModal()">Quienes somos</a>
+          <a class="nav-link btn"  (click)="llamarModal()">Quienes somos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" (click)="Cerrar()" routerLink="/login">Salir</a>
