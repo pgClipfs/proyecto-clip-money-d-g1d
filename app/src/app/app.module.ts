@@ -31,10 +31,7 @@ import { RetirarPesosComponent } from './Componentes/retirar-pesos/retirar-pesos
 import { GiroComponent } from './Componentes/giro/giro.component';
 import { GiroCondicionesComponent } from './Componentes/giro-condiciones/giro-condiciones.component';
 import { ImagenDniComponent } from './Componentes/imagen-dni/imagen-dni.component';
-<<<<<<< HEAD
-=======
 import { TransferenciasComponent } from './Componentes/transferencias/transferencias.component';
->>>>>>> bdada01d38358dcd99204a52032ba9ef0d075a51
 import { IngresarPesosComponent } from './Componentes/ingresar-pesos/ingresar-pesos.component';
 
 @NgModule({
