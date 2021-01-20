@@ -7,65 +7,27 @@
         <div id="ingresarDinero" class="dropdown">
             <button class="btn btn-warning w-100 dropdown-toggle" type="button" data-toggle="dropdown">Ingresar Dinero
                 <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                    <li><a href="#" (click)="ingresarPesos()">Ingresar PESOS</a></li>
-                    <li><a href="#" (click)="ingresarDolares()">Ingresar DÓLARES</a></li>
-                  </ul>
+                <ul class="dropdown-menu p-2">
+                    <li><button class="btn-secondary btn nav-link w-100 menu" (click)="ingresarPesos()">Ingresar PESOS</button></li>
+                    &nbsp;
+                    <li><button class="btn-secondary btn nav-link w-100 menu" (click)="ingresarDolares()">Ingresar DÓLARES</button></li>
+                </ul>
         </div>
 
-        <br>
-
-        <div id="retirarDinero" class="dropdown">
+            <div id="retirarDinero" class="dropdown">
             <button class="btn btn-warning w-100 dropdown-toggle" type="button" data-toggle="dropdown">Retirar Dinero
                 <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                    <li><a href="#" (click)="retirarPesos()">Retirar PESOS</a></li>
-                    <li><a href="#" (click)="retirarDolares()">Retirar DÓLARES</a></li>
+                <ul class="dropdown-menu p-2">
+                    <li><button class="btn-secondary btn nav-link w-100 menu"  (click)="retirarPesos()">Retirar PESOS</button></li>
+                    &nbsp;
+                    <li><button class="btn-secondary btn nav-link w-100 menu"  (click)="retirarDolares()">Retirar DÓLARES</button></li>
                   </ul>
         </div>
 
-        <br>
-
         <div id="transferencias">
-            <button type="button" class="btn btn-warning btn-primary w-100" (click)="transferir()">Transferencias</button>
+            <button class="btn btn-warning w-100" type="button" routerLink="/transferencias">Transferencias</button>
         </div>
 
     </div>
 
 </div>
-
-<!-- <div class="container">
-    <div class="col">
-        <div id="ingresarPesos">
-            <div class="justify-content-center">
-                <button type="button" class="btn btn-primary w-100" (click)="ingresarPesos()">Ingresar
-                    Pesos</button>
-            </div>
-        </div>
-        <div id="ingresarDolares">
-            <div class="justify-content-center">
-                <button type="button" class="btn btn-primary w-100" (click)="ingresarDolares()">Ingresar
-                    Dolares</button>
-            </div>
-        </div>
-    </div>
-</div>
- -->
-
-
-
-<!-- <div class="container">
-    <div class="col">
-        <div id="retirarPesos">
-            <div class="justify-content-center">
-                <button type="button" class="btn btn-primary w-100" (click)="retirarPesos()">Retirar Pesos</button>
-            </div>
-        </div>
-        <div id="retirarDolares">
-            <div class="justify-content-center">
-                <button type="button" class="btn btn-primary w-100" (click)="retirarDolares()">Retirar Dolares</button>
-            </div>
-        </div>
-    </div>
-</div>
-</div> -->

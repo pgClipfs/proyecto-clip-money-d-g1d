@@ -16,7 +16,7 @@ export class TransaccionesComponent implements OnInit {
   }
 
   ingresarPesos(){
-    this.modalQuienesSomosService.Alert('ingresar pesos');
+    this.router.navigate(['/ingresar-pesos']);
     
   }
   
@@ -35,8 +35,6 @@ export class TransaccionesComponent implements OnInit {
     this.modalQuienesSomosService.Alert('En construccion');
   }
 
-  transferir(){
-    this.modalQuienesSomosService.Alert('En construccion');
-  }
+
 
 }

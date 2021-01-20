@@ -48,7 +48,7 @@ namespace ProyectoClipMoney2020.Models
                 comm.CommandText = "crearCuentaPesos";
                 comm.CommandType = System.Data.CommandType.StoredProcedure;
                 //comm.Parameters.Add(new SqlParameter("@idCliente", cliente.idCliente));
-                comm.Parameters.Add(new SqlParameter("@idCliente", idCliente));               
+                comm.Parameters.Add(new SqlParameter("@idCliente", idCliente));
 
                 id = Convert.ToInt32(comm.ExecuteScalar());
 
@@ -69,7 +69,7 @@ namespace ProyectoClipMoney2020.Models
                 comm.CommandType = System.Data.CommandType.StoredProcedure;
 
                 SqlDataReader dr = comm.ExecuteReader();
-                
+
                 while (dr.Read())
                 {
                     var cuenta = new Cuenta();
@@ -89,36 +89,36 @@ namespace ProyectoClipMoney2020.Models
                     cuenta.observacion = dr.GetString(3);
                     cuenta.tipoCuenta = tipoCuenta;
                     cuenta.estadoCuenta = estadoCuenta;
-                    cuentas.Add(cuenta);                
+                    cuentas.Add(cuenta);
                 }
                 dr.Close();
             }
             return cuentas;
         }
 
-        public int ActualizarCuenta(int id,Cuenta cuenta)
+        public int ActualizarCuenta(int id, Cuenta cuenta)
         {
-            int boo = 0;            
-            string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();            
-            
-                using (SqlConnection conn = new SqlConnection(StrConn))
-                {
-                    conn.Open();
+            int boo = 0;
+            string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
 
-                    SqlCommand comm = conn.CreateCommand();
-                    comm.CommandText = "actualizarAlias";
-                    comm.CommandType = System.Data.CommandType.StoredProcedure;
-                    //comm.Parameters.Add(new SqlParameter("@idCliente", cliente.idCliente));
-                    comm.Parameters.Add(new SqlParameter("@idCliente", id));
-                    comm.Parameters.Add(new SqlParameter("@alias", cuenta.alias));                  
+            using (SqlConnection conn = new SqlConnection(StrConn))
+            {
+                conn.Open();
 
-                    boo = Convert.ToInt32(comm.ExecuteScalar());
+                SqlCommand comm = conn.CreateCommand();
+                comm.CommandText = "actualizarAlias";
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+                //comm.Parameters.Add(new SqlParameter("@idCliente", cliente.idCliente));
+                comm.Parameters.Add(new SqlParameter("@idCliente", id));
+                comm.Parameters.Add(new SqlParameter("@alias", cuenta.alias));
 
-                }
-            
+                boo = Convert.ToInt32(comm.ExecuteScalar());
+
+            }
+
 
             return boo;
-           
+
         }
 
         public Cuenta ObtenerCuentaPesosPorIdCliente(long idCliente)
@@ -164,7 +164,6 @@ namespace ProyectoClipMoney2020.Models
 
         }
 
-                
         public Cuenta ObtenerCuentaPorCvu(string cvu)
         {
             var cuenta = new Cuenta();
@@ -184,8 +183,9 @@ namespace ProyectoClipMoney2020.Models
                     cuenta.cvu = dr.GetString(0);
                     cuenta.alias = dr.GetString(1).Trim();
                     cuenta.saldo = dr.GetDecimal(2);
-                    if(!dr.IsDBNull(3))
-                    cuenta.observacion = dr.GetString(3)?.Trim();
+                    //cuenta.idCliente = dr.GetInt64(8);                   
+                    if (!dr.IsDBNull(3))
+                        cuenta.observacion = dr.GetString(3)?.Trim();
                     var tipoCuenta = new TipoCuenta()
                     {
                         idTipoCuenta = dr.GetByte(4),
@@ -196,9 +196,10 @@ namespace ProyectoClipMoney2020.Models
                         idEstadoCuenta = dr.GetByte(6),
                         nombreEstadoCuenta = dr.GetString(7)
                     };
+                    cuenta.idCliente = dr.GetInt64(8);
                     cuenta.tipoCuenta = tipoCuenta;
                     cuenta.estadoCuenta = estadoCuenta;
-                    
+
                 }
 
                 dr.Close();
@@ -246,7 +247,7 @@ namespace ProyectoClipMoney2020.Models
                 return cuentas;
             }
 
-                
+
         }
     }
 }

@@ -129,59 +129,65 @@ namespace ProyectoClipMoney2020.Models.Gestores
                 comm.CommandType = System.Data.CommandType.StoredProcedure;
                 comm.Parameters.Add(new SqlParameter("@idCliente", idCliente));
 
-                SqlDataReader dr = comm.ExecuteReader();
+                SqlDataReader dr = comm.ExecuteReader();                
                 if (dr.Read())
                 {
                     cliente = new Cliente();
-                    Nacionalidad nacionalidad = new Nacionalidad()
+                    /*Nacionalidad nacionalidad = new Nacionalidad()
                     {
                         idNacionalidad = dr.GetByte(10),
                         descripcionNacionalidad = dr.GetString(11)
-                    };
+                    };*/
                     var tipoDocumento = new TipoDocumento()
                     {
                         idTipoDocumento = dr.GetByte(12),
                         nombreTipoDocumento = dr.GetString(13)
                     };
-
-                    var pais = new Pais()
-                    {
-                        idPais = dr.GetInt32(23),
-                        nombrePais = dr.GetString(24)
-                    };
-                    var provincia = new Provincia()
-                    {
-                        idProvincia = dr.GetInt32(21),
-                        nombreProvincia = dr.GetString(22),
-                        pais = pais
-
-                    };
-                    var localidad = new Localidad()
-                    {
-                        idLocalidad = dr.GetInt64(19),
-                        nombreLocalidad = dr.GetString(20),
-                        codigoPostal = dr.GetString(18),
-                        provincia = provincia
-
-
-                    };
-
-                    var domicilio = new Domicilio()
-                    {
-                        idDomicilio = dr.GetInt32(14),
-                        calle = dr.GetString(15),
-                        numero = dr.GetString(16),
-                        barrio = dr.GetString(17),
-                        codigoPostal = dr.GetString(18),
-                        localidad = localidad
-
-                    };
-
-                    var situacionCrediticia = new SituacionCrediticia()
+                    /*var situacionCrediticia = new SituacionCrediticia()
                     {
                         idNivel = dr.GetInt64(25),
                         descripcionNivel = dr.GetString(26)
                     };
+                    var nacionalidad = new Nacionalidad()
+                    {
+                        idNacionalidad = dr.GetInt32(10),
+                        descripcionNacionalidad = dr.GetString(11)
+                    };*/
+                    if (!dr.IsDBNull(14))
+                    {
+                        var pais = new Pais()
+                        {
+                            idPais = dr.GetInt32(23),
+                            nombrePais = dr.GetString(24)
+                        };
+                        var provincia = new Provincia()
+                        {
+                            idProvincia = dr.GetInt32(21),
+                            nombreProvincia = dr.GetString(22),
+                            pais = pais
+
+                        };
+                        var localidad = new Localidad()
+                        {
+                            idLocalidad = dr.GetInt64(19),
+                            nombreLocalidad = dr.GetString(20),
+                            codigoPostal = dr.GetString(18),
+                            provincia = provincia
+
+                        };
+                        var domicilio = new Domicilio()
+                        {
+                            idDomicilio = dr.GetInt32(14),
+                            calle = dr.GetString(15),
+                            numero = dr.GetString(16),
+                            barrio = dr.GetString(17),
+                            codigoPostal = dr.GetString(18),
+                            localidad = localidad
+
+                        };
+
+                        cliente.domicilio = domicilio;
+                    }
                     cliente.idCliente = dr.GetInt64(0);
                     cliente.usuario = dr.GetString(1).Trim();
                     cliente.passEncriptada = dr.GetString(2).Trim();
@@ -191,16 +197,15 @@ namespace ProyectoClipMoney2020.Models.Gestores
                     cliente.email = dr.GetString(6);
                     cliente.telefono = dr.GetInt64(7);
                     cliente.fotoFrenteDocumento = null;//8;
-                    cliente.fotoDorsoDocumento = null;//9;                    
-                    cliente.nacionalidad = nacionalidad;
+                    cliente.fotoDorsoDocumento = null;//9;                  
                     cliente.tipoDocumento = tipoDocumento;
-                    cliente.domicilio = domicilio;
-                    cliente.situacionCrediticia = situacionCrediticia;
 
                     cliente.fechaNacimiento = dr.GetDateTime(27);
 
-                    cliente.cuentas = gestorCuenta.ObtenerCuentas(cliente.idCliente);
+                    //cliente.cuentas=gestorCuenta.ObtenerCuentas(cliente.idCliente);
 
+                    /*                     cliente.cuentas=gestorCuenta.ObtenerCuentas(cliente.idCliente);
+                     */
 
                 }
 
@@ -208,6 +213,7 @@ namespace ProyectoClipMoney2020.Models.Gestores
             }
 
             return cliente;
+
         }
 
         public int registrarCliente(Cliente cliente)

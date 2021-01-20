@@ -1,0 +1,17 @@
+#saldo_campo {
+  background-color: #e9ecef;
+  margin-bottom: 20px;
+}
+
+#montoRetiroPesos {
+  margin-bottom: 20px;
+}
+
+#button_check{
+height: 38px;
+width: auto;
+}
+
+.comprobar_button{
+  margin-left:10px;
+}
