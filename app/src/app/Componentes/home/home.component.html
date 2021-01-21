@@ -2,11 +2,10 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
     <!-- inserto mock up de logo billetera - necesitamos cambiar la imagen* -->
-    <a class="navbar-brand" href="#">
-      <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24">
+    <a class="navbar-brand">
+      <img src="assets/img/logo-moneyClip-navbar.png" alt="moneyClip-Logo" width="60" height="auto">
     </a>
 
-    
     <button
       class="navbar-toggler"
       type="button"
@@ -50,10 +49,10 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link btn" (click)="verificarCuentaExistente()">Transacciones</a>
+          <a class="nav-link" (click)="verificarCuentaExistente()">Transacciones</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link btn" (click)="movimientos()">Movimientos</a>
+          <a class="nav-link" (click)="movimientos()">Movimientos</a>
         </li>
         <li class="nav-item dropdown">
           <a
@@ -74,7 +73,7 @@
           <a class="nav-link" routerLink="/app-mi-perfil">Mi Perfil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link btn"  (click)="llamarModal()">Quienes somos</a>
+          <a class="nav-link"  (click)="llamarModal()">Quienes somos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" (click)="Cerrar()" routerLink="/login">Salir</a>
