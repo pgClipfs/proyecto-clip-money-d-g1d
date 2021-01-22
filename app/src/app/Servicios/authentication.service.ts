@@ -40,6 +40,8 @@ export class AuthenticationService {
     localStorage.removeItem('currentUser');
     localStorage.removeItem('domicilio');
     localStorage.removeItem('loginRequest');
+    localStorage.removeItem('fotoFrenteDocumento');
+    localStorage.removeItem('fotoDorsoDocumento');
     this.currentUserSubject.next(null);
   }
 }
