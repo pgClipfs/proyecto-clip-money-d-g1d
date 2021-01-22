@@ -1,12 +1,16 @@
 <app-home></app-home>
 
 <div class="container">
+  <h3>Giro al Descubierto</h3>
+  <br>
+  
 <form name="formGiro" [formGroup]='formGiro'>
     <!-- <div *ngIf = "saldoActual">
         <label class="col-form-label col-12" id="saldo_disponible">Saldo Disponible: ${{saldoActual}} </label>
     </div> -->
+    
     <div>
-      <label class="col-form-label col-12" id="saldo_disponible">Saldo + Giro al Descubierto disponible: ${{saldoActual * 1.1}} </label>
+      <label class="col-form-label col-12" id="saldo_disponible">Monto disponible: ${{saldoActual * 1.1}} (Saldo + % Giro al Descubierto)</label>
     </div>
     
 
