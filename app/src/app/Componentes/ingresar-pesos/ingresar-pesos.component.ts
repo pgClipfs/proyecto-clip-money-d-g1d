@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalQuienesSomosService } from '../../Servicios/modal-quienes-somos.service';
-import { TransaccionesService } from '../../Servicios/transacciones.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Operacion } from '../../Modelos/Operacion';
 import { ClienteService } from '../../Servicios/cliente.service';
 import { LoginRequest } from '../../Modelos/LoginRequest';
 import { CuentaService } from '../../Servicios/cuenta.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TransaccionesService } from '../../Servicios/transacciones.service';
 
 @Component({
-  selector: 'app-retirar-pesos',
-  templateUrl: './retirar-pesos.component.html',
-  styleUrls: ['./retirar-pesos.component.css']
+  selector: 'app-ingresar-pesos',
+  templateUrl: './ingresar-pesos.component.html',
+  styleUrls: ['./ingresar-pesos.component.css']
 })
-export class RetirarPesosComponent implements OnInit {
+export class IngresarPesosComponent implements OnInit {
 
-  formExtraccion: FormGroup;
-  submitted = false;
+  formIngreso: FormGroup;
+  submitted= false;
   operacion: Operacion;
   loginRequest: LoginRequest;
   saldoActual: number;
@@ -25,10 +25,9 @@ export class RetirarPesosComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.formExtraccion = this.formBuilder.group({
-      montoRetiroPesos: ['', [Validators.required, Validators.pattern('[0-9]*'), Validators.min(1)]]
+    this.formIngreso = this.formBuilder.group({
+      montoIngresoPesos: ['', [Validators.required,Validators.pattern('[0-9]*'), Validators.min(1)]]
     });
-    
     this.cargarSaldoActual();
     
   }
@@ -45,10 +44,11 @@ export class RetirarPesosComponent implements OnInit {
     });
   }
 
-  confirmarExtraccion(){
+
+  confirmarIngreso(){
     this.submitted = true;
 
-    if(this.formExtraccion.invalid){
+    if(this.formIngreso.invalid){
       return;
     }
     this.loginRequest = JSON.parse(localStorage.getItem('loginRequest'));
@@ -57,24 +57,17 @@ export class RetirarPesosComponent implements OnInit {
       this.cuentaService.getById(itemCopy.idCliente).subscribe((resp2: any) => {
         const itemCopy2 = {...resp2};
         itemCopy2.cvuDesde = itemCopy2.cvu;
-        itemCopy2.monto = this.formExtraccion.controls.montoRetiroPesos.value;
-        this.transaccionesService.postExtraccion(itemCopy2).subscribe( data => {
-          this.modalQuienesSomosService.Alert('La operación se realizo con éxito', 'Extracción', 's');
+        itemCopy2.monto = this.formIngreso.controls.montoIngresoPesos.value;
+        this.transaccionesService.postDeposito(itemCopy2).subscribe( data => {
+          this.modalQuienesSomosService.Alert('La operación se realizo con éxito', 'Deposito', 's');
            this.router.navigate(['/menu-principal']);
         },
-        error => {this.modalQuienesSomosService.Alert('Saldo insuficiente','Error','w')});
+        error => {this.modalQuienesSomosService.Alert('Error en el deposito','Error,verifique datos','w')});
       });
       
     });
-    
   }
 
-  condicionesGiroAlDecubierto(){
-    this.modalQuienesSomosService.Alert('Condiciones de GIRO AL DESCUBIERTO: ');
-  }
-
-  irAlGiro(){
-    this.router.navigate(['/giro-descubierto']);
-  }
+  //cancelarIngreso(){}
 
 }

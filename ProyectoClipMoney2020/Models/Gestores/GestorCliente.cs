@@ -95,10 +95,18 @@ namespace ProyectoClipMoney2020.Models.Gestores
                     cliente.nroDocumento = dr.GetInt32(5);
                     cliente.email = dr.GetString(6);
                     cliente.telefono = dr.GetInt64(7);
-                    cliente.fotoFrenteDocumento = null;//8;
-                    cliente.fotoDorsoDocumento = null;//9;                  
-                    cliente.tipoDocumento = tipoDocumento;
+                    if(!dr.IsDBNull(8))
+                    {
+                        cliente.fotoFrenteDocumento = dr.GetString(8);//8;
+                    }
 
+                    if (!dr.IsDBNull(9))
+                    {
+                        cliente.fotoDorsoDocumento = dr.GetString(9);//9;
+                    }
+
+                                  
+                    cliente.tipoDocumento = tipoDocumento;
                     cliente.fechaNacimiento = dr.GetDateTime(27);
 
                     //cliente.cuentas=gestorCuenta.ObtenerCuentas(cliente.idCliente);
@@ -190,8 +198,8 @@ namespace ProyectoClipMoney2020.Models.Gestores
                     cliente.nroDocumento = dr.GetInt32(5);
                     cliente.email = dr.GetString(6);
                     cliente.telefono = dr.GetInt64(7);
-                    cliente.fotoFrenteDocumento = null;//8;
-                    cliente.fotoDorsoDocumento = null;//9;                    
+                    cliente.fotoFrenteDocumento = dr.GetString(8);//8;
+                    cliente.fotoDorsoDocumento = dr.GetString(9);//9;              
                     cliente.nacionalidad = nacionalidad;
                     cliente.tipoDocumento = tipoDocumento;
                     cliente.domicilio = domicilio;
@@ -322,17 +330,16 @@ namespace ProyectoClipMoney2020.Models.Gestores
                     comm.Parameters.Add(new SqlParameter("@email", cliente.email));
                     comm.Parameters.Add(new SqlParameter("@telefono", cliente.telefono));
                     comm.Parameters.Add(new SqlParameter("@idDomicilio", boo2));
+                    comm.Parameters.Add(new SqlParameter("@fotoFrenteDocumento", cliente.fotoFrenteDocumento));
+                    comm.Parameters.Add(new SqlParameter("@fotoDorsoDocumento", cliente.fotoDorsoDocumento));
 
                     boo = Convert.ToInt32(comm.ExecuteScalar());
-
-
-
 
                 }
             }
             return boo;
         }
 
-
+       
     }
 }

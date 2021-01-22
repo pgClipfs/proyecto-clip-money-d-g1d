@@ -70,10 +70,6 @@ a {
   margin-bottom: 10px;
 }
 
-#fotoDocumento{
-  color: white;
-  background-color: #5e5b52;
-}
 
 @media only screen and (min-width: 600px) {
   img {
@@ -84,7 +80,7 @@ a {
 #quienesSomosBtn{
   background: none;
   border: none;
-
+  
 }
 
 #quienesSomosBtn:hover{

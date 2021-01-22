@@ -13,8 +13,8 @@ namespace ProyectoClipMoney2020.Models
         public DateTime fechaNacimiento { get; set; }
         public TipoDocumento tipoDocumento { get; set; }
         public int nroDocumento { get; set; }
-        public byte[] fotoFrenteDocumento { get; set; }
-        public byte[] fotoDorsoDocumento { get; set; }
+        public string fotoFrenteDocumento { get; set; }
+        public string fotoDorsoDocumento { get; set; }
         public string email { get; set; }
         public long telefono { get; set; }
         public Domicilio domicilio { get; set; }

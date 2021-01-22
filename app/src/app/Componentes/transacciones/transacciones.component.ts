@@ -16,7 +16,7 @@ export class TransaccionesComponent implements OnInit {
   }
 
   ingresarPesos(){
-    this.modalQuienesSomosService.Alert('ingresar pesos');
+    this.router.navigate(['/ingresar-pesos']);
     
   }
   

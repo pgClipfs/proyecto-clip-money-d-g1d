@@ -1,0 +1,41 @@
+<app-home></app-home>
+
+<div class="container">
+
+  <h3>Ingresar PESOS</h3>
+
+  <br>
+
+  <form name="formIngreso" [formGroup]='formIngreso'>
+    <div *ngIf = "saldoActual || saldoActual == 0">
+        <label class="col-form-label col-12" id="saldo_campo">Saldo Disponible: ${{saldoActual}} </label>
+    </div>   
+    
+    <label for="montoIngresoPesos">Ingrese el monto</label>
+
+    <div>
+      <input id="montoIngresoPesos" type="text" formControlName='montoIngresoPesos' [ngClass]="{'is-invalid': (formIngreso.controls.montoIngresoPesos.touched || submitted)  
+    && formIngreso.controls.montoIngresoPesos.errors}" />
+      <span class="text-danger" *ngIf="(formIngreso.controls.montoIngresoPesos.touched || submitted) 
+                && formIngreso.controls.montoIngresoPesos.errors?.required">
+        Dato requerido.
+      </span>
+      <span class="text-danger" *ngIf="(formIngreso.controls.montoIngresoPesos.errors?.min) ">
+        Ingrese valor mayor a 0.
+      </span>
+      <span class="text-danger" *ngIf="formIngreso.controls.montoIngresoPesos.errors?.pattern">
+        Solo caracteres numericos.
+      </span>
+    </div>
+
+  </form>
+
+  <br>
+
+  <div>
+    <button type="button" class="btn btn-warning btn-primary w-100" (click)="confirmarIngreso()">Confirmar
+      Ingreso</button>      
+  </div>
+
+
+</div>
