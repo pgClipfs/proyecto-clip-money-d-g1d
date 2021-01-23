@@ -6,3 +6,17 @@
 #montoRetiroPesos {
   margin-bottom: 20px;
 }
+
+#button_check{
+height: 38px;
+width: auto;
+}
+
+.comprobar_button{
+  margin-left:10px;
+}
+
+#avisoTransferencias{
+  font-size: 12px;
+  color: grey;
+}

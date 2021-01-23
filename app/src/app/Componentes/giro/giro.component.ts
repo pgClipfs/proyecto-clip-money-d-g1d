@@ -75,7 +75,7 @@ export class GiroComponent implements OnInit {
           itemCopy2.monto = this.formGiro.controls.montoRetiroPesos.value;
           this.transaccionesService.postGiro(itemCopy2).subscribe( data => {
             this.modalQuienesSomosService.Alert('La operación se realizo con éxito', 'Extracción', 's');
-             this.router.navigate(['/menu-principal']);
+             this.router.navigate(['/retirar-pesos']);
           },
           error => {this.modalQuienesSomosService.Alert('Cuenta inexistente','Error','w')});
         }

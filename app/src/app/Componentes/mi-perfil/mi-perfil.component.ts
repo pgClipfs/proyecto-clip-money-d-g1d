@@ -33,6 +33,8 @@ export class MiPerfilComponent implements OnInit {
   
  
   stringDomicilio:string;
+  fotoFrenteDoc: string;
+  fotoDorsoDoc: string;
 
   constructor(public formBuilder: FormBuilder, 
     private clienteService: ClienteService, 
@@ -95,7 +97,13 @@ export class MiPerfilComponent implements OnInit {
    
   }
 
-
+  cargarImagenesDoc(){
+    if(localStorage.getItem('fotoFrenteDocumento') === null || localStorage.getItem('fotoDorsoDocumento') === null)
+    {
+      return;
+    }
+  }
+ 
   CargarUsuario(){
   this.loginRequest= this.comp.getLogin();
     this.clienteService.postLogin(this.loginRequest).subscribe((res: any) => {
@@ -117,9 +125,42 @@ export class MiPerfilComponent implements OnInit {
           itemCopy.domicilio=this.stringDomicilio;             
       
       }
+      
+
         this.FormMiPerfil.patchValue(itemCopy)
         this.nombreTipoDocumento=itemCopy.tipoDocumento.nombreTipoDocumento;
         this.CargarDomicilioLocal();   
+
+      // Código foto frente documento y foto dorso documento
+
+      if((localStorage.getItem("fotoFrenteDocumento") == null && itemCopy.fotoFrenteDocumento !== null)
+        && (localStorage.getItem("fotoDorsoDocumento") == null && itemCopy.fotoDorsoDocumento !== null))
+        {
+          localStorage.setItem('fotoFrenteDocumento', JSON.stringify(itemCopy.fotoFrenteDocumento));
+          
+          localStorage.setItem('fotoDorsoDocumento', JSON.stringify(itemCopy.fotoDorsoDocumento));
+          
+          (<HTMLInputElement>document.getElementById("btn-fotoDocumento")).style.display = 'none';
+        }
+       
+
+          this.cargarImagenesDoc();
+
+        if(itemCopy.fotoFrenteDocumento !== null && itemCopy.fotoDorsoDocumento !== null)
+        {
+          (<HTMLInputElement>document.getElementById("btn-fotoDocumento")).style.display = 'none';
+          console.log(itemCopy.fotoFrenteDocumento);
+          console.log(itemCopy.fotoDorsoDocumento);
+          localStorage.removeItem("fotoFrenteDocumento");
+          localStorage.removeItem("fotoDorsoDocumento");
+          
+        }        
+        
+      
+        
+        console.log(JSON.parse(localStorage.getItem('fotoFrenteDocumento')));
+        console.log(JSON.parse(localStorage.getItem('fotoDorsoDocumento')));    
+
       });  
     }
     GetTiposDocumentos() {
@@ -141,6 +182,8 @@ export class MiPerfilComponent implements OnInit {
 
     this.router.navigate(['/form-domicilio'])
   }
+  
+  
   Grabar(){
     this.submitted= true;
     if(this.FormMiPerfil.invalid){      
@@ -152,7 +195,9 @@ export class MiPerfilComponent implements OnInit {
       const itemCopy  = {...res};
       //itemCopy.fechaNacimiento=res.fechaNacimiento;
       //const itemCopy  = {...this.FormMiPerfil.value};
-      if(itemCopy.domicilio==null || itemCopy.domicilio==undefined)
+      if((itemCopy.domicilio == null || itemCopy.domicilio == undefined) &&
+         (itemCopy.fotoFrenteDocumento == null || itemCopy.fotoFrenteDocumento == undefined) &&
+         (itemCopy.fotoDorsoDocumento == null || itemCopy.fotoDorsoDocumento == undefined))
       {
         //const itemCopy2  = {...res};
           var cuenta:Cuenta;
@@ -167,26 +212,46 @@ export class MiPerfilComponent implements OnInit {
         }       
         );
       }
+
+      
       itemCopy.domicilio=JSON.parse(localStorage.getItem('domicilio'));
       localStorage.removeItem('domicilio');
+
+      if((itemCopy.fotoFrenteDocumento === null || itemCopy.fotoFrenteDocumento === undefined) 
+      && (itemCopy.fotoDorsoDocumento === null || itemCopy.fotoDorsoDocumento === undefined))
+      {
+        itemCopy.fotoFrenteDocumento = JSON.parse(localStorage.getItem('fotoFrenteDocumento'));
+        //localStorage.removeItem('fotoFrenteDocumento');
+        console.log(itemCopy.fotoFrenteDocumento);
+        itemCopy.fotoDorsoDocumento = JSON.parse(localStorage.getItem('fotoDorsoDocumento'));
+        //localStorage.removeItem('fotoDorsoDocumento');
+        console.log(itemCopy.fotoFrenteDocumento);
+      }
+      
+
       itemCopy.email=this.FormMiPerfil.value.email;;
       
       itemCopy.telefono=this.FormMiPerfil.value.telefono;;
-      
+
+      if((itemCopy.fotoFrenteDocumento === null || itemCopy.fotoFrenteDocumento === undefined) 
+    && (itemCopy.fotoDorsoDocumento === null || itemCopy.fotoDorsoDocumento === undefined)) {
+      this.modalQuienesSomosService.Alert('Error en la modificación. Debe cargar las imágenes', 'Error inesperado', 'w');
+    }
+    else
+    {
       this.clienteService.put(itemCopy.idCliente, itemCopy).subscribe( data => {
-      this.cancelar();
-      this.modalQuienesSomosService.Alert('Se registro exitosamente', '', 's');
-      },
-      error => {          
-      this.modalQuienesSomosService.Alert('Error inesperado.', '¡Ingreso incorrecto!', 'w');
-      } 
+        this.cancelar();
+        this.modalQuienesSomosService.Alert('Se modificó exitosamente', '', 's');
+        }
     );      
+
+    }
     
   },
-  error => {          
-    this.modalQuienesSomosService.Alert('Error inesperado.', '¡Vuelva a ingresar!', 'w');
-    } 
-  );      
+  /*error => {          
+    this.modalQuienesSomosService.Alert('Error en la modificación. Debe cargar las imágenes.', '¡Alerta!', 'w');
+    } */
+  );     
 }
 
   
@@ -194,6 +259,8 @@ export class MiPerfilComponent implements OnInit {
 
   cancelar(){
     localStorage.removeItem('domicilio');
+    localStorage.removeItem('fotoFrenteDocumento');
+    localStorage.removeItem('fotoDorsoDocumento');
     this.router.navigate(['/menu-principal'])
 
   }
