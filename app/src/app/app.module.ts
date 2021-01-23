@@ -76,7 +76,7 @@ import { IngresarPesosComponent } from './Componentes/ingresar-pesos/ingresar-pe
       { path: 'retirar-pesos', component: RetirarPesosComponent, canActivate: [AuthGuard]},
       { path: 'giro-descubierto', component: GiroComponent, canActivate: [AuthGuard]},
       { path: 'giro-condiciones', component: GiroCondicionesComponent, canActivate: [AuthGuard]},
-      { path: 'imagen-dni', component: ImagenDniComponent},
+      { path: 'imagen-dni', component: ImagenDniComponent, canActivate: [AuthGuard]},
       { path: 'transferencias', component: TransferenciasComponent, canActivate: [AuthGuard]},
       { path: 'ingresar-pesos', component:IngresarPesosComponent, canActivate:[AuthGuard]}, 
       { path: '**', redirectTo: '/login', pathMatch: 'full' }
