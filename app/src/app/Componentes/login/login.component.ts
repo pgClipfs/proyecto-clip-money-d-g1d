@@ -216,4 +216,18 @@ export class LoginComponent implements OnInit {
     
     return JSON.parse(localStorage.getItem('loginRequest'));
   }
+
+  validarEmail(){
+    let correoElect = (<HTMLInputElement>document.getElementById("Email")).value;
+
+    let email = /^(?:[^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*|"[^\n"]+")@(?:[^<>()[\].,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,63}$/i;
+    let matchPatternEmail = email.test(correoElect) ? true : false;
+     
+    if(matchPatternEmail === false){
+      (<HTMLInputElement>document.getElementById("noMatchEmail")).innerHTML = "Ingrese un formato de email.";
+    }
+    else{
+      (<HTMLInputElement>document.getElementById("noMatchEmail")).innerHTML = "";
+    }
+  }
 }

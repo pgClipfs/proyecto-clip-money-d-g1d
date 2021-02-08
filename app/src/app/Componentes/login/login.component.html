@@ -178,7 +178,7 @@
                 <div class="col-12">
                     <input type="text" class="form-control" formControlName="NroDocumento"
             [ngClass]="{'is-invalid': (FormRegistro.controls.NroDocumento.touched || submitted)  
-                && FormRegistro.controls.NroDocumento.errors}" />
+                && FormRegistro.controls.NroDocumento.errors}" maxlength="10"/>
                     <span class="text-danger" *ngIf="(FormRegistro.controls.NroDocumento.touched || submitted) 
                             && FormRegistro.controls.NroDocumento.errors?.required">
                         Dato requerido.
@@ -195,15 +195,19 @@
                 <label class="col-form-label col-12">Email: <span
                         class="text-danger">*</span></label>
                 <div class="col-12">
-                    <input type="text" class="form-control" formControlName="Email"
+                    <input type="text" class="form-control" formControlName="Email" id="Email"
                 [ngClass]="{'is-invalid': (FormRegistro.controls.Email.touched || submitted)  
-                && FormRegistro.controls.Email.errors}" />
-    
+                && FormRegistro.controls.Email.errors}" (keyup)="validarEmail()" />
+
                     <span class="text-danger" *ngIf="(FormRegistro.controls.Email.touched || submitted) 
                             && FormRegistro.controls.Email.errors?.required">
                         Dato requerido.
                     </span>
-                  
+
+                    <span class="text-danger" id="noMatchEmail">
+                    </span> 
+    
+                                     
                     <!--span class="text-danger" *ngIf="(FormRegistro.controls.Email.errors?.minlength || FormRegistro.controls.Email.errors?.maxlength) ">
                         Dato texto, 4 a 55 caracteres.
                     </span-->
@@ -219,7 +223,7 @@
                 <div class="col-12">
                     <input type="text" class="form-control" formControlName="Telefono"
             [ngClass]="{'is-invalid': (FormRegistro.controls.Telefono.touched || submitted)  
-                && FormRegistro.controls.Telefono.errors}" />
+                && FormRegistro.controls.Telefono.errors}" maxlength="10"/>
                     <span class="text-danger" *ngIf="(FormRegistro.controls.Telefono.touched || submitted) 
                             && FormRegistro.controls.Telefono.errors?.required">
                         Dato requerido.
