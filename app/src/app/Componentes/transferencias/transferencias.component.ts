@@ -66,12 +66,17 @@ aceptar(){
       itemCopy2.cvuDesde=itemCopy2.cvu;
       itemCopy2.monto=this.formTransferencia.controls.Monto.value;
       itemCopy2.cvuHasta=this.formTransferencia.controls.Destino.value;
-      this.transaccionesService.postTransferencia(itemCopy2).subscribe(data =>{
-        this.modalQuienesSomosService.Alert('La operación se realizo con éxito', 'Transferencia', 's');
-        this.router.navigate(['/menu-principal']);
-      },
-      error =>  {this.modalQuienesSomosService.Alert('Saldo insuficiente','Error','w')});
 
+      if(itemCopy2.cvuDesde !== itemCopy2.cvuHasta){
+        this.transaccionesService.postTransferencia(itemCopy2).subscribe(data =>{
+          this.modalQuienesSomosService.Alert('La operación se realizo con éxito', 'Transferencia', 's');
+          this.router.navigate(['/menu-principal']);
+        },
+        error =>  {this.modalQuienesSomosService.Alert('Saldo insuficiente','Error','w')});
+      }
+      else{
+        this.modalQuienesSomosService.Alert('No se puede realizar una transferencia a una cuenta propia.','Error','w')
+      }
     });
   });
 
