@@ -141,11 +141,11 @@ namespace ProyectoClipMoney2020.Models.Gestores
                 if (dr.Read())
                 {
                     cliente = new Cliente();
-                    Nacionalidad nacionalidad = new Nacionalidad()
+                    /*Nacionalidad nacionalidad = new Nacionalidad()
                     {
                         idNacionalidad = dr.GetByte(10),
                         descripcionNacionalidad = dr.GetString(11)
-                    };
+                    };*/
                     var tipoDocumento = new TipoDocumento()
                     {
                         idTipoDocumento = dr.GetByte(12),
@@ -200,7 +200,7 @@ namespace ProyectoClipMoney2020.Models.Gestores
                     cliente.telefono = dr.GetInt64(7);
                     cliente.fotoFrenteDocumento = dr.GetString(8);//8;
                     cliente.fotoDorsoDocumento = dr.GetString(9);//9;              
-                    cliente.nacionalidad = nacionalidad;
+                    //cliente.nacionalidad = nacionalidad;
                     cliente.tipoDocumento = tipoDocumento;
                     cliente.domicilio = domicilio;
                     cliente.situacionCrediticia = situacionCrediticia;
